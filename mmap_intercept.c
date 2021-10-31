@@ -143,7 +143,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #if INIT_ALLOC == ROUND_ROBIN 		    
         memory_index ++;
         index_mem_allocation = (memory_index %2);
-        fprintf(stderr,"memory index:%d ",index_mem_allocation);
+        //fprintf(stderr,"memory index:%d ",index_mem_allocation);
 
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
@@ -161,19 +161,19 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 					fprintf(stderr,"Error during mbind:%d\n",errno);
 					perror("Error description"); 
 		       }else{
-		            fprintf(stderr,"[DRAM]\n");
+		            //fprintf(stderr,"[DRAM]\n");
 					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
 	 		        flag_dram_alloc = 1;
 	 		        return 0;
 		       }
            }else{
-               fprintf(stderr,"[DRAM] Maximum capacity was reached! Current:%ld, New Alloc:%ld !!\n", mem_consumption, (unsigned long)arg1);
+               //fprintf(stderr,"[DRAM] Maximum capacity was reached! Current:%ld, New Alloc:%ld !!\n", mem_consumption, (unsigned long)arg1);
                flag_dram_alloc = 1;
            }
 		}
 		if(flag_dram_alloc != 1)
 		{
-		   fprintf(stderr,"\t\t[PMEM]\n");
+		   //fprintf(stderr,"\t\t[PMEM]\n");
 		   nodemask = 1<<NODE_1_DRAM;
 		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
