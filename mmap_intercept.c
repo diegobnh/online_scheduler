@@ -157,6 +157,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		       }else{
 					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
 	 		        flag_dram_alloc = 1;
+	 		        return 0;
 		       }
            }else{
                fprintf(stderr,"Maximum capacity was reached !!\n");
@@ -164,7 +165,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		}
 		if(flag_dram_alloc != 1)
 		{
-		   fprintf(stderr,"[PMEM]\n");
+		   fprintf(stderr,"\t[PMEM]\n");
 		   nodemask = 1<<NODE_1_DRAM;
 		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
@@ -178,7 +179,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
    		   
 		}
 		
-		return 0;
+		
 	}else if(syscall_number == SYS_munmap){
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
