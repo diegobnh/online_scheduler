@@ -71,7 +71,6 @@ void *thread_actuator(void *_args){
                 MPOL_MF_MOVE) == -1)
        {
            fprintf(stderr,"Cant migrate object!!\n");
-           perror();
            //exit(-1);
        }else{
          	remove_allocation_on_dram(args,
