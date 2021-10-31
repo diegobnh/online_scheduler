@@ -36,7 +36,7 @@ void *thread_actuator(void *_args){
        unsigned long nodemask = 1<<NODE_1_DRAM;
 
        pthread_mutex_lock(&args->global_mutex);
-       	
+       /*	
        for(i=0 ;i< args->tier[0].num_obj; i++){
              if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
                 args->tier[0].obj_flag_alloc[i] == 1)//has LLCM and is an active allocation
@@ -54,8 +54,10 @@ void *thread_actuator(void *_args){
        }
        fprintf(stderr, "----------------------------\n");
        pthread_mutex_unlock(&args->global_mutex);
+       */
+       
 
-       /*
+       
        do{
            random_index = (rand() % (args->tier[0].num_obj + 1));
        }while(args->tier[0].obj_flag_alloc[random_index] == 0);
@@ -70,19 +72,21 @@ void *thread_actuator(void *_args){
        {
            fprintf(stderr,"Error:%d\n",errno);
            perror("Error description");
-           exit(-1);
+           //exit(-1);
+       }else{
+         	remove_allocation_on_dram(args,
+                                 args->tier[0].obj_vector[random_index].pid,
+                                 args->tier[0].obj_vector[random_index].start_addr,
+                                 args->tier[0].obj_vector[random_index].size);
+            insert_allocation_on_pmem(args,
+                                 args->tier[0].obj_vector[random_index].pid,
+                                 args->tier[0].obj_vector[random_index].start_addr,
+                                 args->tier[0].obj_vector[random_index].size);
        }
        
-       remove_allocation_on_dram(args,
-                                 args->tier[0].obj_vector[random_index].pid,
-                                 args->tier[0].obj_vector[random_index].start_addr,
-                                 args->tier[0].obj_vector[random_index].size);
-       insert_allocation_on_pmem(args,
-                                 args->tier[0].obj_vector[random_index].pid,
-                                 args->tier[0].obj_vector[random_index].start_addr,
-                                 args->tier[0].obj_vector[random_index].size);
-      
-       */ 
+       
+      pthread_mutex_unlock(&args->global_mutex);
+    
     }//while end
 }
 
