@@ -41,7 +41,7 @@
 #endif
 
 #if !(INIT_ALLOC == 1 || INIT_ALLOC == 2 || INIT_ALLOC == 3)
-#   error INIT_ALLOC invalid
+   fprintf(stderr, "INIT_ALLOC value invalid\n");
 #endif
 
 
@@ -141,7 +141,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
-#else //means FIRST_DRAM
+#elif FIRST_DRAM
         if(1){
 #endif
 		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption < MAXIMUM_DRAM_CAPACITY){
