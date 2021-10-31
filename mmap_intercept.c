@@ -37,7 +37,7 @@
 #define FIRST_DRAM 3
 
 #ifndef INIT_ALLOC
-#   error Please define INIT_ALLOC
+	fprintf(stderr, "INIT_ALLOC not defined\n");
 #endif
 
 #if !(INIT_ALLOC == 1 || INIT_ALLOC == 2 || INIT_ALLOC == 3)
