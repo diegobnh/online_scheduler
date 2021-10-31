@@ -68,7 +68,7 @@ This version is responsible to monitor loads and store on ALL CPUs
 Global variables start with sintaxe "g_name_of_variable"
 
 */
-static int max_cpus = 36;
+static int max_cpus = 36; // fix me
 static int g_running = 1;
 static int g_mmap_pages=1+MMAP_DATA_SIZE;
 static int g_quiet = 1;
@@ -536,7 +536,7 @@ int open_perf_start(void){
 int open_perf_setup(char *event) {
 
     int ret;
-	int fd;	
+	int fd[max_cpus];	
 	
 	struct perf_event_attr pe;
     pfm_perf_encode_arg_t arg;
@@ -610,6 +610,10 @@ int open_perf_setup(char *event) {
     int group_fd = -1; //no event grouping - creates a new group
     unsigned long flags = 0; 
 
+    for (int i = 0; i < max_cpus; i += 2) {
+
+    }
+    
     fd=syscall(__NR_perf_event_open,&pe, -1, 0, group_fd, flags);
 	if (fd<0) {
 		if (!g_quiet) {
