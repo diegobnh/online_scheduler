@@ -1,6 +1,0 @@
-bash: {time: command not found
-bash: {time: command not found
-bash: {time: command not found
-bash: {time: command not found
-bash: {time: command not found
-bash: {time: command not found
