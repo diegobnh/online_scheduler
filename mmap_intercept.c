@@ -125,7 +125,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 {
     int flag_dram_alloc = 0;  //if 1, means the allocations went to DRAM 
 	int static mmap_id = 0;
-	static int memory_index = 0;
+	static volatile int memory_index = 0;
 	int index_mem_allocation;
 	struct timespec ts;
 	unsigned long nodemask;
