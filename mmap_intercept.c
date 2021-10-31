@@ -139,7 +139,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #if INIT_ALLOC == ROUND_ROBIN 		    
         memory_index ++;
         index_mem_allocation = (memory_index %2);
-        fprintf(stderr,"memory index:%d ",index_mem_allocation);
+        fprintf(stderr,"memory index:%d \n",index_mem_allocation);
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
