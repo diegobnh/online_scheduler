@@ -2,3 +2,7 @@
 real	1m18.111s
 user	20m12.704s
 sys	0m23.930s
+
+real	1m18.091s
+user	20m13.045s
+sys	0m23.686s
