@@ -24,7 +24,7 @@ gcc -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recor
 
 #Start the main that will spawn other applications
 #LD_PRELOAD=./mmap_intercept.so ./main 1> /dev/null &
-LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n16 1> /dev/null &
+LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n8 1> /dev/null &
 
 #./main 1> /dev/null &
 pid_main=$!
