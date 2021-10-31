@@ -46,7 +46,7 @@
 
 
 #define MAXIMUM_DRAM_CAPACITY 4000000000  //means 4GB
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
@@ -156,6 +156,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
 	 		        flag_dram_alloc = 1;
 		       }
+           }else{
+               fprintf(stderr,"Maximum capacity was reached !!\n");
            }
 		}
 		if(flag_dram_alloc != 1)
