@@ -131,19 +131,16 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	unsigned long nodemask;
     struct timespec start, end;
     uint64_t delta_us;
-	pthread_mutex_t LOCK_thread_count;	
-		
 		
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 
 #if INIT_ALLOC == ROUND_ROBIN 		    
-        pthread_mutex_lock(&LOCK_thread_count);
-        memory_index ++; 
+        memory_index ++;
         index_mem_allocation = (memory_index %2);
-        fprintf(stderr,"memory index:%d \n",index_mem_allocation);
-        pthread_mutex_unlock(&LOCK_thread_count);
+        fprintf(stderr,"memory index:%d ",index_mem_allocation);
+
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
@@ -152,7 +149,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #endif
 		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
-               //fprintf(stderr,"[DRAM]\n");
+               fprintf(stderr,"[DRAM]\n");
 		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
 		       if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
@@ -171,7 +168,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		}
 		if(flag_dram_alloc != 1)
 		{
-		   //fprintf(stderr,"\t[PMEM]\n");
+		   fprintf(stderr,"\t\t[PMEM]\n");
 		   nodemask = 1<<NODE_1_DRAM;
 		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
