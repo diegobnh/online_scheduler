@@ -163,7 +163,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	 		        return 0;
 		       }
            }else{
-               fprintf(stderr,"[DRAM] Maximum capacity was reached !!\n");
+               fprintf(stderr,"[DRAM] Maximum capacity was reached, total:%ld !!\n", shared_memory->tier[0].current_memory_consumption );
                flag_dram_alloc = 1;
            }
 		}
