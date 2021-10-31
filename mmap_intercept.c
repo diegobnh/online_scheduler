@@ -136,8 +136,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 
 #if INIT_ALLOC == ROUND_ROBIN 		    
-        memory_index ++
-        index_mem_allocation = (memory_index %2)
+        memory_index ++;
+        index_mem_allocation = (memory_index %2);
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
