@@ -119,8 +119,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 		    
-                //if(1){
-		if(rand() % 2){
+                if(1){
+		//if(rand() % 2){
 		   nodemask = 1<<NODE_0_DRAM;
 		   D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
