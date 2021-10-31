@@ -1,3 +1,0 @@
-bash: ./compile: No such file or directory
-bash: ./compile: No such file or directory
-bash: ./compile: No such file or directory
