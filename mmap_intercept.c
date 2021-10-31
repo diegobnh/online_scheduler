@@ -119,7 +119,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 		    
-                //while shared_memory.tier[0].current_memory_consumption < 20% memory footprint
+                //while shared_memory.tier[0].current_memory_consumption < 20% memory footprint.
                 if(1){
 		//if(rand() % 2){
 		   nodemask = 1<<NODE_0_DRAM;
