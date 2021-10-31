@@ -149,7 +149,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #endif
 		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
-               fprintf(stderr,"[DRAM]\n");
+               
 		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
 		       if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
@@ -157,12 +157,13 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 					fprintf(stderr,"Error during mbind:%d\n",errno);
 					perror("Error description"); 
 		       }else{
+		            fprintf(stderr,"[DRAM]\n");
 					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
 	 		        flag_dram_alloc = 1;
 	 		        return 0;
 		       }
            }else{
-               fprintf(stderr,"Maximum capacity was reached !!\n");
+               fprintf(stderr,"[DRAM] Maximum capacity was reached !!\n");
                flag_dram_alloc = 1;
            }
 		}
