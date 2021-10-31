@@ -32,6 +32,20 @@
 #define NODE_2_PMEM 2
 #define NODE_3_PMEM 3
 
+#define INIT_ALLOC_ROUND_ROBIN "ROUND-ROBIN"
+#define INIT_ALLOC_RANDOM "RANDOM"
+#define INIT_ALLOC_FIRST_DRAM "FIRST_DRAM"
+
+#ifndef INIT_ALLOC
+#   error Please define INIT_ALLOC
+#endif
+
+#if !(INIT_ALLOC == INIT_ALLOC_ROUND_ROBIN || INIT_ALLOC == INIT_ALLOC_RANDOM || INIT_ALLOC == INIT_ALLOC_FIRST_DRAM)
+#   error PMC_TYPE invalid
+#endif
+
+
+#define MAXIMUM_DRAM_CAPACITY 4000000000  //means 4GB
 //#define DEBUG
 #ifdef DEBUG
   #define D if(1)
@@ -78,7 +92,7 @@ void init_lib(void)
         shared_memory->account_shared_library_instances += 1;
         pthread_mutex_unlock(&shared_memory->global_mutex);
        
-        pthread_create(&actuator, NULL, thread_actuator, shared_memory);
+        //pthread_create(&actuator, NULL, thread_actuator, shared_memory);
 
    }
 }
@@ -108,8 +122,10 @@ void exit_lib(void)
 static int
 hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4, long arg5,	long *result)
 {
-
-	int static mmap_id=0;
+    int flag_dram_alloc = 0;  //if 1, means the allocations went to DRAM 
+	int static mmap_id = 0;
+	static int memory_index = 0;
+	int index_mem_allocation;
 	struct timespec ts;
 	unsigned long nodemask;
     struct timespec start, end;
@@ -118,24 +134,32 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
-		    
-        //while shared_memory.tier[0].current_memory_consumption < 20% memory footprint.
+
+#if INIT_ALLOC == INIT_ALLOC_ROUND_ROBIN 		    
+        memory_index ++
+        index_mem_allocation = (memory_index %2)
+        if(index_mem_allocation){
+#elif INIT_ALLOC == INIT_ALLOC_RANDOM
+        if(rand() % 2){
+#else
         if(1){
-		//if(rand() % 2){
-		   
-		   nodemask = 1<<NODE_0_DRAM;
-		   D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
+#endif
+		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption) < MAXIMUM_DRAM_CAPACITY){
+               nodemask = 1<<NODE_0_DRAM;
+		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
-		   if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
-		   {
-			  fprintf(stderr,"Error during mbind:%d\n",errno);
-			  perror("Error description"); 
-		   }
-		   
-		   insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
-		   
+		       if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
+		       {
+					fprintf(stderr,"Error during mbind:%d\n",errno);
+					perror("Error description"); 
+		       }else{
+					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
+	 		        flag_dram_alloc = 1;
+		       }
+           }
 		}
-		else{
+		if(flag_dram_alloc != 1)
+		{
 		   nodemask = 1<<NODE_1_DRAM;
 		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 

@@ -56,7 +56,7 @@ void *thread_actuator(void *_args){
        pthread_mutex_unlock(&args->global_mutex);
        */
        
-
+ 
        
        do{
            random_index = (rand() % (args->tier[0].num_obj + 1));
