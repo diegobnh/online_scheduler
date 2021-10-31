@@ -122,7 +122,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         //while shared_memory.tier[0].current_memory_consumption < 20% memory footprint.
         if(1){
 		//if(rand() % 2){
-		   fprintf(stderr, "Current Memory Consumption (MB) %lf\n", shared_memory->tier[0].current_memory_consumption/1000000);
+		   
 		   nodemask = 1<<NODE_0_DRAM;
 		   D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
@@ -133,7 +133,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		   }
 		   
 		   insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
-		   
+		   fprintf(stderr, "Current Memory Consumption (Bytes) %ld\n", shared_memory->tier[0].current_memory_consumption);
 		}
 		else{
 		   nodemask = 1<<NODE_1_DRAM;
