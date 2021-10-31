@@ -2,7 +2,7 @@
 unset APP
 export APP="gapbs"
 
-OMP_NUM_THREADS=9
+OMP_NUM_THREADS=18
 export OMP_NUM_THREADS
 
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
@@ -28,7 +28,7 @@ LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/g
 
 #./main 1> /dev/null &
 pid_main=$!
-taskset -cp 0,2,4,6,8,10,12,14,16 $pid_main
+taskset -cp 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34 $pid_main
 #LD_PRELOAD=./malloc_intercept.so ./main 1> /dev/null
 
 
