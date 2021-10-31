@@ -32,15 +32,15 @@
 #define NODE_2_PMEM 2
 #define NODE_3_PMEM 3
 
-#define INIT_ALLOC_ROUND_ROBIN "ROUND-ROBIN"
-#define INIT_ALLOC_RANDOM "RANDOM"
-#define INIT_ALLOC_FIRST_DRAM "FIRST_DRAM"
+#define ROUND_ROBIN 1
+#define RANDOM 2
+#define FIRST_DRAM 3
 
 #ifndef INIT_ALLOC
 #   error Please define INIT_ALLOC
 #endif
 
-#if !(INIT_ALLOC == INIT_ALLOC_ROUND_ROBIN || INIT_ALLOC == INIT_ALLOC_RANDOM || INIT_ALLOC == INIT_ALLOC_FIRST_DRAM)
+#if !(INIT_ALLOC == 1 || INIT_ALLOC == 2 || INIT_ALLOC == 3)
 #   error PMC_TYPE invalid
 #endif
 
@@ -135,13 +135,13 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 
-#if INIT_ALLOC == INIT_ALLOC_ROUND_ROBIN 		    
+#if INIT_ALLOC == ROUND_ROBIN 		    
         memory_index ++
         index_mem_allocation = (memory_index %2)
         if(index_mem_allocation){
-#elif INIT_ALLOC == INIT_ALLOC_RANDOM
+#elif INIT_ALLOC == RANDOM
         if(rand() % 2){
-#else
+#else //means FIRST_DRAM
         if(1){
 #endif
 		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption) < MAXIMUM_DRAM_CAPACITY){
