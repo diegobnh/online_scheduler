@@ -41,7 +41,7 @@
 #endif
 
 #if !(INIT_ALLOC == 1 || INIT_ALLOC == 2 || INIT_ALLOC == 3)
-#   error PMC_TYPE invalid
+#   error INIT_ALLOC invalid
 #endif
 
 
@@ -144,7 +144,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #else //means FIRST_DRAM
         if(1){
 #endif
-		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption) < MAXIMUM_DRAM_CAPACITY){
+		   if((unsigned long)arg1 + shared_memory->tier[0].current_memory_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
 		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
