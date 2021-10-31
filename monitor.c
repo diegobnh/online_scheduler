@@ -3,7 +3,7 @@
 sudo yum install libpfm*
 gcc -o prog perf_event_open_sampling_mode.c -lpfm
 
-This version is responsible to monitore loads and store only in CPU 0
+This version is responsible to monitor loads and store on ALL CPUs
 
 */
 
@@ -68,10 +68,11 @@ This version is responsible to monitore loads and store only in CPU 0
 Global variables start with sintaxe "g_name_of_variable"
 
 */
+static int max_cpus = 36;
 static int g_running = 1;
 static int g_mmap_pages=1+MMAP_DATA_SIZE;
 static int g_quiet = 1;
-static int g_fd[2];
+static int g_fd[max_cpus][2];  // 0 = loads, 1 = stores
 
 static int g_debug=0;
 int g_sample_type = PERF_SAMPLE_TIME | PERF_SAMPLE_TID | PERF_SAMPLE_ADDR | PERF_SAMPLE_WEIGHT | PERF_SAMPLE_DATA_SRC ;
@@ -402,6 +403,7 @@ int get_vector_index(long long chave, int *tier_type){
     
     return -1;
 }
+
 int account_samples_to_allocations(void){
     int i, j;
     int total_load_samples, total_load_mapped;
@@ -648,7 +650,9 @@ int main(int argc, char **argv) {
          fprintf(stderr,"Error setting up signal handler\n");
          exit(1);
     }
-    
+
+    //max_cpus = sysconf(_SC_NPROCESSORS_ONLN);
+
     setup_shared_memory();
     //setup_shared_memory_binary_search();
 
