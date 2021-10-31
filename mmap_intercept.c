@@ -125,21 +125,27 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 {
     int flag_dram_alloc = 0;  //if 1, means the allocations went to DRAM 
 	int static mmap_id = 0;
-	static volatile int memory_index = 0;
+	static int memory_index = 0;
 	int index_mem_allocation;
 	struct timespec ts;
 	unsigned long nodemask;
     struct timespec start, end;
     uint64_t delta_us;
+	pthread_mutex_t LOCK_thread_count;	
+		
 		
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 
 #if INIT_ALLOC == ROUND_ROBIN 		    
-        memory_index ++;
+        pthread_mutex_lock(&LOCK_thread_count);
+        memory_index ++; 
+        pthread_mutex_unlock(&LOCK_thread_count);
+
         index_mem_allocation = (memory_index %2);
         fprintf(stderr,"memory index:%d \n",index_mem_allocation);
+        
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
