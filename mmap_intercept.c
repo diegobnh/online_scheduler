@@ -141,11 +141,9 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #if INIT_ALLOC == ROUND_ROBIN 		    
         pthread_mutex_lock(&LOCK_thread_count);
         memory_index ++; 
-        pthread_mutex_unlock(&LOCK_thread_count);
-
         index_mem_allocation = (memory_index %2);
         fprintf(stderr,"memory index:%d \n",index_mem_allocation);
-        
+        pthread_mutex_unlock(&LOCK_thread_count);
         if(index_mem_allocation){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
