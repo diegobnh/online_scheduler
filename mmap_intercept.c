@@ -122,7 +122,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         //while shared_memory.tier[0].current_memory_consumption < 20% memory footprint.
         if(1){
 		//if(rand() % 2){
-		   fprintf(stderr, "%ld\n", shared_memory.tier[0].current_memory_consumption)
+		   fprintf(stderr, "%ld\n", shared_memory.tier[0].current_memory_consumption);
 		   nodemask = 1<<NODE_0_DRAM;
 		   D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
