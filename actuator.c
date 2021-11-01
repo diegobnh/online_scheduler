@@ -36,7 +36,7 @@ typedef struct candidates{
 
 void sort_objects(struct schedule_manager *args){
     int i,j;
-    float object_t;
+    object_t aux;
     
     candidates_t *dram_list;
     candidates_t *pmem_list;
