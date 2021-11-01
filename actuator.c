@@ -91,7 +91,7 @@ void *thread_actuator(void *_args){
        unsigned long nodemask = 1<<NODE_1_DRAM;
 
        pthread_mutex_lock(&args->global_mutex);
-       sort_objects(args)
+       sort_objects(args);
        check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
        /*	
