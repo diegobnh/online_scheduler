@@ -38,9 +38,11 @@ void sort_objects(struct schedule_manager *args){
     int i,j;
     object_t aux;
     
-    candidates_t *dram_list;
-    candidates_t *pmem_list;
+    candidates_t dram_list[100];
+    candidates_t pmem_list[100];
+    
     fprintf(stderr, "sort objects 1\n");
+    /*
     dram_list = malloc(sizeof(candidates_t) * args->tier[0].num_obj);
     if(dram_list == NULL){
         fprintf(stderr, "Erro when allocating dram list candidates_t\n");
@@ -50,6 +52,7 @@ void sort_objects(struct schedule_manager *args){
     if((pmem_list = malloc(sizeof(candidates_t) * args->tier[1].num_obj)) == NULL){
         fprintf(stderr, "Erro when allocating pmem list candidates_t\n");
     }
+     */
     fprintf(stderr, "sort objects 2\n");
     for(i=0;i<args->tier[0].num_obj;i++){
         for(j=i+1;j<args->tier[0].num_obj;j++){
@@ -59,7 +62,7 @@ void sort_objects(struct schedule_manager *args){
                 args->tier[0].obj_vector[i] = aux;
             }
         }
-        fprintf(stderr, "i=%d\n", i);
+       
     }
     fprintf(stderr, "sort objects 3\n");
     for(i=0;i<args->tier[1].num_obj;i++){
