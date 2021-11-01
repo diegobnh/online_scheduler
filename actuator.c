@@ -70,6 +70,7 @@ void sort_objects(struct schedule_manager *args){
 }
 
 void check_candidates_to_migration(struct schedule_manager *args){
+    int i;
     for(i=0;i<args->tier[0].num_obj;i++){
         fprintf(stderr, args->tier[0].obj_vector[i].metrics.loads_count[4]);
     }
