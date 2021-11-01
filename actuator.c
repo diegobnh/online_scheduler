@@ -38,10 +38,9 @@ void sort_objects(struct schedule_manager *args){
     int i,j;
     object_t aux;
     
-    candidates_t dram_list[100];
-    candidates_t pmem_list[100];
+    candidates_t dram_list[MAX_OBJECTS];//alocação dinamica aqui não funciona! Trava!
+    candidates_t pmem_list[MAX_OBJECTS];//
     
-    fprintf(stderr, "sort objects 1\n");
     /*
     dram_list = malloc(sizeof(candidates_t) * args->tier[0].num_obj);
     if(dram_list == NULL){
@@ -53,7 +52,7 @@ void sort_objects(struct schedule_manager *args){
         fprintf(stderr, "Erro when allocating pmem list candidates_t\n");
     }
      */
-    fprintf(stderr, "sort objects 2\n");
+
     for(i=0;i<args->tier[0].num_obj;i++){
         for(j=i+1;j<args->tier[0].num_obj;j++){
             if(args->tier[0].obj_vector[i].metrics.loads_count[4] > args->tier[0].obj_vector[j].metrics.loads_count[4]){
@@ -64,7 +63,6 @@ void sort_objects(struct schedule_manager *args){
         }
        
     }
-    fprintf(stderr, "sort objects 3\n");
     for(i=0;i<args->tier[1].num_obj;i++){
         for(j=i+1;j<args->tier[1].num_obj;j++){
             if(args->tier[1].obj_vector[i].metrics.loads_count[4] > args->tier[1].obj_vector[j].metrics.loads_count[4]){
@@ -80,11 +78,11 @@ void sort_objects(struct schedule_manager *args){
 void check_candidates_to_migration(struct schedule_manager *args){
     int i;
     for(i=0;i<args->tier[0].num_obj;i++){
-        fprintf(stderr, "DRAM[%d] = %lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+        fprintf(stderr, "DRAM[%d] = %.2lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
     }
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        fprintf(stderr, "PMEM[%d] = %lf\n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+        fprintf(stderr, "PMEM[%d] = %.2lf\n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
     }
     
 }
@@ -98,13 +96,10 @@ void *thread_actuator(void *_args){
         
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;
-       fprintf(stderr, "[Actuator] 0\n");
        pthread_mutex_lock(&args->global_mutex);
-       fprintf(stderr, "[Actuator] 1\n");
        sort_objects(args);
-       fprintf(stderr, "[Actuator] 2\n");
        check_candidates_to_migration(args);
-       fprintf(stderr, "[Actuator] 3\n");
+       fprintf(stderr, "-----------------------\n");
        pthread_mutex_unlock(&args->global_mutex);
        /*	
        for(i=0 ;i< args->tier[0].num_obj; i++){
