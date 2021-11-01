@@ -90,10 +90,13 @@ void *thread_actuator(void *_args){
         
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;
-
+       fprintf(stderr, "[Actuator] 0\n");
        pthread_mutex_lock(&args->global_mutex);
+       fprintf(stderr, "[Actuator] 1\n");
        sort_objects(args);
+       fprintf(stderr, "[Actuator] 2\n");
        check_candidates_to_migration(args);
+       fprintf(stderr, "[Actuator] 3\n");
        pthread_mutex_unlock(&args->global_mutex);
        /*	
        for(i=0 ;i< args->tier[0].num_obj; i++){
