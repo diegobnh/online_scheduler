@@ -2,7 +2,7 @@
 unset APP
 export APP="gapbs"
 
-OMP_NUM_THREADS=18
+OMP_NUM_THREADS=1
 export OMP_NUM_THREADS
 
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
