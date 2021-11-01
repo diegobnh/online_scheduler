@@ -96,12 +96,16 @@ void *thread_actuator(void *_args){
         
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;
+       
+       /*
        pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
        check_candidates_to_migration(args);
        fprintf(stderr, "-----------------------\n");
        pthread_mutex_unlock(&args->global_mutex);
-       /*	
+       */
+       
+       pthread_mutex_lock(&args->global_mutex);
        for(i=0 ;i< args->tier[0].num_obj; i++){
              if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
                 args->tier[0].obj_flag_alloc[i] == 1)//has LLCM and is an active allocation
@@ -119,7 +123,7 @@ void *thread_actuator(void *_args){
        }
        fprintf(stderr, "----------------------------\n");
        pthread_mutex_unlock(&args->global_mutex);
-       */
+       
        
  
        /*
