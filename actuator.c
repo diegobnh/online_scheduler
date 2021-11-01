@@ -25,6 +25,61 @@
   #define D if(0)
 #endif
 
+#define NUM_CANDIDATES 5
+
+//float g_top_to_demotion[NUM_CANDIDATES];
+//float g_top_to_promotion[NUM_CANDIDATES];
+typedef struct candidates{
+    int index;
+    float llcm;
+}candidates_t;
+
+void sort_objects(struct schedule_manager *args){
+    int i,j;
+    float object_t;
+    
+    candidates_t *dram_list;
+    candidates_t *pmem_list;
+    
+    if((dram_list = malloc(sizeof(candidates_t) * args->tier[0].num_obj)) == NULL){
+        fprintf(stderr, "Erro when allocating dram list candidates_t\n");
+    }
+    if((pmem_list = malloc(sizeof(candidates_t) * args->tier[1].num_obj)) == NULL){
+        fprintf(stderr, "Erro when allocating pmem list candidates_t\n");
+    }
+    
+    for(i=0;i<args->tier[0].num_obj;i++){
+        for(j=i+1;j<args->tier[0].num_obj;j++){
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4] > args->tier[0].obj_vector[j].metrics.loads_count[4]){
+                aux = args->tier[0].obj_vector[j];
+                args->tier[0].obj_vector[j] = args->tier[0].obj_vector[i];
+                args->tier[0].obj_vector[i] = aux;
+            }
+        }
+    }
+    for(i=0;i<args->tier[1].num_obj;i++){
+        for(j=i+1;j<args->tier[1].num_obj;j++){
+            if(args->tier[1].obj_vector[i].metrics.loads_count[4] > args->tier[1].obj_vector[j].metrics.loads_count[4]){
+                aux = args->tier[1].obj_vector[j];
+                args->tier[1].obj_vector[j] = args->tier[1].obj_vector[i];
+                args->tier[1].obj_vector[i] = aux;
+            }
+        }
+    }
+    
+}
+
+void check_candidates_to_migration(struct schedule_manager *args){
+    for(i=0;i<args->tier[0].num_obj;i++){
+        fprintf(stderr, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+    }
+    
+    for(i=0;i<args->tier[1].num_obj;i++){
+        fprintf(stderr, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+    }
+    
+}
+
 void *thread_actuator(void *_args){
     struct schedule_manager *args = (struct schedule_manager *) _args;
     int i,j;
@@ -36,6 +91,9 @@ void *thread_actuator(void *_args){
        unsigned long nodemask = 1<<NODE_1_DRAM;
 
        pthread_mutex_lock(&args->global_mutex);
+       sort_objects(args)
+       check_candidates_to_migration(args);
+       pthread_mutex_unlock(&args->global_mutex);
        /*	
        for(i=0 ;i< args->tier[0].num_obj; i++){
              if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
@@ -57,7 +115,7 @@ void *thread_actuator(void *_args){
        */
        
  
-       
+       /*
        do{
            random_index = (rand() % (args->tier[0].num_obj + 1));
        }while(args->tier[0].obj_flag_alloc[random_index] == 0);
@@ -85,7 +143,7 @@ void *thread_actuator(void *_args){
        
        
       pthread_mutex_unlock(&args->global_mutex);
-    
+      */
     }//while end
 }
 
