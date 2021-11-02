@@ -73,12 +73,12 @@ Global variables start with sintaxe "g_name_of_variable"
 */
 static int g_running = 1;
 static int g_mmap_pages=1+MMAP_DATA_SIZE;
-static int g_quiet = 1;
+static int g_quiet = 0;
 
 static int g_fd_loads[MAX_CPU]; 
 static int g_fd_stores[MAX_CPU]; 
 
-static int g_debug=0;
+static int g_debug=1;
 int g_sample_type = PERF_SAMPLE_TIME | PERF_SAMPLE_TID | PERF_SAMPLE_ADDR | PERF_SAMPLE_WEIGHT | PERF_SAMPLE_DATA_SRC ;
 
 //specific variable to store ring buffer
