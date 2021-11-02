@@ -55,7 +55,7 @@ void sort_objects(struct schedule_manager *args){
 
     for(i=0;i<args->tier[0].num_obj;i++){
         for(j=i+1;j<args->tier[0].num_obj;j++){
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4] > args->tier[0].obj_vector[j].metrics.loads_count[4]){
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4] < args->tier[0].obj_vector[j].metrics.loads_count[4]){
                 aux = args->tier[0].obj_vector[j];
                 args->tier[0].obj_vector[j] = args->tier[0].obj_vector[i];
                 args->tier[0].obj_vector[i] = aux;
@@ -82,7 +82,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
            args->tier[0].obj_flag_alloc[i] == 1){
-            fprintf(stderr, "DRAM[%d] = %.2lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+            fprintf(stderr, "DRAM[%d,%p] = %.2lf\n", i, args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]);
         }
         
     }
