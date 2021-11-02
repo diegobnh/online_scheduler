@@ -83,7 +83,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
            args->tier[0].obj_flag_alloc[i] == 1){
             fprintf(stderr, "DRAM[%d,%p] = %.2lf\n", i, args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]);
-        }
+        //}
         
     }
     
