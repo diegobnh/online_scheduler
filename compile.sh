@@ -17,7 +17,7 @@ gcc -o monitor monitor.c actuator.o recorder.o sample_processor.o time.o -lrt -l
 
 gcc -g -o main main.c
 #gcc -g malloc_intercept.c -fpic -shared -o malloc_intercept.so recorder.o -rdynamic -ldl -lpthread -lrt
-gcc -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recorder.o actuator.o -lpthread -lrt -lnuma -lsyscall_intercept -DINIT_ALLOC=3;
+gcc -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recorder.o actuator.o -lpthread -lrt -lnuma -lsyscall_intercept -DINIT_ALLOC=2;
 
 #In case the application in the last execution has finished without remove shared memory
 ./delete_shared_memory
