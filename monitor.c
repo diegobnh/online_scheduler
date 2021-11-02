@@ -631,7 +631,7 @@ int open_perf_setup(char *event) {
             }
         	if (g_fd_loads[i] < 0) {
         		if (!g_quiet) {
-        			fprintf(stderr,"Problem opening leader %s\n",strerror(errno));
+        			fprintf(stderr,"Problem opening fd %d: %s\n", i, strerror(errno));
         		}
         		return -1;
         	}
@@ -654,7 +654,7 @@ int open_perf_setup(char *event) {
             }
             if (g_fd_stores[i] < 0) {
                 if (!g_quiet) {
-                    fprintf(stderr,"Problem opening leader %s\n",strerror(errno));
+                    fprintf(stderr,"Problem opening fd %d: %s\n", i, strerror(errno));
                 }
                 return -1;
             }
