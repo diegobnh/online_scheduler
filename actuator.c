@@ -90,7 +90,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && \
            args->tier[1].obj_flag_alloc[i] == 1){
-            fprintf(stderr, "PMEM[%d] = %.2lf\n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+            fprintf(stderr, "PMEM[%d,%lu] = %.2lf\n", i, args->tier[1].obj_vector[i].size, args->tier[1].obj_vector[i].metrics.loads_count[4]);
         }
         
     }
