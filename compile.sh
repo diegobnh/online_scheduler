@@ -28,16 +28,16 @@ LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/g
 
 #./main 1> /dev/null &
 pid_main=$!
-#taskset -cp 0 $pid_main
+taskset -cp 0,2 $pid_main
 #LD_PRELOAD=./malloc_intercept.so ./main 1> /dev/null
 
 
 #Start independent monitor
-#sleep 1
-#./monitor &
-#pid_monitor=$!
+sleep 1
+./monitor &
+pid_monitor=$!
 
 #When the main finish, send a signal to monitor finish
 wait $pid_main
-#kill -27 $pid_monitor
+kill -27 $pid_monitor
  
