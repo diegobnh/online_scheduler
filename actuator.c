@@ -80,7 +80,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
     static int num_call = 0;
     fprintf(stderr, "%d\n", num_call);
     for(i=0;i<args->tier[0].num_obj;i++){
-        if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
+        //if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
            args->tier[0].obj_flag_alloc[i] == 1){
             fprintf(stderr, "DRAM[%d,%p] = %.2lf\n", i, args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]);
         }
