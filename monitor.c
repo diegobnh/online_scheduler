@@ -34,6 +34,8 @@ This version is responsible to monitor loads and store on ALL CPUs
 
 #include <pthread.h>
 
+//#include <numa.h>
+
 #include <perfmon/pfmlib.h>
 #include <perfmon/pfmlib_perf_event.h>
 
@@ -68,11 +70,13 @@ This version is responsible to monitor loads and store on ALL CPUs
 Global variables start with sintaxe "g_name_of_variable"
 
 */
-static int max_cpus = 36; // fix me
+static int max_cpus = 4; // 36; // fix me: numa_num_configured_cpus()
 static int g_running = 1;
 static int g_mmap_pages=1+MMAP_DATA_SIZE;
 static int g_quiet = 1;
-static int g_fd[max_cpus][2];  // 0 = loads, 1 = stores
+
+static int g_fd_loads[max_cpus]; 
+static int g_fd_stores[max_cpus]; 
 
 static int g_debug=0;
 int g_sample_type = PERF_SAMPLE_TIME | PERF_SAMPLE_TID | PERF_SAMPLE_ADDR | PERF_SAMPLE_WEIGHT | PERF_SAMPLE_DATA_SRC ;
@@ -494,49 +498,55 @@ int open_perf_clean(void){
     
     //munmap(g_loads_our_mmap,g_mmap_pages*getpagesize());
     //munmap(g_stores_our_mmap,g_mmap_pages*getpagesize());
-
-    close(g_fd[0]);
-    close(g_fd[1]);
+    for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+      close(g_fd_loads[i]);
+      close(g_fd_stores[i]);
+    }
 }
 int open_perf_stop(void){
     int ret;
 
-    ioctl(g_fd[0], PERF_EVENT_IOC_DISABLE,0);
-    ioctl(g_fd[1], PERF_EVENT_IOC_DISABLE,0);
+    for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+        ioctl(g_fd_loads[i], PERF_EVENT_IOC_DISABLE,0);
+        ioctl(g_fd_stores[i], PERF_EVENT_IOC_DISABLE,0);
+    }
     
 }
 int open_perf_start(void){
     int ret;
    
-    ioctl(g_fd[0], PERF_EVENT_IOC_RESET, 0);
-    ioctl(g_fd[0], PERF_EVENT_IOC_REFRESH, NUMBER_SAMPLE_OVERFLOW);
-    ret = ioctl(g_fd[0], PERF_EVENT_IOC_ENABLE,0);
+    for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
 
-    if (ret<0) {
-        if (!g_quiet) {
-            fprintf(stderr,"[monitor] Error %d %s\n", errno, strerror(errno));
-        }
-        return -1;
-    }
-    
-    ioctl(g_fd[1], PERF_EVENT_IOC_RESET, 0);
-    ioctl(g_fd[1], PERF_EVENT_IOC_REFRESH, NUMBER_SAMPLE_OVERFLOW);
-    ret = ioctl(g_fd[1], PERF_EVENT_IOC_ENABLE,0);
+        ioctl(g_fd_loads[i], PERF_EVENT_IOC_RESET, 0);
+        ioctl(g_fd_loads[i], PERF_EVENT_IOC_REFRESH, NUMBER_SAMPLE_OVERFLOW);
+        ret = ioctl(g_fd_loads[i], PERF_EVENT_IOC_ENABLE,0);
 
-    if (ret<0) {
-        if (!g_quiet) {
-            fprintf(stderr,"[monitor] Error %d %s\n", errno, strerror(errno));
+        if (ret<0) {
+            if (!g_quiet) {
+                fprintf(stderr,"[monitor] Error %d %s\n", errno, strerror(errno));
+            }
+            return -1;
         }
-        return -1;
-    }
     
+        ioctl(g_fd_stores[i], PERF_EVENT_IOC_RESET, 0);
+        ioctl(g_fd_stores[i], PERF_EVENT_IOC_REFRESH, NUMBER_SAMPLE_OVERFLOW);
+        ret = ioctl(g_fd_stores[i], PERF_EVENT_IOC_ENABLE,0);
+
+        if (ret<0) {
+            if (!g_quiet) {
+                fprintf(stderr,"[monitor] Error %d %s\n", errno, strerror(errno));
+            }
+            return -1;
+        }
+    }
+
 	return 0;
 
 }
 int open_perf_setup(char *event) {
 
     int ret;
-	int fd[max_cpus];	
+	int fds[max_cpus];	
 	
 	struct perf_event_attr pe;
     pfm_perf_encode_arg_t arg;
@@ -606,39 +616,58 @@ int open_perf_setup(char *event) {
 #endif
 
     //pid_t pid = 0; //measure the calling process
-    int cpu = -1; //measure any cpu
-    int group_fd = -1; //no event grouping - creates a new group
+    //int cpu = -1; //measure any cpu
+    //int group_fd = -1; //no event grouping - creates a new group
     unsigned long flags = 0; 
 
-    for (int i = 0; i < max_cpus; i += 2) {
+    if(strcmp(event,"loads") == 0){
 
+        for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+
+            if (i == 0) {
+              g_fd_reads[i] = syscall(__NR_perf_event_open,&pe, -1, i, -1, flags);
+            } else {
+              g_fd_reads[i] = syscall(__NR_perf_event_open,&pe, -1, i, g_fd_reads[0], flags);
+            }
+        	if (g_fd_reads[i] < 0) {
+        		if (!g_quiet) {
+        			fprintf(stderr,"Problem opening leader %s\n",strerror(errno));
+        		}
+        		return -1;
+        	}
+
+           g_loads_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, g_fd_reads[0], 0);
+           fcntl(fd, F_SETSIG, SIGUSR1);
+           fcntl(fd, F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
+           fcntl(fd, F_SETOWN,getpid());
+        }
+
+    } else if (strcmp(event,"stores") == 0){
+
+        for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+
+            if (i == 0) {
+              g_fd_stores[i] = syscall(__NR_perf_event_open,&pe, -1, i, -1, flags);
+            } else {
+              g_fd_stores[i] = syscall(__NR_perf_event_open,&pe, -1, i, g_fd_reads[0], flags);
+            }
+            if (g_fd_stores[i] < 0) {
+                if (!g_quiet) {
+                    fprintf(stderr,"Problem opening leader %s\n",strerror(errno));
+                }
+                return -1;
+            }
+
+           g_stores_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, g_fd_stores[0], 0);
+           fcntl(fd, F_SETSIG, SIGUSR2);
+           fcntl(fd, F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
+           fcntl(fd, F_SETOWN,getpid());
+        }	
     }
     
-    fd=syscall(__NR_perf_event_open,&pe, -1, 0, group_fd, flags);
-	if (fd<0) {
-		if (!g_quiet) {
-			fprintf(stderr,"Problem opening leader %s\n",strerror(errno));
-		}
-		return -1;
-	}
-	
-	if(strcmp(event,"stores") == 0){
-       g_stores_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
-    }
-    else if (strcmp(event,"loads") == 0){
-       g_loads_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
-    }
-    
-    fcntl(fd, F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
-	if(strcmp(event,"loads") == 0)
-	   fcntl(fd, F_SETSIG, SIGUSR1);
-	else if (strcmp(event,"stores") == 0)   
-	   fcntl(fd, F_SETSIG, SIGUSR2);
-	
-	fcntl(fd, F_SETOWN,getpid());
-    
-    return fd;
+    //return fds[0];
 }
+
 int main(int argc, char **argv) {
     struct timespec start, end;
     double elapsedTime;
@@ -660,9 +689,8 @@ int main(int argc, char **argv) {
     setup_shared_memory();
     //setup_shared_memory_binary_search();
 
-    g_fd[0] = open_perf_setup("loads");
-    g_fd[1] = open_perf_setup("stores");
-    
+    open_perf_setup("loads");
+    open_perf_setup("stores");
     
     if (open_perf_start()){
           fprintf(stderr, "[monitor] open_perf_start() Error!!\n");
