@@ -46,7 +46,7 @@ This version is responsible to monitore loads and store only in CPU 0
 #include "sample_processor.h"
 
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else

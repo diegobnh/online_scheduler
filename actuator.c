@@ -78,11 +78,19 @@ void sort_objects(struct schedule_manager *args){
 void check_candidates_to_migration(struct schedule_manager *args){
     int i;
     for(i=0;i<args->tier[0].num_obj;i++){
-        fprintf(stderr, "DRAM[%d] = %.2lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+        if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
+           args->tier[0].obj_flag_alloc[i] == 1){
+            printf(stderr, "DRAM[%d] = %.2lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+        }
+        
     }
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        fprintf(stderr, "PMEM[%d] = %.2lf\n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && \
+           args->tier[1].obj_flag_alloc[i] == 1){
+            fprintf(stderr, "PMEM[%d] = %.2lf\n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+        }
+        
     }
     
 }
@@ -97,20 +105,20 @@ void *thread_actuator(void *_args){
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;
        
-       /*
+       
        pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
        check_candidates_to_migration(args);
        fprintf(stderr, "-----------------------\n");
        pthread_mutex_unlock(&args->global_mutex);
-       */
        
+       /*
        pthread_mutex_lock(&args->global_mutex);
        for(i=0 ;i< args->tier[0].num_obj; i++){
              if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
                 args->tier[0].obj_flag_alloc[i] == 1)//has LLCM and is an active allocation
              {
-                   fprintf(stderr, "DRAM - index:%d, LLC miss:%.2lf \n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+                   fprintf(stderr, "[actuator] DRAM - index:%d, LLC miss:%.2lf \n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
              }
        }
        
@@ -118,12 +126,12 @@ void *thread_actuator(void *_args){
              if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && \
                 args->tier[1].obj_flag_alloc[i] == 1)//has LLCM and is an active allocation
              {
-                   fprintf(stderr, "PMEM - index:%d, LLC miss:%.2lf \n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+                   fprintf(stderr, "[actuator] PMEM - index:%d, LLC miss:%.2lf \n", i, args->tier[1].obj_vector[i].metrics.loads_count[4]);
              }
        }
        fprintf(stderr, "----------------------------\n");
        pthread_mutex_unlock(&args->global_mutex);
-       
+       */
        
  
        /*
