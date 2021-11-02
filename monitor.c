@@ -649,7 +649,7 @@ int open_perf_setup(char *event) {
             if (i == 0) {
               g_fd_stores[i] = syscall(__NR_perf_event_open,&pe, -1, i, -1, flags);
             } else {
-              g_fd_stores[i] = syscall(__NR_perf_event_open,&pe, -1, i, g_fd_reads[0], flags);
+              g_fd_stores[i] = syscall(__NR_perf_event_open,&pe, -1, i, g_fd_stores[0], flags);
             }
             if (g_fd_stores[i] < 0) {
                 if (!g_quiet) {
