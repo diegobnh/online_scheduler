@@ -55,6 +55,7 @@ This version is responsible to monitor loads and store on ALL CPUs
   #define D if(0)
 #endif
 
+#define MAX_CPU 4  // 36; // fix me: numa_num_configured_cpus()
 #define SAMPLE_FREQUENCY 1000
 #define NUMBER_SAMPLE_OVERFLOW 1000
 #define MMAP_DATA_SIZE 1024
@@ -70,13 +71,12 @@ This version is responsible to monitor loads and store on ALL CPUs
 Global variables start with sintaxe "g_name_of_variable"
 
 */
-static int max_cpus = 4; // 36; // fix me: numa_num_configured_cpus()
 static int g_running = 1;
 static int g_mmap_pages=1+MMAP_DATA_SIZE;
 static int g_quiet = 1;
 
-static int g_fd_loads[max_cpus]; 
-static int g_fd_stores[max_cpus]; 
+static int g_fd_loads[MAX_CPU]; 
+static int g_fd_stores[MAX_CPU]; 
 
 static int g_debug=0;
 int g_sample_type = PERF_SAMPLE_TIME | PERF_SAMPLE_TID | PERF_SAMPLE_ADDR | PERF_SAMPLE_WEIGHT | PERF_SAMPLE_DATA_SRC ;
@@ -498,7 +498,7 @@ int open_perf_clean(void){
     
     //munmap(g_loads_our_mmap,g_mmap_pages*getpagesize());
     //munmap(g_stores_our_mmap,g_mmap_pages*getpagesize());
-    for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+    for (int i = 0; i < MAX_CPU; i += 2) { // fix me: skip odd cpus (single socket)
       close(g_fd_loads[i]);
       close(g_fd_stores[i]);
     }
@@ -506,7 +506,7 @@ int open_perf_clean(void){
 int open_perf_stop(void){
     int ret;
 
-    for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+    for (int i = 0; i < MAX_CPU; i += 2) { // fix me: skip odd cpus (single socket)
         ioctl(g_fd_loads[i], PERF_EVENT_IOC_DISABLE,0);
         ioctl(g_fd_stores[i], PERF_EVENT_IOC_DISABLE,0);
     }
@@ -515,7 +515,7 @@ int open_perf_stop(void){
 int open_perf_start(void){
     int ret;
    
-    for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+    for (int i = 0; i < MAX_CPU; i += 2) { // fix me: skip odd cpus (single socket)
 
         ioctl(g_fd_loads[i], PERF_EVENT_IOC_RESET, 0);
         ioctl(g_fd_loads[i], PERF_EVENT_IOC_REFRESH, NUMBER_SAMPLE_OVERFLOW);
@@ -546,7 +546,7 @@ int open_perf_start(void){
 int open_perf_setup(char *event) {
 
     int ret;
-	int fds[max_cpus];	
+	int fds[MAX_CPU];	
 	
 	struct perf_event_attr pe;
     pfm_perf_encode_arg_t arg;
@@ -622,29 +622,30 @@ int open_perf_setup(char *event) {
 
     if(strcmp(event,"loads") == 0){
 
-        for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+        for (int i = 0; i < MAX_CPU; i += 2) { // fix me: skip odd cpus (single socket)
 
             if (i == 0) {
-              g_fd_reads[i] = syscall(__NR_perf_event_open,&pe, -1, i, -1, flags);
+              g_fd_loads[i] = syscall(__NR_perf_event_open,&pe, -1, i, -1, flags);
             } else {
-              g_fd_reads[i] = syscall(__NR_perf_event_open,&pe, -1, i, g_fd_reads[0], flags);
+              g_fd_loads[i] = syscall(__NR_perf_event_open,&pe, -1, i, g_fd_reads[0], flags);
             }
-        	if (g_fd_reads[i] < 0) {
+        	if (g_fd_loads[i] < 0) {
         		if (!g_quiet) {
         			fprintf(stderr,"Problem opening leader %s\n",strerror(errno));
         		}
         		return -1;
         	}
 
-           g_loads_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, g_fd_reads[0], 0);
-           fcntl(fd, F_SETSIG, SIGUSR1);
-           fcntl(fd, F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
-           fcntl(fd, F_SETOWN,getpid());
+           g_loads_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, g_fd_loads[0], 0);
+
+           fcntl(g_fd_loads[i], F_SETSIG, SIGUSR1);
+           fcntl(g_fd_loads[i], F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
+           fcntl(g_fd_loads[i], F_SETOWN,getpid());
         }
 
     } else if (strcmp(event,"stores") == 0){
 
-        for (int i = 0; i < max_cpus; i += 2) { // fix me: skip odd cpus (single socket)
+        for (int i = 0; i < MAX_CPU; i += 2) { // fix me: skip odd cpus (single socket)
 
             if (i == 0) {
               g_fd_stores[i] = syscall(__NR_perf_event_open,&pe, -1, i, -1, flags);
@@ -659,9 +660,9 @@ int open_perf_setup(char *event) {
             }
 
            g_stores_our_mmap=mmap(NULL, g_mmap_pages*getpagesize(), PROT_READ|PROT_WRITE, MAP_SHARED, g_fd_stores[0], 0);
-           fcntl(fd, F_SETSIG, SIGUSR2);
-           fcntl(fd, F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
-           fcntl(fd, F_SETOWN,getpid());
+           fcntl(g_fd_stores[i], F_SETSIG, SIGUSR2);
+           fcntl(g_fd_stores[i], F_SETFL, O_RDWR|O_NONBLOCK|O_ASYNC);
+           fcntl(g_fd_stores[i], F_SETOWN,getpid());
         }	
     }
     
@@ -684,7 +685,7 @@ int main(int argc, char **argv) {
          exit(1);
     }
 
-    //max_cpus = sysconf(_SC_NPROCESSORS_ONLN);
+    //MAX_CPU = sysconf(_SC_NPROCESSORS_ONLN);
 
     setup_shared_memory();
     //setup_shared_memory_binary_search();
