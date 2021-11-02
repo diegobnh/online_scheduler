@@ -77,7 +77,7 @@ void sort_objects(struct schedule_manager *args){
 
 void check_candidates_to_migration(struct schedule_manager *args){
     int i;
-    static num_call = 0;
+    static int num_call = 0;
     fprintf(stderr, "%d\n", num_call);
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && \
