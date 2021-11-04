@@ -107,13 +107,13 @@ void *thread_actuator(void *_args){
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;
        
-       
-       //pthread_mutex_lock(&args->global_mutex);
+       fprintf(stderr, "[actuator] get lock!!!\n");
+       pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
        check_candidates_to_migration(args);
        fprintf(stderr, "----------------\n");
-       //pthread_mutex_unlock(&args->global_mutex);
-       
+       pthread_mutex_unlock(&args->global_mutex);
+       fprintf(stderr, "[actuator] free lock!!!\n");
        /*
        pthread_mutex_lock(&args->global_mutex);
        for(i=0 ;i< args->tier[0].num_obj; i++){
