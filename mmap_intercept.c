@@ -162,10 +162,10 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	 		        return 0;
 		       }
            }else{
-               flag_dram_alloc = 1;
+               flag_dram_alloc = 0;
            }
 		}
-		if(flag_dram_alloc != 1)
+		if(flag_dram_alloc == 0)
 		{
 		   nodemask = 1<<NODE_1_DRAM;
 		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
