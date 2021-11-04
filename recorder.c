@@ -118,10 +118,12 @@ int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, u
             shared_memory->tier[1].current_memory_consumption -= size;
             
             pthread_mutex_unlock(&shared_memory->global_mutex);
+            fprintf(stderr, "UNLOCK remove pmem\n");
     		return 1;
     	}
     }
 	pthread_mutex_unlock(&shared_memory->global_mutex);
+    fprintf(stderr, "UNLOCK remove pmem\n");
     return 0;
 	
 }	
@@ -137,11 +139,12 @@ int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, u
             shared_memory->tier[0].current_memory_consumption -= size;
             
             pthread_mutex_unlock(&shared_memory->global_mutex);
+            fprintf(stderr, "UNLOCK remove dram\n");
     		return 1;
     	}
     }
 	pthread_mutex_unlock(&shared_memory->global_mutex);
-    //D fprintf(stderr, "\t[recorder] remove_allocation_on_tier[0] (end)\n");
+    fprintf(stderr, "UNLOCK remove dram\n");
     return 0;
     
 }
