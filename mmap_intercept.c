@@ -45,9 +45,9 @@
 #endif
 
 
-#define MAXIMUM_DRAM_CAPACITY 94000000000  //means 4GB
+#define MAXIMUM_DRAM_CAPACITY 4000000000  //means 4GB
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
