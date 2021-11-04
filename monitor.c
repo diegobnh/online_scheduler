@@ -140,7 +140,7 @@ long long perf_mmap_read(void *our_mmap, \
     int load=0;
     long long weight;
     
-	unsigned char *data;
+	unsigned char data[MMAP_DATA_SIZE * 4096];
 
     int tier_type;//0 to dram , 1 to pmem
     
@@ -168,8 +168,8 @@ long long perf_mmap_read(void *our_mmap, \
 		printf("error!  we overflowed the mmap buffer %d>%lld bytes\n",	size,bytesize);
 	}
     //fprintf(stderr, "[monitor] read 4\n");
-    fprintf(stderr, "\t\t\t[monitor] %lld\n", bytesize);
-	data=malloc(bytesize);
+    
+	//data=malloc(bytesize);
     
 	if (data==NULL) {
 		return -1;
@@ -341,7 +341,7 @@ long long perf_mmap_read(void *our_mmap, \
 
 	control_page->data_tail=head;
 
-	free(data);
+	//free(data);
 
 	return head;
 
