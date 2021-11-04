@@ -268,20 +268,20 @@ long long perf_mmap_read(void *our_mmap, \
                         
 
 						if (vector_index != -1) {
-                            fprintf(stderr, "vector_index !=-1 INICIO\n");
+                            fprintf(stderr, "INICIO \t");
                             g_total_samples_mapped ++;
 							//if (src!=0) printf("\t\t");
 							if (src & (PERF_MEM_OP_NA<<PERF_MEM_OP_SHIFT))
 								printf("Op Not available ");
                             if (src & (PERF_MEM_OP_LOAD<<PERF_MEM_OP_SHIFT)){
                                 fprintf(stderr,"Load_");
-                                fprintf(stderr, "Load in index:%d\n", vector_index);
+                                //fprintf(stderr, "Load in index:%d\n", vector_index);
                                 load = 1;
                             }
 								
                             if (src & (PERF_MEM_OP_STORE<<PERF_MEM_OP_SHIFT)){
-								//printf("Store_");
-                                fprintf(stderr, "Store count in index:%d\n", vector_index);
+								printf(stderr,"Store_");
+                                //fprintf(stderr, "Store count in index:%d\n", vector_index);
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
                             }
                             if (src & (PERF_MEM_LVL_L1<<PERF_MEM_LVL_SHIFT)){
@@ -322,7 +322,7 @@ long long perf_mmap_read(void *our_mmap, \
 								fprintf(stderr,"TLB_Miss ");
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
                             }
-                            fprintf(stderr, "\nvector_index !=-1 FIM \n");
+                            fprintf(stderr, " FIM \n");
 						}
 						//fprintf(stderr,"\n");
 					}
