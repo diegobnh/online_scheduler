@@ -280,7 +280,7 @@ long long perf_mmap_read(void *our_mmap, \
                             }
 								
                             if (src & (PERF_MEM_OP_STORE<<PERF_MEM_OP_SHIFT)){
-								printf(stderr,"Store_");
+								fprintf(stderr,"Store_");
                                 //fprintf(stderr, "Store count in index:%d\n", vector_index);
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
                             }
