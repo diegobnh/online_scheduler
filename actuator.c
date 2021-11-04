@@ -109,9 +109,10 @@ void *thread_actuator(void *_args){
        
        fprintf(stderr, "[actuator] get lock!!!\n");
        pthread_mutex_lock(&args->global_mutex);
-       sort_objects(args);
-       check_candidates_to_migration(args);
-       fprintf(stderr, "----------------\n");
+       //sort_objects(args);
+       //check_candidates_to_migration(args);
+       //fprintf(stderr, "----------------\n");
+       sleep(1);
        pthread_mutex_unlock(&args->global_mutex);
        fprintf(stderr, "[actuator] free lock!!!\n");
        /*

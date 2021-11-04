@@ -210,7 +210,7 @@ long long perf_mmap_read(void *our_mmap, \
 		/***********************/
 		/* Print event Details */
 		/***********************/
-
+        fprintf(stderr, ".");
 		switch(event->type) {
                 
 				case PERF_RECORD_SAMPLE:
@@ -269,6 +269,7 @@ long long perf_mmap_read(void *our_mmap, \
                         
 
 						if (vector_index != -1) {
+                            fprintf(stderr, "vector_index !=-1 INICIO\n");
                             g_total_samples_mapped ++;
 							//if (src!=0) printf("\t\t");
 							if (src & (PERF_MEM_OP_NA<<PERF_MEM_OP_SHIFT))
@@ -321,6 +322,7 @@ long long perf_mmap_read(void *our_mmap, \
 								//fprintf(stderr,"TLB_Miss ");
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
                             }
+                            fprintf(stderr, "vector_index !=-1 FIM \n");
 						}
 						//fprintf(stderr,"\n");
 					}
@@ -333,6 +335,7 @@ long long perf_mmap_read(void *our_mmap, \
 					//fprintf(stderr,"\tUnknown type %d\n",event->type);
 
 		}
+        fprintf(stderr, "\n");
 		if (events_read) (*events_read)++;
 
 		g_total_samples++;		
@@ -416,7 +419,6 @@ int account_samples_to_allocations(void){
     curr_ring_index = ring_index % RING_BUFFER_SIZE;
     
     pthread_mutex_lock(&g_shared_memory->global_mutex);
-    fprintf(stderr, "Got lock inside account samples\n");
 
     clock_gettime(CLOCK_REALTIME, &start);
     g_shared_memory->tier[0].obj_vector[i].ring.current_ring_index = curr_ring_index;
@@ -447,7 +449,7 @@ int account_samples_to_allocations(void){
     //head_stores = perf_mmap_read(g_stores_our_mmap,MMAP_DATA_SIZE,g_stores_prev_head, g_sample_type,0,0, g_quiet,NULL);
     total_store_samples = g_total_samples;
     total_store_mapped = g_total_samples_mapped;
-    fprintf(stderr, "after call perf_mmap_read\n");
+    
     clock_gettime(CLOCK_REALTIME, &end);
     
     
@@ -670,9 +672,8 @@ int main(int argc, char **argv) {
         
     	if(g_stores_count_overflow_events || g_loads_count_overflow_events){
 				open_perf_stop();
-                fprintf(stderr, "[monitor] get lock before account samples\n");
                 account_samples_to_allocations();
-                fprintf(stderr, "[monitor] free lock after account samples\n");
+                
                 D fprintf(stderr, "-------------------------------------------------\n");
                 open_perf_start();
     	}

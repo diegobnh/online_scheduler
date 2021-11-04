@@ -6,7 +6,7 @@
 #include <inttypes.h>
 #include "recorder.h"
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
