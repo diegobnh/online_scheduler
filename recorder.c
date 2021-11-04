@@ -62,7 +62,7 @@ int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
         index ++;
         index = index % MAX_OBJECTS;
     }
-    D fprintf(stderr, "\t[recorder] insert %p on tier[1] index: %d\n",start_addr, index);
+    //D fprintf(stderr, "\t[recorder] insert %p on tier[1] index: %d\n",start_addr, index);
     
     args->tier[1].obj_vector[index].start_addr = start_addr;
     args->tier[1].obj_vector[index].end_addr = start_addr + size;
@@ -92,7 +92,7 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
     	index ++;
     	index = index % MAX_OBJECTS;
     }
-    D fprintf(stderr, "\t[recorder] insert %p on tier[0] index: %d\n",start_addr, index);
+    //D fprintf(stderr, "\t[recorder] insert %p on tier[0] index: %d\n",start_addr, index);
     
 	args->tier[0].obj_vector[index].start_addr = start_addr;
 	args->tier[0].obj_vector[index].end_addr = start_addr + size;

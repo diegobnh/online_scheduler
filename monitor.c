@@ -667,8 +667,9 @@ int main(int argc, char **argv) {
         
     	if(g_stores_count_overflow_events || g_loads_count_overflow_events){
 				open_perf_stop();
+                fprintf("[monitor] get lock before account samples\n");
                 account_samples_to_allocations();
-
+                fprintf("[monitor] free lock after account samples\n");
                 D fprintf(stderr, "-------------------------------------------------\n");
                 open_perf_start();
     	}
