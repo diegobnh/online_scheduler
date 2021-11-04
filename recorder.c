@@ -54,6 +54,8 @@ int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
 {
     
     pthread_mutex_lock(&args->global_mutex);
+    fprintf(stderr,"GOT LOCK insert PMEM\n");
+
     //D fprintf(stderr, "\t[recorder] insert_allocation_on_tier[1] from pid:%d\n", pid);
     
     int index = args->tier[1].current_obj_index ; //get last index assigned
@@ -77,11 +79,14 @@ int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
     args->tier[1].current_memory_consumption += size;
     
     pthread_mutex_unlock(&args->global_mutex);
+    fprintf(stderr,"FREE LOCK insert PMEM\n");
+
 }
 int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned long start_addr, unsigned long size)
 {
     
 	pthread_mutex_lock(&args->global_mutex);
+    fprintf(stderr,"GOT LOCK insert DRAM\n");
     //D fprintf(stderr, "\t[recorder] insert_allocation_on_tier[0] from pid:%d\n", pid);
     
     int index = args->tier[0].current_obj_index ; //get last index assigned
@@ -105,13 +110,12 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
     args->tier[0].current_memory_consumption += size;
     
     pthread_mutex_unlock(&args->global_mutex);
-
+    fprintf(stderr,"FREE LOCK insert DRAM\n");
 }
 int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, unsigned long start_addr, unsigned long size)
 {
     fprintf(stderr,"TRY TO GET LOCK remove pmem\n");
     pthread_mutex_lock(&shared_memory->global_mutex);
-    fprintf(stderr,"GOT LOCK remove pmem\n");
     int i;
     for(i = 0; i < MAX_OBJECTS; i++){
     	if(shared_memory->tier[1].obj_vector[i].start_addr == start_addr && shared_memory->tier[1].obj_vector[i].size == size && shared_memory->tier[1].obj_flag_alloc[i] == 1){
@@ -120,12 +124,10 @@ int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, u
             shared_memory->tier[1].current_memory_consumption -= size;
             
             pthread_mutex_unlock(&shared_memory->global_mutex);
-            fprintf(stderr, "UNLOCK remove pmem\n");
     		return 1;
     	}
     }
 	pthread_mutex_unlock(&shared_memory->global_mutex);
-    fprintf(stderr, "UNLOCK remove pmem\n");
     return 0;
 	
 }	
@@ -133,7 +135,7 @@ int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, u
 {
     fprintf(stderr,"TRY TO GET LOCK remove pmem\n");
     pthread_mutex_lock(&shared_memory->global_mutex);
-    fprintf(stderr,"GOT LOCK remove dram\n");
+
     int i;
     for(i = 0; i < MAX_OBJECTS; i++){
     	if(shared_memory->tier[0].obj_vector[i].start_addr == start_addr && shared_memory->tier[0].obj_vector[i].size == size && shared_memory->tier[0].obj_flag_alloc[i] == 1){
@@ -142,12 +144,10 @@ int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, u
             shared_memory->tier[0].current_memory_consumption -= size;
             
             pthread_mutex_unlock(&shared_memory->global_mutex);
-            fprintf(stderr, "UNLOCK remove dram\n");
     		return 1;
     	}
     }
 	pthread_mutex_unlock(&shared_memory->global_mutex);
-    fprintf(stderr, "UNLOCK remove dram\n");
     return 0;
     
 }
