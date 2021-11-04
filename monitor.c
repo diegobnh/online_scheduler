@@ -254,7 +254,7 @@ long long perf_mmap_read(void *our_mmap, \
 					}
 					if (sample_type & PERF_SAMPLE_WEIGHT) {
 						memcpy(&weight,&data[offset],sizeof(long long));
-						if (!g_quiet) printf("%lld,",weight);
+						fprintf(stderr,"\t %lld,\n",weight);
 						offset+=8;
                         
 						//if (!g_quiet) printf("\n");
@@ -278,7 +278,6 @@ long long perf_mmap_read(void *our_mmap, \
                                 //fprintf(stderr, "Load in index:%d\n", vector_index);
                                 load = 1;
                             }
-								
                             if (src & (PERF_MEM_OP_STORE<<PERF_MEM_OP_SHIFT)){
 								fprintf(stderr,"Store_");
                                 //fprintf(stderr, "Store count in index:%d\n", vector_index);
