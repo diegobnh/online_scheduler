@@ -6,7 +6,7 @@
 #include <inttypes.h>
 #include "recorder.h"
 
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
@@ -52,7 +52,7 @@ void initialize_recorder(struct schedule_manager *args)
 }
 int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned long start_addr, unsigned long size)
 {
-    
+    D fprintf(stderr,"\t[recorder] insert_allocation_on_pmem Try to get lock!!\n");
     pthread_mutex_lock(&args->global_mutex);
     //D fprintf(stderr, "\t[recorder] insert_allocation_on_tier[1] from pid:%d\n", pid);
     
@@ -77,11 +77,12 @@ int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
     args->tier[1].current_memory_consumption += size;
     
     pthread_mutex_unlock(&args->global_mutex);
+    D fprintf(stderr,"\t[recorder] insert_allocation_on_mem Free lock!!\n");
 
 }
 int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned long start_addr, unsigned long size)
 {
-    
+    D fprintf(stderr,"\t[recorder] insert_allocation_on_dram Try to get lock!!\n");
 	pthread_mutex_lock(&args->global_mutex);
     //D fprintf(stderr, "\t[recorder] insert_allocation_on_tier[0] from pid:%d\n", pid);
     
@@ -106,10 +107,13 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
     args->tier[0].current_memory_consumption += size;
     
     pthread_mutex_unlock(&args->global_mutex);
+    D fprintf(stderr,"\t[recorder] insert_allocation_on_dram Free lock!!\n");
 }
 int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, unsigned long start_addr, unsigned long size)
 {
+    D fprintf(stderr,"\t[recorder] remove_allocation_on_pmem Try to get lock!!\n");
     pthread_mutex_lock(&shared_memory->global_mutex);
+    
     int i;
     for(i = 0; i < MAX_OBJECTS; i++){
     	if(shared_memory->tier[1].obj_vector[i].start_addr == start_addr && shared_memory->tier[1].obj_vector[i].size == size && shared_memory->tier[1].obj_flag_alloc[i] == 1){
@@ -121,12 +125,15 @@ int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, u
     		return 1;
     	}
     }
+    
 	pthread_mutex_unlock(&shared_memory->global_mutex);
+    D fprintf(stderr,"\t[recorder] remove_allocation_on_pmem Free lock!!\n");
     return 0;
 	
 }	
 int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, unsigned long start_addr, unsigned long size)
 {
+    D fprintf(stderr,"\t[recorder] remove_allocation_on_dram Try to get lock!!\n");
     pthread_mutex_lock(&shared_memory->global_mutex);
 
     int i;
@@ -141,6 +148,7 @@ int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, u
     	}
     }
 	pthread_mutex_unlock(&shared_memory->global_mutex);
+    D fprintf(stderr,"\t[recorder] remove_allocation_on_dram Free lock!!\n");
     return 0;
     
 }
