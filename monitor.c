@@ -414,6 +414,7 @@ int account_samples_to_allocations(void){
     curr_ring_index = ring_index % RING_BUFFER_SIZE;
     
     pthread_mutex_lock(&g_shared_memory->global_mutex);
+    fprintf(stderr, "Got lock inside account samples\n");
 
     clock_gettime(CLOCK_REALTIME, &start);
     g_shared_memory->tier[0].obj_vector[i].ring.current_ring_index = curr_ring_index;
@@ -475,7 +476,7 @@ int account_samples_to_allocations(void){
         }
     }
     */
-    
+    fprintf(stderr, "free lock inside account samples\n");
     pthread_mutex_unlock(&g_shared_memory->global_mutex);
     
     g_loads_count_overflow_events = 0;
