@@ -109,6 +109,7 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
 }
 int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, unsigned long start_addr, unsigned long size)
 {
+    fprintf(stderr,"TRY TO GET LOCK remove pmem\n");
     pthread_mutex_lock(&shared_memory->global_mutex);
     fprintf(stderr,"GOT LOCK remove pmem\n");
     int i;
@@ -130,7 +131,7 @@ int remove_allocation_on_pmem(struct schedule_manager *shared_memory, int pid, u
 }	
 int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, unsigned long start_addr, unsigned long size)
 {
-    
+    fprintf(stderr,"TRY TO GET LOCK remove pmem\n");
     pthread_mutex_lock(&shared_memory->global_mutex);
     fprintf(stderr,"GOT LOCK remove dram\n");
     int i;
