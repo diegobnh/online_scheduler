@@ -435,17 +435,17 @@ int account_samples_to_allocations(void){
                 g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
             }
     }
-    
+    fprintf(stderr, "before call perf_mmap_read 1\n");
     g_loads_prev_head=perf_mmap_read(g_loads_our_mmap,MMAP_DATA_SIZE,g_loads_prev_head, g_sample_type,0,0, g_quiet,NULL, curr_ring_index);
     //head_loads = perf_mmap_read(g_loads_our_mmap,MMAP_DATA_SIZE,g_loads_prev_head, g_sample_type,0,0, g_quiet,NULL);
     total_load_samples = g_total_samples;
     total_load_mapped = g_total_samples_mapped;
-    
+    fprintf(stderr, "before call perf_mmap_read 2\n");
     g_stores_prev_head=perf_mmap_read(g_stores_our_mmap,MMAP_DATA_SIZE,g_stores_prev_head, g_sample_type,0,0, g_quiet,NULL, curr_ring_index);
     //head_stores = perf_mmap_read(g_stores_our_mmap,MMAP_DATA_SIZE,g_stores_prev_head, g_sample_type,0,0, g_quiet,NULL);
     total_store_samples = g_total_samples;
     total_store_mapped = g_total_samples_mapped;
-    
+    fprintf(stderr, "after call perf_mmap_read\n");
     clock_gettime(CLOCK_REALTIME, &end);
     
     
