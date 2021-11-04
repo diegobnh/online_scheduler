@@ -147,6 +147,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         if(1){
 #endif
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
+               fprintf(stderr, "%ld + %ld", (unsigned long)arg1, mem_consumption);
                nodemask = 1<<NODE_0_DRAM;
                
 		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
