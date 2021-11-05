@@ -1,0 +1,13 @@
+monitor.c: In function 'account_samples_to_allocations':
+monitor.c:482:1: error: expected expression before '[' token
+ [
+ ^
+monitor.c:492:19: error: expected ';' before '}' token
+     ring_index ++;
+                   ^
+                   ;
+monitor.c:494:1:
+ }
+ ~                  
+[actuator] get lock!!!
+[actuator] free lock!!!
