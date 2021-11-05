@@ -265,6 +265,7 @@ long long perf_mmap_read(void *our_mmap, \
 						memcpy(&src,&data[offset],sizeof(long long));
 						//if (!g_quiet) printf("\tPERF_SAMPLE_DATA_SRC, Raw: %llx\n",src);
 						offset+=8;
+                        mem_level = -1;
                         
 
 						if (vector_index != -1) {
@@ -308,7 +309,7 @@ long long perf_mmap_read(void *our_mmap, \
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
                                 mem_level = 4;
                             }
-                            if(load == 1){
+                            if(load == 1 && mem_level != -1){
                                 fprintf(stderr,"Weight=%lld, ",weight);
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
                                 load = 0;
