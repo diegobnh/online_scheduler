@@ -400,6 +400,7 @@ int get_vector_index(long long chave, int *tier_type){
     for(i = 0; i < g_shared_memory->tier[1].num_obj; i++){
        if(chave >= g_shared_memory->tier[1].obj_vector[i].start_addr && chave <= g_shared_memory->tier[1].obj_vector[i].end_addr){
            if(g_shared_memory->tier[1].obj_flag_alloc[i] == 1){
+               fprintf(stderr, "Index to pmem\n");
                return i;
            }
        }
