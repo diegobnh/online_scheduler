@@ -254,7 +254,7 @@ long long perf_mmap_read(void *our_mmap, \
 					}
 					if (sample_type & PERF_SAMPLE_WEIGHT) {
 						memcpy(&weight,&data[offset],sizeof(long long));
-						fprintf(stderr,"\t %lld,\n",weight);
+						//fprintf(stderr,"\t %lld,\n",weight);
 						offset+=8;
                         
 						//if (!g_quiet) printf("\n");
@@ -268,7 +268,7 @@ long long perf_mmap_read(void *our_mmap, \
                         
 
 						if (vector_index != -1) {
-                            fprintf(stderr, "INICIO \t");
+                            //fprintf(stderr, "INICIO \t");
                             g_total_samples_mapped ++;
 							//if (src!=0) printf("\t\t");
 							if (src & (PERF_MEM_OP_NA<<PERF_MEM_OP_SHIFT))
@@ -309,7 +309,7 @@ long long perf_mmap_read(void *our_mmap, \
                                 mem_level = 4;
                             }
                             if(load == 1){
-                                fprintf(stderr,"Weight, ");
+                                fprintf(stderr,"Weight=%lld, ",weight);
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
                                 load = 0;
                             }
@@ -321,9 +321,8 @@ long long perf_mmap_read(void *our_mmap, \
 								fprintf(stderr,"TLB_Miss ");
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
                             }
-                            fprintf(stderr, " FIM \n");
 						}
-						//fprintf(stderr,"\n");
+						fprintf(stderr,"\n");
 					}
 					break;
 
