@@ -421,18 +421,23 @@ int account_samples_to_allocations(void){
     pthread_mutex_lock(&g_shared_memory->global_mutex);
 
     clock_gettime(CLOCK_REALTIME, &start);
-    g_shared_memory->tier[0].obj_vector[i].ring.current_ring_index = curr_ring_index;
+    //g_shared_memory->tier[0].obj_vector[i].ring.current_ring_index = curr_ring_index;
+    
     
     for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
             g_shared_memory->tier[0].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
-            g_shared_memory->tier[1].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
                 g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j] = 0;
                 g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j] = 0;
                 g_shared_memory->tier[0].obj_vector[i].ring.TLB_hit[curr_ring_index][j] = 0;
                 g_shared_memory->tier[0].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
-                
+            }
+    }
+    for(i=0; i< g_shared_memory->tier[1].num_obj; i++){
+            g_shared_memory->tier[1].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
+            
+            for(j=0 ; j< MEM_LEVELS; j++){
                 g_shared_memory->tier[1].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j] = 0;
                 g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j] = 0;
                 g_shared_memory->tier[1].obj_vector[i].ring.TLB_hit[curr_ring_index][j] = 0;
