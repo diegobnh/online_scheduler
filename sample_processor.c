@@ -30,6 +30,49 @@ metric_t *g_pmem_metrics;
 int g_total_dram_objs;//save current total objects on DRAM from shared memory
 int g_total_pmem_objs;//save current total objects on PMEM from shared memory
 
+void print_struc_pmem(ring_buffer_t * g_dram_tier_ring){
+    int i, j, w;
+
+    for(i=0; i< g_total_pmem_objs; i++){
+        fprintf(stderr, "i=%d\n",i);
+        for(w=0; w< MEM_LEVELS; w++){
+            fprintf(stderr, "\tw=%d\n",w);
+            for(j=0; j< RING_BUFFER_SIZE; j++){
+                fprintf(stderr, "\t\tj=%d, ",j);
+                fprintf(stderr, "\t\t\tlat:%ld, \
+                                 load:%ld, \
+                                 tlb_miss:%ld,\
+                                 tlb_hit:%ld\n", \
+                                 g_pmem_tier_ring[i].sum_latency_cost[j][w],\
+                                 g_pmem_tier_ring[i].loads_count[j][w],\
+                                 g_pmem_tier_ring[i].TLB_hit[j][w],\
+                                 g_pmem_tier_ring[i].TLB_miss[j][w]);
+            }
+        }
+    }
+}
+void print_struc_dram(ring_buffer_t * g_dram_tier_ring){
+    int i, j, w;
+
+    for(i=0; i< g_total_dram_objs; i++){
+        fprintf(stderr, "i=%d\n",i);
+        for(w=0; w< MEM_LEVELS; w++){
+            fprintf(stderr, "\tw=%d\n",w);
+            for(j=0; j< RING_BUFFER_SIZE; j++){
+                fprintf(stderr, "\t\tj=%d, ",j);
+                fprintf(stderr, "\t\t\tlat:%ld, \
+                                 load:%ld, \
+                                 tlb_miss:%ld,\
+                                 tlb_hit:%ld\n", \
+                                 g_dram_tier_ring[i].sum_latency_cost[j][w],\
+                                 g_dram_tier_ring[i].loads_count[j][w],\
+                                 g_dram_tier_ring[i].TLB_hit[j][w],\
+                                 g_dram_tier_ring[i].TLB_miss[j][w]);
+            }
+        }
+    }
+}
+
 int calculate_SMA_for_DRAM(void){
 	int i, j, w;
 	long long lat, loads, stores, tlb_miss, tlb_hit;
@@ -83,49 +126,6 @@ int calculate_SMA_for_PMEM(void){
         g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
     print_struc_pmem(g_pmem_tier_ring)
-}
-
-void print_struc_pmem(ring_buffer_t * g_dram_tier_ring){
-    int i, j, w;
-
-    for(i=0; i< g_total_pmem_objs; i++){
-        fprintf(stderr, "i=%d\n",i);
-        for(w=0; w< MEM_LEVELS; w++){
-            fprintf(stderr, "\tw=%d\n",w);
-            for(j=0; j< RING_BUFFER_SIZE; j++){
-                fprintf(stderr, "\t\tj=%d, ",j);
-                fprintf(stderr, "\t\t\tlat:%ld, \
-                                 load:%ld, \
-                                 tlb_miss:%ld,\
-                                 tlb_hit:%ld\n", \
-                                 g_pmem_tier_ring[i].sum_latency_cost[j][w],\
-                                 g_pmem_tier_ring[i].loads_count[j][w],\
-                                 g_pmem_tier_ring[i].TLB_hit[j][w],\
-                                 g_pmem_tier_ring[i].TLB_miss[j][w]);
-            }
-        }
-    }
-}
-void print_struc_dram(ring_buffer_t * g_dram_tier_ring){
-    int i, j, w;
-
-    for(i=0; i< g_total_dram_objs; i++){
-        fprintf(stderr, "i=%d\n",i);
-        for(w=0; w< MEM_LEVELS; w++){
-            fprintf(stderr, "\tw=%d\n",w);
-            for(j=0; j< RING_BUFFER_SIZE; j++){
-                fprintf(stderr, "\t\tj=%d, ",j);
-                fprintf(stderr, "\t\t\tlat:%ld, \
-                                 load:%ld, \
-                                 tlb_miss:%ld,\
-                                 tlb_hit:%ld\n", \
-                                 g_dram_tier_ring[i].sum_latency_cost[j][w],\
-                                 g_dram_tier_ring[i].loads_count[j][w],\
-                                 g_dram_tier_ring[i].TLB_hit[j][w],\
-                                 g_dram_tier_ring[i].TLB_miss[j][w]);
-            }
-        }
-    }
 }
 
 void *thread_sample_processor(void *_args){
