@@ -479,7 +479,7 @@ int account_samples_to_allocations(void){
         }
     }
     */
-[
+
     pthread_mutex_unlock(&g_shared_memory->global_mutex);
     
     g_loads_count_overflow_events = 0;
