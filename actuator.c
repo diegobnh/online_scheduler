@@ -86,7 +86,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
         }
         
     }
-    fprintf(stderr, "###\n");
+    //fprintf(stderr, "###\n");
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && \
            args->tier[1].obj_flag_alloc[i] == 1){
