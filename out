@@ -19,3 +19,7 @@ monitor.c:494:1:
 [actuator] free lock!!!
 [actuator] get lock!!!
 [actuator] free lock!!!
+[actuator] get lock!!!
+[actuator] free lock!!!
+[actuator] get lock!!!
+[actuator] free lock!!!
