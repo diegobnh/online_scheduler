@@ -321,8 +321,9 @@ long long perf_mmap_read(void *our_mmap, \
 								fprintf(stderr,"TLB_Miss ");
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
                             }
+                            fprintf(stderr,"\n");
 						}
-						fprintf(stderr,"\n");
+						
 					}
 					break;
 
@@ -478,7 +479,7 @@ int account_samples_to_allocations(void){
         }
     }
     */
-    fprintf(stderr, "free lock inside account samples\n");
+[
     pthread_mutex_unlock(&g_shared_memory->global_mutex);
     
     g_loads_count_overflow_events = 0;
