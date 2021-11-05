@@ -35,9 +35,9 @@ void print_struc_pmem(ring_buffer_t * g_dram_tier_ring){
 
     for(i=0; i< g_total_pmem_objs; i++){
         fprintf(stderr, "PMEM Object i=%d\n",i);
-        for(w=0; w< MEM_LEVELS; w++){
+        for(w=4; w< MEM_LEVELS; w++){
             fprintf(stderr, "\tw=%d\n",w);
-            for(j=4; j< RING_BUFFER_SIZE; j++){
+            for(j=0; j< RING_BUFFER_SIZE; j++){
                 fprintf(stderr, "\t\tj=%d, ",j);
                 fprintf(stderr, "lat:%ld, load:%ld, tlb_miss:%ld,tlb_hit:%ld\n", \
                                  g_pmem_tier_ring[i].sum_latency_cost[j][w],\
@@ -53,9 +53,9 @@ void print_struc_dram(ring_buffer_t * g_dram_tier_ring){
 
     for(i=0; i< g_total_dram_objs; i++){
         fprintf(stderr, "DRAM Object i=%d\n",i);
-        for(w=0; w< MEM_LEVELS; w++){
+        for(w=4; w< MEM_LEVELS; w++){
             fprintf(stderr, "\tw=%d\n",w);
-            for(j=4; j< RING_BUFFER_SIZE; j++){
+            for(j=0; j< RING_BUFFER_SIZE; j++){
                 fprintf(stderr, "\t\tj=%d, ",j);
                 fprintf(stderr, "lat:%ld, load:%ld, tlb_miss:%ld, tlb_hit:%ld\n", \
                                  g_dram_tier_ring[i].sum_latency_cost[j][w],\
