@@ -322,7 +322,7 @@ long long perf_mmap_read(void *our_mmap, \
 								D fprintf(stderr,"TLB_Miss ");
                                 g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
                             }
-                            fprintf(stderr,"\n");
+                            D fprintf(stderr,"\n");
 						}
 						
 					}
@@ -439,7 +439,7 @@ int account_samples_to_allocations(void){
                 g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
             }
     }
-    fprintf(stderr, "INICIO-----------------------\n");
+    
     g_loads_prev_head=perf_mmap_read(g_loads_our_mmap,MMAP_DATA_SIZE,g_loads_prev_head, g_sample_type,0,0, g_quiet,NULL, curr_ring_index);
     //head_loads = perf_mmap_read(g_loads_our_mmap,MMAP_DATA_SIZE,g_loads_prev_head, g_sample_type,0,0, g_quiet,NULL);
     total_load_samples = g_total_samples;
@@ -449,7 +449,7 @@ int account_samples_to_allocations(void){
     //head_stores = perf_mmap_read(g_stores_our_mmap,MMAP_DATA_SIZE,g_stores_prev_head, g_sample_type,0,0, g_quiet,NULL);
     total_store_samples = g_total_samples;
     total_store_mapped = g_total_samples_mapped;
-    fprintf(stderr, "FIM-----------------------\n");
+    
     clock_gettime(CLOCK_REALTIME, &end);
     
     

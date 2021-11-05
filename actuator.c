@@ -111,7 +111,6 @@ void *thread_actuator(void *_args){
        sort_objects(args);
        check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
-       fprintf(stderr, "[actuator] free lock!!!\n");
        /*
        pthread_mutex_lock(&args->global_mutex);
        for(i=0 ;i< args->tier[0].num_obj; i++){
