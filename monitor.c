@@ -397,7 +397,7 @@ int get_vector_index(long long chave, int *tier_type){
     }
     
     *tier_type = 1;
-    for(i = 0; i < g_shared_memory->tier[0].num_obj; i++){
+    for(i = 0; i < g_shared_memory->tier[1].num_obj; i++){
        if(chave >= g_shared_memory->tier[1].obj_vector[i].start_addr && chave <= g_shared_memory->tier[1].obj_vector[i].end_addr){
            if(g_shared_memory->tier[1].obj_flag_alloc[i] == 1){
                return i;
