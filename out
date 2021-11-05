@@ -282539,3 +282539,8874 @@ Store_L1,
 Store_L1,
 Store_L1,
 FIM-----------------------
+INICIO-----------------------
+Load_DRAM,Weight=302, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=554, TLB_Hit 
+Load_L1,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=30, TLB_Hit 
+Load_L1,Weight=400, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=422, TLB_Hit 
+Load_L1,Weight=487, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=388, TLB_Hit 
+Load_LFB,Weight=657, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=320, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=600, TLB_Hit 
+Load_L1,Weight=369, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=397, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=230, TLB_Hit 
+Load_DRAM,Weight=326, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=342, TLB_Hit 
+Load_LFB,Weight=302, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=536, TLB_Hit 
+Load_L1,Weight=450, TLB_Hit 
+Load_L1,Weight=30, TLB_Hit 
+Load_LFB,Weight=375, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=1990, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=578, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=429, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=359, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=388, TLB_Hit 
+Load_L1,Weight=378, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=792, TLB_Hit 
+Load_LFB,Weight=48, TLB_Hit 
+Load_LFB,Weight=447, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=649, TLB_Miss 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=685, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=437, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=581, TLB_Miss 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=446, TLB_Hit 
+Load_DRAM,Weight=333, TLB_Hit 
+Load_DRAM,Weight=319, TLB_Hit 
+Load_L1,Weight=307, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=287, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=384, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_DRAM,Weight=341, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=961, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=1141, TLB_Hit 
+Load_L1,Weight=335, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=304, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=549, TLB_Hit 
+Load_DRAM,Weight=438, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=340, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=673, TLB_Hit 
+Load_DRAM,Weight=334, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=341, TLB_Hit 
+Load_L1,Weight=484, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_LFB,Weight=68, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=658, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_L1,Weight=533, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=57, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=335, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=330, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=389, TLB_Hit 
+Load_DRAM,Weight=316, TLB_Hit 
+Load_L1,Weight=135, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=613, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=40, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=461, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=226, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=345, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=546, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=260, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=338, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=402, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1179, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=340, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1220, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_LFB,Weight=541, TLB_Hit 
+Load_DRAM,Weight=339, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=341, TLB_Hit 
+Load_L1,Weight=381, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_L1,Weight=607, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1935, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=304, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1750, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=430, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=340, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_DRAM,Weight=335, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=1119, TLB_Hit 
+Load_Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=69, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=328, TLB_Hit 
+Load_L1,Weight=379, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=328, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=306, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=288, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1045, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=376, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=475, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_DRAM,Weight=361, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_Weight=499, TLB_Hit 
+Load_DRAM,Weight=330, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=303, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=670, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=419, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=396, TLB_Hit 
+Load_LFB,Weight=344, TLB_Hit 
+Load_LFB,Weight=256, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=18, TLB_Hit 
+Load_LFB,Weight=316, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=613, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=107, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=720, TLB_Hit 
+Load_LFB,Weight=261, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=187, TLB_Hit 
+Load_Weight=1218, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=433, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=815, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=353, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=325, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=385, TLB_Hit 
+Load_L1,Weight=533, TLB_Hit 
+Load_DRAM,Weight=295, TLB_Hit 
+Load_L1,Weight=678, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=42, TLB_Hit 
+Load_LFB,Weight=200, TLB_Hit 
+Load_DRAM,Weight=333, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=387, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1152, TLB_Hit 
+Load_Weight=590, TLB_Hit 
+Load_Weight=2229, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=332, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=636, TLB_Hit 
+Load_Weight=601, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=406, TLB_Hit 
+Load_LFB,Weight=1454, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=483, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=406, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=378, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=419, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=925, TLB_Hit 
+Load_L1,Weight=90, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=368, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=563, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=457, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1196, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=335, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=328, TLB_Hit 
+Load_DRAM,Weight=1165, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=84, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=29, TLB_Hit 
+Load_L1,Weight=555, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=299, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=109, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=328, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=687, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=169, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=384, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=343, TLB_Hit 
+Load_DRAM,Weight=347, TLB_Hit 
+Load_DRAM,Weight=330, TLB_Hit 
+Load_Weight=551, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=31, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=525, TLB_Hit 
+Load_LFB,Weight=290, TLB_Hit 
+Load_DRAM,Weight=1366, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=621, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=378, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=379, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=288, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=98, TLB_Hit 
+Load_L1,Weight=317, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=403, TLB_Hit 
+Load_LFB,Weight=545, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=359, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=32, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=358, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=987, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=307, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=496, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=373, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=343, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=340, TLB_Hit 
+Load_LFB,Weight=511, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=83, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_L1,Weight=459, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=359, TLB_Hit 
+Load_L1,Weight=424, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=663, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=30, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=223, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=328, TLB_Hit 
+Load_LFB,Weight=104, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=603, TLB_Hit 
+Load_L1,Weight=379, TLB_Hit 
+Load_L1,Weight=403, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=328, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=380, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=342, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=176, TLB_Hit 
+Load_DRAM,Weight=300, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=634, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_DRAM,Weight=365, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=364, TLB_Hit 
+Load_Weight=700, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=665, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=423, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=239, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=259, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=19, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=335, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=307, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=321, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=321, TLB_Hit 
+Load_LFB,Weight=327, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=846, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=413, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_Weight=517, TLB_Hit 
+Load_DRAM,Weight=316, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=486, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=497, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=295, TLB_Hit 
+Load_LFB,Weight=1206, TLB_Hit 
+Load_DRAM,Weight=321, TLB_Hit 
+Load_L1,Weight=119, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=539, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_DRAM,Weight=320, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=382, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_DRAM,Weight=300, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=850, TLB_Miss 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=400, TLB_Hit 
+Load_L1,Weight=373, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=396, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=134, TLB_Hit 
+Load_DRAM,Weight=314, TLB_Hit 
+Load_LFB,Weight=336, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=384, TLB_Hit 
+Load_L1,Weight=347, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=476, TLB_Hit 
+Load_L1,Weight=382, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=314, TLB_Hit 
+Load_L1,Weight=627, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=528, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=286, TLB_Hit 
+Load_L1,Weight=1722, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=529, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_LFB,Weight=251, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=394, TLB_Hit 
+Load_L1,Weight=30, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=119, TLB_Hit 
+Load_L1,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=476, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=580, TLB_Hit 
+Load_LFB,Weight=233, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=404, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=533, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=416, TLB_Hit 
+Load_DRAM,Weight=319, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=498, TLB_Hit 
+Load_L1,Weight=362, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1066, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=319, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=302, TLB_Hit 
+Load_L1,Weight=1733, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=545, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=539, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=999, TLB_Hit 
+Load_LFB,Weight=523, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=383, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=551, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_DRAM,Weight=328, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=704, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=375, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=351, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=503, TLB_Hit 
+Load_L1,Weight=342, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=528, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=452, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_Weight=646, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=309, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=536, TLB_Hit 
+Load_L1,Weight=33, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=306, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=307, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=503, TLB_Hit 
+Load_L1,Weight=379, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=502, TLB_Hit 
+Load_Weight=511, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=529, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=602, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=633, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=510, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=1746, TLB_Hit 
+Load_LFB,Weight=632, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=1228, TLB_Miss 
+Load_L1,Weight=14, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=410, TLB_Miss 
+Load_Weight=590, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1338, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=70, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=626, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=103, TLB_Hit 
+Load_DRAM,Weight=336, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=1457, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1356, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_LFB,Weight=496, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=328, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=554, TLB_Miss 
+Load_L1,Weight=553, TLB_Hit 
+Load_LFB,Weight=372, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_LFB,Weight=521, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_LFB,Weight=79, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=164, TLB_Hit 
+Load_LFB,Weight=536, TLB_Hit 
+Load_LFB,Weight=765, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=26, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_Weight=549, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=592, TLB_Miss 
+Load_LFB,Weight=352, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1352, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=532, TLB_Hit 
+Load_L1,Weight=36, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=503, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=112, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1664, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_LFB,Weight=528, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=725, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=25, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_LFB,Weight=764, TLB_Hit 
+Load_L1,Weight=616, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_LFB,Weight=137, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=220, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_LFB,Weight=536, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_LFB,Weight=174, TLB_Hit 
+Load_LFB,Weight=154, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=569, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=539, TLB_Hit 
+Load_LFB,Weight=653, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_Weight=592, TLB_Hit 
+Load_LFB,Weight=634, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=665, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=177, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=19, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=406, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=871, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=633, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=487, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=157, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=99, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=19, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=667, TLB_Hit 
+Load_LFB,Weight=647, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=68, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=142, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=509, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=48, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_LFB,Weight=647, TLB_Hit 
+Load_LFB,Weight=86, TLB_Hit 
+Load_LFB,Weight=693, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=1349, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=421, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=258, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_Weight=683, TLB_Miss 
+Load_Weight=534, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=18, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_Weight=514, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=630, TLB_Hit 
+Load_LFB,Weight=318, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_Weight=553, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=1683, TLB_Hit 
+Load_Weight=626, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=610, TLB_Hit 
+Load_LFB,Weight=486, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=50, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=321, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=691, TLB_Miss 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=547, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=697, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=478, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=632, TLB_Miss 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_LFB,Weight=632, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=613, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=568, TLB_Miss 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_LFB,Weight=601, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=516, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=1966, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_LFB,Weight=751, TLB_Hit 
+Load_LFB,Weight=664, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=159, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_LFB,Weight=121, TLB_Hit 
+Load_LFB,Weight=121, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=508, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=545, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_Weight=609, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_L1,Weight=25, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=28, TLB_Hit 
+Load_LFB,Weight=488, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=520, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1646, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=78, TLB_Hit 
+Load_LFB,Weight=70, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=549, TLB_Hit 
+Load_Weight=604, TLB_Hit 
+Load_LFB,Weight=549, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=914, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=476, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=539, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=607, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_LFB,Weight=505, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=273, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=509, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=509, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_Weight=588, TLB_Hit 
+Load_Weight=513, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=360, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=657, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=744, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=693, TLB_Hit 
+Load_LFB,Weight=196, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=149, TLB_Hit 
+Load_LFB,Weight=81, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=43, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_LFB,Weight=630, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=672, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=546, TLB_Hit 
+Load_Weight=663, TLB_Hit 
+Load_LFB,Weight=536, TLB_Hit 
+Load_L1,Weight=690, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=667, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=626, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=554, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=616, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_LFB,Weight=626, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=686, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=1743, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=623, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_L1,Weight=30, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_Weight=528, TLB_Hit 
+Load_LFB,Weight=50, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=598, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=482, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=517, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=617, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=150, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=35, TLB_Hit 
+Load_Weight=589, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=532, TLB_Hit 
+Load_LFB,Weight=1029, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1845, TLB_Hit 
+Load_LFB,Weight=530, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=541, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=339, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=525, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=496, TLB_Hit 
+Load_L1,Weight=685, TLB_Hit 
+Load_LFB,Weight=1776, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=535, TLB_Hit 
+Load_L1,Weight=27, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=88, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=397, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=450, TLB_Hit 
+Load_LFB,Weight=175, TLB_Hit 
+Load_L1,Weight=27, TLB_Hit 
+Load_LFB,Weight=365, TLB_Hit 
+Load_LFB,Weight=250, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=34, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=883, TLB_Hit 
+Load_L1,Weight=18, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_Weight=530, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_Weight=596, TLB_Miss 
+Load_LFB,Weight=605, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=666, TLB_Hit 
+Load_LFB,Weight=636, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=546, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=601, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_LFB,Weight=661, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=660, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=16, TLB_Hit 
+Load_LFB,Weight=521, TLB_Hit 
+Load_DRAM,Weight=434, TLB_Miss 
+Load_LFB,Weight=489, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_L1,Weight=432, TLB_Hit 
+Load_L1,Weight=84, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=621, TLB_Hit 
+Load_LFB,Weight=1211, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=423, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_LFB,Weight=885, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=629, TLB_Hit 
+Load_LFB,Weight=701, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=577, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=643, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=25, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=544, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+INICIO-----------------------
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=469, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=511, TLB_Hit 
+Load_LFB,Weight=626, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=548, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=671, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=646, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1357, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=324, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=343, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=502, TLB_Hit 
+Load_LFB,Weight=488, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=28, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=73, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_Weight=545, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=28, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_LFB,Weight=691, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_LFB,Weight=26, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=202, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=19, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=589, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=548, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1052, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=2169, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=631, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=549, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_LFB,Weight=628, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_Weight=576, TLB_Hit 
+Load_LFB,Weight=664, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=700, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_LFB,Weight=680, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=691, TLB_Hit 
+Load_LFB,Weight=627, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=68, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=571, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_LFB,Weight=680, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=38, TLB_Hit 
+Load_Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_LFB,Weight=525, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=486, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+INICIO-----------------------
+Load_LFB,Weight=621, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=632, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=558, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_LFB,Weight=80, TLB_Hit 
+Load_LFB,Weight=1633, TLB_Hit 
+Load_LFB,Weight=1742, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_DRAM,Weight=312, TLB_Hit 
+Load_LFB,Weight=655, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=607, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=473, TLB_Hit 
+Load_Weight=554, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=18, TLB_Hit 
+Load_LFB,Weight=623, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_L1,Weight=659, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=630, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=594, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=1263, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=33, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_LFB,Weight=443, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_LFB,Weight=267, TLB_Hit 
+Load_LFB,Weight=434, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_LFB,Weight=1759, TLB_Hit 
+Load_LFB,Weight=31, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=577, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=281, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=54, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=410, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=321, TLB_Hit 
+Load_LFB,Weight=541, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_LFB,Weight=79, TLB_Hit 
+Load_LFB,Weight=506, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=616, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_Weight=572, TLB_Hit 
+Load_LFB,Weight=603, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=478, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=521, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=555, TLB_Hit 
+Load_L1,Weight=20, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=703, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_LFB,Weight=529, TLB_Hit 
+Load_LFB,Weight=643, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=653, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=545, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_L1,Weight=31, TLB_Hit 
+Load_LFB,Weight=541, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=31, TLB_Hit 
+Load_Weight=579, TLB_Hit 
+Load_LFB,Weight=549, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1461, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=425, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=80, TLB_Hit 
+Load_LFB,Weight=201, TLB_Hit 
+Load_LFB,Weight=626, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_Weight=599, TLB_Hit 
+Load_LFB,Weight=644, TLB_Hit 
+Load_LFB,Weight=611, TLB_Hit 
+Load_LFB,Weight=716, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=27, TLB_Hit 
+Load_L1,Weight=32, TLB_Hit 
+Load_LFB,Weight=496, TLB_Hit 
+Load_LFB,Weight=506, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=541, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=554, TLB_Hit 
+Load_LFB,Weight=1598, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=514, TLB_Hit 
+Load_LFB,Weight=152, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=597, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=131, TLB_Hit 
+Load_LFB,Weight=603, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=558, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_Weight=562, TLB_Miss 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_Weight=527, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=112, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=377, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=622, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=722, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=520, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_LFB,Weight=143, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=647, TLB_Hit 
+Load_LFB,Weight=511, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=619, TLB_Miss 
+Load_LFB,Weight=601, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=525, TLB_Hit 
+Load_LFB,Weight=656, TLB_Hit 
+Load_LFB,Weight=839, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=640, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=19, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=631, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_LFB,Weight=650, TLB_Hit 
+Load_LFB,Weight=510, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=579, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=32, TLB_Hit 
+Load_LFB,Weight=512, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=133, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_LFB,Weight=1857, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_Weight=662, TLB_Miss 
+Load_LFB,Weight=708, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=636, TLB_Hit 
+Load_LFB,Weight=636, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=138, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_LFB,Weight=1843, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=644, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_Weight=617, TLB_Miss 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1719, TLB_Hit 
+Load_LFB,Weight=617, TLB_Hit 
+Load_LFB,Weight=631, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=465, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_LFB,Weight=107, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=518, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=642, TLB_Hit 
+Load_LFB,Weight=168, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_LFB,Weight=687, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1551, TLB_Hit 
+Load_L1,Weight=691, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=560, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=1759, TLB_Hit 
+Load_LFB,Weight=555, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_LFB,Weight=607, TLB_Hit 
+Load_LFB,Weight=652, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=509, TLB_Hit 
+Load_Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=128, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=584, TLB_Miss 
+Load_Weight=697, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_LFB,Weight=632, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_Weight=589, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=601, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_LFB,Weight=367, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=577, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=622, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=700, TLB_Hit 
+Load_Weight=567, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=590, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=695, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=402, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_Weight=578, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=551, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=507, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=538, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=32, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_Weight=550, TLB_Hit 
+Load_LFB,Weight=674, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_LFB,Weight=598, TLB_Hit 
+Load_LFB,Weight=664, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=555, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1977, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_LFB,Weight=577, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=665, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=548, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=569, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_LFB,Weight=2186, TLB_Hit 
+Load_Weight=616, TLB_Miss 
+Load_LFB,Weight=585, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=603, TLB_Miss 
+Load_Weight=649, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=607, TLB_Hit 
+Load_Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=647, TLB_Hit 
+Load_Weight=613, TLB_Miss 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=554, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=491, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=1916, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=690, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=627, TLB_Miss 
+Load_LFB,Weight=572, TLB_Hit 
+Load_Weight=616, TLB_Miss 
+Load_Weight=611, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=2019, TLB_Hit 
+Load_LFB,Weight=1795, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_LFB,Weight=492, TLB_Hit 
+Load_Weight=567, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=639, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_Weight=519, TLB_Hit 
+Load_LFB,Weight=510, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_LFB,Weight=87, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=660, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=633, TLB_Hit 
+Load_LFB,Weight=670, TLB_Hit 
+Load_Weight=613, TLB_Miss 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=665, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_LFB,Weight=263, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=597, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1630, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=519, TLB_Hit 
+Load_Weight=567, TLB_Hit 
+Load_LFB,Weight=122, TLB_Hit 
+Load_L1,Weight=19, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=726, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=2012, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=504, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_LFB,Weight=69, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=548, TLB_Miss 
+Load_L1,Weight=22, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_L1,Weight=28, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=689, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_Weight=587, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=581, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=549, TLB_Hit 
+Load_LFB,Weight=513, TLB_Hit 
+Load_LFB,Weight=577, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=528, TLB_Hit 
+Load_LFB,Weight=187, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=663, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=367, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=1724, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=591, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_Weight=605, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=489, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_LFB,Weight=884, TLB_Hit 
+Load_Weight=538, TLB_Hit 
+Load_Weight=521, TLB_Miss 
+Load_LFB,Weight=524, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=32, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=173, TLB_Hit 
+Load_LFB,Weight=530, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=514, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=175, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=681, TLB_Miss 
+Load_LFB,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=577, TLB_Miss 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=571, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+INICIO-----------------------
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_Weight=598, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=593, TLB_Hit 
+Load_LFB,Weight=604, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_LFB,Weight=636, TLB_Hit 
+Load_Weight=602, TLB_Miss 
+Load_Weight=565, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_LFB,Weight=656, TLB_Hit 
+Load_LFB,Weight=530, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=40, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=282, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=109, TLB_Hit 
+Load_LFB,Weight=650, TLB_Hit 
+Load_LFB,Weight=693, TLB_Hit 
+Load_LFB,Weight=663, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1323, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=659, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=477, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=735, TLB_Hit 
+Load_LFB,Weight=692, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_LFB,Weight=123, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=65, TLB_Hit 
+Load_Weight=657, TLB_Hit 
+Load_LFB,Weight=57, TLB_Hit 
+Load_Weight=681, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=295, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_Weight=620, TLB_Miss 
+Load_LFB,Weight=560, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=1661, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_LFB,Weight=65, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_LFB,Weight=1103, TLB_Hit 
+Load_LFB,Weight=466, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_Weight=567, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=670, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=664, TLB_Hit 
+Load_LFB,Weight=488, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=340, TLB_Hit 
+Load_LFB,Weight=633, TLB_Hit 
+Load_L1,Weight=32, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=743, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1844, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_Weight=708, TLB_Miss 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=568, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=79, TLB_Hit 
+Load_LFB,Weight=518, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_DRAM,Weight=441, TLB_Miss 
+Load_Weight=586, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_LFB,Weight=513, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=680, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=595, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=568, TLB_Miss 
+Load_LFB,Weight=609, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=526, TLB_Hit 
+Load_L1,Weight=33, TLB_Hit 
+Load_LFB,Weight=660, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_Weight=571, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=375, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=778, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=474, TLB_Hit 
+Load_LFB,Weight=652, TLB_Hit 
+Load_LFB,Weight=499, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=514, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=18, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_LFB,Weight=686, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_DRAM,Weight=372, TLB_Miss 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=546, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_Weight=574, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_Weight=579, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=572, TLB_Hit 
+Load_Weight=593, TLB_Hit 
+Load_LFB,Weight=1471, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_LFB,Weight=253, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=566, TLB_Hit 
+Load_LFB,Weight=204, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=604, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_Weight=662, TLB_Miss 
+Load_Weight=667, TLB_Hit 
+Load_LFB,Weight=709, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Load_LFB,Weight=224, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_Weight=589, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_LFB,Weight=315, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_LFB,Weight=623, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=432, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=597, TLB_Hit 
+Load_Weight=582, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=709, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_Weight=556, TLB_Hit 
+Load_LFB,Weight=670, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=518, TLB_Hit 
+Load_LFB,Weight=335, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=554, TLB_Hit 
+Load_LFB,Weight=555, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=650, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=596, TLB_Hit 
+Load_LFB,Weight=797, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=39, TLB_Hit 
+Load_L1,Weight=18, TLB_Hit 
+Load_LFB,Weight=1281, TLB_Hit 
+Load_Weight=494, TLB_Hit 
+Load_LFB,Weight=491, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=176, TLB_Hit 
+Load_LFB,Weight=500, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=503, TLB_Hit 
+Load_LFB,Weight=490, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=304, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=33, TLB_Hit 
+Load_LFB,Weight=453, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=650, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=688, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=576, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=1223, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=632, TLB_Hit 
+Load_LFB,Weight=473, TLB_Hit 
+Load_LFB,Weight=546, TLB_Hit 
+Load_Weight=518, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=182, TLB_Hit 
+Load_Weight=580, TLB_Hit 
+Load_DRAM,Weight=318, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=493, TLB_Miss 
+Load_LFB,Weight=76, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=18, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=581, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_LFB,Weight=529, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_Weight=569, TLB_Miss 
+Load_LFB,Weight=99, TLB_Hit 
+Load_Weight=587, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_LFB,Weight=669, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_LFB,Weight=501, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_Weight=588, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1149, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=541, TLB_Hit 
+Load_Weight=554, TLB_Miss 
+Load_LFB,Weight=598, TLB_Hit 
+Load_LFB,Weight=137, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=584, TLB_Hit 
+Load_Weight=579, TLB_Hit 
+Load_Weight=1447, TLB_Hit 
+Load_LFB,Weight=677, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_LFB,Weight=688, TLB_Hit 
+Load_Weight=600, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=703, TLB_Hit 
+Load_LFB,Weight=247, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=675, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=615, TLB_Hit 
+Load_Weight=626, TLB_Miss 
+Load_LFB,Weight=128, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=762, TLB_Hit 
+Load_L1,Weight=36, TLB_Hit 
+Load_LFB,Weight=1674, TLB_Hit 
+Load_Weight=600, TLB_Miss 
+Load_LFB,Weight=527, TLB_Hit 
+Load_Weight=519, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_LFB,Weight=655, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_Weight=588, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=1724, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=416, TLB_Hit 
+Load_LFB,Weight=140, TLB_Hit 
+Load_LFB,Weight=601, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_LFB,Weight=675, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=620, TLB_Hit 
+Load_LFB,Weight=644, TLB_Hit 
+Load_LFB,Weight=630, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=523, TLB_Hit 
+Load_Weight=707, TLB_Miss 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=536, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_L1,Weight=734, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=286, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_Weight=699, TLB_Miss 
+Load_LFB,Weight=593, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=694, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=614, TLB_Miss 
+Load_LFB,Weight=613, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_Weight=733, TLB_Miss 
+Load_LFB,Weight=540, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=122, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_LFB,Weight=607, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=688, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_LFB,Weight=17, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=644, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=38, TLB_Hit 
+Load_LFB,Weight=603, TLB_Hit 
+Load_LFB,Weight=593, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=593, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_DRAM,Weight=303, TLB_Hit 
+Load_Weight=604, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=571, TLB_Hit 
+Load_LFB,Weight=398, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_LFB,Weight=674, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_Weight=591, TLB_Hit 
+Load_Weight=688, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=620, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=646, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_LFB,Weight=546, TLB_Hit 
+Load_LFB,Weight=138, TLB_Hit 
+Load_LFB,Weight=655, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=693, TLB_Hit 
+Load_LFB,Weight=699, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=544, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=492, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_Weight=524, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_DRAM,Weight=326, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=523, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=643, TLB_Miss 
+Load_LFB,Weight=548, TLB_Hit 
+Load_LFB,Weight=647, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=1122, TLB_Hit 
+Load_LFB,Weight=546, TLB_Hit 
+Load_LFB,Weight=297, TLB_Hit 
+Load_Weight=548, TLB_Hit 
+Load_LFB,Weight=490, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+[actuator] get lock!!!
+[actuator] free lock!!!
+INICIO-----------------------
+Load_LFB,Weight=530, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=123, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=568, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1508, TLB_Hit 
+Load_LFB,Weight=675, TLB_Hit 
+Load_LFB,Weight=624, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_LFB,Weight=28, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=623, TLB_Hit 
+Load_Weight=649, TLB_Miss 
+Load_LFB,Weight=45, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_Weight=671, TLB_Hit 
+Load_LFB,Weight=549, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_L1,Weight=1529, TLB_Hit 
+Load_LFB,Weight=701, TLB_Hit 
+Load_L1,Weight=28, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_Weight=550, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=503, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_LFB,Weight=443, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_Weight=584, TLB_Miss 
+Load_LFB,Weight=563, TLB_Hit 
+Load_Weight=571, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=186, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=515, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=100, TLB_Hit 
+Load_LFB,Weight=441, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_Weight=555, TLB_Miss 
+Load_Weight=590, TLB_Miss 
+Load_Weight=541, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_Weight=543, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_DRAM,Weight=369, TLB_Miss 
+Load_LFB,Weight=696, TLB_Hit 
+Load_Weight=574, TLB_Hit 
+Load_LFB,Weight=545, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=331, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=525, TLB_Hit 
+Load_LFB,Weight=2237, TLB_Hit 
+Load_Weight=592, TLB_Hit 
+Load_Weight=526, TLB_Hit 
+Load_Weight=570, TLB_Hit 
+Load_LFB,Weight=227, TLB_Hit 
+Load_LFB,Weight=513, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_L1,Weight=24, TLB_Hit 
+Load_Weight=542, TLB_Miss 
+Load_LFB,Weight=1899, TLB_Hit 
+Load_LFB,Weight=725, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_LFB,Weight=495, TLB_Hit 
+Load_LFB,Weight=709, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=573, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=921, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1326, TLB_Hit 
+Load_Weight=679, TLB_Hit 
+Load_LFB,Weight=22, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=405, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=504, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_Weight=565, TLB_Miss 
+Load_LFB,Weight=130, TLB_Hit 
+Load_LFB,Weight=499, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=694, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=523, TLB_Miss 
+Load_L1,Weight=22, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=677, TLB_Miss 
+Load_LFB,Weight=82, TLB_Hit 
+Load_Weight=1172, TLB_Miss 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_LFB,Weight=532, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=740, TLB_Hit 
+Load_LFB,Weight=490, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_LFB,Weight=569, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=584, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=693, TLB_Hit 
+Load_Weight=581, TLB_Miss 
+Load_LFB,Weight=597, TLB_Hit 
+Load_L1,Weight=664, TLB_Hit 
+Load_Weight=589, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=1582, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_LFB,Weight=169, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=52, TLB_Hit 
+Load_LFB,Weight=666, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=586, TLB_Hit 
+Load_Weight=588, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=412, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_LFB,Weight=1063, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=694, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=694, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_LFB,Weight=517, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=479, TLB_Hit 
+Load_LFB,Weight=628, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=597, TLB_Miss 
+Load_Weight=566, TLB_Hit 
+Load_LFB,Weight=631, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=672, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=697, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=665, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_Weight=578, TLB_Miss 
+Load_LFB,Weight=593, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=697, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_LFB,Weight=137, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_LFB,Weight=521, TLB_Hit 
+Load_LFB,Weight=626, TLB_Hit 
+Load_LFB,Weight=691, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1474, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=569, TLB_Hit 
+Load_LFB,Weight=1154, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=498, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=473, TLB_Hit 
+Load_Weight=617, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=642, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=23, TLB_Hit 
+Load_LFB,Weight=493, TLB_Hit 
+Load_DRAM,Weight=333, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=649, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=523, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_Weight=721, TLB_Miss 
+Load_LFB,Weight=619, TLB_Hit 
+Load_Weight=589, TLB_Hit 
+Load_LFB,Weight=636, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=682, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=679, TLB_Hit 
+Load_LFB,Weight=1434, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_Weight=582, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=570, TLB_Hit 
+Load_Weight=655, TLB_Miss 
+Load_LFB,Weight=566, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_LFB,Weight=656, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=633, TLB_Miss 
+Load_LFB,Weight=595, TLB_Hit 
+Load_Weight=636, TLB_Miss 
+Load_LFB,Weight=561, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_Weight=617, TLB_Miss 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=541, TLB_Hit 
+Load_LFB,Weight=628, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=716, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=50, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=666, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=636, TLB_Miss 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=675, TLB_Miss 
+Load_L1,Weight=13, TLB_Hit 
+Load_LFB,Weight=516, TLB_Hit 
+Load_LFB,Weight=675, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=513, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_L1,Weight=42, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=27, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_LFB,Weight=674, TLB_Hit 
+Load_Weight=509, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Load_LFB,Weight=592, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_LFB,Weight=623, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_Weight=710, TLB_Hit 
+Load_LFB,Weight=437, TLB_Hit 
+Load_LFB,Weight=123, TLB_Hit 
+Load_LFB,Weight=677, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=84, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=716, TLB_Hit 
+Load_LFB,Weight=687, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=577, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_Weight=536, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_Weight=602, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=585, TLB_Hit 
+Load_LFB,Weight=664, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_L1,Weight=14, TLB_Hit 
+Load_LFB,Weight=688, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=613, TLB_Hit 
+Load_LFB,Weight=665, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_Weight=568, TLB_Miss 
+Load_Weight=507, TLB_Hit 
+Load_LFB,Weight=421, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=1749, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=519, TLB_Hit 
+Load_LFB,Weight=704, TLB_Hit 
+Load_Weight=684, TLB_Miss 
+Load_LFB,Weight=557, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=526, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=676, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=716, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1151, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1234, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=689, TLB_Hit 
+Load_Weight=632, TLB_Miss 
+Load_LFB,Weight=610, TLB_Hit 
+Load_Weight=584, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=507, TLB_Hit 
+Load_LFB,Weight=697, TLB_Hit 
+Load_Weight=1306, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=137, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=333, TLB_Hit 
+Load_LFB,Weight=668, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_LFB,Weight=650, TLB_Hit 
+Load_LFB,Weight=685, TLB_Hit 
+Load_LFB,Weight=666, TLB_Hit 
+Load_LFB,Weight=507, TLB_Hit 
+Load_Weight=507, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=700, TLB_Hit 
+Load_LFB,Weight=611, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_L1,Weight=1126, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=506, TLB_Hit 
+Load_LFB,Weight=593, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=580, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_Weight=562, TLB_Miss 
+Load_Weight=552, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=1595, TLB_Hit 
+Load_LFB,Weight=361, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=621, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_LFB,Weight=775, TLB_Hit 
+Load_Weight=673, TLB_Hit 
+Load_Weight=675, TLB_Miss 
+Load_LFB,Weight=611, TLB_Hit 
+Load_Weight=627, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=682, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_LFB,Weight=113, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=594, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=597, TLB_Hit 
+Load_LFB,Weight=518, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=593, TLB_Hit 
+Load_LFB,Weight=516, TLB_Hit 
+Load_LFB,Weight=593, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_Weight=517, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_LFB,Weight=626, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_LFB,Weight=663, TLB_Hit 
+Load_LFB,Weight=39, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_LFB,Weight=719, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=580, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=687, TLB_Hit 
+Load_Weight=614, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=572, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1370, TLB_Hit 
+Load_Weight=567, TLB_Miss 
+Load_Weight=1767, TLB_Miss 
+Load_LFB,Weight=500, TLB_Hit 
+Load_LFB,Weight=528, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_Weight=621, TLB_Miss 
+Load_LFB,Weight=706, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=48, TLB_Hit 
+Load_Weight=572, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+INICIO-----------------------
+Load_LFB,Weight=539, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=137, TLB_Hit 
+Load_Weight=584, TLB_Miss 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=582, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=504, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_Weight=662, TLB_Miss 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_Weight=555, TLB_Miss 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=489, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=620, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=577, TLB_Hit 
+Load_Weight=538, TLB_Hit 
+Load_LFB,Weight=729, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_Weight=565, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_LFB,Weight=581, TLB_Hit 
+Load_LFB,Weight=684, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=555, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_LFB,Weight=536, TLB_Hit 
+Load_Weight=555, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=612, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=629, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=543, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=532, TLB_Hit 
+Load_LFB,Weight=210, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=129, TLB_Hit 
+Load_LFB,Weight=622, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=690, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_LFB,Weight=661, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_LFB,Weight=1808, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=157, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_Weight=537, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_LFB,Weight=507, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_L1,Weight=636, TLB_Hit 
+Load_LFB,Weight=684, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_Weight=674, TLB_Miss 
+Load_LFB,Weight=677, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=545, TLB_Hit 
+Load_Weight=708, TLB_Miss 
+Load_LFB,Weight=592, TLB_Hit 
+Load_LFB,Weight=1181, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_LFB,Weight=514, TLB_Hit 
+Load_LFB,Weight=291, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=533, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_LFB,Weight=673, TLB_Hit 
+Load_Weight=631, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=538, TLB_Miss 
+Load_Weight=612, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_LFB,Weight=538, TLB_Hit 
+Load_LFB,Weight=536, TLB_Hit 
+Load_Weight=592, TLB_Hit 
+Load_LFB,Weight=138, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_LFB,Weight=2041, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_Weight=576, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_LFB,Weight=128, TLB_Hit 
+Load_LFB,Weight=465, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_LFB,Weight=502, TLB_Hit 
+Load_DRAM,Weight=440, TLB_Miss 
+Load_LFB,Weight=267, TLB_Hit 
+Load_L1,Weight=35, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_Weight=678, TLB_Hit 
+Load_LFB,Weight=617, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_Weight=587, TLB_Hit 
+Load_Weight=1757, TLB_Miss 
+Load_LFB,Weight=245, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=584, TLB_Hit 
+Load_Weight=570, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=579, TLB_Hit 
+Load_LFB,Weight=633, TLB_Hit 
+Load_LFB,Weight=527, TLB_Hit 
+Load_Weight=566, TLB_Hit 
+Load_Weight=528, TLB_Hit 
+Load_Weight=678, TLB_Miss 
+Load_Weight=506, TLB_Hit 
+Load_LFB,Weight=96, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=553, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=115, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=554, TLB_Miss 
+Load_Weight=572, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=342, TLB_Hit 
+Load_LFB,Weight=555, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=607, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_L1,Weight=601, TLB_Hit 
+Load_DRAM,Weight=293, TLB_Hit 
+Load_Weight=544, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=540, TLB_Hit 
+Load_LFB,Weight=511, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_LFB,Weight=690, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=539, TLB_Hit 
+Load_Weight=549, TLB_Hit 
+Load_LFB,Weight=597, TLB_Hit 
+Load_Weight=594, TLB_Miss 
+Load_LFB,Weight=688, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_L1,Weight=670, TLB_Hit 
+Load_LFB,Weight=730, TLB_Hit 
+Load_LFB,Weight=696, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_Weight=636, TLB_Miss 
+Load_Weight=675, TLB_Miss 
+Load_LFB,Weight=630, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_LFB,Weight=630, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_LFB,Weight=866, TLB_Hit 
+Load_Weight=1103, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=2000, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=674, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_Weight=574, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=555, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_L1,Weight=15, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_LFB,Weight=569, TLB_Hit 
+Load_LFB,Weight=22, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=6, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_LFB,Weight=591, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=600, TLB_Hit 
+Load_Weight=607, TLB_Miss 
+Load_Weight=594, TLB_Miss 
+Load_LFB,Weight=593, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=621, TLB_Hit 
+Load_Weight=593, TLB_Miss 
+Load_LFB,Weight=546, TLB_Hit 
+Load_LFB,Weight=690, TLB_Hit 
+Load_LFB,Weight=562, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=501, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_Weight=577, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=540, TLB_Hit 
+Load_LFB,Weight=542, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=616, TLB_Hit 
+Load_LFB,Weight=818, TLB_Hit 
+Load_LFB,Weight=644, TLB_Hit 
+Load_LFB,Weight=207, TLB_Hit 
+Load_LFB,Weight=74, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_Weight=1762, TLB_Hit 
+Load_LFB,Weight=512, TLB_Hit 
+Load_Weight=587, TLB_Miss 
+Load_LFB,Weight=138, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=548, TLB_Hit 
+Load_Weight=563, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_LFB,Weight=532, TLB_Hit 
+Load_DRAM,Weight=385, TLB_Miss 
+Load_LFB,Weight=1705, TLB_Hit 
+Load_LFB,Weight=629, TLB_Hit 
+Load_Weight=577, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_Weight=585, TLB_Hit 
+Load_Weight=518, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_LFB,Weight=115, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_Weight=620, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=659, TLB_Miss 
+Load_Weight=918, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=697, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_LFB,Weight=647, TLB_Hit 
+Load_LFB,Weight=593, TLB_Hit 
+Load_Weight=549, TLB_Hit 
+Load_Weight=569, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_LFB,Weight=1091, TLB_Hit 
+Load_Weight=641, TLB_Hit 
+Load_Weight=782, TLB_Miss 
+Load_LFB,Weight=582, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=41, TLB_Hit 
+Load_LFB,Weight=1200, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=706, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_Weight=540, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_Weight=557, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_LFB,Weight=502, TLB_Hit 
+Load_LFB,Weight=511, TLB_Hit 
+Load_LFB,Weight=72, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_Weight=566, TLB_Hit 
+Load_LFB,Weight=1097, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=452, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=441, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_LFB,Weight=1496, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Load_Weight=509, TLB_Hit 
+Load_LFB,Weight=640, TLB_Hit 
+Load_Weight=564, TLB_Hit 
+Load_Weight=693, TLB_Miss 
+Load_LFB,Weight=34, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=272, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_LFB,Weight=621, TLB_Hit 
+Load_LFB,Weight=598, TLB_Hit 
+Load_Weight=568, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_Weight=669, TLB_Miss 
+Load_Weight=584, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_Weight=683, TLB_Miss 
+Load_LFB,Weight=1141, TLB_Hit 
+Load_LFB,Weight=593, TLB_Hit 
+Load_L1,Weight=12, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_Weight=587, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=652, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=561, TLB_Miss 
+Load_LFB,Weight=504, TLB_Hit 
+Load_LFB,Weight=501, TLB_Hit 
+Load_LFB,Weight=551, TLB_Hit 
+Load_LFB,Weight=77, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_Weight=528, TLB_Hit 
+Load_LFB,Weight=638, TLB_Hit 
+Load_LFB,Weight=525, TLB_Hit 
+Load_Weight=915, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=679, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_LFB,Weight=96, TLB_Hit 
+Load_LFB,Weight=494, TLB_Hit 
+Load_LFB,Weight=151, TLB_Hit 
+Load_LFB,Weight=588, TLB_Hit 
+Load_Weight=537, TLB_Hit 
+Load_L1,Weight=661, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_LFB,Weight=631, TLB_Hit 
+Load_Weight=548, TLB_Hit 
+Load_LFB,Weight=572, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_LFB,Weight=532, TLB_Hit 
+Load_Weight=577, TLB_Miss 
+Load_Weight=542, TLB_Miss 
+Load_LFB,Weight=583, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_LFB,Weight=709, TLB_Hit 
+Load_LFB,Weight=672, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=1144, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=614, TLB_Hit 
+Load_Weight=523, TLB_Hit 
+Load_Weight=566, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_Weight=558, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=596, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=498, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_Weight=538, TLB_Miss 
+Load_LFB,Weight=613, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=718, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_Weight=531, TLB_Hit 
+Load_Weight=630, TLB_Miss 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=662, TLB_Hit 
+Load_Weight=1375, TLB_Hit 
+Load_Weight=610, TLB_Miss 
+Load_LFB,Weight=1875, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=22, TLB_Hit 
+Load_LFB,Weight=539, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_Weight=560, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=661, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=545, TLB_Hit 
+Load_Weight=576, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_Weight=546, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_LFB,Weight=613, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=503, TLB_Hit 
+Load_LFB,Weight=680, TLB_Hit 
+Load_LFB,Weight=497, TLB_Hit 
+Load_LFB,Weight=245, TLB_Hit 
+Load_Weight=574, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=555, TLB_Hit 
+Load_LFB,Weight=611, TLB_Hit 
+Load_Weight=514, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=606, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1815, TLB_Hit 
+Load_LFB,Weight=515, TLB_Hit 
+Load_LFB,Weight=684, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=578, TLB_Hit 
+Load_Weight=549, TLB_Hit 
+Load_LFB,Weight=518, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_L1,Weight=21, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_LFB,Weight=1271, TLB_Hit 
+Load_L1,Weight=13, TLB_Hit 
+Load_LFB,Weight=564, TLB_Hit 
+Load_L1,Weight=716, TLB_Hit 
+Load_LFB,Weight=522, TLB_Hit 
+Load_LFB,Weight=641, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=523, TLB_Hit 
+Load_L1,Weight=654, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_LFB,Weight=521, TLB_Hit 
+Load_Weight=507, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=522, TLB_Hit 
+Load_Weight=621, TLB_Hit 
+Load_LFB,Weight=566, TLB_Hit 
+Load_LFB,Weight=1619, TLB_Hit 
+Load_LFB,Weight=648, TLB_Hit 
+Load_Weight=685, TLB_Miss 
+Load_LFB,Weight=651, TLB_Hit 
+Load_LFB,Weight=661, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_LFB,Weight=142, TLB_Hit 
+Load_Weight=554, TLB_Hit 
+Load_LFB,Weight=521, TLB_Hit 
+Load_LFB,Weight=634, TLB_Hit 
+Load_L1,Weight=575, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_LFB,Weight=672, TLB_Hit 
+Load_Weight=547, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=623, TLB_Miss 
+Load_Weight=568, TLB_Miss 
+Load_Weight=574, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=476, TLB_Hit 
+Load_LFB,Weight=28, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_LFB,Weight=584, TLB_Hit 
+Load_LFB,Weight=128, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=616, TLB_Hit 
+Load_LFB,Weight=667, TLB_Hit 
+Load_L1,Weight=26, TLB_Hit 
+Load_LFB,Weight=601, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_LFB,Weight=594, TLB_Hit 
+Load_LFB,Weight=283, TLB_Hit 
+Load_LFB,Weight=589, TLB_Hit 
+Load_LFB,Weight=547, TLB_Hit 
+Load_LFB,Weight=585, TLB_Hit 
+Load_LFB,Weight=510, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_Weight=600, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=531, TLB_Hit 
+Load_LFB,Weight=556, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=587, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=594, TLB_Miss 
+Load_Weight=554, TLB_Hit 
+Load_LFB,Weight=619, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=541, TLB_Hit 
+Load_LFB,Weight=537, TLB_Hit 
+Load_Weight=561, TLB_Hit 
+Load_LFB,Weight=1152, TLB_Hit 
+Load_LFB,Weight=565, TLB_Hit 
+Load_LFB,Weight=1534, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=553, TLB_Hit 
+Load_Weight=578, TLB_Hit 
+Load_LFB,Weight=605, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+INICIO-----------------------
+Load_LFB,Weight=585, TLB_Hit 
+Load_LFB,Weight=252, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=599, TLB_Hit 
+Load_Weight=700, TLB_Miss 
+Load_L1,Weight=46, TLB_Hit 
+Load_LFB,Weight=615, TLB_Hit 
+Load_LFB,Weight=434, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=547, TLB_Miss 
+Load_LFB,Weight=683, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_LFB,Weight=558, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_Weight=551, TLB_Miss 
+Load_LFB,Weight=39, TLB_Hit 
+Load_LFB,Weight=583, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_Weight=573, TLB_Miss 
+Load_LFB,Weight=680, TLB_Hit 
+Load_LFB,Weight=53, TLB_Hit 
+Load_LFB,Weight=625, TLB_Hit 
+Load_Weight=568, TLB_Miss 
+Load_Weight=636, TLB_Hit 
+Load_LFB,Weight=635, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_Weight=526, TLB_Miss 
+Load_Weight=532, TLB_Hit 
+Load_LFB,Weight=595, TLB_Hit 
+Load_Weight=635, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_L1,Weight=16, TLB_Hit 
+Load_Weight=532, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_Weight=630, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=534, TLB_Hit 
+Load_Weight=668, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=585, TLB_Hit 
+Load_LFB,Weight=557, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_Weight=559, TLB_Hit 
+Load_LFB,Weight=106, TLB_Hit 
+Load_Weight=600, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=591, TLB_Hit 
+Load_LFB,Weight=96, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=590, TLB_Hit 
+Load_Weight=605, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_Weight=496, TLB_Miss 
+Load_LFB,Weight=553, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_LFB,Weight=651, TLB_Hit 
+Load_Weight=1891, TLB_Miss 
+Load_Weight=628, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=698, TLB_Miss 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=620, TLB_Hit 
+Load_Weight=569, TLB_Miss 
+Load_LFB,Weight=220, TLB_Hit 
+Load_Weight=656, TLB_Miss 
+Load_LFB,Weight=605, TLB_Hit 
+Load_LFB,Weight=477, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=577, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_Weight=1757, TLB_Miss 
+Load_LFB,Weight=55, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=568, TLB_Hit 
+Load_LFB,Weight=524, TLB_Hit 
+Load_LFB,Weight=654, TLB_Hit 
+Load_Weight=537, TLB_Hit 
+Load_Weight=656, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=563, TLB_Hit 
+Load_Weight=497, TLB_Hit 
+Load_LFB,Weight=520, TLB_Hit 
+Load_Weight=538, TLB_Miss 
+Load_LFB,Weight=585, TLB_Hit 
+Load_LFB,Weight=576, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=550, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=625, TLB_Hit 
+Load_LFB,Weight=921, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_LFB,Weight=559, TLB_Hit 
+Load_LFB,Weight=38, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=618, TLB_Hit 
+Load_LFB,Weight=1353, TLB_Hit 
+Load_Weight=600, TLB_Hit 
+Load_LFB,Weight=535, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=543, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=577, TLB_Miss 
+Load_LFB,Weight=614, TLB_Hit 
+Load_LFB,Weight=30, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=611, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=631, TLB_Hit 
+Load_LFB,Weight=523, TLB_Hit 
+Load_L1,Weight=655, TLB_Hit 
+Load_Weight=558, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_LFB,Weight=520, TLB_Hit 
+Load_Weight=645, TLB_Miss 
+Load_LFB,Weight=65, TLB_Hit 
+Load_LFB,Weight=560, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=730, TLB_Miss 
+Load_Weight=568, TLB_Hit 
+Load_LFB,Weight=574, TLB_Hit 
+Load_LFB,Weight=702, TLB_Hit 
+Load_LFB,Weight=544, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=569, TLB_Hit 
+Load_LFB,Weight=571, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=675, TLB_Miss 
+Load_Weight=590, TLB_Hit 
+Load_Weight=493, TLB_Hit 
+Load_LFB,Weight=510, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=604, TLB_Miss 
+Load_Weight=730, TLB_Miss 
+Load_LFB,Weight=620, TLB_Hit 
+Load_Weight=532, TLB_Miss 
+Load_LFB,Weight=600, TLB_Hit 
+Load_Weight=600, TLB_Miss 
+Load_L1,Weight=13, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=482, TLB_Hit 
+Load_Weight=529, TLB_Hit 
+Load_Weight=574, TLB_Hit 
+Load_LFB,Weight=543, TLB_Hit 
+Load_Weight=575, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=1286, TLB_Hit 
+Load_LFB,Weight=497, TLB_Hit 
+Load_LFB,Weight=546, TLB_Hit 
+Load_Weight=588, TLB_Hit 
+Load_Weight=652, TLB_Miss 
+Load_LFB,Weight=300, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_Weight=507, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_Weight=1969, TLB_Hit 
+Load_Weight=551, TLB_Miss 
+Load_Weight=584, TLB_Miss 
+Load_L1,Weight=8, TLB_Hit 
+Load_LFB,Weight=607, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=593, TLB_Miss 
+Load_Weight=567, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_Weight=600, TLB_Hit 
+Load_LFB,Weight=586, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_LFB,Weight=628, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=623, TLB_Hit 
+Load_LFB,Weight=1509, TLB_Hit 
+Load_Weight=530, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=606, TLB_Hit 
+Load_Weight=633, TLB_Miss 
+Load_LFB,Weight=573, TLB_Hit 
+Load_LFB,Weight=569, TLB_Hit 
+Load_Weight=629, TLB_Miss 
+Load_LFB,Weight=53, TLB_Hit 
+Load_LFB,Weight=634, TLB_Hit 
+Load_LFB,Weight=83, TLB_Hit 
+Load_Weight=550, TLB_Hit 
+Load_LFB,Weight=609, TLB_Hit 
+Load_LFB,Weight=579, TLB_Hit 
+Load_LFB,Weight=596, TLB_Hit 
+Load_Weight=669, TLB_Miss 
+Load_Weight=588, TLB_Miss 
+Load_LFB,Weight=422, TLB_Hit 
+Load_Weight=587, TLB_Miss 
+Load_Weight=554, TLB_Miss 
+Load_LFB,Weight=431, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_LFB,Weight=66, TLB_Hit 
+Load_LFB,Weight=612, TLB_Hit 
+Load_Weight=574, TLB_Miss 
+Load_LFB,Weight=700, TLB_Hit 
+Load_LFB,Weight=606, TLB_Hit 
+Load_Weight=565, TLB_Miss 
+Load_L1,Weight=8, TLB_Hit 
+Load_Weight=600, TLB_Miss 
+Load_Weight=573, TLB_Hit 
+Load_LFB,Weight=561, TLB_Hit 
+Load_LFB,Weight=1252, TLB_Hit 
+Load_Weight=591, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=577, TLB_Hit 
+Load_LFB,Weight=575, TLB_Hit 
+Load_LFB,Weight=570, TLB_Hit 
+Load_LFB,Weight=608, TLB_Hit 
+Load_LFB,Weight=687, TLB_Hit 
+Load_Weight=555, TLB_Hit 
+Load_Weight=553, TLB_Hit 
+Load_LFB,Weight=567, TLB_Hit 
+Load_LFB,Weight=602, TLB_Hit 
+Load_LFB,Weight=573, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=552, TLB_Hit 
+Load_Weight=627, TLB_Hit 
+Load_LFB,Weight=552, TLB_Hit 
+Load_LFB,Weight=496, TLB_Hit 
+Load_Weight=527, TLB_Hit 
+Load_L1,Weight=7, TLB_Hit 
+Load_Weight=578, TLB_Miss 
+Load_Weight=640, TLB_Hit 
+Load_LFB,Weight=554, TLB_Hit 
+Load_L1,Weight=9, TLB_Hit 
+Load_Weight=565, TLB_Hit 
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+Store_L1,
+FIM-----------------------
+INICIO-----------------------
+FIM-----------------------
+INICIO-----------------------
+Load_Weight=535, [actuator] get lock!!!
