@@ -39,7 +39,7 @@ void print_struc_pmem(ring_buffer_t * g_dram_tier_ring){
             fprintf(stderr, "\tw=%d\n",w);
             for(j=0; j< RING_BUFFER_SIZE; j++){
                 fprintf(stderr, "\t\tj=%d, ",j);
-                fprintf(stderr, "\t\t\tlat:%ld, \
+                fprintf(stderr, "lat:%ld, \
                                  load:%ld, \
                                  tlb_miss:%ld,\
                                  tlb_hit:%ld\n", \
