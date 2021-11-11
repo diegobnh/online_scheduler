@@ -469,7 +469,7 @@ int account_samples_to_allocations(void){
                 fprintf(stderr, "%lu\n",g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j]);
             }
     }
-    
+    fprintf(stderr, "-----------------\n");
     
     D fprintf(stderr, "[monitor]  %d, %d, %f, %5d, %5d, %.1f, %.1f\n",\
     				g_loads_count_overflow_events,\

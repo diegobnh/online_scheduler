@@ -92,7 +92,7 @@ int calculate_SMA_for_DRAM(void){
 		}
         g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
-    print_struc_dram(g_dram_tier_ring);
+    //print_struc_dram(g_dram_tier_ring);
 }
 
 int calculate_SMA_for_PMEM(void){
@@ -120,7 +120,7 @@ int calculate_SMA_for_PMEM(void){
 		}
         g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
-    print_struc_pmem(g_pmem_tier_ring);
+    //sprint_struc_pmem(g_pmem_tier_ring);
 }
 
 void *thread_sample_processor(void *_args){
