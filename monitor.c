@@ -459,15 +459,15 @@ int account_samples_to_allocations(void){
     
     
    
-    for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
+    for(i=0; i< g_shared_memory->tier[1].num_obj; i++){
             
             for(j=4 ; j< MEM_LEVELS; j++){
-                if(g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j] != 0 && g_shared_memory->tier[0].obj_flag_alloc[i] == 1){
-                    fprintf(stderr, "DRAM object[%d]\n",i);
-                    fprintf(stderr, "Lat Level [%d] %lu\t",j, g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j]);
-                    fprintf(stderr, "Loads Level [%d] %lu\t",j, g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j]);
-                    fprintf(stderr, "TLB hit Level [%d] %lu\t",j, g_shared_memory->tier[0].obj_vector[i].ring.TLB_hit[curr_ring_index][j]);
-                    fprintf(stderr, "TLB miss Level [%d] %lu\n",j, g_shared_memory->tier[0].obj_vector[i].ring.TLB_miss[curr_ring_index][j]);
+                if(g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j] != 0 && g_shared_memory->tier[1].obj_flag_alloc[i] == 1){
+                    fprintf(stderr, "PMEM object[%d]\n",i);
+                    fprintf(stderr, "Lat Level [%d] %lu\t",j, g_shared_memory->tier[1].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j]);
+                    fprintf(stderr, "Loads Level [%d] %lu\t",j, g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j]);
+                    fprintf(stderr, "TLB hit Level [%d] %lu\t",j, g_shared_memory->tier[1].obj_vector[i].ring.TLB_hit[curr_ring_index][j]);
+                    fprintf(stderr, "TLB miss Level [%d] %lu\n",j, g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j]);
                 }
                 
             }
