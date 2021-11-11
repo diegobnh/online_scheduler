@@ -462,7 +462,7 @@ int account_samples_to_allocations(void){
     for(i=0; i< g_shared_memory->tier[1].num_obj; i++){
             g_shared_memory->tier[1].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
             fprintf(stderr, "PMEM object[%d]\n",i);
-            for(j=0 ; j< MEM_LEVELS; j++){
+            for(j=4 ; j< MEM_LEVELS; j++){
                 fprintf(stderr, "Lat Level [%d] %lu\t",j, g_shared_memory->tier[1].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j]);
                 fprintf(stderr, "Loads Level [%d] %lu\t",j, g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j]);
                 fprintf(stderr, "TLB hit Level [%d] %lu\t",j, g_shared_memory->tier[1].obj_vector[i].ring.TLB_hit[curr_ring_index][j]);
