@@ -458,6 +458,17 @@ int account_samples_to_allocations(void){
     clock_gettime(CLOCK_REALTIME, &end);
     
     
+   
+    for(i=0; i< g_shared_memory->tier[1].num_obj; i++){
+            g_shared_memory->tier[1].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
+            fprintf(stderr, "PMEM object[%d]\n",i);
+            for(j=0 ; j< MEM_LEVELS; j++){
+                fprintf(stderr, "%lu\t",g_shared_memory->tier[1].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j]);
+                fprintf(stderr, "%lu\t",g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j]);
+                fprintf(stderr, "%lu\t",g_shared_memory->tier[1].obj_vector[i].ring.TLB_hit[curr_ring_index][j]);
+                fprintf(stderr, "%lu\n",g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j]);
+            }
+    }
     
     
     D fprintf(stderr, "[monitor]  %d, %d, %f, %5d, %5d, %.1f, %.1f\n",\
