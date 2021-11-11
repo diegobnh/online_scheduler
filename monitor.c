@@ -462,7 +462,7 @@ int account_samples_to_allocations(void){
     for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
             
             for(j=4 ; j< MEM_LEVELS; j++){
-                if(g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j] != 0 && g_shared_memory->tier[0].obj_vector[i].obj_flag_alloc == 1){
+                if(g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j] != 0 && g_shared_memory->tier[0].obj_flag_alloc[i] == 1){
                     fprintf(stderr, "DRAM object[%d]\n",i);
                     fprintf(stderr, "Lat Level [%d] %lu\t",j, g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j]);
                     fprintf(stderr, "Loads Level [%d] %lu\t",j, g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j]);
