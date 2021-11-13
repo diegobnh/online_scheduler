@@ -418,7 +418,7 @@ int main(int argc, char **argv)
     
     setup_shared_memory();
     
-    //pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
+    pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
 
     int curr_err = pfm_initialize();
     if (curr_err != PFM_SUCCESS) {
@@ -604,22 +604,6 @@ int main(int argc, char **argv)
             perf_mmap__read_done(map);
         }
         
-        
-        for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
-            fprintf(stderr, "DRAM Object i=%d\n",i);
-            for(w=4; w< MEM_LEVELS; w++){
-                fprintf(stderr, "\tw=%d\n",w);
-                for(j=0; j< RING_BUFFER_SIZE; j++){
-                    fprintf(stderr, "\t\tj=%d, ",j);
-                    fprintf(stderr, "lat:%ld, load:%ld, tlb_miss:%ld, tlb_hit:%ld\n", \
-                                     g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[j][w],\
-                                     g_shared_memory->tier[0].obj_vector[i].ring.loads_count[j][w],\
-                                     g_shared_memory->tier[0].obj_vector[i].ring.TLB_hit[j][w],\
-                                     g_shared_memory->tier[0].obj_vector[i].ring.TLB_miss[j][w]);
-                }
-            }
-        }
-        fprintf(stderr, "--------------\n");
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
         incremental_ring_index++;
