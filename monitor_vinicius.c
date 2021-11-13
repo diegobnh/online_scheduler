@@ -197,7 +197,7 @@ int is_served_by_local_NA_miss(union perf_mem_data_src data_src)
 }
 
 //char *get_data_src_opcode(union perf_mem_data_src data_src)
-int *get_data_src_opcode(union perf_mem_data_src data_src)
+int get_data_src_opcode(union perf_mem_data_src data_src)
 {
     //char *res = concat("", "");
     //char *old_res;
@@ -237,7 +237,7 @@ int *get_data_src_opcode(union perf_mem_data_src data_src)
 }
 
 //char *get_data_src_dtlb(union perf_mem_data_src data_src)
-int *get_data_src_dtlb(union perf_mem_data_src data_src)
+int get_data_src_dtlb(union perf_mem_data_src data_src)
 {
 	/*
     char *res = concat("", "");
