@@ -1,5 +1,8 @@
 #define _GNU_SOURCE 1
 #include <sys/mman.h>
+#include <unistd.h>
+#include <fcntl.h>
+
 #include <assert.h>
 #include <linux/perf_event.h>
 #include <perf/core.h>
@@ -398,7 +401,7 @@ int main(int argc, char **argv)
     
     setup_shared_memory();
     
-    pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
+    //pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
 
     int curr_err = pfm_initialize();
     if (curr_err != PFM_SUCCESS) {
