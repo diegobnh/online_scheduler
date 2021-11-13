@@ -34,10 +34,10 @@ taskset -cp 0 $pid_main 1> /dev/null
 
 #Start independent monitor
 sleep 1
-#./monitor &
-#pid_monitor=$!
+./monitor &
+pid_monitor=$!
 
 #When the main finish, send a signal to monitor finish
 wait $pid_main
-#kill -27 $pid_monitor
+kill -27 $pid_monitor
  
