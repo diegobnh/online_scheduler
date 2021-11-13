@@ -28,8 +28,8 @@
 #define STORAGE_ID "SHM_TEST"
 
 #define NODE_0_DRAM 0
-#define NODE_0_PMEM 1
-#define NODE_1_DRAM 2
+#define NODE_0_PMEM 2
+#define NODE_1_DRAM 1
 #define NODE_1_PMEM 3
 
 #define ROUND_ROBIN 1
@@ -45,7 +45,7 @@
 #endif
 
 
-#define MAXIMUM_DRAM_CAPACITY 99000000000  //means 4GB
+#define MAXIMUM_DRAM_CAPACITY 1000000000  //means 4GB
 
 //#define DEBUG
 #ifdef DEBUG
