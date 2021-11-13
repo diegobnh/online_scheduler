@@ -14,6 +14,7 @@ gcc -g -c -fPIC sample_processor.c
 #gcc -g -c monitor_binary_search.c -lrt -lm -lnuma
 #gcc -o monitor monitor.c actuator.o recorder.o monitor_binary_search.o -lrt -lm -lpfm -lnuma
 gcc -o monitor monitor.c actuator.o recorder.o sample_processor.o time.o -lrt -lm -lpfm -lnuma -lpthread
+gcc -o monitor monitor.c recorder.o sample_processor.o -lrt -lm -lpfm -lpthread -lperf
 
 gcc -g -o main main.c
 #gcc -g malloc_intercept.c -fpic -shared -o malloc_intercept.so recorder.o -rdynamic -ldl -lpthread -lrt
@@ -24,21 +25,21 @@ gcc -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recor
 
 #Start the main that will spawn other applications
 #LD_PRELOAD=./mmap_intercept.so ./main 1> /dev/null &
-LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
+#LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
 
 #./main 1> /dev/null &
-pid_main=$!
+#pid_main=$!
 #taskset -cp 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34 $pid_main 1> /dev/null
-taskset -cp 0 $pid_main 1> /dev/null
+#taskset -cp 0 $pid_main 1> /dev/null
 #LD_PRELOAD=./malloc_intercept.so ./main 1> /dev/null
 
 
 #Start independent monitor
-sleep 1
-./monitor &
-pid_monitor=$!
+#sleep 1
+#./monitor &
+#pid_monitor=$!
 
 #When the main finish, send a signal to monitor finish
-wait $pid_main
-kill -27 $pid_monitor
+#wait $pid_main
+#kill -27 $pid_monitor
  
