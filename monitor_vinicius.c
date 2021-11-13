@@ -508,7 +508,7 @@ int main(int argc, char **argv)
 
     while(g_running) {
         perf_evlist__enable(evlist);
-        sleep(5);
+        sleep(3);
         perf_evlist__disable(evlist);
         
         curr_ring_index = incremental_ring_index % RING_BUFFER_SIZE;
@@ -542,11 +542,7 @@ int main(int argc, char **argv)
                 array++;
                 
                 vector_index = get_vector_index(sample_addr, &tier_type);
-                if(vector_index == -1)
-                   fprintf(stderr, "\tFail=%d\n", vector_index);
-                else
-                   fprintf(stderr, "match=%d\n", vector_index);
-
+                
                 weight = *array;
                 array++;
 
@@ -576,6 +572,7 @@ int main(int argc, char **argv)
                 		}
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
+                            fprintf(stderr, "Load_in_DRAM\n");
                 		}
                 		
                 		if(mem_level != -1){
