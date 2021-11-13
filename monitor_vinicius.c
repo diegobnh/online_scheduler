@@ -572,7 +572,6 @@ int main(int argc, char **argv)
                 		}
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
-                            fprintf(stderr, "Load_in_DRAM\n");
                 		}
                 		
                 		if(mem_level != -1){
@@ -597,7 +596,7 @@ int main(int argc, char **argv)
             perf_mmap__read_done(map);
         }
         
-        /*
+        
         for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
             fprintf(stderr, "DRAM Object i=%d\n",i);
             for(w=4; w< MEM_LEVELS; w++){
@@ -612,7 +611,7 @@ int main(int argc, char **argv)
                 }
             }
         }
-         */
+        fprintf(stderr, "--------------\n");
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
         incremental_ring_index++;
