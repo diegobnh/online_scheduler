@@ -28,9 +28,9 @@
 #define STORAGE_ID "SHM_TEST"
 
 #define NODE_0_DRAM 0
+#define NODE_0_PMEM 2
 #define NODE_1_DRAM 1
-#define NODE_2_PMEM 2
-#define NODE_3_PMEM 3
+#define NODE_1_PMEM 3
 
 #define ROUND_ROBIN 1
 #define RANDOM 2
@@ -45,7 +45,7 @@
 #endif
 
 
-#define MAXIMUM_DRAM_CAPACITY 99000000000  //means 4GB
+#define MAXIMUM_DRAM_CAPACITY 4000000000  //means 4GB
 
 //#define DEBUG
 #ifdef DEBUG
@@ -167,7 +167,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		}
 		if(flag_dram_alloc == 0)
 		{
-		   nodemask = 1<<NODE_1_DRAM;
+		   nodemask = 1<<NODE_0_PMEM;
 		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
 		   if(mbind((void *)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)

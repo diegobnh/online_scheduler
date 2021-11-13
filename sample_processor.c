@@ -120,7 +120,7 @@ int calculate_SMA_for_PMEM(void){
 		}
         g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
-    //sprint_struc_pmem(g_pmem_tier_ring);
+    sprint_struc_pmem(g_pmem_tier_ring);
 }
 
 void *thread_sample_processor(void *_args){
