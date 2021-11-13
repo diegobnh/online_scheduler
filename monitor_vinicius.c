@@ -578,7 +578,7 @@ int main(int argc, char **argv)
                 			}else if(tlb_type == 2){
                 				g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
                             }else{
-                                fprintf(sdterr, "get_data_src_dtlb() is returning -1\n");
+                                fprintf(stderr, "get_data_src_dtlb() is returning -1\n");
                             }
                 		}
                 		
