@@ -29,6 +29,8 @@
 struct schedule_manager *g_shared_memory; //variable that stores the contents of the shared memory
 int g_fd_shared_memory ; //file descriptor to shared memory
 static int g_running = 1;
+pthread_t g_sample_processor;
+
 
 void close_monitor(int signum, siginfo_t *info, void *uc){
     fprintf(stderr, "[monitor], [sample_processor] closed! \n");
