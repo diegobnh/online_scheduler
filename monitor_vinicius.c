@@ -403,7 +403,7 @@ int main(int argc, char **argv)
     int mem_type_oper; //load or store
     int tlb_type;
     int tier_type;//0 to dram , 1 to pmem
-    int i;
+    int i, j, w;
     
     struct sigaction sa;
     sa.sa_sigaction = close_monitor;
@@ -594,12 +594,19 @@ int main(int argc, char **argv)
             perf_mmap__read_done(map);
         }
         
-        for(i=0 ;i< g_shared_memory->tier[0].num_obj; i++){
-            if(g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][4] != 0){
-                fprintf(stderr, "\t DRAM Start_addr:%p index:%d LLC miss:%d \n", \
-                                    g_shared_memory->tier[0].obj_vector[i].start_addr,\
-                                    i,\
-                                    g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][4]);
+        
+        for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
+            fprintf(stderr, "DRAM Object i=%d\n",i);
+            for(w=4; w< MEM_LEVELS; w++){
+                fprintf(stderr, "\tw=%d\n",w);
+                for(j=0; j< RING_BUFFER_SIZE; j++){
+                    fprintf(stderr, "\t\tj=%d, ",j);
+                    fprintf(stderr, "lat:%ld, load:%ld, tlb_miss:%ld, tlb_hit:%ld\n", \
+                                     g_dram_tier_ring[i].sum_latency_cost[j][w],\
+                                     g_dram_tier_ring[i].loads_count[j][w],\
+                                     g_dram_tier_ring[i].TLB_hit[j][w],\
+                                     g_dram_tier_ring[i].TLB_miss[j][w]);
+                }
             }
         }
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
