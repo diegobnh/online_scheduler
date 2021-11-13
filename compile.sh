@@ -34,7 +34,7 @@ taskset -cp 0 $pid_main 1> /dev/null
 
 #Start independent monitor
 sleep 1
-./monitor &
+sudo ./monitor &
 pid_monitor=$!
 
 #When the main finish, send a signal to monitor finish
