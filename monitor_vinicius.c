@@ -403,6 +403,7 @@ int main(int argc, char **argv)
     int mem_type_oper; //load or store
     int tlb_type;
     int tier_type;//0 to dram , 1 to pmem
+    int i;
     
     struct sigaction sa;
     sa.sa_sigaction = close_monitor;
