@@ -280,7 +280,8 @@ int *get_data_src_dtlb(union perf_mem_data_src data_src)
         //free(old_res);
         return 2;
     }
-    return res;
+    return -1;
+    //return res;
 }
 
 char *get_data_src_level(union perf_mem_data_src data_src)
