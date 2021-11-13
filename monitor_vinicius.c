@@ -25,9 +25,13 @@
 
 struct schedule_manager *g_shared_memory; //variable that stores the contents of the shared memory
 int g_fd_shared_memory ; //file descriptor to shared memory
+static int g_running = 1;
 
-
-
+void close_monitor(int signum, siginfo_t *info, void *uc){
+    fprintf(stderr, "[monitor], [sample_processor] closed! \n");
+    open_perf_clean();
+    g_running = 0;
+}
 void clear_number_of_samples(int curr_ring_index){
 	int i;
 	int j;
@@ -400,6 +404,15 @@ int main(int argc, char **argv)
     int tlb_type;
     int tier_type;//0 to dram , 1 to pmem
     
+    struct sigaction sa;
+    sa.sa_sigaction = close_monitor;
+    sa.sa_flags = SA_SIGINFO;
+    
+    if (sigaction(SIGPROF, &sa, NULL) < 0) { //SIGPROF Profiling timer expired
+         fprintf(stderr,"Error setting up signal handler\n");
+         exit(1);
+    }
+    
     setup_shared_memory();
     
     //pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
@@ -490,7 +503,7 @@ int main(int argc, char **argv)
         goto out_evlist;
     }
 
-    while (1) {
+    while(g_running) {
         perf_evlist__enable(evlist);
         sleep(5);
         perf_evlist__disable(evlist);

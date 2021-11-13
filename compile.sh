@@ -38,6 +38,6 @@ sleep 1
 #pid_monitor=$!
 
 #When the main finish, send a signal to monitor finish
-#wait $pid_main
+wait $pid_main
 #kill -27 $pid_monitor
  
