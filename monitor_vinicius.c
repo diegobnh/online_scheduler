@@ -578,8 +578,10 @@ int main(int argc, char **argv)
                 			tlb_type = get_data_src_dtlb(data_src);
                 			if(tlb_type == 1){
                 				g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_hit[curr_ring_index][mem_level]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
                 			}else if(tlb_type == 2){
                 				g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
                             }else{
                                 fprintf(stderr, "get_data_src_dtlb() is returning -1\n");
                             }
@@ -589,6 +591,7 @@ int main(int argc, char **argv)
                     	g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
                     
                     }
+                    
                 }
 
                 perf_mmap__consume(map);
