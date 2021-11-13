@@ -593,6 +593,14 @@ int main(int argc, char **argv)
             perf_mmap__read_done(map);
         }
         
+        for(i=0 ;i< g_shared_memory->tier[0].num_obj; i++){
+            if(g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][4] != 0){
+                fprintf(stderr, "\t DRAM Start_addr:%p index:%d LLC miss:%d \n", \
+                                    g_shared_memory->tier[0].obj_vector[i].start_addr,\
+                                    i,\
+                                    g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][4]);
+            }
+        }
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
         incremental_ring_index++;
