@@ -610,8 +610,8 @@ int main(int argc, char **argv)
         }
         
         for(i=0 ;i< g_shared_memory->tier[1].num_obj; i++){
-            if(g_shared_memory->tier[1].obj_vector[i].ring.loads_count[4] != 0){
-                fprintf(stderr, "\t PMEM Start_addr:0x%p index:%d LLC miss:%d \n", g_shared_memory->tier[1].obj_vector[i].start_addr,i, g_shared_memory->tier[1].obj_vector[i].ring.loads_count[4]);
+            if(g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][4] != 0){
+                fprintf(stderr, "\t PMEM Start_addr:0x%p index:%d LLC miss:%d \n", g_shared_memory->tier[1].obj_vector[i].start_addr,i, g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][4]);
             }
         }
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
