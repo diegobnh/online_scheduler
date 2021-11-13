@@ -45,7 +45,7 @@
 #endif
 
 
-#define MAXIMUM_DRAM_CAPACITY 1000000000  //means 4GB
+#define MAXIMUM_DRAM_CAPACITY 99000000000  //means 4GB
 
 //#define DEBUG
 #ifdef DEBUG
@@ -144,8 +144,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
 #elif FIRST_DRAM
-        //if(1){
-        if(0){
+        if(1){
+        //if(0){
 #endif
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                
