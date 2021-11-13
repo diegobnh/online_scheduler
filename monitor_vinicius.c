@@ -540,7 +540,10 @@ int main(int argc, char **argv)
                 array++;
                 
                 vector_index = get_vector_index(sample_addr, &tier_type);
-                fprintf(stderr, "Vector_index=%d", vector_index);
+                if(vector_index == -1)
+                   fprintf(stderr, "\tFail=%d\n", vector_index);
+                else
+                   fprintf(stderr, "match=%d\n", vector_index);
 
                 weight = *array;
                 array++;
