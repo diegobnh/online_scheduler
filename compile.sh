@@ -14,7 +14,7 @@ gcc -g -c -fPIC sample_processor.c
 #gcc -g -c monitor_binary_search.c -lrt -lm -lnuma
 #gcc -o monitor monitor.c actuator.o recorder.o monitor_binary_search.o -lrt -lm -lpfm -lnuma
 #gcc -o monitor monitor.c actuator.o recorder.o sample_processor.o time.o -lrt -lm -lpfm -lnuma -lpthread
-gcc -I/scratch/build/autonuma-r6/tools/lib/perf/include/ -o monitor monitor_vinicius.c recorder.o sample_processor.o -lrt -lm -lpfm -lpthread -lperf
+gcc -g -I/scratch/build/autonuma-r6/tools/lib/perf/include/ -o monitor monitor_vinicius.c recorder.o sample_processor.o -lrt -lm -lpfm -lpthread -lperf
 
 gcc -g -o main main.c
 #gcc -g malloc_intercept.c -fpic -shared -o malloc_intercept.so recorder.o -rdynamic -ldl -lpthread -lrt
