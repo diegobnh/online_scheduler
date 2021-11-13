@@ -1,3 +1,5 @@
+#define _GNU_SOURCE 1
+
 #include <assert.h>
 #include <linux/perf_event.h>
 #include <perf/core.h>
