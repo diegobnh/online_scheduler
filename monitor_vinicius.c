@@ -556,8 +556,7 @@ int main(int argc, char **argv)
                     mem_level = -1;
                     //1 is load
                     if(mem_type_oper == 1){
-                        if(tier_type == 1)
-                           fprintf(stderr, "LOAD\n");
+                        
                     	if (is_served_by_local_NA_miss(data_src)) {
                 	    	mem_level = -1;
                 		}
@@ -599,8 +598,6 @@ int main(int argc, char **argv)
                 		}
                 		
                     }else if(mem_type_oper == 2){ // 2 is store
-                        if(tier_type == 1)
-                          fprintf(stderr, "STORE\n");
                     	g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
                     
                     }
@@ -612,6 +609,11 @@ int main(int argc, char **argv)
             perf_mmap__read_done(map);
         }
         
+        for(i=0 ;i< g_shared_memory->tier[1].num_obj; i++){
+            if(g_shared_memory->tier[1].obj_vector[i].ring.loads_count[4] != 0){
+                fprintf(stderr, "\t PMEM Start_addr:0x%p index:%d LLC miss:%d \n", g_shared_memory->tier[1].obj_vector[i].start_addr,i, g_shared_memory->tier[1].obj_vector[i].ring.loads_count[4]);
+            }
+        }
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
         incremental_ring_index++;
