@@ -319,15 +319,15 @@ char *get_data_src_level(union perf_mem_data_src data_src)
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_LOC_RAM) {
         old_res = res;
-        res = concat(res, "Local_RAM");
+        res = concat(res, "Local_RAM #################################");
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_REM_RAM1) {
         old_res = res;
-        res = concat(res, "Remote_RAM_1_hop");
+        res = concat(res, "Remote_RAM_1_hop #################################");
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_REM_RAM2) {
         old_res = res;
-        res = concat(res, "Remote_RAM_2_hops");
+        res = concat(res, "Remote_RAM_2_hops ##################################");
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_REM_CCE1) {
         old_res = res;
