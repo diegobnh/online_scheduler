@@ -554,10 +554,10 @@ int main(int argc, char **argv)
                 if (vector_index != -1){
                     mem_type_oper = get_data_src_opcode(data_src);
                     mem_level = -1;
-                    fprintf(stderr, "vector index != -1 \t");
-                    //1 is load 
+                    //1 is load
                     if(mem_type_oper == 1){
-                        fprintf(stderr, "LOAD\n");
+                        if(tier_type == 1)
+                           fprintf(stderr, "LOAD\n");
                     	if (is_served_by_local_NA_miss(data_src)) {
                 	    	mem_level = -1;
                 		}
@@ -599,7 +599,8 @@ int main(int argc, char **argv)
                 		}
                 		
                     }else if(mem_type_oper == 2){ // 2 is store
-                        fprintf(stderr, "STORE\n");
+                        if(tier_type == 1)
+                          fprintf(stderr, "STORE\n");
                     	g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
                     
                     }
