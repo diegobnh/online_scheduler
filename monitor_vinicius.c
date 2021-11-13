@@ -420,7 +420,7 @@ int main(int argc, char **argv)
     
     setup_shared_memory();
     
-    //pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
+    pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
 
     int curr_err = pfm_initialize();
     if (curr_err != PFM_SUCCESS) {
