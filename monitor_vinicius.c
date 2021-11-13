@@ -602,10 +602,10 @@ int main(int argc, char **argv)
                 for(j=0; j< RING_BUFFER_SIZE; j++){
                     fprintf(stderr, "\t\tj=%d, ",j);
                     fprintf(stderr, "lat:%ld, load:%ld, tlb_miss:%ld, tlb_hit:%ld\n", \
-                                     g_dram_tier_ring[i].sum_latency_cost[j][w],\
-                                     g_dram_tier_ring[i].loads_count[j][w],\
-                                     g_dram_tier_ring[i].TLB_hit[j][w],\
-                                     g_dram_tier_ring[i].TLB_miss[j][w]);
+                                     g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[j][w],\
+                                     g_shared_memory->tier[0].obj_vector[i].ring..loads_count[j][w],\
+                                     g_shared_memory->tier[0].obj_vector[i].ring..TLB_hit[j][w],\
+                                     g_shared_memory->tier[0].obj_vector[i].ring..TLB_miss[j][w]);
                 }
             }
         }
