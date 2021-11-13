@@ -2,6 +2,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <signal.h>
 
 #include <assert.h>
 #include <linux/perf_event.h>
