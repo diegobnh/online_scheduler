@@ -420,7 +420,7 @@ int main(int argc, char **argv)
     
     setup_shared_memory();
     
-    pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
+    //pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
 
     int curr_err = pfm_initialize();
     if (curr_err != PFM_SUCCESS) {
@@ -579,6 +579,9 @@ int main(int argc, char **argv)
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
                             g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
+                            if(tier_type == 1){
+                                fprintf(stderr, "Miss on PMEM!\n");
+                            }
                 		}
                 		
                 		if(mem_level != -1){
