@@ -30,7 +30,6 @@ static int g_running = 1;
 
 void close_monitor(int signum, siginfo_t *info, void *uc){
     fprintf(stderr, "[monitor], [sample_processor] closed! \n");
-    open_perf_clean();
     g_running = 0;
 }
 void clear_number_of_samples(int curr_ring_index){
