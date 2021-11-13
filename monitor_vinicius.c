@@ -23,6 +23,8 @@
 #include "recorder.h"
 #include "sample_processor.h"
 #define STORAGE_ID "SHM_TEST"
+#define MMAP_DATA_SIZE 1024
+
 
 struct schedule_manager *g_shared_memory; //variable that stores the contents of the shared memory
 int g_fd_shared_memory ; //file descriptor to shared memory
@@ -498,7 +500,7 @@ int main(int argc, char **argv)
         goto out_evlist;
     }
 
-    err = perf_evlist__mmap(evlist, 64);
+    err = perf_evlist__mmap(evlist, MMAP_DATA_SIZE);
     if (err) {
         fprintf(stderr, "failed to mmap evlist\n");
         goto out_evlist;
