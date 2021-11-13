@@ -560,18 +560,23 @@ int main(int argc, char **argv)
                 		}
                 		if (is_served_by_local_cache1(data_src)) {
                     		mem_level = 0;
+                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][0]++;
                 		}
                 		if (is_served_by_local_lfb(data_src)) {
                     		mem_level = 1;
+                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][1]++;
               		  	}
                 		if (is_served_by_local_cache2(data_src)) {
                     		mem_level = 2;
+                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][2]++;
                 		}
                 		if (is_served_by_local_cache3(data_src)) {
                     		mem_level = 3;
+                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][3]++;
                 		}
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
+                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
                 		}
                 		
                 		if(mem_level != -1){
