@@ -172,7 +172,15 @@ int is_served_by_local_memory(union perf_mem_data_src data_src)
     }
     return 0;
 }
-
+int is_served_by_local_pmem(union perf_mem_data_src data_src)
+{
+    if (data_src.mem_lvl & PERF_MEM_LVL_HIT) {
+        if (data_src.mem_lvl & PERF_MEM_LVL_MISS) {
+            return 1;
+        }
+    }
+    return 0;
+}
 int is_served_by_remote_cache_or_local_memory(union perf_mem_data_src data_src)
 {
     if (data_src.mem_lvl & PERF_MEM_LVL_HIT && data_src.mem_lvl & PERF_MEM_LVL_REM_CCE1) {
@@ -319,15 +327,15 @@ char *get_data_src_level(union perf_mem_data_src data_src)
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_LOC_RAM) {
         old_res = res;
-        res = concat(res, "Local_RAM #################################");
+        res = concat(res, "Local_RAM ");
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_REM_RAM1) {
         old_res = res;
-        res = concat(res, "Remote_RAM_1_hop #################################");
+        res = concat(res, "Remote_RAM_1_hop ");
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_REM_RAM2) {
         old_res = res;
-        res = concat(res, "Remote_RAM_2_hops ##################################");
+        res = concat(res, "Remote_RAM_2_hops ");
         free(old_res);
     } else if (data_src.mem_lvl & PERF_MEM_LVL_REM_CCE1) {
         old_res = res;
@@ -584,10 +592,11 @@ int main(int argc, char **argv)
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
                             g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
-                            if(tier_type == 1){
-                                fprintf(stderr, "Miss on PMEM!\n");
-                            }
                 		}
+                        if (is_served_by_local_pmem(data_src)) {
+                            mem_level = 4;
+                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
+                        }
                 		
                 		if(mem_level != -1){
                 			tlb_type = get_data_src_dtlb(data_src);
