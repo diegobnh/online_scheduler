@@ -108,7 +108,7 @@ void *thread_actuator(void *_args){
        
        pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
-       //check_candidates_to_migration(args);
+       check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
        /*
        pthread_mutex_lock(&args->global_mutex);
