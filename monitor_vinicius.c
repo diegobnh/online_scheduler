@@ -345,6 +345,10 @@ char *get_data_src_level(union perf_mem_data_src data_src)
         old_res = res;
         res = concat(res, "Uncached_Memory");
         free(old_res);
+    } else if (data_src.mem_lvl & PERF_MEM_LVLNUM_PMEM) {
+        old_res = res;
+        res = concat(res, "Local PMEM");
+        free(old_res);
     } else {
         old_res = res;
         res = concat(res, "Unknown");
