@@ -80,20 +80,19 @@ void check_candidates_to_migration(struct schedule_manager *args){
     static int num_call = 0;
     fprintf(stderr, "%d\n", num_call);
     for(i=0;i<args->tier[0].num_obj;i++){
-        //if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 &&
-        if(args->tier[0].obj_flag_alloc[i] == 1){
+        if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
             fprintf(stderr, "DRAM[%d,%lu] = %.2lf\n", i, args->tier[0].obj_vector[i].size, args->tier[0].obj_vector[i].metrics.loads_count[4]);
         }
         
     }
-    //fprintf(stderr, "###\n");
+    fprintf(stderr, "---\n");
     for(i=0;i<args->tier[1].num_obj;i++){
-        //if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 &&
-        if(args->tier[1].obj_flag_alloc[i] == 1){
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
             fprintf(stderr, "PMEM[%d,%lu] = %.2lf\n", i, args->tier[1].obj_vector[i].size, args->tier[1].obj_vector[i].metrics.loads_count[4]);
         }
         
     }
+    fprintf(stderr, "############################\n");
     num_call++;
 }
 
