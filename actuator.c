@@ -112,7 +112,6 @@ void check_candidates_to_migration(struct schedule_manager *args){
     fprintf(stderr, "############################\n");
     num_call++;
     
-    while()
 }
 
 void *thread_actuator(void *_args){
