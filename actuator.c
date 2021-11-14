@@ -81,8 +81,6 @@ void check_candidates_to_migration(struct schedule_manager *args){
     float llc_pmem;
     float llc_dram;
     
-    //static int num_call = 0;
-    //fprintf(stderr, "%d\n", num_call);
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
             fprintf(stderr, "DRAM[%d,%lu] = %.2lf\n", i, args->tier[0].obj_vector[i].size, args->tier[0].obj_vector[i].metrics.loads_count[4]);
@@ -110,7 +108,6 @@ void check_candidates_to_migration(struct schedule_manager *args){
         
     }
     fprintf(stderr, "############################\n");
-    num_call++;
     
 }
 
