@@ -175,7 +175,7 @@ int is_served_by_local_memory(union perf_mem_data_src data_src)
 int is_served_by_local_pmem(union perf_mem_data_src data_src)
 {
     if (data_src.mem_lvl & PERF_MEM_LVL_HIT) {
-        if (data_src.mem_lvl & PERF_MEM_LVL_MISS) {
+        if (data_src.mem_lvl & PERF_MEM_LVLNUM_PMEM) {
             return 1;
         }
     }
