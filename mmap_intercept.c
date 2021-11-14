@@ -144,8 +144,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
 #elif FIRST_DRAM
-        //if(1){
-        if(0){
+        if(1){
 #endif
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                
