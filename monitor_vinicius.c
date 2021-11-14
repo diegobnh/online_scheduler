@@ -566,7 +566,7 @@ int main(int argc, char **argv)
                 if (vector_index != -1){
                     mem_type_oper = get_data_src_opcode(data_src);
                     mem_level = -1;
-                    fprintf(stderr, "%s\n", get_data_src_level(data_src));
+                    //fprintf(stderr, "%s\n", get_data_src_level(data_src));
                     //1 is load
                     if(mem_type_oper == 1){
                         
