@@ -109,7 +109,7 @@ int calculate_SMA_for_DRAM(void){
             g_dram_metrics[i].stores_count = 0;
         
         if(stores != 0)
-            fprintf(stderr, "DRAM, SMA for DRAM :%ld, %.2lf\n", stores,(double)stores);
+            D fprintf(stderr, "DRAM, SMA for DRAM :%ld, %.2lf\n", stores,(double)stores);
         
     }
     //print_struc_dram(g_dram_tier_ring);
@@ -157,7 +157,7 @@ int calculate_SMA_for_PMEM(void){
             g_pmem_metrics[i].stores_count = 0;
         
         if(stores != 0)
-            fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores);
+            D fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores);
         
     }
     //print_struc_pmem(g_pmem_tier_ring);
@@ -270,7 +270,7 @@ void *thread_sample_processor(void *_args){
 				curr_value = g_dram_metrics[i].stores_count;
                 args->tier[0].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 if(args->tier[0].obj_vector[i].metrics.stores_count !=0)
-                    fprintf(stderr, "DRAM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
+                    D fprintf(stderr, "DRAM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
                         args->tier[0].obj_vector[i].metrics.stores_count);
 			}
             pthread_mutex_unlock(&args->global_mutex);
@@ -304,12 +304,12 @@ void *thread_sample_processor(void *_args){
                 
                 args->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 if(args->tier[1].obj_vector[i].metrics.stores_count != 0)
-                    fprintf(stderr, "PMEM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
+                    D fprintf(stderr, "PMEM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
                         args->tier[1].obj_vector[i].metrics.stores_count);
             }
             pthread_mutex_unlock(&args->global_mutex);
 		}
         
 	}
-    fprintf(stderr, "------------------\n");
+    D fprintf(stderr, "------------------\n");
 }
