@@ -84,10 +84,15 @@ int calculate_SMA_for_DRAM(void){
 				tlb_hit  += g_dram_tier_ring[i].TLB_miss[j][w];
 			}
             //local variable
-            g_dram_metrics[i].sum_latency_cost[w] = (double)lat/RING_BUFFER_SIZE;
-            g_dram_metrics[i].loads_count[w] = (double)loads/RING_BUFFER_SIZE;
-            g_dram_metrics[i].TLB_hit[w] = (double)tlb_hit/RING_BUFFER_SIZE;
-            g_dram_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
+            //g_dram_metrics[i].sum_latency_cost[w] = (double)lat/RING_BUFFER_SIZE;
+            //g_dram_metrics[i].loads_count[w] = (double)loads/RING_BUFFER_SIZE;
+            //g_dram_metrics[i].TLB_hit[w] = (double)tlb_hit/RING_BUFFER_SIZE;
+            //g_dram_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
+            
+            g_dram_metrics[i].sum_latency_cost[w] = (double)lat;
+            g_dram_metrics[i].loads_count[w] = (double)loads;
+            g_dram_metrics[i].TLB_hit[w] = (double)tlb_hit;
+            g_dram_metrics[i].TLB_miss[w] = (double)tlb_miss;
            
 		}
         
@@ -125,11 +130,16 @@ int calculate_SMA_for_PMEM(void){
 				tlb_miss += g_pmem_tier_ring[i].TLB_hit[j][w];
 				tlb_hit  += g_pmem_tier_ring[i].TLB_miss[j][w];
 			}
-			//local variable
-            g_pmem_metrics[i].sum_latency_cost[w] = (double)lat/RING_BUFFER_SIZE;
-            g_pmem_metrics[i].loads_count[w] = (double)loads/RING_BUFFER_SIZE;
-            g_pmem_metrics[i].TLB_hit[w] = (double)tlb_hit/RING_BUFFER_SIZE;
-            g_pmem_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
+			//Calculating average
+            //g_pmem_metrics[i].sum_latency_cost[w] = (double)lat/RING_BUFFER_SIZE;
+            //g_pmem_metrics[i].loads_count[w] = (double)loads/RING_BUFFER_SIZE;
+            //g_pmem_metrics[i].TLB_hit[w] = (double)tlb_hit/RING_BUFFER_SIZE;
+            //g_pmem_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
+            
+            g_pmem_metrics[i].sum_latency_cost[w] = (double)lat;
+            g_pmem_metrics[i].loads_count[w] = (double)loads;
+            g_pmem_metrics[i].TLB_hit[w] = (double)tlb_hit;
+            g_pmem_metrics[i].TLB_miss[w] = (double)tlb_miss;
 		}
         
 	}
