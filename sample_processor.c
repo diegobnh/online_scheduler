@@ -272,5 +272,5 @@ void *thread_sample_processor(void *_args){
 		}
         
 	}
-    fprintf(stderr, "\n");
+    fprintf(stderr, "------------------\n");
 }
