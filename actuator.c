@@ -143,7 +143,7 @@ void policy_migration(struct schedule_manager *args){
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
-                current_dram_space += args->tier[1].obj_vector[i].size;
+                current_dram_space += args->tier[1].obj_vector[i].size/1000000000.0;
             }
             
         }
