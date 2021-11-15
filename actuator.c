@@ -125,14 +125,13 @@ void policy_migration(struct schedule_manager *args){
     
     for(i=0;i<args->tier[1].num_obj;i++){
         if ((args->tier[1].obj_vector[i].size/1000000000.0) < current_dram_space){
-            fprintf(stderr, "Trying to migrate ..\n");
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                      args->tier[1].obj_vector[1].size,
                      MPOL_BIND, &nodemask,
                      64,
                      MPOL_MF_MOVE) == -1)
             {
-                fprintf(stderr,"Cant migrate object!!\n");
+                //fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
                 remove_allocation_on_pmem(args,
@@ -163,7 +162,7 @@ void *thread_actuator(void *_args){
        
        pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
-       //check_candidates_to_migration(args);
+       check_candidates_to_migration(args);
        policy_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
        /*
