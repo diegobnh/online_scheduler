@@ -69,7 +69,7 @@ void print_struc_dram(ring_buffer_t * g_dram_tier_ring){
 
 int calculate_SMA_for_DRAM(void){
 	int i, j, w;
-	long long lat, loads, stores, tlb_miss, tlb_hit;
+    unsigned long lat, loads, stores, tlb_miss, tlb_hit;
 	
     //This is for DRAM tier
 	for(i=0; i< g_total_dram_objs; i++){//I control the object
@@ -77,6 +77,7 @@ int calculate_SMA_for_DRAM(void){
 		for(w=0; w< MEM_LEVELS; w++){//control the memory level
 	        stores += g_dram_tier_ring->stores_count[w];
 	        lat = loads = tlb_miss = tlb_hit = 0;
+            
 			for(j=0; j< RING_BUFFER_SIZE; j++){//control the ring buffer position
 				lat      += g_dram_tier_ring[i].sum_latency_cost[j][w];
 				loads    += g_dram_tier_ring[i].loads_count[j][w];
@@ -90,6 +91,7 @@ int calculate_SMA_for_DRAM(void){
             g_dram_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
            
 		}
+        fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf", stores,(double)stores/RING_BUFFER_SIZE);
         g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
     //print_struc_dram(g_dram_tier_ring);
@@ -97,7 +99,7 @@ int calculate_SMA_for_DRAM(void){
 
 int calculate_SMA_for_PMEM(void){
     int i, j, w;
-    long long lat, loads, stores, tlb_miss, tlb_hit;
+    unsigned long lat, loads, stores, tlb_miss, tlb_hit;
     
 	//This is for PMEM tier
 	for(i=0; i< g_total_pmem_objs; i++){
@@ -118,6 +120,7 @@ int calculate_SMA_for_PMEM(void){
             g_pmem_metrics[i].TLB_hit[w] = (double)tlb_hit/RING_BUFFER_SIZE;
             g_pmem_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
 		}
+        fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf", stores,(double)stores/RING_BUFFER_SIZE);
         g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
     //print_struc_pmem(g_pmem_tier_ring);
