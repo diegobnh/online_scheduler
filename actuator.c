@@ -84,9 +84,9 @@ void check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%2.4lf] = %2.2lf   read-write\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+                fprintf(stderr, "DRAM[%d,%06.4lf] = %2.2lf   read-write\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]);
             }else{
-                fprintf(stderr, "DRAM[%d,%2.4lf] = %2.2lf read-only\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+                fprintf(stderr, "DRAM[%d,%06.4lf] = %2.2lf read-only\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]);
             }
             
         }
@@ -96,9 +96,9 @@ void check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "PMEM[%d,%2.4lf] = %2.2lf read-write\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+                fprintf(stderr, "PMEM[%d,%06.4lf] = %2.2lf read-write\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]);
             }else{
-                fprintf(stderr, "PMEM[%d,%2.4lf] = %2.2lf read-only\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]);
+                fprintf(stderr, "PMEM[%d,%06.4lf] = %2.2lf read-only\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]);
             }
             
         }
