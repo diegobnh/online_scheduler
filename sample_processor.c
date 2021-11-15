@@ -66,7 +66,6 @@ void print_struc_dram(ring_buffer_t * g_dram_tier_ring){
         }
     }
 }
-
 int calculate_SMA_for_DRAM(void){
 	int i, j, w;
     unsigned long lat, loads, stores, tlb_miss, tlb_hit;
@@ -96,7 +95,7 @@ int calculate_SMA_for_DRAM(void){
     for(i=0; i< g_total_dram_objs; i++){//I control the object
         stores = 0;
         for(j=0; j< RING_BUFFER_SIZE; j++){//control the ring buffer position
-                stores += g_dram_tier_ring->stores_count[j];
+                stores += g_dram_tier_ring[i].stores_count[j];
         }
         g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
         
@@ -106,7 +105,6 @@ int calculate_SMA_for_DRAM(void){
     }
     //print_struc_dram(g_dram_tier_ring);
 }
-
 int calculate_SMA_for_PMEM(void){
     int i, j, w;
     unsigned long lat, loads, stores, tlb_miss, tlb_hit;
@@ -138,7 +136,7 @@ int calculate_SMA_for_PMEM(void){
     for(i=0; i< g_total_pmem_objs; i++){//I control the object
         stores = 0;
         for(j=0; j< RING_BUFFER_SIZE; j++){//control the ring buffer position
-                stores += g_pmem_tier_ring->stores_count[j];
+                stores += g_pmem_tier_ring[i].stores_count[j];
         }
         g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
         
