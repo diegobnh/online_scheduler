@@ -13,10 +13,9 @@
 #include "recorder.h"
 
 #define NODE_0_DRAM 0
+#define NODE_0_PMEM 2
 #define NODE_1_DRAM 1
-#define NODE_2_PMEM 2
-#define NODE_3_PMEM 3
-
+#define NODE_1_PMEM 3
 
 //#define DEBUG
 #ifdef DEBUG
@@ -117,12 +116,12 @@ void check_candidates_to_migration(struct schedule_manager *args){
 
 void policy_migration(struct schedule_manager *args){
     int i;
-    int j;
-    float llc_pmem;
-    float llc_dram;
     float current_dram_space;
+    unsigned long nodemask;
     
-    current_dram_space = MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
+    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
+    
+    nodemask = 1<<NODE_0_DRAM;
     
     for(i=0;i<args->tier[1].num_obj;i++){
         if (args->tier[1].obj_vector[i].size < current_dram_space){
@@ -137,13 +136,13 @@ void policy_migration(struct schedule_manager *args){
                 //exit(-1);
             }else{
                 remove_allocation_on_pmem(args,
-                                      args->tier[0].obj_vector[random_index].pid,
-                                      args->tier[0].obj_vector[random_index].start_addr,
-                                      args->tier[0].obj_vector[random_index].size);
+                                      args->tier[1].obj_vector[i].pid,
+                                      args->tier[1].obj_vector[i].start_addr,
+                                      args->tier[1].obj_vector[i].size);
                 insert_allocation_on_dram(args,
-                                      args->tier[0].obj_vector[random_index].pid,
-                                      args->tier[0].obj_vector[random_index].start_addr,
-                                      args->tier[0].obj_vector[random_index].size);
+                                      args->tier[1].obj_vector[i].pid,
+                                      args->tier[1].obj_vector[i].start_addr,
+                                      args->tier[1].obj_vector[i].size);
                 current_dram_space += args->tier[1].obj_vector[i].size;
             }
             
