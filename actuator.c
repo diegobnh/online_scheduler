@@ -80,6 +80,9 @@ void check_candidates_to_migration(struct schedule_manager *args){
     int j;
     float llc_pmem;
     float llc_dram;
+    float current_dram_space;
+    
+    current_dram_space = MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
     
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
@@ -102,20 +105,6 @@ void check_candidates_to_migration(struct schedule_manager *args){
             }
             
         }
-        /*
-        if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
-            llc_pmem = args->tier[1].obj_vector[i].metrics.loads_count[4];
-            for(j=args->tier[0].num_obj - 1; j>=0; j--){
-                if(args->tier[0].obj_vector[j].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[j] == 1){
-                    
-                }
-                if(args->tier[1].obj_vector[i].metrics.loads_count[4] > args->tier[1].obj_vector[i].metrics.loads_count[4])
-                    
-            }
-            
-        }
-        */
-        
     }
     //fprintf(stderr, "\nMAXIMUM_DRAM_CAPACITY:%ld", MAXIMUM_DRAM_CAPACITY);
     //fprintf(stderr, "\nCurrent DRAM consumption:%ld", args->tier[0].current_memory_consumption);
@@ -123,6 +112,43 @@ void check_candidates_to_migration(struct schedule_manager *args){
     fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB)", \
             (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0);
     fprintf(stderr, "\n-------------------------------------\n");
+    
+}
+
+void policy_migration(struct schedule_manager *args){
+    int i;
+    int j;
+    float llc_pmem;
+    float llc_dram;
+    float current_dram_space;
+    
+    current_dram_space = MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
+    
+    for(i=0;i<args->tier[1].num_obj;i++){
+        if (args->tier[1].obj_vector[i].size < current_dram_space){
+            fprintf(stderr, "Trying to migrate ..\n");
+            if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
+                     args->tier[1].obj_vector[1].size,
+                     MPOL_BIND, &nodemask,
+                     64,
+                     MPOL_MF_MOVE) == -1)
+            {
+                fprintf(stderr,"Cant migrate object!!\n");
+                //exit(-1);
+            }else{
+                remove_allocation_on_pmem(args,
+                                      args->tier[0].obj_vector[random_index].pid,
+                                      args->tier[0].obj_vector[random_index].start_addr,
+                                      args->tier[0].obj_vector[random_index].size);
+                insert_allocation_on_dram(args,
+                                      args->tier[0].obj_vector[random_index].pid,
+                                      args->tier[0].obj_vector[random_index].start_addr,
+                                      args->tier[0].obj_vector[random_index].size);
+                current_dram_space += args->tier[1].obj_vector[i].size;
+            }
+            
+        }
+    }
     
 }
 
@@ -138,7 +164,8 @@ void *thread_actuator(void *_args){
        
        pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
-       check_candidates_to_migration(args);
+       //check_candidates_to_migration(args);
+       policy_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
        /*
        pthread_mutex_lock(&args->global_mutex);
