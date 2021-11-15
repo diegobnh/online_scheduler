@@ -10,7 +10,7 @@
 #include "recorder.h"
 #include "time.h"
 #define SLEEP_TIME 10
-#define ALPHA 0.9
+#define ALPHA 0.1
 
 //#define DEBUG
 #ifdef DEBUG
@@ -103,7 +103,7 @@ int calculate_SMA_for_DRAM(void){
             g_dram_metrics[i].stores_count = 0;
         
         if(stores != 0)
-            fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
+            fprintf(stderr, "DRAM, SMA for DRAM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
         
     }
     //print_struc_dram(g_dram_tier_ring);
