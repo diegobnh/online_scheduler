@@ -91,10 +91,19 @@ int calculate_SMA_for_DRAM(void){
             g_dram_metrics[i].TLB_miss[w] = (double)tlb_miss/RING_BUFFER_SIZE;
            
 		}
+        
+	}
+    for(i=0; i< g_total_dram_objs; i++){//I control the object
+        stores = 0;
+        for(j=0; j< RING_BUFFER_SIZE; j++){//control the ring buffer position
+                stores += g_dram_tier_ring->stores_count[j];
+        }
+        g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
+        
         if(stores != 0)
             fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
-        g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
-	}
+        
+    }
     //print_struc_dram(g_dram_tier_ring);
 }
 
@@ -104,7 +113,7 @@ int calculate_SMA_for_PMEM(void){
     
 	//This is for PMEM tier
 	for(i=0; i< g_total_pmem_objs; i++){
-	    stores = 0;
+	    
 		for(w=0; w< MEM_LEVELS; w++){ 	    
 	        stores += g_pmem_tier_ring->stores_count[w];
 	        lat = loads = tlb_miss = tlb_hit = 0;
@@ -125,6 +134,18 @@ int calculate_SMA_for_PMEM(void){
             fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
         g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
 	}
+    
+    for(i=0; i< g_total_pmem_objs; i++){//I control the object
+        stores = 0;
+        for(j=0; j< RING_BUFFER_SIZE; j++){//control the ring buffer position
+                stores += g_pmem_tier_ring->stores_count[j];
+        }
+        g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
+        
+        if(stores != 0)
+            fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
+        
+    }
     //print_struc_pmem(g_pmem_tier_ring);
 }
 
