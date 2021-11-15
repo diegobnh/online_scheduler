@@ -117,7 +117,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
          */
         
     }
-    fprintf(stderr, "\n Current DRAM space:%ld", MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)
+    fprintf(stderr, "\n Current DRAM space:%ld", MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption);
     fprintf(stderr, "-------------------------------------\n");
     
 }
