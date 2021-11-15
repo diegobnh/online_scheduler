@@ -124,7 +124,7 @@ void policy_migration(struct schedule_manager *args){
     nodemask = 1<<NODE_0_DRAM;
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        if (args->tier[1].obj_vector[i].size < current_dram_space){
+        if ((args->tier[1].obj_vector[i].size/1000000000.0) < current_dram_space){
             fprintf(stderr, "Trying to migrate ..\n");
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                      args->tier[1].obj_vector[1].size,
