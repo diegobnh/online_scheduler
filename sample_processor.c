@@ -103,12 +103,13 @@ int calculate_SMA_for_DRAM(void){
                 stores += g_dram_tier_ring[i].stores_count[j];
         }
         if(stores != 0)
-            g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
+            //g_dram_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
+            g_dram_metrics[i].stores_count = (double)stores;
         else
             g_dram_metrics[i].stores_count = 0;
         
         if(stores != 0)
-            fprintf(stderr, "DRAM, SMA for DRAM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
+            fprintf(stderr, "DRAM, SMA for DRAM :%ld, %.2lf\n", stores,(double)stores);
         
     }
     //print_struc_dram(g_dram_tier_ring);
@@ -150,12 +151,13 @@ int calculate_SMA_for_PMEM(void){
                 stores += g_pmem_tier_ring[i].stores_count[j];
         }
         if(stores != 0)
-            g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
+            //g_pmem_metrics[i].stores_count = (double)stores/RING_BUFFER_SIZE;
+            g_pmem_metrics[i].stores_count = (double)stores;
         else
             g_pmem_metrics[i].stores_count = 0;
         
         if(stores != 0)
-            fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores/RING_BUFFER_SIZE);
+            fprintf(stderr, "PMEM, SMA for PMEM :%ld, %.2lf\n", stores,(double)stores);
         
     }
     //print_struc_pmem(g_pmem_tier_ring);
