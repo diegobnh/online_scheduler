@@ -232,6 +232,8 @@ void *thread_sample_processor(void *_args){
 				old_value = args->tier[0].obj_vector[i].metrics.stores_count;
 				curr_value = g_dram_metrics[i].stores_count;
                 args->tier[0].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                fprintf(stderr, "DRAM old value : %.2lf, current value : %.2lf, final value: %.2lf", old_value,curr_value,\
+                        args->tier[0].obj_vector[i].metrics.stores_count);
 			}
             pthread_mutex_unlock(&args->global_mutex);
 		}
@@ -261,7 +263,10 @@ void *thread_sample_processor(void *_args){
                 
 				old_value = args->tier[1].obj_vector[i].metrics.stores_count;
 				curr_value = g_pmem_metrics[i].stores_count;
-                args->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;            
+                
+                args->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                fprintf(stderr, "PMEM old value : %.2lf, current value : %.2lf, final value: %.2lf", old_value,curr_value,\
+                        args->tier[1].obj_vector[i].metrics.stores_count);
             }
             pthread_mutex_unlock(&args->global_mutex);
 		}
