@@ -222,3 +222,25 @@ PMEM[5,0.5369] = 0.41,22.85 read-write
 
 Current DRAM space:2.3894(GB)
 -------------------------------------
+DRAM[0,1.0737] = 182.61,0.05 read-write
+DRAM[1,0.5369] = 8.17,60.19 read-write
+
+PMEM[0,0.5279] = 541.98,0.11 read-write
+PMEM[2,0.5369] = 58.84,534.22 read-write
+PMEM[3,1.0737] = 5.65,0.00 read-write
+PMEM[4,0.5369] = 5.07 read-only
+PMEM[5,0.5369] = 0.04,2.29 read-write
+
+Current DRAM space:2.3894(GB)
+-------------------------------------
+DRAM[0,1.0737] = 199.16,0.00 read-write
+DRAM[1,0.5369] = 0.82,86.12 read-write
+
+PMEM[0,0.5279] = 557.30,0.01 read-write
+PMEM[2,16.8931] = 20.93,0.00 read-write
+PMEM[3,1.0737] = 0.56,0.00 read-write
+PMEM[4,0.5369] = 0.51 read-only
+PMEM[5,0.5369] = 0.00,0.23 read-write
+
+Current DRAM space:2.3894(GB)
+-------------------------------------
