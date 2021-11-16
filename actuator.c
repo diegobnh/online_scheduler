@@ -101,7 +101,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     
     
-    fprintf(stderr, "\nCurrent DRAM space:%.2lf(GB), DRAM consumed%.2lf\n", current_dram_space, args->tier[0].current_memory_consumption/GB);
+    fprintf(stderr, "\nCurrent DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, args->tier[0].current_memory_consumption/GB);
     return flag_has_llcm;
 }
 
@@ -171,6 +171,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4];
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
+            break;
         }
     }
     
