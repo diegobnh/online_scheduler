@@ -103,7 +103,6 @@ int check_candidates_to_migration(struct schedule_manager *args){
     //fprintf(stderr, "\nCurrent DRAM consumption:%ld", args->tier[0].current_memory_consumption);
     //fprintf(stderr, "\nCurrent PMEM consumption:%ld", args->tier[1].current_memory_consumption);
     fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), %.2lf", current_dram_space, args->tier[0].current_memory_consumption/1000000000.0);
-    fprintf(stderr, "\n-------------------------------------\n");
     return flag_has_llcm;
 }
 
@@ -208,6 +207,7 @@ int policy_migration_downgrade(struct schedule_manager *args){
         
     }
     fprintf(stderr, "Num obj downgraded:%d\n", num_obj_migrated);
+    fprintf(stderr, "\n-------------------------------------\n");
 }
 
 void *thread_actuator(void *_args){
