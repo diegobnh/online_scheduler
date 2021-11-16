@@ -177,7 +177,7 @@ void *thread_actuator(void *_args){
 
        sort_objects(args);
        check_candidates_to_migration(args);
-       //policy_migration_upgrade(args);
+       policy_migration_upgrade(args);
        //policy_migration_downgrade(args);
         
        pthread_mutex_unlock(&args->global_mutex);
