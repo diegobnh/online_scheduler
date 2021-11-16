@@ -144,7 +144,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         if(1){
 #endif
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
-               
+               fprintf(stderr, "DRAM alocacao atual : %llu, current mem :%ld\n", (unsigned long)arg1,mem_consumption);
                nodemask = 1<<NODE_0_DRAM;
                
 		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
@@ -154,7 +154,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 					fprintf(stderr,"Error during mbind:%d\n",errno);
 					perror("Error description"); 
 		       }else{
-					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (long)arg1);
+					insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (unsigned long)arg1);
 	 		        flag_dram_alloc = 1;
 	 		        return 0;
 		       }
@@ -174,7 +174,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 			  perror("Error description"); 
 		   }
 		   
-   		   insert_allocation_on_pmem(shared_memory, (int)getpid(), *result, (long)arg1);
+   		   insert_allocation_on_pmem(shared_memory, (int)getpid(), *result, (unsigned long)arg1);
    		   return 0;
    		   
 		}
