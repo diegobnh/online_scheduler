@@ -12,6 +12,8 @@
 #include "monitor.h"
 #include "recorder.h"
 
+#define SLEEP_TIME 3
+
 #define NODE_0_DRAM 0
 #define NODE_0_PMEM 2
 #define NODE_1_DRAM 1
@@ -166,7 +168,7 @@ void *thread_actuator(void *_args){
     int i,j;
     
     while(1){
-       sleep(10);
+       sleep(SLEEP_TIME);
         
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;

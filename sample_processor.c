@@ -9,7 +9,7 @@
 
 #include "recorder.h"
 #include "time.h"
-#define SLEEP_TIME 10
+#define SLEEP_TIME 1
 #define ALPHA 0.1
 
 //#define DEBUG
