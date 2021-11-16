@@ -145,7 +145,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
             
         }
     }
-    fprintf(stderr, "Num obj upgraded:%d\n", num_obj_migrated);
+    fprintf(stderr, "\nNum obj upgraded:%d\n", num_obj_migrated);
     
 }
 int policy_migration_downgrade(struct schedule_manager *args){
@@ -206,8 +206,8 @@ int policy_migration_downgrade(struct schedule_manager *args){
         }
         
     }
-    fprintf(stderr, "Num obj downgraded:%d\n", num_obj_migrated);
-    fprintf(stderr, "\n-------------------------------------\n");
+    fprintf(stderr, "\nNum obj downgraded:%d\n", num_obj_migrated);
+    fprintf(stderr, "-------------------------------------\n");
 }
 
 void *thread_actuator(void *_args){
