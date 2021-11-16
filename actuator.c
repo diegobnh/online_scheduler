@@ -168,7 +168,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     //First get the top1 from pmem to promotion in the next round - get candidate
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
-            top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4];
+            top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB)
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
             fprintf(stderr, "PMEM candidate index:%d FI:%.2lf\n", i, top1_pmem_llcm);
