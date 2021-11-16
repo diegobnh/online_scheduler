@@ -234,7 +234,7 @@ void *thread_actuator(void *_args){
        sort_objects(args);
        
        current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
-       current_dram_consumed = args->tier[0].current_memory_consumption)/GB;a
+       current_dram_consumed = args->tier[0].current_memory_consumption)/GB;
        //flag_has_llcm = check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
        fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), DRAM consumed%.4lf\n", current_dram_space,current_dram_consumed);
