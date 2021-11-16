@@ -186,8 +186,8 @@ int policy_migration_demotion(struct schedule_manager *args){
     //Try to remove N objects from DRAM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
-            fprintf(stderr, "Checking if Coldest DRAM (%.2lf) <  Hottest PMEM (%.2lf)\n", args->tier[0].obj_vector[i].metrics.loads_count[4],top1_pmem_llcm);
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4] < top1_pmem_llcm){
+            fprintf(stderr, "Checking if Coldest DRAM (%.2lf) <  Hottest PMEM (%.2lf)\n", args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB),top1_pmem_llcm);
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB) < top1_pmem_llcm){
                 
                 if(mbind((void *)args->tier[0].obj_vector[i].start_addr,
                          args->tier[0].obj_vector[1].size,
