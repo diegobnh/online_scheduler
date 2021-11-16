@@ -162,6 +162,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     float top1_pmem_llcm;
     float top1_pmem_size;
     int num_obj_migrated=0;
+    float curr_llcm;
     
     pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
@@ -185,9 +186,10 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     //Try to remove N objects from DRAM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
-        if(args->tier[0].obj_vector[i].metrics.loads_count[4] > 1 && args->tier[0].obj_flag_alloc[i] == 1){
-            fprintf(stderr, "Checking if Coldest DRAM (%.2lf) <  Hottest PMEM (%.2lf)\n", args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB),top1_pmem_llcm);
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB) < top1_pmem_llcm){
+        curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
+        if(curr_llcm > 1 && args->tier[0].obj_flag_alloc[i] == 1){
+            fprintf(stderr, "Checking if Coldest DRAM (%.2lf) <  Hottest PMEM (%.2lf)\n", curr_llcm,top1_pmem_llcm);
+            if(curr_llcm < top1_pmem_llcm){
                 
                 if(mbind((void *)args->tier[0].obj_vector[i].start_addr,
                          args->tier[0].obj_vector[1].size,
@@ -215,11 +217,11 @@ int policy_migration_demotion(struct schedule_manager *args){
                     break;
                 }
             }else{
-                fprintf(stderr, "Object %d in DRAM has more LLCM/GB:%.4lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+                fprintf(stderr, "Object %d in DRAM has more LLCM/GB:%.4lf\n", i, curr_llcm);
                 break;
             }
         }else{
-            fprintf(stderr, "Obj:%d has no LLCM or is not allocated anymore\n", i);
+            fprintf(stderr, "Obj:%d has no LLCM  (%.2lf) or is not allocated anymore\n", i, curr_llcm);
         }
         
     }
