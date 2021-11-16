@@ -185,7 +185,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     //Try to remove N objects from DRAM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
-        if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
+        if(args->tier[0].obj_vector[i].metrics.loads_count[4] > 1 && args->tier[0].obj_flag_alloc[i] == 1){
             fprintf(stderr, "Checking if Coldest DRAM (%.2lf) <  Hottest PMEM (%.2lf)\n", args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB),top1_pmem_llcm);
             if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB) < top1_pmem_llcm){
                 
@@ -215,7 +215,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                     break;
                 }
             }else{
-                fprintf(stderr, "Object %d in DRAM has more LLCM/GB:%.4lf", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
+                fprintf(stderr, "Object %d in DRAM has more LLCM/GB:%.4lf\n", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
                 break;
             }
         }else{
