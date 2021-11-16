@@ -64,11 +64,10 @@ void sort_objects(struct schedule_manager *args){
     
 }
 
-void check_candidates_to_migration(struct schedule_manager *args){
+int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
-    float llc_pmem;
-    float llc_dram;
+    int flag_has_llcm = 0;
     float current_dram_space;
     
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
@@ -84,7 +83,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
             }else{
                 fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf read-only\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/1000000000.0));
             }
-            
+            flag_has_llcm = 1;
         }
         
     }
@@ -96,7 +95,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
             }else{
                 fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf read-only\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0));
             }
-            
+            flag_has_llcm = 1;
         }
     }
     
@@ -105,7 +104,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
     //fprintf(stderr, "\nCurrent PMEM consumption:%ld", args->tier[1].current_memory_consumption);
     fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), %.2lf", current_dram_space, args->tier[0].current_memory_consumption/1000000000.0);
     fprintf(stderr, "\n-------------------------------------\n");
-    
+    return flag_has_llcm;
 }
 
 void policy_migration_upgrade(struct schedule_manager *args){
@@ -129,7 +128,6 @@ void policy_migration_upgrade(struct schedule_manager *args){
                 //fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
-                fprintf(stderr, "Migrou obj size:%.2lf  curr dram space:%.2lf\n", args->tier[1].obj_vector[i].size/1000000000.0, current_dram_space);
                 remove_allocation_on_pmem(args,
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
@@ -175,6 +173,7 @@ void policy_migration_downgrade(struct schedule_manager *args){
 void *thread_actuator(void *_args){
     struct schedule_manager *args = (struct schedule_manager *) _args;
     int i,j;
+    int flag_has_llcm;
     
     while(1){
        sleep(SLEEP_TIME);
@@ -185,12 +184,14 @@ void *thread_actuator(void *_args){
        pthread_mutex_lock(&args->global_mutex);
 
        sort_objects(args);
-       check_candidates_to_migration(args);
+       flag_has_llcm = check_candidates_to_migration(args);
          
        pthread_mutex_unlock(&args->global_mutex);
 
-       policy_migration_upgrade(args);
-       //policy_migration_downgrade(args);
+       if(flag_has_llcm == 1)  {
+           policy_migration_upgrade(args);
+           //policy_migration_downgrade(args);
+       }
         
        
        
