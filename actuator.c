@@ -171,6 +171,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4];
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
+            fprintf(stderr, "PMEM candidate index:%d FI:%.2lf\n", i, top1_pmem_llcm);
             break;
         }
     }
