@@ -44,7 +44,7 @@ void sort_objects(struct schedule_manager *args){
 
     for(i=0;i<args->tier[0].num_obj;i++){
         for(j=i+1;j<args->tier[0].num_obj;j++){
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/1000000000.0) < args->tier[0].obj_vector[j].metrics.loads_count[4]/(args->tier[0].obj_vector[j].size/1000000000.0)){
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB) < args->tier[0].obj_vector[j].metrics.loads_count[4]/(args->tier[0].obj_vector[j].size/GB)){
                 aux = args->tier[0].obj_vector[j];
                 args->tier[0].obj_vector[j] = args->tier[0].obj_vector[i];
                 args->tier[0].obj_vector[i] = aux;
@@ -54,7 +54,7 @@ void sort_objects(struct schedule_manager *args){
     }
     for(i=0;i<args->tier[1].num_obj;i++){
         for(j=i+1;j<args->tier[1].num_obj;j++){
-            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[j].size/1000000000.0)){
+            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[j].size/GB)){
                 aux = args->tier[1].obj_vector[j];
                 args->tier[1].obj_vector[j] = args->tier[1].obj_vector[i];
                 args->tier[1].obj_vector[i] = aux;
@@ -70,8 +70,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
     int flag_has_llcm = 0;
     float current_dram_space;
     
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
-    //current_dram_space = (args->tier[0].current_memory_consumption/1000000000.0);
+    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
+    //current_dram_space = (args->tier[0].current_memory_consumption/GB);
     if(current_dram_space < 0){
         current_dram_space = 0;
     }
@@ -79,9 +79,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/1000000000.0), args->tier[0].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf read-only\n", i, args->tier[0].obj_vector[i].size/1000000000.0, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/1000000000.0));
+                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf read-only\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
             }
             flag_has_llcm = 1;
         }
@@ -91,9 +91,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0), args->tier[1].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf read-only\n", i, args->tier[1].obj_vector[i].size/1000000000.0, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0));
+                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf read-only\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
             }
             flag_has_llcm = 1;
         }
@@ -102,7 +102,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     //fprintf(stderr, "\nMAXIMUM_DRAM_CAPACITY:%ld", MAXIMUM_DRAM_CAPACITY);
     //fprintf(stderr, "\nCurrent DRAM consumption:%ld", args->tier[0].current_memory_consumption);
     //fprintf(stderr, "\nCurrent PMEM consumption:%ld", args->tier[1].current_memory_consumption);
-    fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), %.2lf\n", current_dram_space, args->tier[0].current_memory_consumption/1000000000.0);
+    fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), %.2lf\n", current_dram_space, args->tier[0].current_memory_consumption/GB);
     return flag_has_llcm;
 }
 
@@ -112,12 +112,12 @@ void policy_migration_upgrade(struct schedule_manager *args){
     unsigned long nodemask;
     int num_obj_migrated=0;
     
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
+    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
     
     nodemask = 1<<NODE_0_DRAM;
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        if ((args->tier[1].obj_vector[i].size/1000000000.0) < current_dram_space){
+        if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space){
             
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                      args->tier[1].obj_vector[1].size,
@@ -139,7 +139,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
                 
-                current_dram_space += args->tier[1].obj_vector[i].size/1000000000.0;
+                current_dram_space += args->tier[1].obj_vector[i].size/GB;
                 
             }
             
@@ -157,14 +157,14 @@ int policy_migration_downgrade(struct schedule_manager *args){
     float top1_pmem_size;
     int num_obj_migrated=0;
     
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
+    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
     nodemask = 1<<NODE_0_PMEM;
     
     //First get the top1 from pmem to upgrade in the next round
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4];
-            top1_pmem_size = args->tier[1].obj_vector[i].size/1000000000.0;
+            top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
         }
     }
@@ -198,7 +198,7 @@ int policy_migration_downgrade(struct schedule_manager *args){
                                           args->tier[0].obj_vector[i].size);
                 }
                 
-                top1_pmem_size -= args->tier[0].obj_vector[i].size/1000000000.0;
+                top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
                 if(top1_pmem_size < 0){
                     break;
                 }

@@ -9,6 +9,7 @@
 #define RING_BUFFER_SIZE  3
 #define MEM_LEVELS 5
 #define MAXIMUM_DRAM_CAPACITY 2E+9  //means 4GB
+#define GB 1000000000.0
 
 typedef struct metrics{
     //The metrics could be Simply Moving Average, Weighted Moving Average, Exponential Moving Average...
