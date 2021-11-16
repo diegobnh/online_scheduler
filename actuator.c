@@ -39,22 +39,10 @@ void sort_objects(struct schedule_manager *args){
     
     candidates_t dram_list[MAX_OBJECTS];//alocação dinamica aqui não funciona! Trava!
     candidates_t pmem_list[MAX_OBJECTS];//
-    
-    /*
-    dram_list = malloc(sizeof(candidates_t) * args->tier[0].num_obj);
-    if(dram_list == NULL){
-        fprintf(stderr, "Erro when allocating dram list candidates_t\n");
-    }
-    fprintf(stderr, "sort objects 1.5\n");
-    
-    if((pmem_list = malloc(sizeof(candidates_t) * args->tier[1].num_obj)) == NULL){
-        fprintf(stderr, "Erro when allocating pmem list candidates_t\n");
-    }
-     */
 
     for(i=0;i<args->tier[0].num_obj;i++){
         for(j=i+1;j<args->tier[0].num_obj;j++){
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4] < args->tier[0].obj_vector[j].metrics.loads_count[4]){
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/1000000000.0) < args->tier[0].obj_vector[j].metrics.loads_count[4]/(args->tier[0].obj_vector[j].size/1000000000.0)){
                 aux = args->tier[0].obj_vector[j];
                 args->tier[0].obj_vector[j] = args->tier[0].obj_vector[i];
                 args->tier[0].obj_vector[i] = aux;
@@ -64,7 +52,7 @@ void sort_objects(struct schedule_manager *args){
     }
     for(i=0;i<args->tier[1].num_obj;i++){
         for(j=i+1;j<args->tier[1].num_obj;j++){
-            if(args->tier[1].obj_vector[i].metrics.loads_count[4] < args->tier[1].obj_vector[j].metrics.loads_count[4]){
+            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0)){
                 aux = args->tier[1].obj_vector[j];
                 args->tier[1].obj_vector[j] = args->tier[1].obj_vector[i];
                 args->tier[1].obj_vector[i] = aux;
@@ -131,7 +119,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
                      64,
                      MPOL_MF_MOVE) == -1)
             {
-                //fprintf(stderr,"Cant migrate object!!\n");
+                fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
                 remove_allocation_on_pmem(args,
@@ -187,7 +175,7 @@ void *thread_actuator(void *_args){
 
        sort_objects(args);
        check_candidates_to_migration(args);
-       policy_migration_upgrade(args);
+       //policy_migration_upgrade(args);
        //policy_migration_downgrade(args);
         
        pthread_mutex_unlock(&args->global_mutex);
