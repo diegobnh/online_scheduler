@@ -80,32 +80,32 @@ int check_candidates_to_migration(struct schedule_manager *args){
     
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
-            /*
+            
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
             }else{
                 fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf read-only\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
             }
-            */
+            
         }
         
     }
     fprintf(stderr, "\n");
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
-            /*
+            
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
             }else{
                 fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf read-only\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
             }
-            */
+            
             flag_has_llcm = 1;
         }
     }
     
     
-    fprintf(stderr, "\nCurrent DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
+    fprintf(stderr, "Current DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
     return flag_has_llcm;
 }
 
@@ -151,7 +151,7 @@ void policy_migration_promotion(struct schedule_manager *args){
             
         }
     }
-    fprintf(stderr, "\nNum obj promoted:%d\n", num_obj_migrated);
+    fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
 }
 int policy_migration_demotion(struct schedule_manager *args){
@@ -175,7 +175,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
-            fprintf(stderr, "PMEM candidate index:%d FI:%.2lf\n", i, top1_pmem_llcm);
+            //fprintf(stderr, "PMEM candidate index:%d FI:%.2lf\n", i, top1_pmem_llcm);
             break;
         }
     }
