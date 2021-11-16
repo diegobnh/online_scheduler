@@ -130,11 +130,14 @@ void policy_migration_upgrade(struct schedule_manager *args){
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
+                fprintf(stderr,"remove ..");
                 insert_allocation_on_dram(args,
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
+                fprintf(stderr,"insert ..");
                 current_dram_space += args->tier[1].obj_vector[i].size/1000000000.0;
+                
                 fprintf(stderr,"[OK]\n");
             }
             
