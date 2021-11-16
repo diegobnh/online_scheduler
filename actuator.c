@@ -218,6 +218,8 @@ int policy_migration_demotion(struct schedule_manager *args){
                 fprintf(stderr, "Object %d in DRAM has more LLCM/GB:%.4lf", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
                 break;
             }
+        }else{
+            fprintf(stderr, "Obj:%d has no LLCM or is not allocated anymore\n", i);
         }
         
     }
