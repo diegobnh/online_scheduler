@@ -98,8 +98,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
     //fprintf(stderr, "\nMAXIMUM_DRAM_CAPACITY:%ld", MAXIMUM_DRAM_CAPACITY);
     //fprintf(stderr, "\nCurrent DRAM consumption:%ld", args->tier[0].current_memory_consumption);
     //fprintf(stderr, "\nCurrent PMEM consumption:%ld", args->tier[1].current_memory_consumption);
-    fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB)", \
-            (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0);
+    fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB)", current_dram_space);
     fprintf(stderr, "\n-------------------------------------\n");
     
 }
@@ -115,30 +114,29 @@ void policy_migration_upgrade(struct schedule_manager *args){
     
     for(i=0;i<args->tier[1].num_obj;i++){
         if ((args->tier[1].obj_vector[i].size/1000000000.0) < current_dram_space){
-            fprintf(stderr,"Trying to migrate..\n");
+            
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                      args->tier[1].obj_vector[1].size,
                      MPOL_BIND, &nodemask,
                      64,
                      MPOL_MF_MOVE) == -1)
             {
-                fprintf(stderr,"Cant migrate object!!\n");
+                //fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
-                fprintf(stderr,"Sucessuful..");
+                
                 remove_allocation_on_pmem(args,
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
-                fprintf(stderr,"remove ..");
+                
                 insert_allocation_on_dram(args,
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
-                fprintf(stderr,"insert ..");
+                
                 current_dram_space += args->tier[1].obj_vector[i].size/1000000000.0;
                 
-                fprintf(stderr,"[OK]\n");
             }
             
         }
@@ -186,7 +184,7 @@ void *thread_actuator(void *_args){
          
        pthread_mutex_unlock(&args->global_mutex);
 
-       policy_migration_upgrade(args);
+       //policy_migration_upgrade(args);
        //policy_migration_downgrade(args);
         
        
