@@ -77,14 +77,14 @@ int check_candidates_to_migration(struct schedule_manager *args){
     if(current_dram_space < 0){
         current_dram_space = 0;
     }
-    
+    fprintf(stderr, "Context\n");
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.4lf read-write\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf read-only\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
+                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf read-only\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
             }
             
         }
@@ -95,9 +95,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf,%.2lf read-write\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf,%.4lf read-write\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.2lf read-only\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
+                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf read-only\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
             }
             
             flag_has_llcm = 1;
@@ -214,6 +214,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                     break;
                 }
             }else{
+                fprintf(stderr, "Object %d in DRAM has more LLCM/GB:%.4lf", i, args->tier[0].obj_vector[i].metrics.loads_count[4]);
                 break;
             }
         }
@@ -244,13 +245,14 @@ void *thread_actuator(void *_args){
        flag_has_llcm = check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
 
+       fprintf(stderr, "\nDecisions\n");
        if(flag_has_llcm == 1 && current_dram_space > 0)  {
            policy_migration_promotion(args);//move top objects from PMEM to DRAM
        }
        else if(current_dram_space <= 0){
            policy_migration_demotion(args);//move non-top objetcts from DRAM to PMEM
        }
-       fprintf(stderr, "-------------------------------------\n");
+       fprintf(stderr, "-------------------------------------------------------\n");
     }//while end
 }
 
