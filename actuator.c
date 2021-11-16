@@ -147,7 +147,7 @@ void policy_migration_promotion(struct schedule_manager *args){
             
         }
     }
-    fprintf(stderr, "\nNum obj promotiond:%d\n", num_obj_migrated);
+    fprintf(stderr, "\nNum obj promoted:%d\n", num_obj_migrated);
     
 }
 int policy_migration_demotion(struct schedule_manager *args){
@@ -213,7 +213,7 @@ int policy_migration_demotion(struct schedule_manager *args){
         }
         
     }
-    fprintf(stderr, "Num obj demotiond:%d\n", num_obj_migrated);
+    fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
     fprintf(stderr, "-------------------------------------\n");
 }
 
@@ -237,7 +237,7 @@ void *thread_actuator(void *_args){
        current_dram_consumed = args->tier[0].current_memory_consumption/GB;
        //flag_has_llcm = check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
-       fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), Current DRAM consumed:%.4lf\n", current_dram_space,current_dram_consumed);
+       fprintf(stderr, "\nCurrent DRAM space:%.2lf(GB), Current DRAM consumed:%.2lf\n", current_dram_space,current_dram_consumed);
 
        if(flag_has_llcm == 1 && current_dram_space > 0)  {
            policy_migration_promotion(args);//move top objects from PMEM to DRAM
