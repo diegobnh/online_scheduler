@@ -237,7 +237,7 @@ void *thread_actuator(void *_args){
        current_dram_consumed = args->tier[0].current_memory_consumption/GB;
        //flag_has_llcm = check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
-       fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), DRAM consumed%.4lf\n", current_dram_space,current_dram_consumed);
+       fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), Current DRAM consumed:%.4lf\n", current_dram_space,current_dram_consumed);
 
        if(flag_has_llcm == 1 && current_dram_space > 0)  {
            policy_migration_promotion(args);//move top objects from PMEM to DRAM
