@@ -79,7 +79,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     fprintf(stderr, "Context\n");
     for(i=0;i<args->tier[0].num_obj;i++){
-        if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
+        if(args->tier[0].obj_vector[i].metrics.loads_count[4] >= 0.0001 && args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.4lf read-write\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
@@ -92,7 +92,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     fprintf(stderr, "\n");
     for(i=0;i<args->tier[1].num_obj;i++){
-        if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] > 0.0001 && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf,%.4lf read-write\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
