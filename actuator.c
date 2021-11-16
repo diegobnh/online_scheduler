@@ -111,6 +111,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
     int i;
     float current_dram_space;
     unsigned long nodemask;
+    int num_obj_migrated=0;
     
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
     
@@ -128,6 +129,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
                 //fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
+                num_obj_migrated++;
                 remove_allocation_on_pmem(args,
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
@@ -144,6 +146,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
             
         }
     }
+    fprintf(stderr, "Num obj upgraded:%d\n", num_obj_migrated);
     
 }
 int policy_migration_downgrade(struct schedule_manager *args){
@@ -153,6 +156,7 @@ int policy_migration_downgrade(struct schedule_manager *args){
     int top1_pmem = -1;
     float top1_pmem_llcm;
     float top1_pmem_size;
+    int num_obj_migrated=0;
     
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
     nodemask = 1<<NODE_0_PMEM;
@@ -183,6 +187,7 @@ int policy_migration_downgrade(struct schedule_manager *args){
                     //fprintf(stderr,"Cant migrate object!!\n");
                     //exit(-1);
                 }else{
+                    num_obj_migrated++;
                     remove_allocation_on_dram(args,
                                           args->tier[0].obj_vector[i].pid,
                                           args->tier[0].obj_vector[i].start_addr,
@@ -202,6 +207,7 @@ int policy_migration_downgrade(struct schedule_manager *args){
         }
         
     }
+    fprintf(stderr, "Num obj downgraded:%d\n", num_obj_migrated);
 }
 
 void *thread_actuator(void *_args){
