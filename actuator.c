@@ -68,13 +68,14 @@ int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
     int flag_has_llcm = 0;
-    float current_dram_space;
+    float curr_dram_space;
+    float curr_dram_consumed;
     
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
-    //current_dram_space = (args->tier[0].current_memory_consumption/GB);
+    curr_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].curr_memory_consumption)/GB;
+    curr_dram_consumed = args->tier[0].curr_memory_consumption/GB;
     
-    if(current_dram_space < 0){
-        current_dram_space = 0;
+    if(curr_dram_space < 0){
+        curr_dram_space = 0;
     }
     
     for(i=0;i<args->tier[0].num_obj;i++){
@@ -101,25 +102,25 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     
     
-    fprintf(stderr, "\nCurrent DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, args->tier[0].current_memory_consumption/GB);
+    fprintf(stderr, "\nCurrent DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", curr_dram_space, );
     return flag_has_llcm;
 }
 
 void policy_migration_promotion(struct schedule_manager *args){
     int i;
-    float current_dram_space;
+    float curr_dram_space;
     unsigned long nodemask;
     int num_obj_migrated=0;
     
     pthread_mutex_lock(&args->global_mutex);
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
+    curr_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].curr_memory_consumption)/GB;
     pthread_mutex_unlock(&args->global_mutex);
 
     
     nodemask = 1<<NODE_0_DRAM;
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space){
+        if ((args->tier[1].obj_vector[i].size/GB) < curr_dram_space){
             
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                      args->tier[1].obj_vector[1].size,
@@ -141,7 +142,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                                       args->tier[1].obj_vector[i].start_addr,
                                       args->tier[1].obj_vector[i].size);
                 
-                current_dram_space += args->tier[1].obj_vector[i].size/GB;
+                curr_dram_space += args->tier[1].obj_vector[i].size/GB;
                 
             }
             
@@ -152,7 +153,7 @@ void policy_migration_promotion(struct schedule_manager *args){
 }
 int policy_migration_demotion(struct schedule_manager *args){
     int i;
-    float current_dram_space;
+    float curr_dram_space;
     unsigned long nodemask;
     int top1_pmem = -1;
     float top1_pmem_llcm;
@@ -160,7 +161,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     int num_obj_migrated=0;
     
     pthread_mutex_lock(&args->global_mutex);
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
+    curr_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].curr_memory_consumption)/GB;
     pthread_mutex_unlock(&args->global_mutex);
     
     nodemask = 1<<NODE_0_PMEM;
@@ -223,8 +224,8 @@ void *thread_actuator(void *_args){
     struct schedule_manager *args = (struct schedule_manager *) _args;
     int i,j;
     int flag_has_llcm;
-    float current_dram_space;
-    float current_dram_consumed;
+    float curr_dram_space;
+    float curr_dram_consumed;
     
     while(1){
        sleep(SLEEP_TIME);
@@ -235,16 +236,16 @@ void *thread_actuator(void *_args){
        pthread_mutex_lock(&args->global_mutex);
        sort_objects(args);
        
-       current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
-       current_dram_consumed = args->tier[0].current_memory_consumption/GB;
+       curr_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].curr_memory_consumption)/GB;
+       curr_dram_consumed = args->tier[0].curr_memory_consumption/GB;
        flag_has_llcm = check_candidates_to_migration(args);
        pthread_mutex_unlock(&args->global_mutex);
        //fprintf(stderr, "Current DRAM space:%.2lf(GB), Current DRAM consumed:%.2lf\n", current_dram_space,current_dram_consumed);
 
-       if(flag_has_llcm == 1 && current_dram_space > 0)  {
+       if(flag_has_llcm == 1 && curr_dram_space > 0)  {
            policy_migration_promotion(args);//move top objects from PMEM to DRAM
        }
-       else if(current_dram_space <= 0){
+       else if(curr_dram_space <= 0){
            policy_migration_demotion(args);//move non-top objetcts from DRAM to PMEM
        }
     }//while end
