@@ -129,7 +129,7 @@ void policy_migration_upgrade(struct schedule_manager *args){
                 //fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
-                
+                fprintf(stderr, "Migrou obj size:%.2lf  curr dram space:%.2lf\n", args->tier[1].obj_vector[i].size/1000000000.0, current_dram_space);
                 remove_allocation_on_pmem(args,
                                       args->tier[1].obj_vector[i].pid,
                                       args->tier[1].obj_vector[i].start_addr,
