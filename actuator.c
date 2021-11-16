@@ -112,7 +112,10 @@ void policy_migration_upgrade(struct schedule_manager *args){
     unsigned long nodemask;
     int num_obj_migrated=0;
     
+    pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
+    pthread_mutex_unlock(&args->global_mutex);
+
     
     nodemask = 1<<NODE_0_DRAM;
     
@@ -157,7 +160,10 @@ int policy_migration_downgrade(struct schedule_manager *args){
     float top1_pmem_size;
     int num_obj_migrated=0;
     
+    pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
+    pthread_mutex_unlock(&args->global_mutex);
+    
     nodemask = 1<<NODE_0_PMEM;
     
     //First get the top1 from pmem to upgrade in the next round
@@ -229,8 +235,8 @@ void *thread_actuator(void *_args){
        pthread_mutex_unlock(&args->global_mutex);
 
        if(flag_has_llcm == 1)  {
-           policy_migration_upgrade(args);
-           policy_migration_downgrade(args);
+           policy_migration_upgrade(args);//move top objects from PMEM to DRAM
+           policy_migration_downgrade(args);//move non-top objetcts from DRAM to PMEM
        }
         
        
