@@ -203,7 +203,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 static __attribute__((constructor)) void
 init(int argc, char * argv[])
 {
-    srand(time(NULL));
+    //srand(time(NULL));
+    srand(123);
 	setvbuf(stdout, NULL, _IONBF, 0);  //avoid buffer from printf
 	intercept_hook_point = hook;
 }
