@@ -1,0 +1,147 @@
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:1.92(GB), DRAM consumed:0.08
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 471.8384,3.9600 read-write
+DRAM[2,0.0084] = 471.8384,3.9600 read-write
+DRAM[3,0.0084] = 353.8788,3.9600 read-write
+DRAM[4,0.0084] = 353.8788,3.9600 read-write
+DRAM[5,0.0084] = 235.9192,3.9600 read-write
+DRAM[6,0.0084] = 235.9192,3.9600 read-write
+DRAM[7,1.0737] = 175.1811,494.0100 read-write
+DRAM[8,0.0084] = 117.9596,3.9600 read-write
+DRAM[9,0.0084] = 117.9596,3.9600 read-write
+DRAM[10,0.0084] = 117.9596,3.9600 read-write
+
+PMEM[0,0.0084] = 825.7172,3.9600 read-write
+PMEM[1,0.0084] = 707.7576,3.9600 read-write
+PMEM[2,0.5369] = 593.7695,305.9100 read-write
+PMEM[3,0.0084] = 589.7980,3.9600 read-write
+PMEM[4,0.0084] = 353.8788 read-only
+PMEM[5,0.0084] = 235.9192,3.9600 read-write
+PMEM[6,0.0084] = 235.9192 read-only
+PMEM[7,0.5369] = 158.5844,329.6700 read-write
+PMEM[8,0.0084] = 117.9596,3.9600 read-write
+PMEM[9,16.8931] = 9.2008,1.0000 read-write
+Current DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:0 FI:825.72
+Obj:20 has no LLCM  (0.00) 
+Obj:19 has no LLCM  (0.00) 
+Obj:18 has no LLCM  (0.00) 
+Obj:17 has no LLCM  (0.00) 
+Obj:16 has no LLCM  (0.00) 
+Obj:15 has no LLCM  (0.00) 
+Obj:14 has no LLCM  (0.00) 
+Obj:13 has no LLCM  (0.00) 
+Obj:12 has no LLCM  (0.00) 
+Obj:11 has no LLCM  (0.00) 
+Checking if Coldest DRAM (117.96) <  Hottest PMEM (825.72)
+Num obj demoted:1
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 946.0574,4.0000 read-write
+DRAM[2,0.0084] = 830.4785,4.0000 read-write
+DRAM[3,0.0084] = 829.2882,4.0000 read-write
+DRAM[4,0.0084] = 829.2882,4.0000 read-write
+DRAM[5,0.0084] = 828.0978,4.0000 read-write
+DRAM[6,0.0084] = 826.9075,4.0000 read-write
+DRAM[7,0.0084] = 825.7172,4.0000 read-write
+DRAM[8,0.5279] = 784.2184,478.9952 read-write
+DRAM[9,1.0737] = 591.8515,2515.6250 read-write
+DRAM[11,1.0737] = 213.9054,2586.8700 read-write
+DRAM[12,0.0084] = 119.1499,4.0000 read-write
+DRAM[13,0.1342] = 7.3761 read-only
+
+PMEM[0,0.5369] = 1993.1253,969.5667 read-write
+PMEM[1,0.0084] = 1655.0053 read-only
+PMEM[2,0.0084] = 1541.8070,4.0000 read-write
+PMEM[3,0.0084] = 1422.6571,4.0000 read-write
+PMEM[4,0.0084] = 1303.5072,4.0000 read-write
+PMEM[5,0.0084] = 1062.8267,4.0000 read-write
+PMEM[6,0.0084] = 828.0978,4.0000 read-write
+PMEM[7,0.0084] = 828.0978 read-only
+PMEM[8,0.0084] = 707.7576 read-only
+PMEM[9,0.5369] = 599.7612,308.9969 read-write
+PMEM[10,16.8931] = 76.9226,1.0000 read-write
+PMEM[11,0.5369] = 1.8440 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.75
+
+Decisions
+PMEM candidate index:0 FI:1993.13
+Obj:20 has no LLCM  (0.00) 
+Obj:19 has no LLCM  (0.00) 
+Obj:18 has no LLCM  (0.00) 
+Obj:17 has no LLCM  (0.00) 
+Obj:16 has no LLCM  (0.00) 
+Obj:15 has no LLCM  (0.00) 
+Obj:14 has no LLCM  (0.00) 
+Checking if Coldest DRAM (7.38) <  Hottest PMEM (1993.13)
+Checking if Coldest DRAM (119.15) <  Hottest PMEM (1993.13)
+Checking if Coldest DRAM (213.91) <  Hottest PMEM (1993.13)
+Num obj demoted:1
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 1895.6870,4.0000 read-write
+DRAM[2,0.0084] = 1660.9593,4.0000 read-write
+DRAM[3,0.0084] = 1659.7702,4.0000 read-write
+DRAM[4,0.0084] = 1541.8070,4.0000 read-write
+DRAM[5,0.0084] = 1423.8510,4.0000 read-write
+DRAM[6,0.0084] = 1423.8498,4.0000 read-write
+DRAM[7,0.5279] = 1326.1948,3121.3100 read-write
+DRAM[8,1.0737] = 1080.0930,4956.5296 read-write
+DRAM[9,0.0084] = 953.2041,4.0000 read-write
+DRAM[11,1.0737] = 216.0639,2612.9739 read-write
+DRAM[13,0.1342] = 7.4505 read-only
+
+PMEM[0,0.5369] = 3733.9232,1247.2536 read-write
+PMEM[1,0.0084] = 2256.7149,4.0000 read-write
+PMEM[2,0.0084] = 2137.5638,4.0000 read-write
+PMEM[3,0.0084] = 2133.9869,4.0000 read-write
+PMEM[4,0.0084] = 1904.0216 read-only
+PMEM[5,0.0084] = 1894.4955 read-only
+PMEM[6,0.0084] = 1777.7286 read-only
+PMEM[7,0.0084] = 1546.5743,4.0000 read-write
+PMEM[8,0.0084] = 1305.8902,4.0000 read-write
+PMEM[9,0.5369] = 599.7672,309.0000 read-write
+PMEM[10,16.8931] = 145.5857,0.0100 read-write
+PMEM[11,0.5369] = 1.8626 read-only
+PMEM[12,1.0737] = 0.9220,660.0000 read-write
+Current DRAM space:0.00(GB), DRAM consumed:2.74
+
+Decisions
+PMEM candidate index:0 FI:3733.92
+Obj:20 has no LLCM  (0.00) 
+Obj:19 has no LLCM  (0.00) 
+Obj:18 has no LLCM  (0.00) 
+Obj:17 has no LLCM  (0.00) 
+Obj:16 has no LLCM  (0.00) 
+Obj:15 has no LLCM  (0.00) 
+Obj:14 has no LLCM  (0.00) 
+Checking if Coldest DRAM (7.45) <  Hottest PMEM (3733.92)
+Obj:12 is not allocated anymore
+Checking if Coldest DRAM (216.06) <  Hottest PMEM (3733.92)
+Num obj demoted:0
+-------------------------------------------------------

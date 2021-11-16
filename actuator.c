@@ -176,7 +176,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
-            fprintf(stderr, "PMEM candidate index:%d FI:%.2lf\n", i, top1_pmem_llcm);
+            fprintf(stderr, "PMEM candidate index:%d, %.2lf\n", i, top1_pmem_llcm);
             break;
         }
     }
@@ -260,9 +260,9 @@ void *thread_actuator(void *_args){
        if(flag_has_llcm == 1 && current_dram_space > 0)  {
            policy_migration_promotion(args);//move top objects from PMEM to DRAM
        }
-       else if(current_dram_space <= 0){
-           policy_migration_demotion(args);//move non-top objetcts from DRAM to PMEM
-       }
+       //else if(current_dram_space <= 0){
+        policy_migration_demotion(args);//move non-top objetcts from DRAM to PMEM
+       //}
        fprintf(stderr, "-------------------------------------------------------\n");
     }//while end
 }
