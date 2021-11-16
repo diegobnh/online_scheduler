@@ -123,7 +123,7 @@ void policy_migration_promotion(struct schedule_manager *args){
     nodemask = 1<<NODE_0_DRAM;
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space){
+        if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                      args->tier[1].obj_vector[1].size,
