@@ -132,9 +132,9 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
-		//pthread_mutex_lock(&shared_memory->global_mutex);
-        //mem_consumption = shared_memory->tier[0].current_memory_consumption;
-        //pthread_mutex_unlock(&shared_memory->global_mutex);
+		pthread_mutex_lock(&shared_memory->global_mutex);
+        mem_consumption = shared_memory->tier[0].current_memory_consumption;
+        pthread_mutex_unlock(&shared_memory->global_mutex);
 
 #if INIT_ALLOC == ROUND_ROBIN 		    
         if(((memory_index ++) %2)){
@@ -143,9 +143,6 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #elif FIRST_DRAM
         if(1){
 #endif
-           pthread_mutex_lock(&shared_memory->global_mutex);
-           mem_consumption = shared_memory->tier[0].current_memory_consumption;
-           
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
                
@@ -163,7 +160,6 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
            }else{
                flag_dram_alloc = 0;
            }
-           pthread_mutex_unlock(&shared_memory->global_mutex);
 		}
 		if(flag_dram_alloc == 0)
 		{
