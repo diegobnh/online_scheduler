@@ -206,7 +206,7 @@ int policy_migration_downgrade(struct schedule_manager *args){
         }
         
     }
-    fprintf(stderr, "\nNum obj downgraded:%d\n", num_obj_migrated);
+    fprintf(stderr, "Num obj downgraded:%d\n", num_obj_migrated);
     fprintf(stderr, "-------------------------------------\n");
 }
 
