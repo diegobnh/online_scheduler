@@ -189,7 +189,7 @@ void *thread_actuator(void *_args){
          
        pthread_mutex_unlock(&args->global_mutex);
 
-       policy_migration_upgrade(args);
+       //policy_migration_upgrade(args);
        //policy_migration_downgrade(args);
         
        
