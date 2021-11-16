@@ -221,7 +221,13 @@ int policy_migration_demotion(struct schedule_manager *args){
                 break;
             }
         }else{
-            fprintf(stderr, "Obj:%d has no LLCM  (%.2lf) or is not allocated anymore\n", i, curr_llcm);
+            if(curr_llcm < 1){
+                fprintf(stderr, "Obj:%d has no LLCM  (%.2lf) \n", i, curr_llcm);
+            }else{
+                fprintf(stderr, "Obj:%d is not allocated anymore\n", issss);
+                
+            }
+            
         }
         
     }
