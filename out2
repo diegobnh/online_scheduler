@@ -131,3 +131,207 @@ PMEM[11,0.5369] = 0.01,0.00 read-write
 Current DRAM space:0.20(GB), DRAM consumed:1.80
 Num obj promoted:7
 -------------------------------------
+DRAM[1,0.0084] = 2616.56,0.00 read-write
+DRAM[2,0.0084] = 2493.83,0.00 read-write
+DRAM[3,0.0084] = 2372.29 read-only
+DRAM[4,0.0084] = 2263.87,0.00 read-write
+DRAM[5,0.0084] = 2261.48 read-only
+DRAM[6,0.0084] = 1909.99,0.00 read-write
+DRAM[7,0.0084] = 1908.80,0.00 read-write
+DRAM[8,0.0084] = 1790.84,0.00 read-write
+DRAM[9,0.0084] = 1784.88 read-only
+DRAM[10,0.0084] = 1781.32,0.00 read-write
+DRAM[11,0.0084] = 1539.43 read-only
+DRAM[13,0.0084] = 1429.80 read-only
+DRAM[14,0.5279] = 1429.45,8223.68 read-write
+DRAM[15,0.0084] = 1425.05 read-only
+DRAM[16,0.0084] = 1315.44,0.00 read-write
+DRAM[17,0.0084] = 1077.13,0.00 read-write
+DRAM[18,0.0084] = 707.76 read-only
+DRAM[19,0.0084] = 238.30 read-only
+DRAM[20,1.0737] = 0.00,0.02 read-write
+DRAM[21,1.0737] = 0.00,0.00 read-write
+
+PMEM[0,0.5369] = 5467.97,845.09 read-write
+PMEM[10,0.0084] = 0.01 read-only
+PMEM[11,1.0737] = 0.01 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
+DRAM[1,0.0084] = 2620.12,0.00 read-write
+DRAM[2,0.0084] = 2614.18,0.00 read-write
+DRAM[3,0.0084] = 2383.01 read-only
+DRAM[4,0.0084] = 2377.07,0.00 read-write
+DRAM[5,0.0084] = 2145.91,0.00 read-write
+DRAM[6,0.0084] = 2145.91 read-only
+DRAM[7,0.0084] = 2142.34,0.00 read-write
+DRAM[8,0.0084] = 2138.75 read-only
+DRAM[9,0.0084] = 1787.26,0.00 read-write
+DRAM[10,0.0084] = 1783.69 read-only
+DRAM[11,0.0084] = 1669.30 read-only
+DRAM[13,0.0084] = 1544.20,0.00 read-write
+DRAM[14,0.0084] = 1429.82,0.00 read-write
+DRAM[15,0.5279] = 1396.41,8188.37 read-write
+DRAM[16,0.0084] = 1311.85 read-only
+DRAM[17,0.0084] = 1074.75,0.00 read-write
+DRAM[18,0.0084] = 714.90 read-only
+DRAM[19,0.0084] = 471.84 read-only
+DRAM[20,0.0084] = 238.30 read-only
+DRAM[21,1.0737] = 1.84,0.00 read-write
+DRAM[22,1.0737] = 0.00,0.00 read-write
+
+PMEM[0,0.5369] = 5405.99,631.12 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,1.0737] = 0.00 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
+DRAM[1,0.0084] = 2970.43 read-only
+DRAM[2,0.0084] = 2618.94 read-only
+DRAM[3,0.0084] = 2147.10,0.00 read-write
+DRAM[4,0.0084] = 2037.48,0.00 read-write
+DRAM[5,0.0084] = 2031.52,0.00 read-write
+DRAM[6,0.0084] = 2026.76,0.00 read-write
+DRAM[7,0.0084] = 2023.19,0.00 read-write
+DRAM[8,0.0084] = 1900.46 read-only
+DRAM[9,0.0084] = 1790.84 read-only
+DRAM[10,0.0084] = 1668.12 read-only
+DRAM[11,0.0084] = 1554.92,0.00 read-write
+DRAM[13,0.0084] = 1548.96,0.00 read-write
+DRAM[14,0.5279] = 1427.96,8166.22 read-write
+DRAM[15,0.0084] = 1426.24,0.00 read-write
+DRAM[16,0.0084] = 957.97,0.00 read-write
+DRAM[17,0.0084] = 830.48 read-only
+DRAM[18,0.0084] = 723.26 read-only
+DRAM[19,0.0084] = 714.91 read-only
+DRAM[20,1.0737] = 8.32,0.00 read-write
+DRAM[21,0.0084] = 2.38 read-only
+DRAM[22,1.0737] = 0.00,0.00 read-write
+
+PMEM[0,0.5369] = 5372.16,516.14 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,1.0737] = 0.00 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
+DRAM[1,0.0084] = 2495.03 read-only
+DRAM[2,0.0084] = 2267.44 read-only
+DRAM[3,0.0084] = 2144.72,0.00 read-write
+DRAM[4,0.0084] = 2143.53,0.00 read-write
+DRAM[5,0.0084] = 2143.53,0.00 read-write
+DRAM[6,0.0084] = 2038.67,0.00 read-write
+DRAM[7,0.0084] = 2024.37,0.99 read-write
+DRAM[8,0.0084] = 1902.85,0.00 read-write
+DRAM[9,0.0084] = 1902.84,0.00 read-write
+DRAM[10,0.0084] = 1789.65,0.00 read-write
+DRAM[11,0.0084] = 1786.08 read-only
+DRAM[13,0.0084] = 1435.78,0.00 read-write
+DRAM[14,0.5279] = 1435.78,8114.52 read-write
+DRAM[15,0.0084] = 1429.81,0.00 read-write
+DRAM[16,0.0084] = 1422.66 read-only
+DRAM[17,0.0084] = 1187.93 read-only
+DRAM[18,0.0084] = 953.21,0.00 read-write
+DRAM[19,1.0737] = 12.07,0.00 read-write
+DRAM[20,0.0084] = 7.16 read-only
+DRAM[21,0.0084] = 0.00 read-only
+DRAM[22,1.0737] = 0.00,0.00 read-write
+
+PMEM[0,0.5369] = 5270.41,434.81 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,1.0737] = 0.00 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
+DRAM[1,0.0084] = 2750.00 read-only
+DRAM[2,0.0084] = 2148.29 read-only
+DRAM[3,0.0084] = 2145.92 read-only
+DRAM[4,0.0084] = 2137.56 read-only
+DRAM[5,0.0084] = 2026.76,0.00 read-write
+DRAM[6,0.0084] = 1907.62,0.00 read-write
+DRAM[7,0.0084] = 1790.84,0.00 read-write
+DRAM[8,0.0084] = 1783.69,0.99 read-write
+DRAM[9,0.0084] = 1778.93,0.00 read-write
+DRAM[10,0.0084] = 1670.49,0.00 read-write
+DRAM[11,0.0084] = 1553.73,1.00 read-write
+DRAM[13,0.0084] = 1551.35 read-only
+DRAM[14,0.0084] = 1547.78,0.00 read-write
+DRAM[15,0.5279] = 1435.85,8074.40 read-write
+DRAM[16,0.0084] = 1198.66,0.00 read-write
+DRAM[17,0.0084] = 955.59 read-only
+DRAM[18,0.0084] = 707.76 read-only
+DRAM[19,0.0084] = 605.29,1.00 read-write
+DRAM[20,1.0737] = 18.56,0.00 read-write
+DRAM[21,0.0084] = 0.01 read-only
+DRAM[22,0.0084] = 0.00 read-only
+DRAM[23,1.0737] = 0.00,0.00 read-write
+
+PMEM[0,0.5369] = 5293.36,397.37 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,1.0737] = 0.00 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
+DRAM[1,0.0084] = 2733.33,0.00 read-write
+DRAM[2,0.0084] = 2610.60,0.99 read-write
+DRAM[3,0.0084] = 2504.57 read-only
+DRAM[4,0.0084] = 2257.92,0.00 read-write
+DRAM[5,0.0084] = 2151.86,1.00 read-write
+DRAM[6,0.0084] = 2141.15,0.00 read-write
+DRAM[7,0.0084] = 2141.14,0.00 read-write
+DRAM[8,0.0084] = 2026.76 read-only
+DRAM[9,0.0084] = 2023.18,1.00 read-write
+DRAM[10,0.0084] = 1790.84 read-only
+DRAM[11,0.0084] = 1548.97 read-only
+DRAM[13,0.0084] = 1431.01,1.00 read-write
+DRAM[14,0.0084] = 1425.05 read-only
+DRAM[15,0.0084] = 962.74,0.00 read-write
+DRAM[16,0.0084] = 841.21,0.00 read-write
+DRAM[17,0.0084] = 837.64,0.00 read-write
+DRAM[18,0.0084] = 714.90 read-only
+DRAM[19,1.0737] = 24.16,0.00 read-write
+DRAM[20,0.0084] = 5.97,0.01 read-write
+DRAM[21,0.0084] = 0.00 read-only
+DRAM[22,0.0084] = 0.00 read-only
+DRAM[23,1.0737] = 0.00,0.00 read-write
+
+PMEM[0,0.5369] = 5463.25,342.55 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,1.0737] = 0.00 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
+DRAM[1,0.0084] = 2503.35,3.97 read-write
+DRAM[2,0.0084] = 2381.82,1.98 read-write
+DRAM[3,0.0084] = 2262.68,0.99 read-write
+DRAM[4,0.0084] = 2137.57,0.99 read-write
+DRAM[5,0.0084] = 2026.77,1.00 read-write
+DRAM[6,0.0084] = 1907.61,0.99 read-write
+DRAM[7,0.0084] = 1672.88,1.98 read-write
+DRAM[8,0.0084] = 1671.69,1.99 read-write
+DRAM[9,0.0084] = 1543.02,0.00 read-write
+DRAM[10,0.0084] = 1444.10 read-only
+DRAM[11,0.0084] = 1440.54,0.99 read-write
+DRAM[13,0.0084] = 1313.05,2.97 read-write
+DRAM[14,0.0084] = 1075.94,1.00 read-write
+DRAM[15,0.5279] = 957.61,5408.05 read-write
+DRAM[16,0.0084] = 952.02,0.00 read-write
+DRAM[17,0.0084] = 716.11,0.99 read-write
+DRAM[18,0.0084] = 714.91 read-only
+DRAM[19,0.0084] = 235.93,1.98 read-write
+DRAM[20,1.0737] = 186.25,2627.46 read-write
+DRAM[21,1.0737] = 62.94,0.00 read-write
+DRAM[22,0.0084] = 0.00 read-only
+DRAM[23,0.0084] = 0.00 read-only
+
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,1.0737] = 0.00 read-only
+PMEM[12,0.5369] = 0.00,0.00 read-write
+Current DRAM space:0.14(GB), DRAM consumed:1.86
+Num obj promoted:0
+-------------------------------------
