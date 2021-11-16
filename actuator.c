@@ -52,7 +52,7 @@ void sort_objects(struct schedule_manager *args){
     }
     for(i=0;i<args->tier[1].num_obj;i++){
         for(j=i+1;j<args->tier[1].num_obj;j++){
-            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0)){
+            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/1000000000.0) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[j].size/1000000000.0)){
                 aux = args->tier[1].obj_vector[j];
                 args->tier[1].obj_vector[j] = args->tier[1].obj_vector[i];
                 args->tier[1].obj_vector[i] = aux;
