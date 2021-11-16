@@ -71,7 +71,10 @@ void check_candidates_to_migration(struct schedule_manager *args){
     float llc_dram;
     float current_dram_space;
     
-    current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
+    current_dram_space = (MAXIMUM_DRAM_CAPACITY - (args->tier[0].current_memory_consumption)/1000000000.0);
+    if(current_dram_space < 0){
+        current_dram_space = 0;
+    }
     /*
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
