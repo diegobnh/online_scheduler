@@ -72,7 +72,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
     float current_dram_space;
     
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
-    
+    /*
     for(i=0;i<args->tier[0].num_obj;i++){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
@@ -95,6 +95,7 @@ void check_candidates_to_migration(struct schedule_manager *args){
             
         }
     }
+     */
     //fprintf(stderr, "\nMAXIMUM_DRAM_CAPACITY:%ld", MAXIMUM_DRAM_CAPACITY);
     //fprintf(stderr, "\nCurrent DRAM consumption:%ld", args->tier[0].current_memory_consumption);
     //fprintf(stderr, "\nCurrent PMEM consumption:%ld", args->tier[1].current_memory_consumption);
