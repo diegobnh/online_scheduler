@@ -102,7 +102,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     //fprintf(stderr, "\nMAXIMUM_DRAM_CAPACITY:%ld", MAXIMUM_DRAM_CAPACITY);
     //fprintf(stderr, "\nCurrent DRAM consumption:%ld", args->tier[0].current_memory_consumption);
     //fprintf(stderr, "\nCurrent PMEM consumption:%ld", args->tier[1].current_memory_consumption);
-    fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), %.2lf", current_dram_space, args->tier[0].current_memory_consumption/1000000000.0);
+    fprintf(stderr, "\nCurrent DRAM space:%.4lf(GB), %.2lf\n", current_dram_space, args->tier[0].current_memory_consumption/1000000000.0);
     return flag_has_llcm;
 }
 
