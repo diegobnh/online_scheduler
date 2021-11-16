@@ -146,30 +146,64 @@ void policy_migration_upgrade(struct schedule_manager *args){
     }
     
 }
-/*
-void policy_migration_downgrade(struct schedule_manager *args){
+int policy_migration_downgrade(struct schedule_manager *args){
     int i;
     float current_dram_space;
     unsigned long nodemask;
+    int top1_pmem = -1;
+    float top1_pmem_llcm;
+    float top1_pmem_size;
     
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/1000000000.0;
-    
     nodemask = 1<<NODE_0_PMEM;
     
-    //pega qual o tamanho que nós precisamos de espaço e o ganho (LLC)
-    //Se nós acharmos alguém com mais llc miss do que o pmem break
-    //pode receber um alista de candidatos a migrar ou um unico objeto com Size_candidate e LLC_candidate
+    //First get the top1 from pmem to upgrade in the next round
+    for(i=0;i<args->tier[1].num_obj;i++){
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
+            top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4];
+            top1_pmem_size = args->tier[1].obj_vector[i].size/1000000000.0;
+            top1_pmem = i;
+        }
+    }
+    
+    if(top1_pmem == -1)
+        return 0;
+    
+    //Try to remove N objects from DRAM
     for(i=args->tier[0].num_obj-1;i>=0;i--){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[0].obj_flag_alloc[i] == 1){
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4] < LLC_candidate){
-                //adiciona esse objeto para o downgrade
-                //size_candidate
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4] < top1_pmem_llcm){
+                
+                if(mbind((void *)args->tier[0].obj_vector[i].start_addr,
+                         args->tier[0].obj_vector[1].size,
+                         MPOL_BIND, &nodemask,
+                         64,
+                         MPOL_MF_MOVE) == -1)
+                {
+                    //fprintf(stderr,"Cant migrate object!!\n");
+                    //exit(-1);
+                }else{
+                    remove_allocation_on_dram(args,
+                                          args->tier[0].obj_vector[i].pid,
+                                          args->tier[0].obj_vector[i].start_addr,
+                                          args->tier[0].obj_vector[i].size);
+                    
+                    insert_allocation_on_pmem(args,
+                                          args->tier[0].obj_vector[i].pid,
+                                          args->tier[0].obj_vector[i].start_addr,
+                                          args->tier[0].obj_vector[i].size);
+                }
+                
+                top1_pmem_size -= args->tier[0].obj_vector[i].size/1000000000.0;
+                if(top1_pmem_size < 0){
+                    break;
+                }
             }
         }
         
     }
 }
-*/
+
 void *thread_actuator(void *_args){
     struct schedule_manager *args = (struct schedule_manager *) _args;
     int i,j;
@@ -190,7 +224,7 @@ void *thread_actuator(void *_args){
 
        if(flag_has_llcm == 1)  {
            policy_migration_upgrade(args);
-           //policy_migration_downgrade(args);
+           policy_migration_downgrade(args);
        }
         
        
