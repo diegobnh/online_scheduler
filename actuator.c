@@ -122,7 +122,7 @@ void policy_migration_promotion(struct schedule_manager *args){
     
     
     for(i=0;i<args->tier[1].num_obj;i++){
-        llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB;
+        llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
         if(args->tier[1].obj_flag_alloc[i] == 1)
            fprintf(stderr, "Checking if Hottest PMEM size (%.2lf) <  Current space in DRAM (%ld)\n", llcm,current_dram_space);
         if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space && args->tier[1].obj_flag_alloc[i] == 1){

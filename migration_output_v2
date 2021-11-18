@@ -1,13 +1,3 @@
-actuator.c: In function ‘policy_migration_promotion’:
-actuator.c:125:103: error: expected ‘)’ before ‘;’ token
-  125 |         llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB;
-      |                                                                   ~                                   ^
-actuator.c:154:10: error: expected ‘;’ before ‘}’ token
-  154 |         }
-      |          ^
-      |          ;
-  155 |     }
-      |     ~     
 Context
 
 Current DRAM space:0.93(GB), DRAM consumed:1.07
@@ -28,36 +18,37 @@ Decisions
 -------------------------------------------------------
 Context
 
-Current DRAM space:0.84(GB), DRAM consumed:1.16
+Current DRAM space:0.31(GB), DRAM consumed:1.69
 
 Decisions
 -------------------------------------------------------
 Context
-DRAM[1,0.0084] = 707.7576 read-only
-DRAM[2,0.0084] = 589.7980,3.9600 read-write
-DRAM[3,0.0084] = 589.7980 read-only
-DRAM[4,0.0084] = 471.8384,2.9700 read-write
-DRAM[5,0.0084] = 353.8788,3.9600 read-write
-DRAM[6,0.0084] = 353.8788,2.9700 read-write
+DRAM[1,0.5279] = 783.8853,583.1100 read-write
+DRAM[2,0.0084] = 707.7576,3.9600 read-write
+DRAM[3,0.0084] = 707.7576,3.9600 read-write
+DRAM[4,0.0084] = 471.8384,3.9600 read-write
+DRAM[5,0.0084] = 471.8384,2.9700 read-write
+DRAM[6,0.0084] = 353.8788,3.9600 read-write
 DRAM[7,0.0084] = 235.9192,3.9600 read-write
-DRAM[8,0.0084] = 235.9192 read-only
-DRAM[9,0.0084] = 235.9192,3.9600 read-write
-DRAM[10,1.0737] = 144.7549,427.6800 read-write
+DRAM[8,1.0737] = 200.9973,548.4600 read-write
+DRAM[9,0.0084] = 117.9596,3.9600 read-write
+DRAM[10,0.0084] = 117.9596,3.9600 read-write
+DRAM[11,0.0084] = 117.9596 read-only
 
-PMEM[0,0.0084] = 707.7576 read-only
-PMEM[1,0.5369] = 558.7334,306.9000 read-write
-PMEM[2,0.0084] = 471.8384,2.9700 read-write
+PMEM[0,0.0084] = 825.7172 read-only
+PMEM[1,0.0084] = 707.7576 read-only
+PMEM[2,0.5369] = 582.7055,303.9300 read-write
 PMEM[3,0.0084] = 471.8384 read-only
 PMEM[4,0.0084] = 353.8788,3.9600 read-write
-PMEM[5,0.0084] = 353.8788,3.9600 read-write
-PMEM[6,0.0084] = 353.8788,3.9600 read-write
-PMEM[7,0.5369] = 153.0524,335.6100 read-write
-PMEM[8,0.0084] = 117.9596 read-only
-PMEM[9,16.8931] = 7.7357 read-only
+PMEM[5,0.5369] = 247.0966,391.0500 read-write
+PMEM[6,0.0084] = 235.9192,3.9600 read-write
+PMEM[7,0.0084] = 235.9192 read-only
+PMEM[8,0.0084] = 235.9192,2.9700 read-write
+PMEM[9,16.8931] = 11.5450 read-only
 Current DRAM space:0.00(GB), DRAM consumed:2.76
 
 Decisions
-PMEM candidate index:0, 707.76
+PMEM candidate index:0, 825.72
 Obj:20 has no LLCM  (0.00) 
 Obj:19 has no LLCM  (0.00) 
 Obj:18 has no LLCM  (0.00) 
@@ -67,36 +58,6 @@ Obj:15 has no LLCM  (0.00)
 Obj:14 has no LLCM  (0.00) 
 Obj:13 has no LLCM  (0.00) 
 Obj:12 has no LLCM  (0.00) 
-Obj:11 has no LLCM  (0.00) 
-Checking if Coldest DRAM (144.75) <  Hottest PMEM (707.76)
-Num obj demoted:1
--------------------------------------------------------
-Context
-DRAM[1,0.0084] = 1421.4668,4.0000 read-write
-DRAM[2,0.0084] = 1415.5152,4.0000 read-write
-DRAM[3,0.0084] = 1184.3573,3.9900 read-write
-DRAM[4,0.0084] = 1181.9766,4.0000 read-write
-DRAM[5,0.0084] = 1065.2074,4.0000 read-write
-DRAM[6,0.0084] = 949.6284 read-only
-DRAM[7,0.0084] = 947.2478,3.0000 read-write
-DRAM[8,0.0084] = 946.0574 read-only
-DRAM[9,0.5279] = 716.0255,399.9960 read-write
-DRAM[11,1.0737] = 217.5934,2577.9600 read-write
-DRAM[12,1.0737] = 146.2156,431.9957 read-write
-
-PMEM[0,0.5369] = 1852.9251,934.9766 read-write
-PMEM[1,0.0084] = 1772.9649,4.0000 read-write
-PMEM[2,0.0084] = 1422.6571 read-only
-PMEM[3,0.0084] = 1302.3169 read-only
-PMEM[4,0.0084] = 1065.2074,4.0000 read-write
-PMEM[5,0.0084] = 948.4381,3.0000 read-write
-PMEM[6,0.0084] = 590.9883 read-only
-PMEM[7,0.5369] = 564.3715,309.9969 read-write
-PMEM[8,0.0084] = 475.4094,4.0000 read-write
-PMEM[9,1.0737] = 444.4068,1943.3700 read-write
-PMEM[10,16.8931] = 75.3841 read-only
-Current DRAM space:0.31(GB), DRAM consumed:1.69
-
-Decisions
-Num obj promoted:7
+Checking if Coldest DRAM (117.96) <  Hottest PMEM (825.72)
+Num obj demoted:0
 -------------------------------------------------------
