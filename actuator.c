@@ -112,15 +112,19 @@ void policy_migration_promotion(struct schedule_manager *args){
     float current_dram_space;
     unsigned long nodemask;
     int num_obj_migrated=0;
+    float llcm;
     
     pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
     pthread_mutex_unlock(&args->global_mutex);
 
-    
     nodemask = 1<<NODE_0_DRAM;
     
+    
     for(i=0;i<args->tier[1].num_obj;i++){
+        llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB;
+        if(args->tier[1].obj_flag_alloc[i] == 1)
+           fprintf(stderr, "Checking if Hottest PMEM size (%.2lf) <  Current space in DRAM (%ld)\n", llcm,current_dram_space);
         if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
