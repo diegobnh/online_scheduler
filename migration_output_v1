@@ -290,3 +290,26 @@ Current DRAM space:0.26(GB), DRAM consumed:1.74
 
 Decisions
 -------------------------------------------------------
+Context
+DRAM[1,0.5279] = 3931.2700,587.4670 read-write
+DRAM[2,0.0084] = 716.0970,40.0100 read-write
+DRAM[3,0.0084] = 481.3800,41.0000 read-write
+DRAM[4,0.0084] = 480.1802,52.9900 read-write
+DRAM[5,0.0084] = 480.1778,31.0200 read-write
+DRAM[6,0.0084] = 476.6080,43.8900 read-write
+DRAM[7,1.0737] = 415.4804,309.4361 read-write
+DRAM[8,0.0084] = 362.2241,43.9900 read-write
+DRAM[9,0.0084] = 361.0291,33.0100 read-write
+DRAM[10,0.0084] = 361.0291,41.0400 read-write
+DRAM[12,0.0084] = 244.2634,46.9700 read-write
+DRAM[13,0.0084] = 241.8803,44.9400 read-write
+DRAM[14,0.0084] = 241.8791,47.9400 read-write
+DRAM[15,0.0084] = 241.8756,42.9700 read-write
+DRAM[16,0.0084] = 125.1122,40.0200 read-write
+DRAM[17,0.0084] = 123.9243,11.0000 read-write
+DRAM[18,0.0084] = 5.9576,9.0200 read-write
+
+Current DRAM space:0.26(GB), DRAM consumed:1.74
+
+Decisions
+-------------------------------------------------------
