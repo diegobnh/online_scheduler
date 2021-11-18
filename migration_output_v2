@@ -1,0 +1,28 @@
+actuator.c: In function ‘policy_migration_promotion’:
+actuator.c:125:103: error: expected ‘)’ before ‘;’ token
+  125 |         llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB;
+      |                                                                   ~                                   ^
+actuator.c:154:10: error: expected ‘;’ before ‘}’ token
+  154 |         }
+      |          ^
+      |          ;
+  155 |     }
+      |     ~     
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
