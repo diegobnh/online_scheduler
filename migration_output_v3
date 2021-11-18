@@ -1,0 +1,158 @@
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+-------------------------------------------------------
+Context
+
+Current DRAM space:0.31(GB), DRAM consumed:1.69
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 707.7576,3.9600 read-write
+DRAM[2,0.0084] = 707.7576,2.9700 read-write
+DRAM[3,0.0084] = 707.7576,3.9600 read-write
+DRAM[4,0.0084] = 707.7576,3.9600 read-write
+DRAM[5,0.0084] = 353.8788,3.9600 read-write
+DRAM[6,0.0084] = 353.8788,3.9600 read-write
+DRAM[7,0.0084] = 353.8788,2.9700 read-write
+DRAM[8,0.0084] = 353.8788,2.9700 read-write
+DRAM[9,0.0084] = 353.8788 read-only
+DRAM[10,1.0737] = 175.1811,556.3800 read-write
+DRAM[11,0.0084] = 117.9596,3.9600 read-write
+
+PMEM[0,0.0084] = 707.7576,3.9600 read-write
+PMEM[1,0.0084] = 589.7980,3.9600 read-write
+PMEM[2,0.0084] = 589.7980,3.9600 read-write
+PMEM[3,0.5369] = 567.9534,297.9900 read-write
+PMEM[4,0.0084] = 471.8384,3.9600 read-write
+PMEM[5,0.0084] = 353.8788 read-only
+PMEM[6,0.0084] = 353.8788,3.9600 read-write
+PMEM[7,0.5369] = 260.0047,385.1100 read-write
+PMEM[8,0.0084] = 235.9192,3.9600 read-write
+PMEM[9,16.8931] = 11.4864 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:0, 707.76
+Obj:20 has no LLCM  (0.00) 
+Obj:19 has no LLCM  (0.00) 
+Obj:18 has no LLCM  (0.00) 
+Obj:17 has no LLCM  (0.00) 
+Obj:16 has no LLCM  (0.00) 
+Obj:15 has no LLCM  (0.00) 
+Obj:14 has no LLCM  (0.00) 
+Obj:13 has no LLCM  (0.00) 
+Obj:12 has no LLCM  (0.00) 
+Checking if Coldest DRAM (117.96) <  Hottest PMEM (707.76)
+Espaço liberado na DRAM suficiente para migrar Top1 do PMEM
+Num obj demoted:1
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 1658.5763,4.0000 read-write
+DRAM[2,0.0084] = 1540.6167,4.0000 read-write
+DRAM[3,0.0084] = 1419.0861,3.0000 read-write
+DRAM[4,0.0084] = 1183.1670,4.0000 read-write
+DRAM[5,0.0084] = 1065.2074,4.0000 read-write
+DRAM[6,0.0084] = 1065.2074,3.0000 read-write
+DRAM[7,0.0084] = 950.8187,4.0000 read-write
+DRAM[8,0.5279] = 859.9883,552.9945 read-write
+DRAM[9,0.0084] = 829.2882 read-only
+DRAM[10,1.0737] = 667.4559,2565.7544 read-write
+DRAM[12,0.0084] = 119.1499,4.0000 read-write
+
+PMEM[0,0.5369] = 2025.4968,1027.5461 read-write
+PMEM[1,0.0084] = 1893.3052,4.0000 read-write
+PMEM[2,0.0084] = 1422.6571,4.0000 read-write
+PMEM[3,0.0084] = 1303.5072,4.0000 read-write
+PMEM[4,0.0084] = 1184.3573,4.0000 read-write
+PMEM[5,0.0084] = 1183.1670 read-only
+PMEM[6,0.0084] = 1064.0170,4.0000 read-write
+PMEM[7,0.0084] = 947.2478,4.0000 read-write
+PMEM[8,0.5369] = 573.6846,300.9970 read-write
+PMEM[9,0.0084] = 235.9192 read-only
+PMEM[10,16.8931] = 79.8759 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.75
+
+Decisions
+PMEM candidate index:0, 2025.50
+Obj:20 has no LLCM  (0.00) 
+Obj:19 has no LLCM  (0.00) 
+Obj:18 has no LLCM  (0.00) 
+Obj:17 has no LLCM  (0.00) 
+Obj:16 has no LLCM  (0.00) 
+Obj:15 has no LLCM  (0.00) 
+Obj:14 has no LLCM  (0.00) 
+Obj:13 has no LLCM  (0.00) 
+Checking if Coldest DRAM (119.15) <  Hottest PMEM (2025.50)
+Obj:11 is not allocated anymore
+Checking if Coldest DRAM (667.46) <  Hottest PMEM (2025.50)
+Espaço liberado na DRAM suficiente para migrar Top1 do PMEM
+Num obj demoted:2
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 2373.4794,3.0000 read-write
+DRAM[2,0.0084] = 2135.1796,4.0000 read-write
+DRAM[3,0.0084] = 2020.7945,4.0000 read-write
+DRAM[4,0.0084] = 1787.2559,3.0000 read-write
+DRAM[5,0.0084] = 1544.1912,3.0000 read-write
+DRAM[6,0.0084] = 1543.0045,4.0000 read-write
+DRAM[7,0.0084] = 1426.2316,4.0000 read-write
+DRAM[8,0.0084] = 1423.8510 read-only
+DRAM[9,0.5279] = 1355.0824,3171.5500 read-write
+
+PMEM[0,0.5369] = 3819.0648,1308.2235 read-write
+PMEM[1,0.0084] = 2491.4426,4.0000 read-write
+PMEM[2,0.0084] = 2378.2430,4.0000 read-write
+PMEM[3,0.0084] = 2136.3723,4.0000 read-write
+PMEM[4,0.0084] = 1781.3019,4.0000 read-write
+PMEM[5,0.0084] = 1427.4220 read-only
+PMEM[6,0.0084] = 1426.2304,4.0000 read-write
+PMEM[7,0.0084] = 1307.0817,4.9900 read-write
+PMEM[8,0.0084] = 828.0978 read-only
+PMEM[9,0.5369] = 573.6903,301.0000 read-write
+PMEM[10,1.0737] = 470.2230,2441.3400 read-write
+PMEM[11,16.8931] = 149.4832 read-only
+Current DRAM space:0.33(GB), DRAM consumed:1.67
+
+Decisions
+Checking if Hottest PMEM size (3819.06) <  Current space in DRAM (4660616627157467136)
+Checking if Hottest PMEM size (2491.44) <  Current space in DRAM (4657697155350265856)
+Checking if Hottest PMEM size (2378.24) <  Current space in DRAM (4657448227098853376)
+Checking if Hottest PMEM size (2136.37) <  Current space in DRAM (4656916347475722240)
+Checking if Hottest PMEM size (1781.30) <  Current space in DRAM (4655549064501264384)
+Checking if Hottest PMEM size (1427.42) <  Current space in DRAM (4653992683780440064)
+Checking if Hottest PMEM size (1426.23) <  Current space in DRAM (4653987443383468032)
+Checking if Hottest PMEM size (1307.08) <  Current space in DRAM (4653463421403004928)
+Checking if Hottest PMEM size (828.10) <  Current space in DRAM (4650495241445441536)
+Checking if Hottest PMEM size (573.69) <  Current space in DRAM (4648257449130721280)
+Checking if Hottest PMEM size (470.22) <  Current space in DRAM (4646979866011369472)
+Checking if Hottest PMEM size (149.48) <  Current space in DRAM (4639463488559775744)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Checking if Hottest PMEM size (0.00) <  Current space in DRAM (0)
+Num obj promoted:9
+-------------------------------------------------------
