@@ -230,3 +230,73 @@ Current DRAM space:0.25(GB), DRAM consumed:1.75
 
 Decisions
 -------------------------------------------------------
+Context
+DRAM[1,0.0084] = 1671.6972,40.6799 read-write
+DRAM[2,0.0084] = 1432.2011,48.6598 read-write
+DRAM[3,0.0084] = 1313.0571,36.6300 read-write
+DRAM[4,0.0084] = 1199.8553,42.7298 read-write
+DRAM[5,0.0084] = 1075.9429,46.6599 read-write
+DRAM[6,0.0084] = 1075.9369,35.7299 read-write
+DRAM[7,0.0084] = 1068.7950,30.6900 read-write
+DRAM[8,0.0084] = 959.1700,44.6899 read-write
+DRAM[9,0.0084] = 959.1688,39.6999 read-write
+DRAM[10,0.0084] = 957.9737,41.6999 read-write
+DRAM[12,0.0084] = 720.8618,35.7199 read-write
+DRAM[13,0.0084] = 714.9090,37.7399 read-write
+DRAM[14,1.0737] = 640.9369,4376.8393 read-write
+DRAM[15,0.0084] = 600.5287,41.6499 read-write
+DRAM[16,0.0084] = 483.7547,9.9999 read-write
+DRAM[17,0.0084] = 476.6104,49.6199 read-write
+DRAM[18,0.0084] = 128.6904,41.6899 read-write
+
+Current DRAM space:0.25(GB), DRAM consumed:1.75
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,1.0737] = 2598.0035,4009.9985 read-write
+DRAM[2,0.0084] = 960.3615,44.9597 read-write
+DRAM[3,0.0084] = 835.2540,45.9597 read-write
+DRAM[4,0.0084] = 830.4832,54.9496 read-write
+DRAM[5,1.0737] = 773.4830,1771.0948 read-write
+DRAM[6,0.0084] = 718.4848,50.9597 read-write
+DRAM[7,0.0084] = 718.4776,32.9797 read-write
+DRAM[8,0.0084] = 717.2956,42.9697 read-write
+DRAM[9,0.0084] = 604.0985,52.9597 read-write
+DRAM[10,0.0084] = 600.5252,35.9997 read-write
+DRAM[12,0.0084] = 595.7603,43.9796 read-write
+DRAM[13,0.0084] = 484.9474,37.9896 read-write
+DRAM[14,0.0084] = 483.7619,46.9597 read-write
+DRAM[15,0.0084] = 481.3764,47.9697 read-write
+DRAM[16,0.0084] = 243.0742,37.9797 read-write
+DRAM[17,0.0084] = 240.6924,10.9900 read-write
+DRAM[18,0.0084] = 237.1202,41.9997 read-write
+DRAM[19,0.0084] = 8.3537,13.0000 read-write
+
+Current DRAM space:0.25(GB), DRAM consumed:1.75
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,0.5279] = 5194.0264,0.0000 read-write
+DRAM[2,1.0737] = 1667.3577,162.0161 read-write
+DRAM[3,0.0084] = 717.2968,43.0200 read-write
+DRAM[4,0.0084] = 714.9102,37.9500 read-write
+DRAM[5,0.0084] = 598.1350,50.0499 read-write
+DRAM[6,0.0084] = 478.9899,38.0500 read-write
+DRAM[7,0.0084] = 477.7960,42.0200 read-write
+DRAM[8,0.0084] = 476.6128,40.9700 read-write
+DRAM[9,0.0084] = 361.0314,45.0600 read-write
+DRAM[10,0.0084] = 244.2610,41.0500 read-write
+DRAM[12,0.0084] = 241.8815,31.0500 read-write
+DRAM[13,0.0084] = 241.8779,31.1199 read-write
+DRAM[14,0.0084] = 240.6900,39.0900 read-write
+DRAM[15,0.0084] = 238.3010,38.0400 read-write
+DRAM[16,0.0084] = 122.7328,36.1100 read-write
+DRAM[17,0.0084] = 120.3450,2.0900 read-write
+DRAM[18,0.0084] = 2.3878,37.0100 read-write
+
+Current DRAM space:0.25(GB), DRAM consumed:1.75
+
+Decisions
+-------------------------------------------------------
