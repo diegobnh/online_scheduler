@@ -63,7 +63,6 @@ void sort_objects(struct schedule_manager *args){
     }
     
 }
-
 int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
@@ -108,7 +107,6 @@ int check_candidates_to_migration(struct schedule_manager *args){
     fprintf(stderr, "Current DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
     return flag_has_llcm;
 }
-
 void policy_migration_promotion(struct schedule_manager *args){
     int i;
     float current_dram_space;
@@ -260,9 +258,9 @@ void *thread_actuator(void *_args){
        if(flag_has_llcm == 1 && current_dram_space > 0)  {
            policy_migration_promotion(args);//move top objects from PMEM to DRAM
        }
-       //else if(current_dram_space <= 0){
-        policy_migration_demotion(args);//move non-top objetcts from DRAM to PMEM
-       //}
+       else if(current_dram_space <= 0){
+           policy_migration_demotion(args);//move non-top objetcts from DRAM to PMEM
+       }
        fprintf(stderr, "-------------------------------------------------------\n");
     }//while end
 }
