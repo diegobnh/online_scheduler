@@ -203,3 +203,101 @@ Current DRAM space:0.25(GB), DRAM consumed:1.75
 Decisions
 Num obj promoted:2
 -------------------------------------------------------
+Context
+DRAM[1,0.0084] = 2147.1018,2.9700 read-write
+DRAM[2,0.0084] = 2029.1398,4.9500 read-write
+DRAM[3,0.0084] = 1788.4629,4.9500 read-write
+DRAM[4,0.0084] = 1778.9225,6.9300 read-write
+DRAM[5,0.0084] = 1670.5045,7.9200 read-write
+DRAM[6,0.0084] = 1670.4986,10.8900 read-write
+DRAM[7,0.0084] = 1553.7341,7.9200 read-write
+DRAM[8,0.0084] = 1551.3486,12.8800 read-write
+DRAM[9,0.0084] = 1439.3454 read-only
+DRAM[11,0.0084] = 1423.8474,11.8800 read-write
+DRAM[12,0.0084] = 1319.0052,9.9000 read-write
+DRAM[13,0.0084] = 1311.8549,6.9300 read-write
+DRAM[14,0.5279] = 1143.6207,7765.2028 read-write
+DRAM[15,1.0737] = 1086.6634,6755.2988 read-write
+DRAM[16,0.0084] = 1078.3176,0.0000 read-write
+DRAM[17,0.0084] = 1077.1237,6.9300 read-write
+DRAM[18,0.0084] = 1074.7478,6.9300 read-write
+DRAM[19,0.0084] = 595.7675 read-only
+DRAM[20,1.0737] = 0.0024,0.0267 read-write
+
+Current DRAM space:0.23(GB), DRAM consumed:1.77
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,0.0084] = 1901.6458,41.6999 read-write
+DRAM[2,0.0084] = 1787.2583,41.6499 read-write
+DRAM[3,0.0084] = 1557.3014,6.9999 read-write
+DRAM[4,0.0084] = 1429.8157,5.9999 read-write
+DRAM[5,0.0084] = 1426.2436,38.6799 read-write
+DRAM[6,0.0084] = 1317.8149,33.7099 read-write
+DRAM[7,0.0084] = 1201.0456,36.6600 read-write
+DRAM[8,0.0084] = 1196.2795,42.6799 read-write
+DRAM[9,0.0084] = 1079.5103,31.7300 read-write
+DRAM[11,0.0084] = 956.7846,32.7399 read-write
+DRAM[12,0.0084] = 841.2116,40.6699 read-write
+DRAM[13,0.0084] = 838.8322,43.6599 read-write
+DRAM[14,0.0084] = 836.4432,38.6799 read-write
+DRAM[15,0.0084] = 724.4411,43.6399 read-write
+DRAM[16,0.0084] = 718.4872,35.6400 read-write
+DRAM[17,1.0737] = 659.9353,4373.9783 read-write
+DRAM[18,0.0084] = 605.2900,42.6999 read-write
+DRAM[19,1.0737] = 165.0390,1362.2400 read-write
+DRAM[20,0.0084] = 5.9576 read-only
+
+Current DRAM space:0.23(GB), DRAM consumed:1.77
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,1.0737] = 3000.0284,2748.1262 read-write
+DRAM[2,0.0084] = 1669.3070,43.9796 read-write
+DRAM[3,0.0084] = 1552.5342,43.9797 read-write
+DRAM[4,0.0084] = 957.9714,40.9797 read-write
+DRAM[5,0.0084] = 955.6014,38.9797 read-write
+DRAM[6,0.0084] = 950.8354,43.9996 read-write
+DRAM[7,0.0084] = 837.6371,45.9697 read-write
+DRAM[8,1.0737] = 738.6334,1818.5940 read-write
+DRAM[9,0.0084] = 720.8714,35.9797 read-write
+DRAM[11,0.0084] = 604.0961,8.9700 read-write
+DRAM[12,0.0084] = 487.3364,7.9900 read-write
+DRAM[13,0.0084] = 481.3741,33.9897 read-write
+DRAM[14,0.0084] = 480.1861,41.9897 read-write
+DRAM[15,0.0084] = 362.2218,39.9897 read-write
+DRAM[16,0.0084] = 361.0314,37.9796 read-write
+DRAM[17,0.0084] = 245.4561,29.9997 read-write
+DRAM[18,0.0084] = 244.2646,45.9797 read-write
+DRAM[19,0.0084] = 123.9267,44.9797 read-write
+
+Current DRAM space:0.23(GB), DRAM consumed:1.77
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[1,0.5279] = 4491.2723,400.6172 read-write
+DRAM[2,1.0737] = 1639.3442,192.1956 read-write
+DRAM[3,0.0084] = 959.1700,36.0800 read-write
+DRAM[4,0.0084] = 606.4803,41.0300 read-write
+DRAM[5,0.0084] = 599.3348,40.0100 read-write
+DRAM[6,0.0084] = 599.3325,39.0000 read-write
+DRAM[7,0.0084] = 596.9530,36.0000 read-write
+DRAM[8,0.0084] = 363.4085,41.0300 read-write
+DRAM[9,0.0084] = 362.2230,40.0600 read-write
+DRAM[11,0.0084] = 357.4569,43.9400 read-write
+DRAM[12,0.0084] = 243.0718,29.0500 read-write
+DRAM[13,0.0084] = 238.3094,36.9300 read-write
+DRAM[14,0.0084] = 238.3082,42.0400 read-write
+DRAM[15,0.0084] = 123.9255,7.0200 read-write
+DRAM[16,0.0084] = 122.7364,5.0300 read-write
+DRAM[17,0.0084] = 121.5389,41.9800 read-write
+DRAM[18,0.0084] = 119.1559,40.0500 read-write
+DRAM[19,0.0084] = 4.7708,30.0400 read-write
+
+Current DRAM space:0.23(GB), DRAM consumed:1.77
+
+Decisions
+-------------------------------------------------------
