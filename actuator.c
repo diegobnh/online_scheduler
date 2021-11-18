@@ -199,7 +199,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                          64,
                          MPOL_MF_MOVE) == -1)
                 {
-                    //fprintf(stderr,"Cant migrate object!!\n");
+                    fprintf(stderr,"Cant migrate object!!\n");
                     //exit(-1);
                 }else{
                     num_obj_migrated++;
@@ -216,6 +216,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                 
                 top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
                 if(top1_pmem_size <= 0){
+                    fprintf(stderr, "Espaço liberado na DRAM suficiente para migrar Top1 do PMEM\n");
                     break;
                 }
             }else{
