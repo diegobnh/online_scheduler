@@ -5,68 +5,28 @@ Current DRAM space:0.93(GB), DRAM consumed:1.07
 Decisions
 -------------------------------------------------------
 Context
+DRAM[0,1.0737] = 1.8440,3.9600 read-write
 
+PMEM[0,16.8931] = 0.1172,3.9600 read-write
 Current DRAM space:0.93(GB), DRAM consumed:1.07
 
 Decisions
+Num obj promoted:0
 -------------------------------------------------------
 Context
+DRAM[0,1.0737] = 1.8626,4.0000 read-write
 
+PMEM[0,16.8931] = 0.1184,4.0000 read-write
 Current DRAM space:0.93(GB), DRAM consumed:1.07
 
 Decisions
+Num obj promoted:0
 -------------------------------------------------------
 Context
 
-Current DRAM space:1.92(GB), DRAM consumed:0.08
+PMEM[0,16.8931] = 0.1184,4.0000 read-write
+Current DRAM space:0.31(GB), DRAM consumed:1.69
 
 Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
--------------------------------------------------------
-Context
-
-Current DRAM space:0.00(GB), DRAM consumed:2.76
-
-Decisions
+Num obj promoted:0
 -------------------------------------------------------
