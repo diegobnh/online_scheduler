@@ -124,44 +124,44 @@ void policy_migration_promotion(struct schedule_manager *args){
     
     for(i=0;i<args->tier[1].num_obj;i++){
         llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
-        //if(args->tier[1].obj_flag_alloc[i] == 1)
-        //   fprintf(stderr, "Checking if Hottest PMEM size (%.2lf) <  Current space in DRAM (%ld)\n", llcm,current_dram_space);
-        if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space && args->tier[1].obj_flag_alloc[i] == 1){
-            
-            if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
-                     args->tier[1].obj_vector[1].size,
-                     MPOL_BIND, &nodemask,
-                     64,
-                     MPOL_MF_MOVE) == -1)
-            {
-                //fprintf(stderr,"Cant migrate object!!\n");
-                //exit(-1);
+        if(llcm > MINIMUM_LLCM){
+            if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space && args->tier[1].obj_flag_alloc[i] == 1){
+                
+                if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
+                         args->tier[1].obj_vector[1].size,
+                         MPOL_BIND, &nodemask,
+                         64,
+                         MPOL_MF_MOVE) == -1)
+                {
+                    //fprintf(stderr,"Cant migrate object!!\n");
+                    //exit(-1);
+                }else{
+                    fprintf(stderr,"Promoted to DRAM object:%d \n", args->tier[1].obj_vector[i].index_id);
+                    num_obj_migrated++;
+                    remove_allocation_on_pmem(args,
+                                          args->tier[1].obj_vector[i].pid,
+                                          args->tier[1].obj_vector[i].start_addr,
+                                          args->tier[1].obj_vector[i].size);
+                    
+                    insert_allocation_on_dram(args,
+                                          args->tier[1].obj_vector[i].pid,
+                                          args->tier[1].obj_vector[i].start_addr,
+                                          args->tier[1].obj_vector[i].size);
+                    
+                    current_dram_space += args->tier[1].obj_vector[i].size/GB;
+                    
+                }
             }else{
-                fprintf(stderr,"Promoted to DRAM object:%d \n", args->tier[1].obj_vector[i].index_id);
-                num_obj_migrated++;
-                remove_allocation_on_pmem(args,
-                                      args->tier[1].obj_vector[i].pid,
-                                      args->tier[1].obj_vector[i].start_addr,
-                                      args->tier[1].obj_vector[i].size);
-                
-                insert_allocation_on_dram(args,
-                                      args->tier[1].obj_vector[i].pid,
-                                      args->tier[1].obj_vector[i].start_addr,
-                                      args->tier[1].obj_vector[i].size);
-                
-                current_dram_space += args->tier[1].obj_vector[i].size/GB;
-                
+                if(args->tier[1].obj_flag_alloc[i] == 1){
+                    fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \
+                            args->tier[1].obj_vector[i].index_id,\
+                            args->tier[1].obj_vector[i].size/GB);
+                }else{
+                    fprintf(stderr,"Cannot promote object %d to DRAM because its desalocatted!\n",args->tier[1].obj_vector[i].index_id);
+                }
             }
-        }else{
-            if(args->tier[1].obj_flag_alloc[i] == 1){
-                fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \
-                        args->tier[1].obj_vector[i].index_id,\
-                        args->tier[1].obj_vector[i].size/GB);
-            }else{
-                fprintf(stderr,"Cannot promote object %d to DRAM because its desalocatted!\n",args->tier[1].obj_vector[i].index_id);
-            }
-            
         }
+        
     }
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
@@ -210,7 +210,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                 sum_llcm_candidates_demotion += curr_llcm;
                 top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
                 obj_index_to_demotion[index_demotion] = i;
-                fprintf(stderr, "obj_index_to_demotion[%d] = %d\n", index_demotion, i);
+                //fprintf(stderr, "obj_index_to_demotion[%d] = %d\n", index_demotion, i);
                 index_demotion++;
                 if(top1_pmem_size <= 0){
                     break;
