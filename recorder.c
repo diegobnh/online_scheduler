@@ -17,6 +17,7 @@ void initialize_recorder(struct schedule_manager *args)
 {
 	int i, j, w;
 	
+    args.global_index = 0;
 	for(i = 0; i < MAX_OBJECTS; i++){
 		args->tier[0].obj_flag_alloc[i] = 0;
 		args->tier[1].obj_flag_alloc[i] = 0;
@@ -69,7 +70,8 @@ int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
     args->tier[1].obj_vector[index].size = size;
     args->tier[1].obj_vector[index].pages = size / getpagesize();
     args->tier[1].obj_vector[index].pid = pid;
-    args->tier[1].obj_vector[index].index_id = index; //save which position this allocation was saved
+    args->tier[1].obj_vector[index].index_id = args.global_index; //save which position this allocation was saved
+    args.global_index ++;
     
     args->tier[1].obj_flag_alloc[index] = 1 ; //check to say that this position is busy now
     args->tier[1].num_obj++;
@@ -99,7 +101,8 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
 	args->tier[0].obj_vector[index].size = size;
 	args->tier[0].obj_vector[index].pages = size / getpagesize();
     args->tier[0].obj_vector[index].pid = pid;
-    args->tier[0].obj_vector[index].index_id = index;
+    args->tier[0].obj_vector[index].index_id = args.global_index;
+    args.global_index++;
     
     args->tier[0].obj_flag_alloc[index] = 1 ;
     args->tier[0].num_obj++;

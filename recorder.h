@@ -53,6 +53,7 @@ typedef struct tier_manager{
 
 struct schedule_manager{
     tier_manager_t tier[2];//tier[0] means DRAM and tier[1] means PMEM
+    int global_index;
     pthread_mutex_t global_mutex; //mutex for account_shared_library_instances variable
     pthread_mutexattr_t global_attr_mutex; //mutex for account_shared_library_instances variable
     int account_shared_library_instances; //control variable to know when to deallocate the shared region
