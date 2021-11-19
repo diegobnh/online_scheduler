@@ -192,6 +192,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     if(top1_pmem == -1)
         return 0;
     
+    obj_index_to_demotion[0] = -1;
     //Stay in the loop until achieve space necessary to move PMEM top 1 or any DRAM object has more LLCM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
@@ -209,8 +210,17 @@ int policy_migration_demotion(struct schedule_manager *args){
         }
         index_demotion++;
     }
-    
     obj_index_to_demotion[index_demotion] = -1;//To know where i should stop
+    
+    
+    
+    i=0;
+    while(obj_index_to_demotion[i] != -1){
+        fprintf(stderr, "Object index to demotion:%d\n", obj_index_to_demotion[i]);
+        i++;
+    }
+        
+    
     index_demotion = 0;
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(obj_index_to_demotion[index_demotion] != -1){
