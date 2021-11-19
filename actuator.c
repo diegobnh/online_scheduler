@@ -201,6 +201,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                 sum_llcm_candidates_demotion += curr_llcm;
                 top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
                 obj_index_to_demotion[index_demotion] = i;
+                index_demotion++;
                 if(top1_pmem_size <= 0){
                     break;
                 }
@@ -208,7 +209,6 @@ int policy_migration_demotion(struct schedule_manager *args){
                 break;
             }
         }
-        index_demotion++;
     }
     obj_index_to_demotion[index_demotion] = -1;//To know where i should stop
     
