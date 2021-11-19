@@ -38,13 +38,11 @@ typedef struct candidates{
 void sort_objects(struct schedule_manager *args){
     int i,j;
     object_t aux;
-    
-    candidates_t dram_list[MAX_OBJECTS];//alocação dinamica aqui não funciona! Trava!
-    candidates_t pmem_list[MAX_OBJECTS];//
 
     for(i=0;i<args->tier[0].num_obj;i++){
         for(j=i+1;j<args->tier[0].num_obj;j++){
-            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB) < args->tier[0].obj_vector[j].metrics.loads_count[4]/(args->tier[0].obj_vector[j].size/GB)){
+            if(args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB) < args->tier[0].obj_vector[j].metrics.loads_count[4]/(args->tier[0].obj_vector[j].size/GB))
+            {
                 aux = args->tier[0].obj_vector[j];
                 args->tier[0].obj_vector[j] = args->tier[0].obj_vector[i];
                 args->tier[0].obj_vector[i] = aux;
@@ -54,7 +52,8 @@ void sort_objects(struct schedule_manager *args){
     }
     for(i=0;i<args->tier[1].num_obj;i++){
         for(j=i+1;j<args->tier[1].num_obj;j++){
-            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[j].size/GB)){
+            if(args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB) < args->tier[1].obj_vector[j].metrics.loads_count[4]/(args->tier[1].obj_vector[j].size/GB))
+            {
                 aux = args->tier[1].obj_vector[j];
                 args->tier[1].obj_vector[j] = args->tier[1].obj_vector[i];
                 args->tier[1].obj_vector[i] = aux;
@@ -67,6 +66,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
     int flag_has_llcm = 0;
+    float minimum_llcm = 1;
     float current_dram_space;
     float current_dram_consumed;
     
@@ -76,9 +76,10 @@ int check_candidates_to_migration(struct schedule_manager *args){
     if(current_dram_space < 0){
         current_dram_space = 0;
     }
+    
     fprintf(stderr, "Context\n");
     for(i=0;i<args->tier[0].num_obj;i++){
-        if(args->tier[0].obj_vector[i].metrics.loads_count[4] >= 0.0001 && args->tier[0].obj_flag_alloc[i] == 1){
+        if(args->tier[0].obj_vector[i].metrics.loads_count[4] >= minimum_llcm && args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.4lf read-write\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
@@ -91,7 +92,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     fprintf(stderr, "\n");
     for(i=0;i<args->tier[1].num_obj;i++){
-        if(args->tier[1].obj_vector[i].metrics.loads_count[4] > 0.0001 && args->tier[1].obj_flag_alloc[i] == 1){
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] > minimum_llcm && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf,%.4lf read-write\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
@@ -150,6 +151,14 @@ void policy_migration_promotion(struct schedule_manager *args){
                 
                 current_dram_space += args->tier[1].obj_vector[i].size/GB;
                 
+            }
+        }else{
+            if(args->tier[1].obj_flag_alloc[i] == 1){
+                fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \
+                        args->tier[1].obj_vector[i].index_id,\
+                        args->tier[1].obj_vector[i].size/GB);
+            }else{
+                fprintf(stderr,"Cannot promote object %d to DRAM because its desalocatted!\n",args->tier[1].obj_vector[i].index_id);
             }
             
         }
@@ -213,14 +222,6 @@ int policy_migration_demotion(struct schedule_manager *args){
     obj_index_to_demotion[index_demotion] = -1;//To know where i should stop
     
     
-    
-    i=0;
-    while(obj_index_to_demotion[i] != -1){
-        fprintf(stderr, "Object index to demotion:%d\n", args->tier[0].obj_vector[i].index_id);
-        i++;
-    }
-        
-    
     index_demotion = 0;
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(obj_index_to_demotion[index_demotion] != -1){
@@ -250,6 +251,8 @@ int policy_migration_demotion(struct schedule_manager *args){
             
             index_demotion++;
         }
+    }else{
+        fprintf(stderr,"Sum of all objs from DRAM has more LLCM than Top1 form PMEM!!\n");
     }
     
     
@@ -311,11 +314,12 @@ void *thread_actuator(void *_args){
        unsigned long nodemask = 1<<NODE_1_DRAM;
        
        pthread_mutex_lock(&args->global_mutex);
+        
        sort_objects(args);
-       
        current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
        current_dram_consumed = args->tier[0].current_memory_consumption/GB;
        flag_has_llcm = check_candidates_to_migration(args);
+        
        pthread_mutex_unlock(&args->global_mutex);
 
        fprintf(stderr, "\nDecisions\n");
