@@ -124,8 +124,8 @@ void policy_migration_promotion(struct schedule_manager *args){
     
     for(i=0;i<args->tier[1].num_obj;i++){
         llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
-        if(llcm > MINIMUM_LLCM){
-            if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space && args->tier[1].obj_flag_alloc[i] == 1){
+        if(llcm > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
+            if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space){
                 
                 if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                          args->tier[1].obj_vector[1].size,
