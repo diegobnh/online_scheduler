@@ -176,8 +176,8 @@ int policy_migration_demotion(struct schedule_manager *args){
     int num_obj_migrated=0;
     float curr_llcm;
     float sum_llcm_candidates_demotion = 0;
-    int obj_index_to_demotion[MAX_OBJECTS];
-    int index_demotion;
+    int list_obj_index[MAX_OBJECTS];
+    int obj_index;
     int curr_index;
     
     pthread_mutex_lock(&args->global_mutex);
@@ -200,33 +200,29 @@ int policy_migration_demotion(struct schedule_manager *args){
     if(top1_pmem == -1)
         return 0;
     
-    obj_index_to_demotion[0] = -1;
-    index_demotion = 0;
+    list_obj_index[0] = -1;
+    obj_index = 0;
     //Stay in the loop until achieve space necessary to move PMEM top 1 or any DRAM object has more LLCM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
-        if(curr_llcm > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
-            if(curr_llcm < top1_pmem_llcm){
-                sum_llcm_candidates_demotion += curr_llcm;
-                top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
-                obj_index_to_demotion[index_demotion] = i;
-                fprintf(stderr, "obj_index_to_demotion[%d] = %d\n", index_demotion, args->tier[0].obj_vector[i].index_id);
-                index_demotion++;
-                if(top1_pmem_size <= 0){
-                    break;
-                }
-            }else{
+        if(args->tier[0].obj_flag_alloc[i] == 1){
+            sum_llcm_candidates_demotion += curr_llcm;
+            top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
+            list_obj_index[obj_index] = i;
+            fprintf(stderr, "list_obj_index[%d] = %d\n", obj_index, args->tier[0].obj_vector[i].index_id);
+            obj_index++;
+            if(top1_pmem_size <= 0){
                 break;
             }
         }
     }
-    obj_index_to_demotion[index_demotion] = -1;//To know where i should stop
+    list_obj_index[obj_index] = -1;//To know where i should stop
     
     
-    index_demotion = 0;
+    obj_index = 0;
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
-        while(obj_index_to_demotion[index_demotion] != -1){
-            curr_index = obj_index_to_demotion[index_demotion];
+        while(list_obj_index[obj_index] != -1){
+            curr_index = list_obj_index[obj_index];
             
             if(mbind((void *)args->tier[0].obj_vector[curr_index].start_addr,
                      args->tier[0].obj_vector[curr_index].size,
@@ -250,7 +246,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                                       args->tier[0].obj_vector[curr_index].size);
             }
             
-            index_demotion++;
+            obj_index++;
         }
     }else{
         fprintf(stderr,"Sum of all objs from DRAM has more LLCM (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_llcm_candidates_demotion, top1_pmem_llcm);
