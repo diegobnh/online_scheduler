@@ -109,6 +109,7 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
     args->tier[0].current_obj_index = index ;
     args->tier[0].current_memory_consumption += size;
     
+    fprintf(stderr,"\t[recorder] insert() current_memory_consumption :%.2lf\n", shared_memory->tier[0].current_memory_consumption/GB);
     pthread_mutex_unlock(&args->global_mutex);
     D fprintf(stderr,"\t[recorder] insert_allocation_on_dram Free lock!!\n");
 }
@@ -147,6 +148,8 @@ int remove_allocation_on_dram(struct schedule_manager *shared_memory, int pid, u
             shared_memory->tier[0].obj_flag_alloc[i] = 0;
             shared_memory->tier[0].current_memory_consumption -= size;
             D fprintf(stderr,"\t[recorder] remove_allocation_on_dram Free lock!!\n");
+            
+            fprintf(stderr,"\t[recorder] remove() current_memory_consumption :%.2lf\n", shared_memory->tier[0].current_memory_consumption/GB);
             pthread_mutex_unlock(&shared_memory->global_mutex);
     		return 1;
     	}
