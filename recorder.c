@@ -17,7 +17,7 @@ void initialize_recorder(struct schedule_manager *args)
 {
 	int i, j, w;
 	
-    args.global_index = 0;
+    args->global_index = 0;
 	for(i = 0; i < MAX_OBJECTS; i++){
 		args->tier[0].obj_flag_alloc[i] = 0;
 		args->tier[1].obj_flag_alloc[i] = 0;
