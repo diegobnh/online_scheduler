@@ -26,7 +26,7 @@
   #define D if(0)
 #endif
 
-#define MINIMUM_LLCM 1;
+#define MINIMUM_LLCM 1
 
 //float g_top_to_demotion[NUM_CANDIDATES];
 //float g_top_to_promotion[NUM_CANDIDATES];
