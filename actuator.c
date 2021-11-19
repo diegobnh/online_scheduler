@@ -216,7 +216,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     i=0;
     while(obj_index_to_demotion[i] != -1){
-        fprintf(stderr, "Object index to demotion:%d\n", obj_index_to_demotion[i]);
+        fprintf(stderr, "Object index to demotion:%d\n", args->tier[0].obj_vector[i].index_id);
         i++;
     }
         
