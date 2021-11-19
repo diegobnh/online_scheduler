@@ -226,7 +226,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(list_obj_index[obj_index] != -1){
             curr_index = list_obj_index[obj_index];
-            fprintf(stderr, "Try to migrate addr:%p, %.4lf\n", args->tier[0].obj_vector[curr_index].start_addr, args->tier[0].obj_vector[curr_index].size)
+            fprintf(stderr, "Try to migrate addr:%p, %.4lf\n", args->tier[0].obj_vector[curr_index].start_addr, args->tier[0].obj_vector[curr_index].size);
             if(mbind((void *)args->tier[0].obj_vector[curr_index].start_addr,
                      args->tier[0].obj_vector[curr_index].size,
                      MPOL_BIND, &nodemask,
