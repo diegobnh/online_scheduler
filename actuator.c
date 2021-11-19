@@ -136,6 +136,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                 //fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
+                fprintf(stderr,"Promoted to DRAM object:%d \n", args->tier[1].obj_vector[i].index_id);
                 num_obj_migrated++;
                 remove_allocation_on_pmem(args,
                                       args->tier[1].obj_vector[i].pid,
@@ -224,6 +225,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                 fprintf(stderr,"Cant migrate object!!\n");
                 //exit(-1);
             }else{
+                fprintf(stderr,"Demoted to PMEM object:%d \n", args->tier[0].obj_vector[curr_index].index_id);
                 num_obj_migrated++;
                 remove_allocation_on_dram(args,
                                       args->tier[0].obj_vector[curr_index].pid,
