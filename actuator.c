@@ -26,7 +26,7 @@
   #define D if(0)
 #endif
 
-#define NUM_CANDIDATES 5
+#define MINIMUM_LLCM 1;
 
 //float g_top_to_demotion[NUM_CANDIDATES];
 //float g_top_to_promotion[NUM_CANDIDATES];
@@ -66,7 +66,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
     int flag_has_llcm = 0;
-    float minimum_llcm = 1;
+    
     float current_dram_space;
     float current_dram_consumed;
     
@@ -79,7 +79,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     
     fprintf(stderr, "Context\n");
     for(i=0;i<args->tier[0].num_obj;i++){
-        if(args->tier[0].obj_vector[i].metrics.loads_count[4] >= minimum_llcm && args->tier[0].obj_flag_alloc[i] == 1){
+        if(args->tier[0].obj_vector[i].metrics.loads_count[4] >= MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.4lf read-write\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
@@ -92,7 +92,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     fprintf(stderr, "\n");
     for(i=0;i<args->tier[1].num_obj;i++){
-        if(args->tier[1].obj_vector[i].metrics.loads_count[4] > minimum_llcm && args->tier[1].obj_flag_alloc[i] == 1){
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf,%.4lf read-write\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
@@ -175,7 +175,6 @@ int policy_migration_demotion(struct schedule_manager *args){
     float top1_pmem_size;
     int num_obj_migrated=0;
     float curr_llcm;
-    float minimum_llcm = 1;
     float sum_llcm_candidates_demotion = 0;
     int obj_index_to_demotion[MAX_OBJECTS];
     int index_demotion=0;
@@ -189,7 +188,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     //First get the top1 from pmem to promotion in the next round - get candidate
     for(i=0;i<args->tier[1].num_obj;i++){
-        if(args->tier[1].obj_vector[i].metrics.loads_count[4] != 0 && args->tier[1].obj_flag_alloc[i] == 1){
+        if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
@@ -205,7 +204,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     //Stay in the loop until achieve space necessary to move PMEM top 1 or any DRAM object has more LLCM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
-        if(curr_llcm > minimum_llcm && args->tier[0].obj_flag_alloc[i] == 1){
+        if(curr_llcm > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
             if(curr_llcm < top1_pmem_llcm){
                 sum_llcm_candidates_demotion += curr_llcm;
                 top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
