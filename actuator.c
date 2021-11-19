@@ -251,7 +251,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             index_demotion++;
         }
     }else{
-        fprintf(stderr,"Sum of all objs from DRAM has more LLCM than Top1 form PMEM!!\n");
+        fprintf(stderr,"Sum of all objs from DRAM has more LLCM (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_llcm_candidates_demotion, top1_pmem_llcm);
     }
     
     
