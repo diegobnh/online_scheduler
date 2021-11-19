@@ -81,9 +81,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         if(args->tier[0].obj_vector[i].metrics.loads_count[4] >= 0.0001 && args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.4lf read-write\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "DRAM[%p,%.4lf] = %04.4lf,%.4lf read-write\n", args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf read-only\n", i, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
+                fprintf(stderr, "DRAM[%p,%.4lf] = %04.4lf read-only\n", args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
             }
             
         }
@@ -94,9 +94,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] > 0.0001 && args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf,%.4lf read-write\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "PMEM[%p,%06.4lf] = %04.4lf,%.4lf read-write\n", args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf read-only\n", i, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
+                fprintf(stderr, "PMEM[%p,%06.4lf] = %04.4lf read-only\n", args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
             }
             
             flag_has_llcm = 1;
@@ -165,6 +165,11 @@ int policy_migration_demotion(struct schedule_manager *args){
     float top1_pmem_size;
     int num_obj_migrated=0;
     float curr_llcm;
+    float minimum_llcm = 1;
+    float sum_llcm_candidates_demotion = 0;
+    int obj_index_to_demotion[MAX_OBJECTS];
+    int index_demotion=0;
+    int curr_index;
     
     pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
@@ -186,7 +191,58 @@ int policy_migration_demotion(struct schedule_manager *args){
     if(top1_pmem == -1)
         return 0;
     
+    //Stay in the loop until achieve space necessary to move PMEM top 1 or any DRAM object has more LLCM
+    for(i=args->tier[0].num_obj-1; i >= 0; i--){
+        curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
+        if(curr_llcm > minimum_llcm && args->tier[0].obj_flag_alloc[i] == 1){
+            if(curr_llcm < top1_pmem_llcm){
+                sum_llcm_candidates_demotion += curr_llcm;
+                top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
+                obj_index_to_demotion[index_demotion] = i;
+                if(top1_pmem_size <= 0){
+                    break;
+                }
+            }else{
+                break;
+            }
+        }
+        index_demotion++;
+    }
+    
+    obj_index_to_demotion[index_demotion] = -1;//To know where i should stop
+    index_demotion = 0;
+    if(sum_llcm_candidates_demotion < top1_pmem_llcm){
+        while(obj_index_to_demotion[index_demotion] != -1){
+            curr_index = obj_index_to_demotion[index_demotion];
+            
+            if(mbind((void *)args->tier[0].obj_vector[curr_index].start_addr,
+                     args->tier[0].obj_vector[curr_index].size,
+                     MPOL_BIND, &nodemask,
+                     64,
+                     MPOL_MF_MOVE) == -1)
+            {
+                fprintf(stderr,"Cant migrate object!!\n");
+                //exit(-1);
+            }else{
+                num_obj_migrated++;
+                remove_allocation_on_dram(args,
+                                      args->tier[0].obj_vector[curr_index].pid,
+                                      args->tier[0].obj_vector[curr_index].start_addr,
+                                      args->tier[0].obj_vector[curr_index].size);
+                
+                insert_allocation_on_pmem(args,
+                                      args->tier[0].obj_vector[curr_index].pid,
+                                      args->tier[0].obj_vector[curr_index].start_addr,
+                                      args->tier[0].obj_vector[curr_index].size);
+            }
+            
+            index_demotion++;
+        }
+    }
+    
+    
     //Try to remove N objects from DRAM
+    /*
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
         if(curr_llcm > 1 && args->tier[0].obj_flag_alloc[i] == 1){
@@ -194,7 +250,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             if(curr_llcm < top1_pmem_llcm){
                 
                 if(mbind((void *)args->tier[0].obj_vector[i].start_addr,
-                         args->tier[0].obj_vector[1].size,
+                         args->tier[0].obj_vector[i].size,
                          MPOL_BIND, &nodemask,
                          64,
                          MPOL_MF_MOVE) == -1)
@@ -224,19 +280,9 @@ int policy_migration_demotion(struct schedule_manager *args){
                 break;
             }
         }
-        /*
-        else{
-            if(curr_llcm < 1){
-                fprintf(stderr, "Obj:%d has no LLCM  (%.2lf) \n", i, curr_llcm);
-            }else{
-                fprintf(stderr, "Obj:%d is not allocated anymore\n", i);
-            }
-        }
-         */
-        
     }
     fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
-    
+    */
 }
 
 void *thread_actuator(void *_args){
