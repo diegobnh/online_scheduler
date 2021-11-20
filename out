@@ -443,3 +443,230 @@ Somatorio dos LLCM:0.00, PMEM candidate:5426.92
 -------------------------------------------------------
 	[recorder] remove(PMEM) curr_mem_alloc :20.31
 	[recorder] insert(PMEM) new obj:43, curr_mem_alloc :20.84
+Context
+DRAM[19,0.0084] = 1557.30,0.00 read-write
+DRAM[6,0.0084] = 1434.58,3.96 read-write
+DRAM[13,0.0084] = 1428.62,6.93 read-write
+DRAM[17,0.0084] = 1307.10,5.94 read-write
+DRAM[15,0.0084] = 1196.28,9.90 read-write
+DRAM[4,0.0084] = 1192.70,7.92 read-write
+DRAM[22,0.5279] = 1173.06,7649.53 read-write
+DRAM[21,1.0737] = 1062.33,6878.73 read-write
+DRAM[5,0.0084] = 841.21,11.88 read-write
+DRAM[12,0.0084] = 720.86,6.93 read-write
+DRAM[16,0.0084] = 714.91,7.92 read-write
+DRAM[0,1.0737] = 0.00 read-only
+DRAM[29,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[32,0.1342] = 0.00,0.99 read-write
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[37,0.1342] = 0.00 read-only
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+
+PMEM[7,0.0084] = 1786.08,10.89 read-write
+PMEM[18,0.0084] = 1552.53,11.88 read-write
+PMEM[8,0.0084] = 1550.15,6.93 read-write
+PMEM[11,0.0084] = 1199.85,13.86 read-write
+PMEM[14,0.0084] = 1198.67,5.94 read-write
+PMEM[3,0.0084] = 1080.71,4.95 read-write
+PMEM[10,0.0084] = 729.21,8.91 read-write
+PMEM[1,16.8931] = 213.39 read-only
+PMEM[2,1.0737] = 98.80,0.00 read-write
+PMEM[23,0.5369] = 88.68,0.00 read-write
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[26,0.1342] = 0.00,0.99 read-write
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00,0.99 read-write
+PMEM[30,0.1342] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,0.99 read-write
+PMEM[35,0.1342] = 0.00,0.99 read-write
+PMEM[39,0.1342] = 0.00 read-only
+PMEM[41,0.1342] = 0.00 read-only
+PMEM[42,0.5369] = 0.00 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:7, 1786.08
+list_obj_index[0] = 40 	 addr: 0x7f4694e79000, size:0.1342
+Index do obj a ser removido :40
+Somatorio dos LLCM:0.00, PMEM candidate:1786.08
+-------------------------------------------------------
+Context
+DRAM[19,0.0084] = 1195.09,33.66 read-write
+DRAM[13,0.0084] = 1193.89,34.72 read-write
+DRAM[4,0.0084] = 1191.51,50.57 read-write
+DRAM[17,0.0084] = 1074.74,47.58 read-write
+DRAM[9,0.0084] = 843.59,10.00 read-write
+DRAM[15,0.0084] = 837.64,44.65 read-write
+DRAM[12,0.0084] = 832.87,34.72 read-write
+DRAM[6,0.0084] = 722.06,34.69 read-write
+DRAM[16,0.0084] = 714.91,37.70 read-write
+DRAM[21,1.0737] = 651.39,4479.16 read-write
+DRAM[5,0.0084] = 244.27,43.68 read-write
+DRAM[0,1.0737] = 153.97,1348.38 read-write
+DRAM[29,0.1342] = 0.00,0.99 read-write
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[32,0.1342] = 0.00,1.00 read-write
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[37,0.1342] = 0.00 read-only
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+
+PMEM[7,0.0084] = 1433.39,41.69 read-write
+PMEM[8,0.0084] = 1431.01,34.72 read-write
+PMEM[18,0.0084] = 1077.13,46.65 read-write
+PMEM[11,0.0084] = 719.68,40.73 read-write
+PMEM[14,0.0084] = 719.68,31.74 read-write
+PMEM[10,0.0084] = 714.92,35.73 read-write
+PMEM[23,0.5369] = 620.48,0.00 read-write
+PMEM[3,0.0084] = 600.53,41.63 read-write
+PMEM[2,1.0737] = 582.78,0.00 read-write
+PMEM[42,0.5369] = 483.13,2487.87 read-write
+PMEM[1,16.8931] = 163.94 read-only
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[26,0.1342] = 0.00,1.00 read-write
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00,1.99 read-write
+PMEM[30,0.1342] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,2.98 read-write
+PMEM[35,0.1342] = 0.00,1.00 read-write
+PMEM[39,0.1342] = 0.00,0.99 read-write
+PMEM[41,0.1342] = 0.00,0.99 read-write
+PMEM[25,0.1342] = 0.00 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:7, 1433.39
+list_obj_index[0] = 40 	 addr: 0x7f4694e79000, size:0.1342
+Index do obj a ser removido :40
+Somatorio dos LLCM:0.00, PMEM candidate:1433.39
+-------------------------------------------------------
+Context
+DRAM[0,1.0737] = 2938.14,2715.32 read-write
+DRAM[4,0.0084] = 719.67,51.99 read-write
+DRAM[21,1.0737] = 704.44,1821.62 read-write
+DRAM[9,0.0084] = 598.15,10.99 read-write
+DRAM[16,0.0084] = 596.95,38.99 read-write
+DRAM[13,0.0084] = 483.76,36.98 read-write
+DRAM[17,0.0084] = 482.56,50.97 read-write
+DRAM[19,0.0084] = 247.84,36.97 read-write
+DRAM[15,0.0084] = 244.26,46.98 read-write
+DRAM[12,0.0084] = 244.26,38.96 read-write
+DRAM[5,0.0084] = 238.31,47.96 read-write
+DRAM[6,0.0084] = 125.12,35.99 read-write
+DRAM[29,0.1342] = 0.00,1.00 read-write
+DRAM[31,0.1342] = 0.00,0.01 read-write
+DRAM[32,0.1342] = 0.00,1.00 read-write
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.01 read-write
+DRAM[37,0.1342] = 0.00 read-only
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+
+PMEM[23,0.5369] = 1356.06,0.00 read-write
+PMEM[2,1.0737] = 1262.57,0.00 read-write
+PMEM[42,0.5369] = 842.05,5764.13 read-write
+PMEM[7,0.0084] = 840.02,44.97 read-write
+PMEM[8,0.0084] = 604.10,37.97 read-write
+PMEM[10,0.0084] = 596.95,37.98 read-write
+PMEM[18,0.0084] = 482.57,48.98 read-write
+PMEM[14,0.0084] = 478.99,34.97 read-write
+PMEM[3,0.0084] = 477.80,43.98 read-write
+PMEM[11,0.0084] = 361.03,42.98 read-write
+PMEM[1,16.8931] = 104.90 read-only
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[26,0.1342] = 0.00,1.00 read-write
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00,2.00 read-write
+PMEM[30,0.1342] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,3.00 read-write
+PMEM[35,0.1342] = 0.00,1.00 read-write
+PMEM[39,0.1342] = 0.00,1.00 read-write
+PMEM[41,0.1342] = 0.00,1.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:23, 1356.06
+list_obj_index[0] = 40 	 addr: 0x7f4694e79000, size:0.1342
+list_obj_index[1] = 38 	 addr: 0x7f41a7b74000, size:0.1342
+list_obj_index[2] = 37 	 addr: 0x7f41efb74000, size:0.1342
+list_obj_index[3] = 36 	 addr: 0x7f469ce79000, size:0.1342
+list_obj_index[4] = 33 	 addr: 0x7f41c7b74000, size:0.1342
+Index do obj a ser removido :40
+Index do obj a ser removido :38
+Index do obj a ser removido :37
+Index do obj a ser removido :36
+Index do obj a ser removido :33
+Somatorio dos LLCM:0.00, PMEM candidate:1356.06
+-------------------------------------------------------
+Context
+DRAM[22,0.5279] = 4671.40,360.39 read-write
+DRAM[21,1.0737] = 1603.96,174.40 read-write
+DRAM[16,0.0084] = 359.84,37.02 read-write
+DRAM[4,0.0084] = 243.07,52.00 read-write
+DRAM[13,0.0084] = 240.69,40.96 read-write
+DRAM[19,0.0084] = 238.31,41.95 read-write
+DRAM[12,0.0084] = 238.31,43.95 read-write
+DRAM[9,0.0084] = 123.92,9.02 read-write
+DRAM[17,0.0084] = 122.73,51.99 read-write
+DRAM[15,0.0084] = 120.35,44.03 read-write
+DRAM[5,0.0084] = 2.38,40.08 read-write
+DRAM[6,0.0084] = 1.20,36.00 read-write
+DRAM[29,0.1342] = 0.00,1.00 read-write
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[32,0.1342] = 0.00,0.01 read-write
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.00 read-write
+DRAM[37,0.1342] = 0.00 read-only
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+
+PMEM[23,0.5369] = 1297.05,0.00 read-write
+PMEM[2,1.0737] = 1189.17,0.00 read-write
+PMEM[7,0.0084] = 598.14,44.01 read-write
+PMEM[10,0.0084] = 477.80,30.08 read-write
+PMEM[8,0.0084] = 359.84,33.05 read-write
+PMEM[3,0.0084] = 358.65,46.97 read-write
+PMEM[18,0.0084] = 240.69,44.05 read-write
+PMEM[14,0.0084] = 240.69,41.93 read-write
+PMEM[11,0.0084] = 121.54,32.11 read-write
+PMEM[1,16.8931] = 53.73 read-only
+PMEM[24,0.5369] = 20.49,9.42 read-write
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[26,0.1342] = 0.00,0.01 read-write
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00,1.01 read-write
+PMEM[30,0.1342] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,2.01 read-write
+PMEM[35,0.1342] = 0.00,0.01 read-write
+PMEM[39,0.1342] = 0.00,1.00 read-write
+PMEM[41,0.1342] = 0.00,1.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+Current DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:23, 1297.05
+list_obj_index[0] = 40 	 addr: 0x7f4694e79000, size:0.1342
+list_obj_index[1] = 38 	 addr: 0x7f41a7b74000, size:0.1342
+list_obj_index[2] = 37 	 addr: 0x7f41efb74000, size:0.1342
+list_obj_index[3] = 36 	 addr: 0x7f469ce79000, size:0.1342
+list_obj_index[4] = 33 	 addr: 0x7f41c7b74000, size:0.1342
+Index do obj a ser removido :40
+Index do obj a ser removido :38
+Index do obj a ser removido :37
+Index do obj a ser removido :36
+Index do obj a ser removido :33
+Somatorio dos LLCM:0.00, PMEM candidate:1297.05
+-------------------------------------------------------
+	[recorder] remove(PMEM) curr_mem_alloc :20.31
+	[recorder] remove(PMEM) curr_mem_alloc :19.77
+	[recorder] remove(DRAM) curr_mem_alloc :2.23
+	[recorder] remove(DRAM) curr_mem_alloc :1.16
+	[recorder] remove(PMEM) curr_mem_alloc :19.23
+	[recorder] remove(PMEM) curr_mem_alloc :18.16
+	[recorder] remove(PMEM) curr_mem_alloc :1.27
