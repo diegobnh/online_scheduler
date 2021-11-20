@@ -272,8 +272,8 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
-        //if(curr_llcm > 1 && args->tier[0].obj_flag_alloc[i] == 1){
-        if(args->tier[0].obj_flag_alloc[i] == 1){
+        if(curr_llcm > 1 && args->tier[0].obj_flag_alloc[i] == 1){
+        //if(args->tier[0].obj_flag_alloc[i] == 1){
             fprintf(stderr, "Checking if Coldest DRAM (%.2lf) <  Hottest PMEM (%.2lf)\n", curr_llcm,top1_pmem_llcm);
             if(curr_llcm < top1_pmem_llcm){
                 
