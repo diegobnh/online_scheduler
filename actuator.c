@@ -217,7 +217,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             sum_llcm_candidates_demotion += curr_llcm;
             top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
             list_obj_index[cont] = i;
-            fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", obj_index, args->tier[0].obj_vector[i].index_id,\
+            fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", cont, args->tier[0].obj_vector[i].index_id,\
                         args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size/GB);
             cont++;
             if(top1_pmem_size <= 0){
