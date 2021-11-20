@@ -232,11 +232,11 @@ int policy_migration_demotion(struct schedule_manager *args){
     }
     fprintf(stderr,"Somatorio dos LLCM:%.2lf, PMEM candidate:%.2lf\n", sum_llcm_candidates_demotion, top1_pmem_llcm);
     
-    /*
-    obj_index = 0;
+    
+    cont = 0;
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(list_obj_index[obj_index] != -1){
-            curr_index = list_obj_index[obj_index];
+            curr_index = list_obj_index[cont];
             fprintf(stderr, "Try to migrate addr:%p, %.4lf\n", args->tier[0].obj_vector[curr_index].start_addr, args->tier[0].obj_vector[curr_index].size/GB);
             if(mbind((void *)args->tier[0].obj_vector[curr_index].start_addr,
                      args->tier[0].obj_vector[curr_index].size,
@@ -260,12 +260,12 @@ int policy_migration_demotion(struct schedule_manager *args){
                                       args->tier[0].obj_vector[curr_index].size);
             }
             
-            obj_index++;
+            cont++;
         }
     }else{
         fprintf(stderr,"Sum of all objs from DRAM has more LLCM (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_llcm_candidates_demotion, top1_pmem_llcm);
     }
-    */
+    
     
     
     //Try to remove N objects from DRAM
