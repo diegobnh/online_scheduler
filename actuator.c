@@ -298,7 +298,9 @@ int policy_migration_demotion(struct schedule_manager *args){
                                           args->tier[0].obj_vector[i].size);
                 }
                 fprintf(stderr, "Reduce %.2lf GB in DRAM\n", args->tier[0].obj_vector[i].size/GB);
+                fprintf(stderr, "top1_pmem_size before update:%.2lf\n", top1_pmem_size);
                 top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
+                fprintf(stderr, "top1_pmem_size after update:%.2lf\n", top1_pmem_size);
                 if(top1_pmem_size <= 0){
                     fprintf(stderr, "Espaço liberado na DRAM suficiente para migrar Top1 do PMEM\n");
                     break;
