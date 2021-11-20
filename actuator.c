@@ -229,7 +229,6 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     for(i=0; list_obj_index[i] !=-1; i++){
         fprintf(stderr, "Index do obj a ser removido :%d\n", list_obj_index[i]);
-        fprintf(stderr, "%d\n", list_obj_index[i]);
     }
     fprintf(stderr,"Somatorio dos LLCM:%.2lf, PMEM candidate:%.2lf\n", sum_llcm_candidates_demotion, top1_pmem_llcm);
     
