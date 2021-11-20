@@ -107,7 +107,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     
     
-    fprintf(stderr, "Current DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
+    fprintf(stderr, "Free DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
     return flag_has_llcm;
 }
 
@@ -217,7 +217,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             sum_llcm_candidates_demotion += curr_llcm;
             top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
             list_obj_index[cont] = i;
-            fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", cont, args->tier[0].obj_vector[i].index_id,\
+            //fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", cont, args->tier[0].obj_vector[i].index_id,\
                         args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size/GB);
             cont++;
             if(top1_pmem_size <= 0){
