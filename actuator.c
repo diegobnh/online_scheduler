@@ -110,6 +110,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
     fprintf(stderr, "Current DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
     return flag_has_llcm;
 }
+
+//Chamda quando tem espaço na DRAM e objeto hot no pmem
 void policy_migration_promotion(struct schedule_manager *args){
     int i;
     float current_dram_space;
@@ -123,7 +125,8 @@ void policy_migration_promotion(struct schedule_manager *args){
 
     nodemask = 1<<NODE_0_DRAM;
     
-    
+    //Percorre todos os objetos que possuem um LLCM mínimo e que ainda estão alocados
+    //Depois verifica se ele também cabe no espaço atual de memória
     for(i=0;i<args->tier[1].num_obj;i++){
         llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
         if(llcm > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
@@ -168,18 +171,20 @@ void policy_migration_promotion(struct schedule_manager *args){
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
 }
+
+//Chamda quando não tem espaço na DRAM
 int policy_migration_demotion(struct schedule_manager *args){
     int i;
     float current_dram_space;
     unsigned long nodemask;
-    int top1_pmem = -1;
+    int top1_pmem;
     float top1_pmem_llcm;
     float top1_pmem_size;
     int num_obj_migrated=0;
     float curr_llcm;
     float sum_llcm_candidates_demotion = 0;
     int list_obj_index[MAX_OBJECTS];
-    int obj_index;
+    int cont;
     int curr_index;
     
     pthread_mutex_lock(&args->global_mutex);
@@ -188,7 +193,8 @@ int policy_migration_demotion(struct schedule_manager *args){
     
     nodemask = 1<<NODE_0_PMEM;
     
-    //First get the top1 from pmem to promotion in the next round - get candidate
+    top1_pmem = -1;
+    //First get the top1 from pmem to promotion in the next round
     for(i=0;i<args->tier[1].num_obj;i++){
         if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
@@ -203,25 +209,31 @@ int policy_migration_demotion(struct schedule_manager *args){
         return 0;
     
     list_obj_index[0] = -1;
-    obj_index = 0;
+    cont = 0;
     //Stay in the loop until achieve space necessary to move PMEM top 1 or any DRAM object has more LLCM
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
         if(args->tier[0].obj_flag_alloc[i] == 1){
             sum_llcm_candidates_demotion += curr_llcm;
             top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
-            list_obj_index[obj_index] = i;
+            list_obj_index[cont] = i;
             fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", obj_index, args->tier[0].obj_vector[i].index_id,\
                         args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size/GB);
-            obj_index++;
+            cont++;
             if(top1_pmem_size <= 0){
                 break;
             }
         }
     }
-    list_obj_index[obj_index] = -1;//To know where i should stop
+    list_obj_index[cont] = -1;//To know where i should stop
     
+    for(i=0; list_obj_index[i] !=-1; i++){
+        fprintf(stderr, "Index do obj a ser removido :%d\n", list_obj_index[i]);
+        fprintf(stderr, "%d\n", list_obj_index[i]);
+    }
+    fprintf(stderr,"Somatorio dos LLCM:%.2lf, PMEM candidate:%.2lf\n", sum_llcm_candidates_demotion, top1_pmem_llcm);
     
+    /*
     obj_index = 0;
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(list_obj_index[obj_index] != -1){
@@ -254,6 +266,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     }else{
         fprintf(stderr,"Sum of all objs from DRAM has more LLCM (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_llcm_candidates_demotion, top1_pmem_llcm);
     }
+    */
     
     
     //Try to remove N objects from DRAM
