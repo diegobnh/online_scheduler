@@ -310,7 +310,7 @@ int policy_migration_demotion(struct schedule_manager *args){
         }
     }
     fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
-    */
+    
 }
 
 void *thread_actuator(void *_args){
