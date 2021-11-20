@@ -200,7 +200,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             top1_pmem_llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
             top1_pmem_size = args->tier[1].obj_vector[i].size/GB;
             top1_pmem = i;
-            fprintf(stderr, "PMEM candidate index:%d, %.2lf\n", args->tier[1].obj_vector[i].index_id, top1_pmem_llcm);
+            fprintf(stderr, "PMEM candidate index:%d, %.2lf, size:%.2lf\n", args->tier[1].obj_vector[i].index_id, top1_pmem_llcm, top1_pmem_size);
             break;
         }
     }
@@ -297,7 +297,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                                           args->tier[0].obj_vector[i].start_addr,
                                           args->tier[0].obj_vector[i].size);
                 }
-                
+                fprintf(stderr, "Reduce %.2lf GB in DRAM\n", args->tier[0].obj_vector[i].size/GB);
                 top1_pmem_size -= args->tier[0].obj_vector[i].size/GB;
                 if(top1_pmem_size <= 0){
                     fprintf(stderr, "Espaço liberado na DRAM suficiente para migrar Top1 do PMEM\n");
