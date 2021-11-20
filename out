@@ -574,3 +574,64 @@ Index do obj a ser removido :36
 Index do obj a ser removido :35
 Somatorio dos LLCM:0.00, PMEM candidate:1353.21
 -------------------------------------------------------
+Context
+DRAM[22,0.5279] = 5125.21,176.87 read-write
+DRAM[21,1.0737] = 1751.34,106.94 read-write
+DRAM[6,0.0084] = 835.25,34.08 read-write
+DRAM[9,0.0084] = 601.71,33.08 read-write
+DRAM[12,0.0084] = 478.99,27.11 read-write
+DRAM[13,0.0084] = 359.84,37.10 read-write
+DRAM[16,0.0084] = 359.84,33.22 read-write
+DRAM[19,0.0084] = 357.46,31.10 read-write
+DRAM[5,0.0084] = 357.46,32.95 read-write
+DRAM[4,0.0084] = 357.45,41.00 read-write
+DRAM[17,0.0084] = 121.54,14.03 read-write
+DRAM[15,0.0084] = 1.20,27.10 read-write
+DRAM[27,0.1342] = 0.00,0.01 read-write
+DRAM[33,0.1342] = 0.00,0.01 read-write
+DRAM[34,0.1342] = 0.00,0.01 read-write
+DRAM[35,0.1342] = 0.00,0.01 read-write
+DRAM[36,0.1342] = 0.00 read-only
+DRAM[37,0.1342] = 0.00,1.01 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[41,0.1342] = 0.00 read-only
+
+PMEM[23,0.5369] = 1238.01,0.00 read-write
+PMEM[2,1.0737] = 1166.00,0.00 read-write
+PMEM[3,0.0084] = 477.80,33.08 read-write
+PMEM[8,0.0084] = 476.61,21.07 read-write
+PMEM[7,0.0084] = 358.65,33.01 read-write
+PMEM[14,0.0084] = 240.70,27.12 read-write
+PMEM[11,0.0084] = 240.69,36.13 read-write
+PMEM[10,0.0084] = 240.69,22.16 read-write
+PMEM[18,0.0084] = 121.54,33.07 read-write
+PMEM[1,16.8931] = 49.90 read-only
+PMEM[24,0.5369] = 19.69,11.37 read-write
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[26,0.1342] = 0.00,1.01 read-write
+PMEM[28,0.1342] = 0.00,1.01 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[30,0.1342] = 0.00 read-only
+PMEM[31,0.1342] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,0.00 read-write
+PMEM[39,0.1342] = 0.00,0.01 read-write
+PMEM[40,0.1342] = 0.00 read-only
+PMEM[25,0.1342] = 0.00,0.01 read-write
+Free DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:23, 1238.01
+Index do obj a ser removido :41
+Index do obj a ser removido :38
+Index do obj a ser removido :37
+Index do obj a ser removido :36
+Index do obj a ser removido :35
+Somatorio dos LLCM:0.00, PMEM candidate:1238.01
+-------------------------------------------------------
+	[recorder] remove(PMEM) curr_mem_alloc :20.31
+	[recorder] remove(PMEM) curr_mem_alloc :19.77
+	[recorder] remove(DRAM) curr_mem_alloc :2.23
+	[recorder] remove(DRAM) curr_mem_alloc :1.16
+	[recorder] remove(PMEM) curr_mem_alloc :19.23
+	[recorder] remove(PMEM) curr_mem_alloc :18.16
+	[recorder] remove(PMEM) curr_mem_alloc :1.27
