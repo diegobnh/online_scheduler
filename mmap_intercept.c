@@ -59,6 +59,40 @@ static void __attribute__ ((constructor)) init_lib(void);
 static void __attribute__((destructor)) exit_lib(void);
 
 
+#define UNW_LOCAL_ONLY
+#include <libunwind.h>
+#define lengthof(x) (sizeof(x) / sizeof(x[0]))
+
+void backtrace()
+{
+    unw_cursor_t cursor;
+    unw_context_t context;
+
+    // grab the machine context and initialize the cursor
+    if (unw_getcontext(&context) < 0)
+        die("ERROR: cannot get local machine state\n");
+    if (unw_init_local(&cursor, &context) < 0)
+        die("ERROR: cannot initialize cursor for local unwinding\n");
+
+
+    // currently the IP is within backtrace() itself so this loop
+    // deliberately skips the first frame.
+    while (unw_step(&cursor) > 0) {
+        unw_word_t offset, pc;
+        char sym[4096];
+        if (unw_get_reg(&cursor, UNW_REG_IP, &pc))
+            die("ERROR: cannot read program counter\n");
+
+        printf("0x%lx: ", pc);
+
+        if (unw_get_proc_name(&cursor, sym, sizeof(sym), &offset) == 0)
+            printf("(%s+0x%lx)\n", sym, offset);
+        else
+            printf("-- no symbol name found\n");
+    }
+}
+
+
 void init_lib(void)
 {
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
@@ -132,8 +166,10 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
-        if(arg0 != 0)
-            return 0;
+        if((unsigned long)arg1 == 134217728){
+            backtrace();
+        }
+            
         
 		pthread_mutex_lock(&shared_memory->global_mutex);
         mem_consumption = shared_memory->tier[0].current_memory_consumption;
