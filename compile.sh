@@ -18,7 +18,7 @@ gcc -g -I/scratch/build/autonuma-r6/tools/lib/perf/include/ -o monitor monitor_v
 
 gcc -g -o main main.c
 #gcc -g malloc_intercept.c -fpic -shared -o malloc_intercept.so recorder.o -rdynamic -ldl -lpthread -lrt
-gcc -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recorder.o actuator.o -lpthread -lrt -lnuma -lsyscall_intercept -DINIT_ALLOC=2;
+gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recorder.o actuator.o -lpthread -lrt -lnuma -lsyscall_intercept -DINIT_ALLOC=2;
 
 #In case the application in the last execution has finished without remove shared memory
 ./delete_shared_memory
