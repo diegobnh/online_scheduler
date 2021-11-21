@@ -183,7 +183,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
         
-        D fprintf(stderr, "[mUNmap] %p %ld\n", (void*)arg0, arg1);
+        fprintf(stderr, "[mUNmap] %p %ld\n", (void*)arg0, arg1);
         //if return 0 means can't find object on dram, try to find on pmem
         
         if (remove_allocation_on_dram(shared_memory, (int)getpid(),arg0, arg1) != 1){
