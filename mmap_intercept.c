@@ -60,38 +60,6 @@ static void __attribute__ ((constructor)) init_lib(void);
 static void __attribute__((destructor)) exit_lib(void);
 
 
-#define UNW_LOCAL_ONLY
-#include <libunwind.h>
-#define lengthof(x) (sizeof(x) / sizeof(x[0]))
-
-void my_backtrace() {
-  unw_cursor_t cursor;
-  unw_context_t context;
-
-  // Initialize cursor to current frame for local unwinding.
-  unw_getcontext(&context);
-  unw_init_local(&cursor, &context);
-
-  // Unwind frames one by one, going up the frame stack.
-  while (unw_step(&cursor) > 0) {
-    unw_word_t offset, pc;
-    unw_get_reg(&cursor, UNW_REG_IP, &pc);
-    if (pc == 0) {
-      break;
-    }
-    fprintf(stderr,"0x%lx:", pc);
-
-    char sym[256];
-    if (unw_get_proc_name(&cursor, sym, sizeof(sym), &offset) == 0) {
-      fprintf(stderr," (%s+0x%lx)\n", sym, offset);
-    } else {
-      fprintf(stderr," -- error: unable to obtain symbol name for this frame\n");
-    }
-  }
-}
-
-
-
 void init_lib(void)
 {
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
@@ -165,10 +133,6 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
-        //if((unsigned long)arg1 == 134217728){
-        //    my_backtrace();
-        //}
-        my_backtrace();
         
 		pthread_mutex_lock(&shared_memory->global_mutex);
         mem_consumption = shared_memory->tier[0].current_memory_consumption;
