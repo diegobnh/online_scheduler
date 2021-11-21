@@ -237,14 +237,14 @@ int policy_migration_demotion(struct schedule_manager *args){
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(list_obj_index[cont] != -1){
             curr_index = list_obj_index[cont];
-            fprintf(stderr, "Try to migrate addr:%p, %.4lf --->", args->tier[0].obj_vector[curr_index].start_addr, args->tier[0].obj_vector[curr_index].size/GB);
+            fprintf(stderr, "\tTry to migrate obj:%d, size:%.4lf --->", args->tier[0].obj_vector[curr_index].index_id, args->tier[0].obj_vector[curr_index].size/GB);
             if(mbind((void *)args->tier[0].obj_vector[curr_index].start_addr,
                      args->tier[0].obj_vector[curr_index].size,
                      MPOL_BIND, &nodemask,
                      64,
                      MPOL_MF_MOVE) == -1)
             {
-                fprintf(stderr,"Cant migrate object!!\n");
+                fprintf(stderr," Cant migrate object!!\n");
                 //exit(-1);
             }else{
                 fprintf(stderr,"Demoted to PMEM object:%d \n", args->tier[0].obj_vector[curr_index].index_id);
