@@ -41,7 +41,7 @@
 	fprintf(stderr, "INIT_ALLOC not defined\n");
 #endif
 
-#if !(INIT_ALLOC == 1 || INIT_ALLOC == 2 || INIT_ALLOC == 3)
+#if !(INIT_ALLOC == 1 || INIT_ALLOC == 2 || INIT_ALLOC == 3 || INIT_ALLOC == 4)
    fprintf(stderr, "INIT_ALLOC value invalid\n");
 #endif
 
