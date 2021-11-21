@@ -2242,3 +2242,797 @@ Free DRAM space:0.00(GB), DRAM consumed:2.73
 
 Decisions
 -------------------------------------------------------
+	[recorder] insert(PMEM) new obj:91, curr_mem_alloc :21.41
+Context
+DRAM[78,0.0084] = 476.61,3.96 read-write
+DRAM[22,0.5279] = 443.26,2783.03 read-write
+DRAM[75,0.0084] = 359.84,5.94 read-write
+DRAM[74,0.0084] = 235.93,3.96 read-write
+DRAM[6,0.0084] = 235.92,4.95 read-write
+DRAM[5,0.0084] = 0.00,0.00 read-write
+DRAM[19,0.0084] = 0.00,0.00 read-write
+DRAM[60,0.0084] = 0.00 read-only
+DRAM[58,0.0084] = 0.00 read-only
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[23,0.5369] = 0.09 read-only
+PMEM[49,0.0084] = 0.01 read-only
+PMEM[45,0.0084] = 0.01,0.00 read-write
+PMEM[46,0.0084] = 0.00 read-only
+PMEM[53,0.0084] = 0.00 read-only
+PMEM[48,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[52,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[3,0.0084] = 0.00 read-only
+PMEM[42,0.5279] = 0.00,0.00 read-write
+PMEM[34,0.1342] = 0.00 read-only
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[32,0.1342] = 0.00,0.99 read-write
+PMEM[37,0.1342] = 0.00,1.98 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[68,0.5369] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,0.00 read-write
+PMEM[40,0.1342] = 0.00,0.99 read-write
+PMEM[35,0.1342] = 0.00,0.99 read-write
+PMEM[27,0.1342] = 0.00,0.99 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[90,0.5369] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.73
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[77,0.5279] = 474.03,2737.65 read-write
+DRAM[22,0.5279] = 443.26,2783.00 read-write
+DRAM[75,0.0084] = 357.69,5.99 read-write
+DRAM[74,0.0084] = 238.06,4.00 read-write
+DRAM[6,0.0084] = 238.06,5.00 read-write
+DRAM[5,0.0084] = 0.00,0.00 read-write
+DRAM[19,0.0084] = 0.00,0.00 read-write
+DRAM[60,0.0084] = 0.00 read-only
+DRAM[58,0.0084] = 0.00 read-only
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[23,0.5369] = 0.01 read-only
+PMEM[49,0.0084] = 0.00 read-only
+PMEM[45,0.0084] = 0.00,0.00 read-write
+PMEM[46,0.0084] = 0.00 read-only
+PMEM[53,0.0084] = 0.00 read-only
+PMEM[48,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[52,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[3,0.0084] = 0.00 read-only
+PMEM[42,0.5279] = 0.00,0.00 read-write
+PMEM[34,0.1342] = 0.00 read-only
+PMEM[20,0.5369] = 0.00,0.00 read-write
+PMEM[32,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[68,0.5369] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,0.00 read-write
+PMEM[40,0.1342] = 0.00,1.00 read-write
+PMEM[35,0.1342] = 0.00,1.00 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[90,0.5369] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.73
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[9,0.0084] = 309.79,0.00 read-write
+DRAM[79,1.0737] = 306.40,2526.00 read-write
+DRAM[74,0.0084] = 238.28,35.50 read-write
+DRAM[58,0.0084] = 107.24,31.50 read-write
+DRAM[56,0.0084] = 71.54 read-only
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[84,0.5369] = 0.00 read-only
+DRAM[19,0.0084] = 0.00,44.10 read-write
+DRAM[60,0.0084] = 0.00 read-only
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.90 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[7,0.0084] = 35.75,0.00 read-write
+PMEM[2,1.0737] = 10.24,0.00 read-write
+PMEM[71,0.0084] = 0.12 read-only
+PMEM[10,0.0084] = 0.08 read-only
+PMEM[43,1.0737] = 0.04,0.26 read-write
+PMEM[1,16.8931] = 0.01 read-only
+PMEM[51,0.0084] = 0.00 read-only
+PMEM[46,0.0084] = 0.00,27.00 read-write
+PMEM[53,0.0084] = 0.00,27.90 read-write
+PMEM[52,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[42,0.5279] = 0.00,0.00 read-write
+PMEM[34,0.1342] = 0.00,0.90 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[68,0.5369] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,1.80 read-write
+PMEM[40,0.1342] = 0.00,1.90 read-write
+PMEM[35,0.1342] = 0.00,1.90 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,1.90 read-write
+
+Free DRAM space:0.00(GB), DRAM consumed:2.73
+
+Decisions
+PMEM candidate index:2, 10.24, size:1.07
+	Obj to remove from DRAM : 30
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 33
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 31
+	Obj to remove from DRAM : 28
+	Obj to remove from DRAM : 26
+	Obj to remove from DRAM : 60
+	Obj to remove from DRAM : 19
+	Obj to remove from DRAM : 84
+	Somatorio dos LLCM:0.00, PMEM candidate:10.24
+	Try to migrate obj:30, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:36, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:33, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:38, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:31, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:28, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:26, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:60, size:0.0084 ---> Demoted to PMEM ! 
+	[recorder] remove(DRAM) curr_mem_alloc :2.73
+	[recorder] insert(PMEM) new obj:92, curr_mem_alloc :21.41
+	Try to migrate obj:19, size:0.0084 ---> Demoted to PMEM ! 
+	[recorder] remove(DRAM) curr_mem_alloc :2.72
+	[recorder] insert(PMEM) new obj:93, curr_mem_alloc :21.42
+	Try to migrate obj:84, size:0.5369 ---> Demoted to PMEM ! 
+	[recorder] remove(DRAM) curr_mem_alloc :2.18
+	[recorder] insert(PMEM) new obj:94, curr_mem_alloc :21.96
+Num obj demoted:3
+-------------------------------------------------------
+Context
+DRAM[79,1.0737] = 306.40,2526.00 read-write
+DRAM[9,0.0084] = 245.45,0.00 read-write
+DRAM[74,0.0084] = 238.30,38.65 read-write
+DRAM[82,0.5369] = 18.09,0.81 read-write
+DRAM[56,0.0084] = 7.15 read-only
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.99 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[8,0.0084] = 4.77,0.00 read-write
+PMEM[7,0.0084] = 3.57,0.00 read-write
+PMEM[71,0.0084] = 0.01 read-only
+PMEM[10,0.0084] = 0.01 read-only
+PMEM[43,1.0737] = 0.00,0.03 read-write
+PMEM[1,16.8931] = 0.00 read-only
+PMEM[51,0.0084] = 0.00 read-only
+PMEM[46,0.0084] = 0.00,29.70 read-write
+PMEM[53,0.0084] = 0.00,30.69 read-write
+PMEM[52,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[42,0.5279] = 0.00,0.00 read-write
+PMEM[34,0.1342] = 0.00,0.99 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[68,0.5369] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,1.98 read-write
+PMEM[40,0.1342] = 0.00,1.99 read-write
+PMEM[35,0.1342] = 0.00,1.99 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,1.99 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00 read-only
+PMEM[93,0.5369] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.18
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[79,1.0737] = 306.40,2526.00 read-write
+DRAM[9,0.0084] = 239.02,0.00 read-write
+DRAM[74,0.0084] = 238.30,38.96 read-write
+DRAM[82,0.5369] = 1.81,0.08 read-write
+DRAM[56,0.0084] = 0.72 read-only
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[8,0.0084] = 0.48,0.00 read-write
+PMEM[7,0.0084] = 0.36,0.00 read-write
+PMEM[71,0.0084] = 0.00 read-only
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[1,16.8931] = 0.00 read-only
+PMEM[51,0.0084] = 0.00 read-only
+PMEM[46,0.0084] = 0.00,29.97 read-write
+PMEM[53,0.0084] = 0.00,30.97 read-write
+PMEM[52,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[42,0.5279] = 0.00,0.00 read-write
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[68,0.5369] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,2.00 read-write
+PMEM[35,0.1342] = 0.00,2.00 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,2.00 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00 read-only
+PMEM[93,0.5369] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.18
+
+Decisions
+-------------------------------------------------------
+Context
+DRAM[58,0.0084] = 119.14,35.00 read-write
+DRAM[12,0.0084] = 95.32,0.00 read-write
+DRAM[13,0.0084] = 83.47,0.10 read-write
+DRAM[82,0.5369] = 48.80,3549.61 read-write
+DRAM[77,0.5279] = 47.36,273.50 read-write
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.10 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[65,0.0084] = 83.41 read-only
+PMEM[66,0.0084] = 83.41,0.10 read-write
+PMEM[69,0.0084] = 59.58,0.10 read-write
+PMEM[47,0.0084] = 59.58 read-only
+PMEM[70,0.0084] = 47.66 read-only
+PMEM[1,16.8931] = 1.44 read-only
+PMEM[2,1.0737] = 1.02,0.00 read-write
+PMEM[63,0.0084] = 0.10,0.00 read-write
+PMEM[11,0.0084] = 0.08 read-only
+PMEM[8,0.0084] = 0.05,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,2.00 read-write
+PMEM[35,0.1342] = 0.00,2.00 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,2.00 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00 read-only
+PMEM[25,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.18
+
+Decisions
+PMEM candidate index:1, 1.44, size:16.89
+	Obj to remove from DRAM : 30
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 33
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 31
+	Obj to remove from DRAM : 28
+	Obj to remove from DRAM : 26
+	Obj to remove from DRAM : 61
+	Obj to remove from DRAM : 77
+	Obj to remove from DRAM : 82
+	Obj to remove from DRAM : 13
+	Obj to remove from DRAM : 12
+	Obj to remove from DRAM : 58
+	Somatorio dos LLCM:394.08, PMEM candidate:1.44
+Sum of all objs from DRAM has more LLCM (394.08) than Top1 from PMEM (1.44)!!
+Num obj demoted:0
+-------------------------------------------------------
+Context
+DRAM[58,0.0084] = 119.15,35.00 read-write
+DRAM[82,0.5369] = 53.49,3904.56 read-write
+DRAM[79,1.0737] = 35.33,25.26 read-write
+DRAM[62,0.0084] = 7.15 read-only
+DRAM[77,0.5279] = 4.74,27.35 read-write
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.01 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[65,0.0084] = 8.34 read-only
+PMEM[66,0.0084] = 8.34,0.01 read-write
+PMEM[69,0.0084] = 5.96,0.01 read-write
+PMEM[47,0.0084] = 5.96 read-only
+PMEM[70,0.0084] = 4.77 read-only
+PMEM[1,16.8931] = 1.58 read-only
+PMEM[2,1.0737] = 0.10,0.00 read-write
+PMEM[63,0.0084] = 0.01,0.00 read-write
+PMEM[11,0.0084] = 0.01 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,2.00 read-write
+PMEM[35,0.1342] = 0.00,2.00 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,2.00 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00 read-only
+PMEM[25,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.18
+
+Decisions
+PMEM candidate index:1, 1.58, size:16.89
+	Obj to remove from DRAM : 30
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 33
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 31
+	Obj to remove from DRAM : 28
+	Obj to remove from DRAM : 26
+	Obj to remove from DRAM : 61
+	Obj to remove from DRAM : 77
+	Obj to remove from DRAM : 62
+	Obj to remove from DRAM : 79
+	Obj to remove from DRAM : 82
+	Obj to remove from DRAM : 58
+	Somatorio dos LLCM:219.86, PMEM candidate:1.58
+Sum of all objs from DRAM has more LLCM (219.86) than Top1 from PMEM (1.58)!!
+Num obj demoted:0
+-------------------------------------------------------
+Context
+DRAM[58,0.0084] = 119.15,35.00 read-write
+DRAM[82,0.5369] = 53.96,3940.06 read-write
+DRAM[79,1.0737] = 32.87,2.53 read-write
+DRAM[62,0.0084] = 0.71 read-only
+DRAM[77,0.5279] = 0.47,2.74 read-write
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[1,16.8931] = 1.60 read-only
+PMEM[65,0.0084] = 0.83 read-only
+PMEM[14,0.0084] = 0.71,0.00 read-write
+PMEM[47,0.0084] = 0.60 read-only
+PMEM[69,0.0084] = 0.60,0.00 read-write
+PMEM[70,0.0084] = 0.48 read-only
+PMEM[2,1.0737] = 0.01,0.00 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[50,0.0084] = 0.00 read-only
+PMEM[88,0.0084] = 0.00 read-only
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,2.00 read-write
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,2.00 read-write
+PMEM[35,0.1342] = 0.00,2.00 read-write
+PMEM[27,0.1342] = 0.00,1.00 read-write
+PMEM[86,0.0084] = 0.00 read-only
+PMEM[87,0.5369] = 0.00 read-only
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,2.00 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00 read-only
+PMEM[25,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.18
+
+Decisions
+PMEM candidate index:1, 1.60, size:16.89
+	Obj to remove from DRAM : 30
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 33
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 31
+	Obj to remove from DRAM : 28
+	Obj to remove from DRAM : 26
+	Obj to remove from DRAM : 61
+	Obj to remove from DRAM : 77
+	Obj to remove from DRAM : 62
+	Obj to remove from DRAM : 79
+	Obj to remove from DRAM : 82
+	Obj to remove from DRAM : 58
+	Somatorio dos LLCM:207.17, PMEM candidate:1.60
+Sum of all objs from DRAM has more LLCM (207.17) than Top1 from PMEM (1.60)!!
+Num obj demoted:0
+-------------------------------------------------------
+Context
+DRAM[72,0.0084] = 47.73,0.40 read-write
+DRAM[78,0.0084] = 47.66,40.40 read-write
+DRAM[83,0.0084] = 35.75,0.50 read-write
+DRAM[76,0.0084] = 0.08,0.00 read-write
+DRAM[62,0.0084] = 0.07,3.60 read-write
+DRAM[61,0.5369] = 0.00,0.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[2,1.0737] = 5.03,0.00 read-write
+PMEM[24,0.5369] = 0.18,0.01 read-write
+PMEM[66,0.0084] = 0.08,4.50 read-write
+PMEM[14,0.0084] = 0.07,0.00 read-write
+PMEM[69,0.0084] = 0.06,3.60 read-write
+PMEM[47,0.0084] = 0.06,4.50 read-write
+PMEM[70,0.0084] = 0.05,4.50 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[50,0.0084] = 0.00,7.20 read-write
+PMEM[88,0.0084] = 0.00,4.50 read-write
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,0.20 read-write
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,1.10 read-write
+PMEM[35,0.1342] = 0.00,1.10 read-write
+PMEM[27,0.1342] = 0.00,0.10 read-write
+PMEM[86,0.0084] = 0.00,9.00 read-write
+PMEM[87,0.5369] = 0.00,724.50 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,1.10 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00,5.40 read-write
+PMEM[25,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.18
+
+Decisions
+PMEM candidate index:2, 5.03, size:1.07
+	Obj to remove from DRAM : 30
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 33
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 31
+	Obj to remove from DRAM : 28
+	Obj to remove from DRAM : 26
+	Obj to remove from DRAM : 61
+	Somatorio dos LLCM:0.00, PMEM candidate:5.03
+	Try to migrate obj:30, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:36, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:33, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:38, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:31, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:28, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:26, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:61, size:0.5369 ---> Demoted to PMEM ! 
+	[recorder] remove(DRAM) curr_mem_alloc :1.64
+	[recorder] insert(PMEM) new obj:95, curr_mem_alloc :22.50
+Num obj demoted:1
+-------------------------------------------------------
+Context
+DRAM[72,0.0084] = 4.77,0.04 read-write
+DRAM[78,0.0084] = 4.77,40.04 read-write
+DRAM[83,0.0084] = 3.57,0.05 read-write
+DRAM[76,0.0084] = 0.01,0.00 read-write
+DRAM[62,0.0084] = 0.01,3.96 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[67,0.0084] = 1.19,0.02 read-write
+PMEM[24,0.5369] = 0.02,0.00 read-write
+PMEM[66,0.0084] = 0.01,4.95 read-write
+PMEM[14,0.0084] = 0.01,0.00 read-write
+PMEM[69,0.0084] = 0.01,3.96 read-write
+PMEM[47,0.0084] = 0.01,4.95 read-write
+PMEM[70,0.0084] = 0.00,4.95 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[50,0.0084] = 0.00,7.92 read-write
+PMEM[88,0.0084] = 0.00,4.95 read-write
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,0.02 read-write
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,1.01 read-write
+PMEM[35,0.1342] = 0.00,1.01 read-write
+PMEM[27,0.1342] = 0.00,0.01 read-write
+PMEM[86,0.0084] = 0.00,9.90 read-write
+PMEM[87,0.5369] = 0.00,796.95 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,1.01 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00,5.94 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[94,0.5369] = 0.00 read-only
+
+Free DRAM space:0.36(GB), DRAM consumed:1.64
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[72,0.0084] = 0.48,0.00 read-write
+DRAM[78,0.0084] = 0.48,40.00 read-write
+DRAM[83,0.0084] = 0.36,0.00 read-write
+DRAM[76,0.0084] = 0.00,0.00 read-write
+DRAM[62,0.0084] = 0.00,4.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[67,0.0084] = 0.12,0.00 read-write
+PMEM[24,0.5369] = 0.00,0.00 read-write
+PMEM[66,0.0084] = 0.00,5.00 read-write
+PMEM[14,0.0084] = 0.00,0.00 read-write
+PMEM[69,0.0084] = 0.00,4.00 read-write
+PMEM[47,0.0084] = 0.00,5.00 read-write
+PMEM[70,0.0084] = 0.00,5.00 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[43,1.0737] = 0.00,0.00 read-write
+PMEM[50,0.0084] = 0.00,7.99 read-write
+PMEM[88,0.0084] = 0.00,5.00 read-write
+PMEM[34,0.1342] = 0.00,1.00 read-write
+PMEM[37,0.1342] = 0.00,0.00 read-write
+PMEM[39,0.1342] = 0.00,2.00 read-write
+PMEM[40,0.1342] = 0.00,1.00 read-write
+PMEM[35,0.1342] = 0.00,1.00 read-write
+PMEM[27,0.1342] = 0.00,0.00 read-write
+PMEM[86,0.0084] = 0.00,9.99 read-write
+PMEM[87,0.5369] = 0.00,804.20 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[89,0.5279] = 0.00 read-only
+PMEM[32,0.1342] = 0.00,1.00 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00,5.99 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[94,0.5369] = 0.00 read-only
+
+Free DRAM space:0.36(GB), DRAM consumed:1.64
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[72,0.0084] = 0.05,2.70 read-write
+DRAM[78,0.0084] = 0.05,13.00 read-write
+DRAM[83,0.0084] = 0.04,7.20 read-write
+DRAM[76,0.0084] = 0.00,6.30 read-write
+DRAM[62,0.0084] = 0.00,4.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.10 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[2,1.0737] = 5.59,0.00 read-write
+PMEM[18,0.0084] = 0.04,0.00 read-write
+PMEM[85,0.0084] = 0.01,0.00 read-write
+PMEM[67,0.0084] = 0.01,5.40 read-write
+PMEM[65,0.0084] = 0.00,7.00 read-write
+PMEM[66,0.0084] = 0.00,7.70 read-write
+PMEM[14,0.0084] = 0.00,5.40 read-write
+PMEM[47,0.0084] = 0.00,10.40 read-write
+PMEM[69,0.0084] = 0.00,12.10 read-write
+PMEM[70,0.0084] = 0.00,10.40 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00,11.60 read-write
+PMEM[88,0.0084] = 0.00,5.00 read-write
+PMEM[34,0.1342] = 0.00,0.10 read-write
+PMEM[40,0.1342] = 0.00,0.10 read-write
+PMEM[35,0.1342] = 0.00,0.10 read-write
+PMEM[27,0.1342] = 0.00,0.00 read-write
+PMEM[86,0.0084] = 0.00,15.40 read-write
+PMEM[37,0.1342] = 0.00,0.00 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,0.20 read-write
+PMEM[32,0.1342] = 0.00,0.10 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00,13.20 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[94,0.5369] = 0.00 read-only
+
+Free DRAM space:0.36(GB), DRAM consumed:1.64
+
+Decisions
+Cannot promote object 2 to DRAM because of size:1.073746 
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[72,0.0084] = 0.00,2.97 read-write
+DRAM[78,0.0084] = 0.00,10.30 read-write
+DRAM[83,0.0084] = 0.00,7.92 read-write
+DRAM[76,0.0084] = 0.00,6.93 read-write
+DRAM[62,0.0084] = 0.00,4.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.01 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[3,0.0084] = 1.19,0.33 read-write
+PMEM[18,0.0084] = 0.00,0.00 read-write
+PMEM[85,0.0084] = 0.00,0.00 read-write
+PMEM[67,0.0084] = 0.00,5.94 read-write
+PMEM[65,0.0084] = 0.00,7.00 read-write
+PMEM[66,0.0084] = 0.00,7.97 read-write
+PMEM[14,0.0084] = 0.00,5.94 read-write
+PMEM[47,0.0084] = 0.00,10.94 read-write
+PMEM[69,0.0084] = 0.00,12.91 read-write
+PMEM[70,0.0084] = 0.00,10.94 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[64,0.5369] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00,11.96 read-write
+PMEM[88,0.0084] = 0.00,5.00 read-write
+PMEM[34,0.1342] = 0.00,0.01 read-write
+PMEM[40,0.1342] = 0.00,0.01 read-write
+PMEM[35,0.1342] = 0.00,0.01 read-write
+PMEM[27,0.1342] = 0.00,0.00 read-write
+PMEM[86,0.0084] = 0.00,15.94 read-write
+PMEM[37,0.1342] = 0.00,0.00 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,0.02 read-write
+PMEM[32,0.1342] = 0.00,0.01 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00,13.92 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[94,0.5369] = 0.00 read-only
+
+Free DRAM space:0.36(GB), DRAM consumed:1.64
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] remove(PMEM) curr_mem_alloc :21.96
+Context
+DRAM[72,0.0084] = 0.00,3.00 read-write
+DRAM[78,0.0084] = 0.00,10.03 read-write
+DRAM[83,0.0084] = 0.00,7.99 read-write
+DRAM[76,0.0084] = 0.00,6.99 read-write
+DRAM[62,0.0084] = 0.00,4.00 read-write
+DRAM[26,0.1342] = 0.00 read-only
+DRAM[28,0.1342] = 0.00 read-only
+DRAM[31,0.1342] = 0.00,0.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,0.00 read-write
+DRAM[30,0.1342] = 0.00 read-only
+
+PMEM[3,0.0084] = 0.12,0.03 read-write
+PMEM[18,0.0084] = 0.00,0.00 read-write
+PMEM[85,0.0084] = 0.00,0.00 read-write
+PMEM[67,0.0084] = 0.00,5.99 read-write
+PMEM[65,0.0084] = 0.00,7.00 read-write
+PMEM[66,0.0084] = 0.00,8.00 read-write
+PMEM[14,0.0084] = 0.00,5.99 read-write
+PMEM[47,0.0084] = 0.00,10.99 read-write
+PMEM[69,0.0084] = 0.00,12.99 read-write
+PMEM[70,0.0084] = 0.00,10.99 read-write
+PMEM[63,0.0084] = 0.00,0.00 read-write
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00,0.00 read-write
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[50,0.0084] = 0.00,12.00 read-write
+PMEM[88,0.0084] = 0.00,5.00 read-write
+PMEM[34,0.1342] = 0.00,0.00 read-write
+PMEM[40,0.1342] = 0.00,0.00 read-write
+PMEM[35,0.1342] = 0.00,0.00 read-write
+PMEM[27,0.1342] = 0.00,0.00 read-write
+PMEM[86,0.0084] = 0.00,15.99 read-write
+PMEM[37,0.1342] = 0.00,0.00 read-write
+PMEM[29,0.1342] = 0.00 read-only
+PMEM[39,0.1342] = 0.00,0.00 read-write
+PMEM[32,0.1342] = 0.00,0.00 read-write
+PMEM[91,0.0084] = 0.00 read-only
+PMEM[92,0.0084] = 0.00,13.99 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[94,0.5369] = 0.00 read-only
+
+Free DRAM space:0.36(GB), DRAM consumed:1.64
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
