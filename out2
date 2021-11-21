@@ -1,2 +1,279 @@
 	[recorder] insert(DRAM) new obj:1, curr_mem_alloc :1.07
 	[recorder] insert(PMEM) new obj:2, curr_mem_alloc :16.89
+Context
+DRAM[0,1.0737] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[0,1.0737] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[0,1.0737] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] insert(PMEM) new obj:3, curr_mem_alloc :17.97
+	[recorder] insert(PMEM) new obj:4, curr_mem_alloc :17.98
+	[recorder] insert(DRAM) new obj:5, curr_mem_alloc :1.08
+	[recorder] insert(DRAM) new obj:6, curr_mem_alloc :1.09
+	[recorder] insert(DRAM) new obj:7, curr_mem_alloc :1.10
+	[recorder] insert(PMEM) new obj:8, curr_mem_alloc :17.98
+	[recorder] insert(PMEM) new obj:9, curr_mem_alloc :17.99
+	[recorder] insert(DRAM) new obj:10, curr_mem_alloc :1.11
+	[recorder] insert(PMEM) new obj:11, curr_mem_alloc :18.00
+	[recorder] insert(PMEM) new obj:12, curr_mem_alloc :18.01
+	[recorder] insert(DRAM) new obj:13, curr_mem_alloc :1.12
+	[recorder] insert(DRAM) new obj:14, curr_mem_alloc :1.12
+	[recorder] insert(PMEM) new obj:15, curr_mem_alloc :18.02
+	[recorder] insert(DRAM) new obj:16, curr_mem_alloc :1.13
+	[recorder] insert(DRAM) new obj:17, curr_mem_alloc :1.14
+	[recorder] insert(DRAM) new obj:18, curr_mem_alloc :1.15
+	[recorder] insert(PMEM) new obj:19, curr_mem_alloc :18.03
+	[recorder] insert(DRAM) new obj:20, curr_mem_alloc :1.16
+	[recorder] remove(DRAM) curr_mem_alloc :0.08
+	[recorder] insert(PMEM) new obj:21, curr_mem_alloc :18.56
+	[recorder] insert(DRAM) new obj:22, curr_mem_alloc :1.16
+	[recorder] insert(DRAM) new obj:23, curr_mem_alloc :1.69
+	[recorder] insert(PMEM) new obj:24, curr_mem_alloc :19.10
+Context
+DRAM[4,0.0084] = 0.00 read-only
+DRAM[5,0.0084] = 0.00 read-only
+DRAM[6,0.0084] = 0.00 read-only
+DRAM[9,0.0084] = 0.00 read-only
+DRAM[12,0.0084] = 0.00 read-only
+DRAM[13,0.0084] = 0.00 read-only
+DRAM[15,0.0084] = 0.00 read-only
+DRAM[16,0.0084] = 0.00 read-only
+DRAM[17,0.0084] = 0.00 read-only
+DRAM[19,0.0084] = 0.00 read-only
+DRAM[21,1.0737] = 0.00 read-only
+DRAM[22,0.5279] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+PMEM[2,1.0737] = 0.00 read-only
+PMEM[3,0.0084] = 0.00 read-only
+PMEM[7,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00 read-only
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[14,0.0084] = 0.00 read-only
+PMEM[18,0.0084] = 0.00 read-only
+PMEM[20,0.5369] = 0.00 read-only
+PMEM[23,0.5369] = 0.00 read-only
+
+Free DRAM space:0.31(GB), DRAM consumed:1.69
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] insert(PMEM) new obj:25, curr_mem_alloc :19.64
+	[recorder] insert(PMEM) new obj:26, curr_mem_alloc :19.77
+	[recorder] insert(PMEM) new obj:27, curr_mem_alloc :19.90
+	[recorder] insert(PMEM) new obj:28, curr_mem_alloc :20.04
+	[recorder] insert(PMEM) new obj:29, curr_mem_alloc :20.17
+	[recorder] insert(DRAM) new obj:30, curr_mem_alloc :1.82
+	[recorder] insert(DRAM) new obj:31, curr_mem_alloc :1.95
+	[recorder] insert(PMEM) new obj:32, curr_mem_alloc :20.31
+	[recorder] insert(PMEM) new obj:33, curr_mem_alloc :20.44
+	[recorder] insert(DRAM) new obj:34, curr_mem_alloc :2.09
+	[recorder] insert(DRAM) new obj:35, curr_mem_alloc :2.22
+	[recorder] insert(PMEM) new obj:36, curr_mem_alloc :20.58
+	[recorder] insert(DRAM) new obj:37, curr_mem_alloc :2.36
+	[recorder] insert(PMEM) new obj:38, curr_mem_alloc :20.71
+	[recorder] insert(DRAM) new obj:39, curr_mem_alloc :2.49
+	[recorder] insert(PMEM) new obj:40, curr_mem_alloc :20.84
+	[recorder] insert(DRAM) new obj:41, curr_mem_alloc :2.63
+	[recorder] insert(DRAM) new obj:42, curr_mem_alloc :2.76
+Context
+DRAM[19,0.0084] = 119.03,4.00 read-write
+DRAM[4,0.0084] = 119.03,4.00 read-write
+DRAM[6,0.0084] = 0.00,4.00 read-write
+DRAM[9,0.0084] = 0.00,4.00 read-write
+DRAM[12,0.0084] = 0.00,3.00 read-write
+DRAM[13,0.0084] = 0.00 read-only
+DRAM[15,0.0084] = 0.00,4.00 read-write
+DRAM[16,0.0084] = 0.00,4.00 read-write
+DRAM[17,0.0084] = 0.00,4.00 read-write
+DRAM[0,1.0737] = 0.00 read-only
+DRAM[21,1.0737] = 0.00,144.85 read-write
+DRAM[5,0.0084] = 0.00 read-only
+DRAM[29,0.1342] = 0.00 read-only
+DRAM[30,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[34,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00 read-only
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+DRAM[41,0.1342] = 0.00 read-only
+
+PMEM[20,0.5369] = 604.75,309.69 read-write
+PMEM[11,0.0084] = 119.03,4.00 read-write
+PMEM[10,0.0084] = 119.03,4.00 read-write
+PMEM[7,0.0084] = 0.00,4.00 read-write
+PMEM[8,0.0084] = 0.00,3.00 read-write
+PMEM[1,16.8931] = 0.00 read-only
+PMEM[2,1.0737] = 0.00,651.35 read-write
+PMEM[14,0.0084] = 0.00 read-only
+PMEM[18,0.0084] = 0.00,4.00 read-write
+PMEM[3,0.0084] = 0.00 read-only
+PMEM[23,0.5369] = 0.00 read-only
+PMEM[24,0.5369] = 0.00 read-only
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[26,0.1342] = 0.00 read-only
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00 read-only
+PMEM[31,0.1342] = 0.00 read-only
+PMEM[32,0.1342] = 0.00 read-only
+PMEM[35,0.1342] = 0.00 read-only
+PMEM[37,0.1342] = 0.00 read-only
+PMEM[39,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:20, 604.75, size:0.54
+	Obj to remove from DRAM : 41
+	Obj to remove from DRAM : 40
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 34
+	Somatorio dos LLCM:0.00, PMEM candidate:604.75
+	Try to migrate obj:41, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:40, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:38, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:36, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:34, size:0.1342 ---> Cant migrate object!!
+Num obj demoted:0
+-------------------------------------------------------
+Context
+DRAM[19,0.0084] = 1309.47,4.00 read-write
+DRAM[5,0.0084] = 1190.32 read-only
+DRAM[17,0.0084] = 1071.29,4.00 read-write
+DRAM[12,0.0084] = 952.26,3.00 read-write
+DRAM[9,0.0084] = 952.26,4.00 read-write
+DRAM[4,0.0084] = 833.34,4.00 read-write
+DRAM[6,0.0084] = 833.22,4.00 read-write
+DRAM[15,0.0084] = 714.19,4.00 read-write
+DRAM[13,0.0084] = 714.19 read-only
+DRAM[22,0.5279] = 585.33 read-only
+DRAM[21,1.0737] = 481.94,1857.29 read-write
+DRAM[0,1.0737] = 270.74,2370.63 read-write
+DRAM[29,0.1342] = 0.00 read-only
+DRAM[30,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[34,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+DRAM[41,0.1342] = 0.00 read-only
+
+PMEM[10,0.0084] = 1666.57,4.00 read-write
+PMEM[24,0.5369] = 1425.35,859.14 read-write
+PMEM[11,0.0084] = 1190.44,4.00 read-write
+PMEM[18,0.0084] = 1190.32,4.00 read-write
+PMEM[7,0.0084] = 714.19,5.00 read-write
+PMEM[14,0.0084] = 714.19 read-only
+PMEM[20,0.5369] = 605.35,310.00 read-write
+PMEM[3,0.0084] = 595.16 read-only
+PMEM[8,0.0084] = 476.13,3.00 read-write
+PMEM[1,16.8931] = 55.71 read-only
+PMEM[37,0.1342] = 7.44,1.00 read-write
+PMEM[2,1.0737] = 0.00,652.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[26,0.1342] = 0.00 read-only
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00 read-only
+PMEM[31,0.1342] = 0.00 read-only
+PMEM[32,0.1342] = 0.00 read-only
+PMEM[35,0.1342] = 0.00 read-only
+PMEM[23,0.5369] = 0.00,1.00 read-write
+PMEM[39,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:10, 1666.57, size:0.01
+	Obj to remove from DRAM : 41
+	Somatorio dos LLCM:0.00, PMEM candidate:1666.57
+	Try to migrate obj:41, size:0.1342 ---> Cant migrate object!!
+Num obj demoted:0
+-------------------------------------------------------
+Context
+DRAM[17,0.0084] = 2143.65,4.00 read-write
+DRAM[12,0.0084] = 2143.53,3.00 read-write
+DRAM[9,0.0084] = 1786.43,4.00 read-write
+DRAM[5,0.0084] = 1667.64 read-only
+DRAM[6,0.0084] = 1548.25,4.00 read-write
+DRAM[16,0.0084] = 1429.81,4.00 read-write
+DRAM[4,0.0084] = 1429.22,4.00 read-write
+DRAM[15,0.0084] = 1310.07,4.00 read-write
+DRAM[13,0.0084] = 1191.03 read-only
+DRAM[22,0.5279] = 1105.73,2680.32 read-write
+DRAM[21,1.0737] = 959.71,4220.63 read-write
+DRAM[0,1.0737] = 271.01,2373.00 read-write
+DRAM[29,0.1342] = 0.00 read-only
+DRAM[30,0.1342] = 0.00 read-only
+DRAM[33,0.1342] = 0.00 read-only
+DRAM[34,0.1342] = 0.00 read-only
+DRAM[36,0.1342] = 0.00,1.00 read-write
+DRAM[38,0.1342] = 0.00 read-only
+DRAM[40,0.1342] = 0.00 read-only
+DRAM[41,0.1342] = 0.00 read-only
+
+PMEM[24,0.5369] = 3270.80,1209.65 read-write
+PMEM[10,0.0084] = 2382.31,4.00 read-write
+PMEM[18,0.0084] = 1905.70,4.00 read-write
+PMEM[11,0.0084] = 1786.67,4.00 read-write
+PMEM[8,0.0084] = 1547.89,3.00 read-write
+PMEM[7,0.0084] = 1429.10,5.00 read-write
+PMEM[3,0.0084] = 1428.98 read-only
+PMEM[14,0.0084] = 1310.07 read-only
+PMEM[20,0.5369] = 605.36,310.00 read-write
+PMEM[1,16.8931] = 123.12 read-only
+PMEM[37,0.1342] = 7.45,1.00 read-write
+PMEM[2,1.0737] = 1.86,652.00 read-write
+PMEM[25,0.1342] = 0.00 read-only
+PMEM[26,0.1342] = 0.00 read-only
+PMEM[27,0.1342] = 0.00 read-only
+PMEM[28,0.1342] = 0.00 read-only
+PMEM[31,0.1342] = 0.00 read-only
+PMEM[32,0.1342] = 0.00 read-only
+PMEM[35,0.1342] = 0.00 read-only
+PMEM[23,0.5369] = 0.00,1.00 read-write
+PMEM[39,0.1342] = 0.00 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.76
+
+Decisions
+PMEM candidate index:24, 3270.80, size:0.54
+	Obj to remove from DRAM : 41
+	Obj to remove from DRAM : 40
+	Obj to remove from DRAM : 38
+	Obj to remove from DRAM : 36
+	Obj to remove from DRAM : 34
+	Somatorio dos LLCM:0.00, PMEM candidate:3270.80
+	Try to migrate obj:41, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:40, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:38, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:36, size:0.1342 ---> Cant migrate object!!
+	Try to migrate obj:34, size:0.1342 ---> Cant migrate object!!
+Num obj demoted:0
+-------------------------------------------------------
