@@ -123,7 +123,7 @@ void init_lib(void)
         shared_memory->account_shared_library_instances += 1;
         pthread_mutex_unlock(&shared_memory->global_mutex);
        
-        //pthread_create(&actuator, NULL, thread_actuator, shared_memory);
+        pthread_create(&actuator, NULL, thread_actuator, shared_memory);
 
    }
 }
