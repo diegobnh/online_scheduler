@@ -63,7 +63,7 @@ static void __attribute__((destructor)) exit_lib(void);
 #include <libunwind.h>
 #define lengthof(x) (sizeof(x) / sizeof(x[0]))
 
-void backtrace()
+void my_backtrace()
 {
     unw_cursor_t cursor;
     unw_context_t context;
@@ -167,7 +167,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
         if((unsigned long)arg1 == 134217728){
-            backtrace();
+            my_backtrace();
         }
             
         
