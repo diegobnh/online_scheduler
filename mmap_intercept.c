@@ -70,9 +70,9 @@ void backtrace()
 
     // grab the machine context and initialize the cursor
     if (unw_getcontext(&context) < 0)
-        die("ERROR: cannot get local machine state\n");
+        fprintf(stderr,"ERROR: cannot get local machine state\n");
     if (unw_init_local(&cursor, &context) < 0)
-        die("ERROR: cannot initialize cursor for local unwinding\n");
+        fprintf(stderr,"ERROR: cannot initialize cursor for local unwinding\n");
 
 
     // currently the IP is within backtrace() itself so this loop
