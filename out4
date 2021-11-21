@@ -1,0 +1,101 @@
+	[recorder] insert(DRAM) new obj:1, curr_mem_alloc :1.07
+	[recorder] insert(PMEM) new obj:2, curr_mem_alloc :16.89
+Context
+DRAM[0,1.0737] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[0,1.0737] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[0,1.0737] = 0.00,0.90 read-write
+
+PMEM[1,16.8931] = 0.00,0.90 read-write
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] insert(PMEM) new obj:3, curr_mem_alloc :17.97
+	[recorder] insert(PMEM) new obj:4, curr_mem_alloc :17.98
+	[recorder] insert(DRAM) new obj:5, curr_mem_alloc :1.08
+	[recorder] insert(DRAM) new obj:6, curr_mem_alloc :1.09
+	[recorder] insert(DRAM) new obj:7, curr_mem_alloc :1.10
+	[recorder] insert(PMEM) new obj:8, curr_mem_alloc :17.98
+	[recorder] insert(PMEM) new obj:9, curr_mem_alloc :17.99
+	[recorder] insert(DRAM) new obj:10, curr_mem_alloc :1.11
+	[recorder] insert(PMEM) new obj:11, curr_mem_alloc :18.00
+	[recorder] insert(PMEM) new obj:12, curr_mem_alloc :18.01
+	[recorder] insert(DRAM) new obj:13, curr_mem_alloc :1.12
+	[recorder] insert(DRAM) new obj:14, curr_mem_alloc :1.12
+	[recorder] insert(PMEM) new obj:15, curr_mem_alloc :18.02
+	[recorder] insert(DRAM) new obj:16, curr_mem_alloc :1.13
+	[recorder] insert(DRAM) new obj:17, curr_mem_alloc :1.14
+	[recorder] insert(DRAM) new obj:18, curr_mem_alloc :1.15
+	[recorder] insert(PMEM) new obj:19, curr_mem_alloc :18.03
+	[recorder] insert(DRAM) new obj:20, curr_mem_alloc :1.16
+	[recorder] remove(DRAM) curr_mem_alloc :0.08
+	[recorder] insert(PMEM) new obj:21, curr_mem_alloc :18.56
+Context
+DRAM[4,0.0084] = 0.00 read-only
+DRAM[5,0.0084] = 0.00 read-only
+DRAM[6,0.0084] = 0.00 read-only
+DRAM[9,0.0084] = 0.00 read-only
+DRAM[12,0.0084] = 0.00 read-only
+DRAM[13,0.0084] = 0.00 read-only
+DRAM[15,0.0084] = 0.00 read-only
+DRAM[16,0.0084] = 0.00 read-only
+DRAM[17,0.0084] = 0.00 read-only
+DRAM[19,0.0084] = 0.00 read-only
+
+PMEM[1,16.8931] = 0.00,1.00 read-write
+PMEM[2,1.0737] = 0.00 read-only
+PMEM[3,0.0084] = 0.00 read-only
+PMEM[7,0.0084] = 0.00 read-only
+PMEM[8,0.0084] = 0.00 read-only
+PMEM[10,0.0084] = 0.00 read-only
+PMEM[11,0.0084] = 0.00 read-only
+PMEM[14,0.0084] = 0.00 read-only
+PMEM[18,0.0084] = 0.00 read-only
+PMEM[20,0.5369] = 0.00 read-only
+
+Free DRAM space:1.92(GB), DRAM consumed:0.08
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] insert(DRAM) new obj:22, curr_mem_alloc :1.16
+	[recorder] insert(DRAM) new obj:23, curr_mem_alloc :1.69
+	[recorder] insert(PMEM) new obj:24, curr_mem_alloc :19.10
+	[recorder] insert(PMEM) new obj:25, curr_mem_alloc :19.64
+	[recorder] insert(PMEM) new obj:26, curr_mem_alloc :19.77
+	[recorder] insert(PMEM) new obj:27, curr_mem_alloc :19.90
+	[recorder] insert(PMEM) new obj:28, curr_mem_alloc :20.04
+	[recorder] insert(DRAM) new obj:29, curr_mem_alloc :1.82
+	[recorder] insert(DRAM) new obj:30, curr_mem_alloc :1.95
+	[recorder] insert(DRAM) new obj:31, curr_mem_alloc :2.09
+	[recorder] insert(PMEM) new obj:32, curr_mem_alloc :20.17
+	[recorder] insert(PMEM) new obj:33, curr_mem_alloc :20.31
+	[recorder] insert(PMEM) new obj:34, curr_mem_alloc :20.44
+	[recorder] insert(PMEM) new obj:35, curr_mem_alloc :20.58
+	[recorder] insert(DRAM) new obj:36, curr_mem_alloc :2.22
+	[recorder] insert(DRAM) new obj:37, curr_mem_alloc :2.36
+	[recorder] insert(DRAM) new obj:38, curr_mem_alloc :2.49
+	[recorder] insert(PMEM) new obj:39, curr_mem_alloc :20.71
+	[recorder] insert(DRAM) new obj:40, curr_mem_alloc :2.63
+	[recorder] insert(PMEM) new obj:41, curr_mem_alloc :20.84
+	[recorder] insert(DRAM) new obj:42, curr_mem_alloc :2.76
