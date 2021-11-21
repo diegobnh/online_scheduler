@@ -107,7 +107,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     
     
-    fprintf(stderr, "Free DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
+    fprintf(stderr, "\nFree DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
     return flag_has_llcm;
 }
 
@@ -232,7 +232,7 @@ int policy_migration_demotion(struct schedule_manager *args){
     }
     fprintf(stderr,"Somatorio dos LLCM:%.2lf, PMEM candidate:%.2lf\n", sum_llcm_candidates_demotion, top1_pmem_llcm);
     
-    /*
+    
     cont = 0;
     if(sum_llcm_candidates_demotion < top1_pmem_llcm){
         while(list_obj_index[cont] != -1){
@@ -265,11 +265,11 @@ int policy_migration_demotion(struct schedule_manager *args){
     }else{
         fprintf(stderr,"Sum of all objs from DRAM has more LLCM (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_llcm_candidates_demotion, top1_pmem_llcm);
     }
-    */
+    
     
     
     //Try to remove N objects from DRAM
-    
+    /*
     for(i=args->tier[0].num_obj-1; i >= 0; i--){
         curr_llcm = args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB);
         if(curr_llcm > 1 && args->tier[0].obj_flag_alloc[i] == 1){
@@ -311,6 +311,7 @@ int policy_migration_demotion(struct schedule_manager *args){
             }
         }
     }
+     */
     fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
     
 }
