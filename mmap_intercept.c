@@ -166,10 +166,10 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 	if (syscall_number == SYS_mmap) {
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
-        if((unsigned long)arg1 == 134217728){
-            my_backtrace();
-        }
-            
+        //if((unsigned long)arg1 == 134217728){
+        //    my_backtrace();
+        //}
+        my_backtrace();
         
 		pthread_mutex_lock(&shared_memory->global_mutex);
         mem_consumption = shared_memory->tier[0].current_memory_consumption;
