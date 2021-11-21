@@ -81,7 +81,7 @@ void backtrace()
         unw_word_t offset, pc;
         char sym[4096];
         if (unw_get_reg(&cursor, UNW_REG_IP, &pc))
-            die("ERROR: cannot read program counter\n");
+            fprintf(stderr,"ERROR: cannot read program counter\n");
 
         printf("0x%lx: ", pc);
 
