@@ -130,8 +130,10 @@ void policy_migration_promotion(struct schedule_manager *args){
                          64,
                          MPOL_MF_MOVE) == -1)
                 {
-                    //fprintf(stderr,"Cant migrate object!!\n");
+                    fprintf(stderr,"Cant migrate object!!\n");
                     //exit(-1);
+                    fprintf(stderr,"Error:%d\n",errno);
+                    perror("Error description");
                 }else{
                     fprintf(stderr,"Promoted to DRAM object:%d \n", args->tier[1].obj_vector[i].index_id);
                     num_obj_migrated++;
@@ -237,6 +239,8 @@ int policy_migration_demotion(struct schedule_manager *args){
                      MPOL_MF_MOVE) == -1)
             {
                 fprintf(stderr," Cant migrate object!!\n");
+                fprintf(stderr,"Error:%d\n",errno);
+                perror("Error description");
                 //exit(-1);
             }else{
                 fprintf(stderr," Demoted to PMEM ! \n");
