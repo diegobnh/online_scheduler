@@ -522,7 +522,7 @@ int main(int argc, char **argv)
 
     while(g_running) {
         perf_evlist__enable(evlist);
-        sleep(3);
+        sleep(MONITOR_INTERVAL);
         perf_evlist__disable(evlist);
         
         curr_ring_index = incremental_ring_index % RING_BUFFER_SIZE;

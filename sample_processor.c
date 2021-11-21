@@ -9,7 +9,6 @@
 
 #include "recorder.h"
 #include "time.h"
-#define SLEEP_TIME 1
 #define ALPHA 0.1
 
 //#define DEBUG
@@ -169,7 +168,7 @@ void *thread_sample_processor(void *_args){
     struct timespec start, end;
 	
 	while(1){
-		sleep(SLEEP_TIME);
+		sleep(SAMPLE_PROCESSOR_INTERVAL);
         
 		//This lock is just to read all historical samples
 		pthread_mutex_lock(&args->global_mutex);

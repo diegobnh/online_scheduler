@@ -11,6 +11,10 @@
 #define MAXIMUM_DRAM_CAPACITY 2E+9  //means 4GB
 #define GB 1000000000.0
 
+#define MONITOR_INTERVAL 1
+#define SAMPLE_PROCESSOR_INTERVAL  3
+#define ACTUATOR_INTERVAL 5
+
 typedef struct metrics{
     //The metrics could be Simply Moving Average, Weighted Moving Average, Exponential Moving Average...
     double sum_latency_cost[MEM_LEVELS];
