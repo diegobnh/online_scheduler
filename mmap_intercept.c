@@ -63,34 +63,32 @@ static void __attribute__((destructor)) exit_lib(void);
 #include <libunwind.h>
 #define lengthof(x) (sizeof(x) / sizeof(x[0]))
 
-void my_backtrace()
-{
-    unw_cursor_t cursor;
-    unw_context_t context;
+void my_backtrace() {
+  unw_cursor_t cursor;
+  unw_context_t context;
 
-    // grab the machine context and initialize the cursor
-    if (unw_getcontext(&context) < 0)
-        fprintf(stderr,"ERROR: cannot get local machine state\n");
-    if (unw_init_local(&cursor, &context) < 0)
-        fprintf(stderr,"ERROR: cannot initialize cursor for local unwinding\n");
+  // Initialize cursor to current frame for local unwinding.
+  unw_getcontext(&context);
+  unw_init_local(&cursor, &context);
 
-
-    // currently the IP is within backtrace() itself so this loop
-    // deliberately skips the first frame.
-    while (unw_step(&cursor) > 0) {
-        unw_word_t offset, pc;
-        char sym[4096];
-        if (unw_get_reg(&cursor, UNW_REG_IP, &pc))
-            fprintf(stderr,"ERROR: cannot read program counter\n");
-
-        printf("0x%lx: ", pc);
-
-        if (unw_get_proc_name(&cursor, sym, sizeof(sym), &offset) == 0)
-            printf("(%s+0x%lx)\n", sym, offset);
-        else
-            printf("-- no symbol name found\n");
+  // Unwind frames one by one, going up the frame stack.
+  while (unw_step(&cursor) > 0) {
+    unw_word_t offset, pc;
+    unw_get_reg(&cursor, UNW_REG_IP, &pc);
+    if (pc == 0) {
+      break;
     }
+    fprintf(stderr,"0x%lx:", pc);
+
+    char sym[256];
+    if (unw_get_proc_name(&cursor, sym, sizeof(sym), &offset) == 0) {
+      fprintf(stderr," (%s+0x%lx)\n", sym, offset);
+    } else {
+      fprintf(stderr," -- error: unable to obtain symbol name for this frame\n");
+    }
+  }
 }
+
 
 
 void init_lib(void)
@@ -169,7 +167,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         //if((unsigned long)arg1 == 134217728){
         //    my_backtrace();
         //}
-        my_backtrace();
+        //my_backtrace();
         
 		pthread_mutex_lock(&shared_memory->global_mutex);
         mem_consumption = shared_memory->tier[0].current_memory_consumption;
