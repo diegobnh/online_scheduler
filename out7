@@ -1,0 +1,22 @@
+	[recorder] insert(DRAM) new obj:1, curr_mem_alloc :1.07
+	[recorder] insert(PMEM) new obj:2, curr_mem_alloc :16.89
+Context
+DRAM[0,1.0737] = 0.0000 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[0,1.0737] = 0.0000 read-only
+
+PMEM[1,16.8931] = 0.00 read-only
+
+Free DRAM space:0.93(GB), DRAM consumed:1.07
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------

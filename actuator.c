@@ -12,7 +12,7 @@
 #include "monitor.h"
 #include "recorder.h"
 
-#define SLEEP_TIME 1
+#define SLEEP_TIME 3
 
 #define NODE_0_DRAM 0
 #define NODE_0_PMEM 2
@@ -28,12 +28,6 @@
 
 #define MINIMUM_LLCM 1
 
-//float g_top_to_demotion[NUM_CANDIDATES];
-//float g_top_to_promotion[NUM_CANDIDATES];
-typedef struct candidates{
-    int index;
-    float llcm;
-}candidates_t;
 
 void sort_objects(struct schedule_manager *args){
     int i,j;
@@ -83,9 +77,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         if(args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf,%.2lf read-write\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.2lf read-write\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.2lf read-only\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
+                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf read-only\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
             }
             
         }
