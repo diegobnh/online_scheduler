@@ -1,0 +1,2 @@
+	[recorder] insert(DRAM) new obj:1, curr_mem_alloc :1.07
+	[recorder] insert(PMEM) new obj:2, curr_mem_alloc :16.89
