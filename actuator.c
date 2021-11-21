@@ -12,7 +12,7 @@
 #include "monitor.h"
 #include "recorder.h"
 
-#define SLEEP_TIME 3
+#define SLEEP_TIME 1
 
 #define NODE_0_DRAM 0
 #define NODE_0_PMEM 2
@@ -247,7 +247,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                 fprintf(stderr," Cant migrate object!!\n");
                 //exit(-1);
             }else{
-                fprintf(stderr,"Demoted to PMEM object:%d \n", args->tier[0].obj_vector[curr_index].index_id);
+                fprintf(stderr," Demoted to PMEM ! \n");
                 num_obj_migrated++;
                 remove_allocation_on_dram(args,
                                       args->tier[0].obj_vector[curr_index].pid,
