@@ -35,6 +35,7 @@
 #define ROUND_ROBIN 1
 #define RANDOM 2
 #define FIRST_DRAM 3
+#define FIRST_PMEM 4
 
 #ifndef INIT_ALLOC
 	fprintf(stderr, "INIT_ALLOC not defined\n");
@@ -179,6 +180,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         if(rand() % 2){
 #elif FIRST_DRAM
         if(1){
+#elif FIRST_PMEM
+        if(0){
 #endif
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
@@ -202,7 +205,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		{
            //nodemask = 1<<NODE_1_DRAM ;
            nodemask = 1<<NODE_0_PMEM;
-		   fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
+		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
 		   if(mbind((void *)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
 		   {
@@ -220,7 +223,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
         
-        fprintf(stderr, "[mUNmap] %p %ld\n", (void*)arg0, arg1);
+        D fprintf(stderr, "[mUNmap] %p %ld\n", (void*)arg0, arg1);
         //if return 0 means can't find object on dram, try to find on pmem
         
         if (remove_allocation_on_dram(shared_memory, (int)getpid(),arg0, arg1) != 1){

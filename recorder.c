@@ -78,7 +78,7 @@ int insert_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
     args->tier[1].current_obj_index = index ; //this value will be the first index to check if is available
     args->tier[1].current_memory_consumption += size;
     
-    fprintf(stderr,"\t[recorder] insert(PMEM) new obj:%d, curr_mem_alloc :%.2lf\n", args->global_index, args->tier[1].current_memory_consumption/GB);
+    D fprintf(stderr,"\t[recorder] insert(PMEM) new obj:%d, curr_mem_alloc :%.2lf\n", args->global_index, args->tier[1].current_memory_consumption/GB);
     pthread_mutex_unlock(&args->global_mutex);
     D fprintf(stderr,"\t[recorder] insert_allocation_on_mem Free lock!!\n");
 
@@ -110,7 +110,7 @@ int insert_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
     args->tier[0].current_obj_index = index ;
     args->tier[0].current_memory_consumption += size;
     
-    fprintf(stderr,"\t[recorder] insert(DRAM) new obj:%d, curr_mem_alloc :%.2lf\n", args->global_index, args->tier[0].current_memory_consumption/GB);
+    D fprintf(stderr,"\t[recorder] insert(DRAM) new obj:%d, curr_mem_alloc :%.2lf\n", args->global_index, args->tier[0].current_memory_consumption/GB);
     pthread_mutex_unlock(&args->global_mutex);
     D fprintf(stderr,"\t[recorder] insert_allocation_on_dram Free lock!!\n");
 }
@@ -125,7 +125,7 @@ int remove_allocation_on_pmem(struct schedule_manager *args, int pid, unsigned l
             //D fprintf(stderr,"\t[recorder] removed %p from tier[1] index:%d\n",start_addr, i);
             args->tier[1].obj_flag_alloc[i] = 0;
             args->tier[1].current_memory_consumption -= size;
-            fprintf(stderr,"\t[recorder] remove(PMEM) curr_mem_alloc :%.2lf\n", args->tier[1].current_memory_consumption/GB);
+            D fprintf(stderr,"\t[recorder] remove(PMEM) curr_mem_alloc :%.2lf\n", args->tier[1].current_memory_consumption/GB);
             D fprintf(stderr,"\t[recorder] remove_allocation_on_pmem Free lock!!\n");
             pthread_mutex_unlock(&args->global_mutex);
     		return 1;
