@@ -241,6 +241,7 @@ int policy_migration_demotion(struct schedule_manager *args){
                 fprintf(stderr," Cant migrate object!!\n");
                 fprintf(stderr,"Error:%d\n",errno);
                 perror("Error description");
+                getchar();
                 //exit(-1);
             }else{
                 fprintf(stderr," Demoted to PMEM ! \n");
