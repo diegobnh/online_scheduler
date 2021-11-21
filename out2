@@ -695,3 +695,4 @@ Num obj demoted:0
 	[recorder] remove(DRAM) curr_mem_alloc :1.69
 	[recorder] remove(PMEM) curr_mem_alloc :19.23
 	[recorder] remove(PMEM) curr_mem_alloc :18.16
+	[recorder] remove(PMEM) curr_mem_alloc :1.27
