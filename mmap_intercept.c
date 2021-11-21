@@ -150,7 +150,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
                
-		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
+		       fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
 		       if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
 		       {
@@ -169,7 +169,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		{
            //nodemask = 1<<NODE_1_DRAM ;
            nodemask = 1<<NODE_0_PMEM;
-		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
+		   fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
 		   if(mbind((void *)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
 		   {
