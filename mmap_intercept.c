@@ -91,7 +91,7 @@ void init_lib(void)
         shared_memory->account_shared_library_instances += 1;
         pthread_mutex_unlock(&shared_memory->global_mutex);
        
-        pthread_create(&actuator, NULL, thread_actuator, shared_memory);
+        //pthread_create(&actuator, NULL, thread_actuator, shared_memory);
 
    }
 }
@@ -138,6 +138,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         mem_consumption = shared_memory->tier[0].current_memory_consumption;
         pthread_mutex_unlock(&shared_memory->global_mutex);
 
+        /*
 #if INIT_ALLOC == ROUND_ROBIN 		    
         if(((memory_index ++) %2)){
 #elif INIT_ALLOC == RANDOM
@@ -181,6 +182,31 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
    		   return 0;
    		   
 		}
+         */
+        nodemask = 1<<NODE_0_DRAM;
+        if((unsigned long)arg1 > 1000000000){
+            fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
+            if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
+            {
+                 fprintf(stderr,"Error during mbind:%d\n",errno);
+                 perror("Error description");
+            }else{
+                 insert_allocation_on_dram(shared_memory, (int)getpid(), *result, (unsigned long)arg1);
+                  flag_dram_alloc = 1;
+                  return 0;
+            }
+        }else{
+            nodemask = 1<<NODE_0_PMEM;
+            fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
+
+            if(mbind((void *)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
+            {
+               fprintf(stderr,"Error during mbind:%d\n",errno);
+               perror("Error description");
+            }
+            insert_allocation_on_pmem(shared_memory, (int)getpid(), *result, (unsigned long)arg1);
+            return 0;
+        }
 		
 		
 	}else if(syscall_number == SYS_munmap){
