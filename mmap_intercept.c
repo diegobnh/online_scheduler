@@ -184,7 +184,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		}
          */
         nodemask = 1<<NODE_0_DRAM;
-        if((unsigned long)arg1 >= 16893059072){
+        if((unsigned long)arg1 == 1073745920){
             fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
             if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
             {
