@@ -4,15 +4,16 @@
 #include <stdio.h>
 #include <time.h>
 #include <pthread.h>
+#include <limits.h>
 
 #define MAX_OBJECTS 1000
 #define RING_BUFFER_SIZE  3
 #define MEM_LEVELS 5
-#define MAXIMUM_DRAM_CAPACITY 1E+9  //means 2GB
+#define MAXIMUM_DRAM_CAPACITY ULONG_MAX //1E+9  //means 2GB
 #define GB 1000000000.0
 
 #define MONITOR_INTERVAL 1
-#define SAMPLE_PROCESSOR_INTERVAL  3
+#define SAMPLE_PROCESSOR_INTERVAL  1
 #define ACTUATOR_INTERVAL 5
 
 typedef struct metrics{
