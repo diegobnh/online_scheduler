@@ -138,7 +138,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         mem_consumption = shared_memory->tier[0].current_memory_consumption;
         pthread_mutex_unlock(&shared_memory->global_mutex);
 
-        /*
+        
 #if INIT_ALLOC == ROUND_ROBIN 		    
         if(((memory_index ++) %2)){
 #elif INIT_ALLOC == RANDOM
@@ -182,7 +182,8 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
    		   return 0;
    		   
 		}
-         */
+         
+        /*
         nodemask = 1<<NODE_0_DRAM;
         if((unsigned long)arg1 == 536875008){
             fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
@@ -207,7 +208,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
             insert_allocation_on_pmem(shared_memory, (int)getpid(), *result, (unsigned long)arg1);
             return 0;
         }
-		
+		*/
 		
 	}else if(syscall_number == SYS_munmap){
         
