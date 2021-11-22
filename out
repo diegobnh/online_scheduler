@@ -516,3 +516,55 @@ Free DRAM space:0.26(GB), DRAM consumed:1.74
 Decisions
 Num obj promoted:0
 -------------------------------------------------------
+Context
+DRAM[42,0.5279] = 6122.6150,2.0634 read-write
+DRAM[59,1.0737] = 738.3713,1.2172 read-write
+DRAM[50,0.0084] = 34.4550,3.8493 read-write
+DRAM[46,0.0084] = 25.0166,5.9274 read-write
+DRAM[43,0.0084] = 24.9631,3.4227 read-write
+DRAM[48,0.0084] = 23.7113,6.8166 read-write
+DRAM[51,0.0084] = 14.0757,9.5464 read-write
+DRAM[47,0.0084] = 13.2293,6.7662 read-write
+DRAM[57,0.0084] = 11.9638,10.1700 read-write
+DRAM[44,0.0084] = 10.9117,3.8493 read-write
+DRAM[55,0.0084] = 10.7487,5.7294 read-write
+DRAM[54,0.0084] = 7.5902,12.8556 read-write
+DRAM[53,0.0084] = 3.3206,3.1707 read-write
+DRAM[52,0.0084] = 1.2719,2.2545 read-write
+DRAM[58,0.0084] = 1.2520,5.5756 read-write
+DRAM[49,0.0084] = 0.2996,6.4665 read-write
+DRAM[45,0.0084] = 0.1820,6.6494 read-write
+DRAM[56,0.0084] = 0.0593,3.6891 read-write
+DRAM[60,0.0084] = 0.0000 read-only
+
+PMEM[19,0.0084] = 0.0000,0.00 read-write
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[12,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[11,0.0084] = 0.0000,0.00 read-write
+PMEM[22,0.5279] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000,0.00 read-write
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000,0.00 read-write
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+
+Free DRAM space:0.26(GB), DRAM consumed:1.74
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] remove(DRAM) curr_mem_alloc :1.22
+	[recorder] remove(DRAM) curr_mem_alloc :0.14
