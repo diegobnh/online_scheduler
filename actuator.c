@@ -130,9 +130,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                          64,
                          MPOL_MF_MOVE) == -1)
                 {
-                    fprintf(stderr,"\tCant migrate object:%d \n", args->tier[1].obj_vector[i].index_id);
-                    //exit(-1);
-                    fprintf(stderr,"\tError:%d\n",errno);
+                    fprintf(stderr,"\tCant migrate object:%d , Error:%d  , ", args->tier[1].obj_vector[i].index_id, errno);
                     perror("\tError description");
                 }else{
                     
