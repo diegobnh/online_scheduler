@@ -142,9 +142,9 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
         if(((memory_index ++) %2)){
 #elif INIT_ALLOC == RANDOM
         if(rand() % 2){
-#elif FIRST_DRAM
+#elif INIT_ALLOC == FIRST_DRAM
         if(1){
-#elif FIRST_PMEM
+#elif INIT_ALLOC == FIRST_PMEM
         if(0){
 #endif
             fprintf(stderr, "Entrou na Dram\n");
