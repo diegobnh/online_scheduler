@@ -130,7 +130,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                          64,
                          MPOL_MF_MOVE) == -1)
                 {
-                    fprintf(stderr,"\tCant migrate object!!\n");
+                    fprintf(stderr,"\tCant migrate object:%d \n", args->tier[1].obj_vector[i].index_id);
                     //exit(-1);
                     fprintf(stderr,"\tError:%d\n",errno);
                     perror("\tError description");
@@ -147,7 +147,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                                           args->tier[1].obj_vector[i].start_addr,
                                           args->tier[1].obj_vector[i].size);
                     
-                    current_dram_space += args->tier[1].obj_vector[i].size/GB;
+                    current_dram_space -= args->tier[1].obj_vector[i].size/GB;
                     fprintf(stderr,"Promoted to DRAM object:%d  now free DRAM space:%.2lf\n", args->tier[1].obj_vector[i].index_id, current_dram_space);
                     
                 }
