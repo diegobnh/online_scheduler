@@ -130,12 +130,12 @@ void policy_migration_promotion(struct schedule_manager *args){
                          64,
                          MPOL_MF_MOVE) == -1)
                 {
-                    fprintf(stderr,"Cant migrate object!!\n");
+                    fprintf(stderr,"\tCant migrate object!!\n");
                     //exit(-1);
-                    fprintf(stderr,"Error:%d\n",errno);
-                    perror("Error description");
+                    fprintf(stderr,"\tError:%d\n",errno);
+                    perror("\tError description");
                 }else{
-                    fprintf(stderr,"Promoted to DRAM object:%d \n", args->tier[1].obj_vector[i].index_id);
+                    
                     num_obj_migrated++;
                     remove_allocation_on_pmem(args,
                                           args->tier[1].obj_vector[i].pid,
@@ -148,6 +148,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                                           args->tier[1].obj_vector[i].size);
                     
                     current_dram_space += args->tier[1].obj_vector[i].size/GB;
+                    fprintf(stderr,"Promoted to DRAM object:%d  now free DRAM space:%.2lf\n", args->tier[1].obj_vector[i].index_id, current_dram_space);
                     
                 }
             }else{
