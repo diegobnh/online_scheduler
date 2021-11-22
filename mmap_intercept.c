@@ -147,6 +147,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 #elif FIRST_PMEM
         if(0){
 #endif
+            fprintf(stderr, "Entrou na Dram\n");
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
                
