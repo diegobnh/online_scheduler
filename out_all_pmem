@@ -1,0 +1,188 @@
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:2.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:2.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[1,16.8931] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000 read-only
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[4,0.0084] = 0.0000 read-only
+PMEM[5,0.0084] = 0.0000 read-only
+PMEM[6,0.0084] = 0.0000 read-only
+PMEM[7,0.0084] = 0.0000 read-only
+PMEM[8,0.0084] = 0.0000 read-only
+PMEM[9,0.0084] = 0.0000 read-only
+PMEM[10,0.0084] = 0.0000 read-only
+PMEM[11,0.0084] = 0.0000 read-only
+PMEM[12,0.0084] = 0.0000 read-only
+PMEM[13,0.0084] = 0.0000 read-only
+PMEM[14,0.0084] = 0.0000 read-only
+PMEM[15,0.0084] = 0.0000 read-only
+PMEM[16,0.0084] = 0.0000 read-only
+PMEM[17,0.0084] = 0.0000 read-only
+PMEM[18,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000 read-only
+PMEM[20,0.5369] = 0.0000 read-only
+PMEM[21,1.0737] = 0.0000 read-only
+PMEM[22,0.5279] = 0.0000 read-only
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[24,0.5369] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+
+Free DRAM space:2.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[12,0.0084] = 1190.3196,0.27 read-write
+PMEM[3,0.0084] = 1125.9780 read-only
+PMEM[19,0.0084] = 1029.4656,0.27 read-write
+PMEM[5,0.0084] = 965.1240 read-only
+PMEM[13,0.0084] = 814.9936,0.27 read-write
+PMEM[8,0.0084] = 729.2048,0.27 read-write
+PMEM[15,0.0084] = 707.7576,0.27 read-write
+PMEM[16,0.0084] = 675.5868,0.36 read-write
+PMEM[11,0.0084] = 611.2452,0.27 read-write
+PMEM[18,0.0084] = 589.7980,0.36 read-write
+PMEM[10,0.0084] = 589.7980 read-only
+PMEM[7,0.0084] = 589.7980,0.27 read-write
+PMEM[17,0.0084] = 568.3508,0.36 read-write
+PMEM[14,0.0084] = 493.2856,0.27 read-write
+PMEM[22,0.5279] = 483.3221,2419.65 read-write
+PMEM[9,0.0084] = 482.5620,0.36 read-write
+PMEM[6,0.0084] = 386.0496,0.27 read-write
+PMEM[21,1.0737] = 311.5542,1751.22 read-write
+PMEM[4,0.0084] = 171.5776 read-only
+PMEM[1,16.8931] = 63.3722 read-only
+PMEM[20,0.5369] = 55.1525,28.35 read-write
+PMEM[23,0.5369] = 5.0291 read-only
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000,66.33 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.90 read-write
+PMEM[27,0.1342] = 0.0000,1.80 read-write
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000,0.90 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000,0.90 read-write
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000,0.90 read-write
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000,0.90 read-write
+PMEM[41,0.1342] = 0.0000 read-only
+
+Free DRAM space:2.00(GB), DRAM consumed:0.00
+
+Decisions
+Promoted to DRAM object:12 
+Promoted to DRAM object:3 
+Promoted to DRAM object:19 
+Promoted to DRAM object:5 
+Promoted to DRAM object:13 
+Promoted to DRAM object:8 
+Promoted to DRAM object:15 
+Promoted to DRAM object:16 
+Promoted to DRAM object:11 
+Promoted to DRAM object:18 
+Promoted to DRAM object:10 
+Promoted to DRAM object:7 
+Promoted to DRAM object:17 
+Promoted to DRAM object:14 
+Promoted to DRAM object:22 
+Promoted to DRAM object:9 
+Promoted to DRAM object:6 
+Promoted to DRAM object:21 
+Promoted to DRAM object:4 
+Cannot promote object 1 to DRAM because of size:16.893059 
+Promoted to DRAM object:20 
+Promoted to DRAM object:23 
+Num obj promoted:21
+-------------------------------------------------------
+Context
+DRAM[60,0.0084] = 1029.4656 read-only
+DRAM[48,0.0084] = 1008.0184 read-only
+DRAM[53,0.0084] = 900.7824 read-only
+DRAM[46,0.0084] = 890.0588 read-only
+DRAM[44,0.0084] = 847.1644 read-only
+DRAM[54,0.0084] = 697.0340 read-only
+DRAM[52,0.0084] = 697.0340 read-only
+DRAM[55,0.0084] = 686.3104 read-only
+DRAM[50,0.0084] = 664.8632 read-only
+DRAM[51,0.0084] = 579.0744 read-only
+DRAM[57,0.0084] = 568.3508 read-only
+DRAM[58,0.0084] = 546.9036 read-only
+DRAM[45,0.0084] = 471.8384 read-only
+DRAM[56,0.5279] = 461.8411,2645.3700 read-write
+DRAM[47,0.0084] = 461.1148 read-only
+DRAM[42,0.0084] = 461.1148 read-only
+DRAM[59,1.0737] = 375.5916,2229.0300 read-write
+DRAM[49,0.0084] = 353.8788 read-only
+DRAM[43,0.0084] = 343.1552 read-only
+DRAM[62,0.5369] = 3.3527 read-only
+DRAM[61,0.5369] = 0.0000 read-only
+
+PMEM[5,0.0084] = 9.6512 read-only
+PMEM[23,0.5369] = 0.0503 read-only
+PMEM[2,1.0737] = 0.0000,0.66 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.01 read-write
+PMEM[27,0.1342] = 0.0000,0.02 read-write
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000,0.01 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000,0.01 read-write
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000,0.09 read-write
+PMEM[40,0.1342] = 0.0000,0.01 read-write
+PMEM[41,0.1342] = 0.0000 read-only
+
+Free DRAM space:0.00(GB), DRAM consumed:2.82
+
+Decisions
+-------------------------------------------------------
