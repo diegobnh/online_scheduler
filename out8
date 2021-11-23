@@ -515,3 +515,211 @@ Cannot promote object 37 to DRAM because of size:1.073746
 Cannot promote object 18 to DRAM because of size:1.073746 
 Num obj promoted:0
 -------------------------------------------------------
+Iteration 8
+DRAM[74,0x7f710e38f000,0.5279] = 768.9807,2173.7056 read-write
+DRAM[65,0x7f7105af3000,0.0084] = 574.9142,9.6033 read-write
+DRAM[64,0x7f710d302000,0.0084] = 568.0475,10.6918 read-write
+DRAM[62,0x7f710aafd000,0.0084] = 558.2808,10.7954 read-write
+DRAM[70,0x7f7106af5000,0.0084] = 542.0507,11.1209 read-write
+DRAM[66,0x7f71052f2000,0.0084] = 537.2271,9.2751 read-write
+DRAM[60,0x7f71092fa000,0.0084] = 525.4726,8.5711 read-write
+DRAM[69,0x7f71062f4000,0.0084] = 503.0099,8.3947 read-write
+DRAM[61,0x7f710a2fc000,0.0084] = 501.5754,11.3203 read-write
+DRAM[59,0x7f71082f8000,0.0084] = 475.0674,10.2750 read-write
+DRAM[68,0x7f710b2fe000,0.0084] = 455.0017,9.2642 read-write
+DRAM[72,0x7f710cb01000,0.0084] = 423.4339,10.7534 read-write
+DRAM[63,0x7f71072f6000,0.0084] = 415.2451,9.8722 read-write
+DRAM[58,0x7f710baff000,0.0084] = 412.1727,9.9842 read-write
+DRAM[71,0x7f7107af7000,0.0084] = 406.0709,8.7882 read-write
+DRAM[75,0x7f710c300000,0.0084] = 373.7997,10.5220 read-write
+DRAM[67,0x7f7109afb000,0.0084] = 368.3049,11.9761 read-write
+DRAM[76,0x7f6c5ffed000,1.0737] = 225.1315,1886.3350 read-write
+DRAM[87,0x7f6c9ffee000,1.0737] = 95.8774 read-only
+DRAM[77,0x7f70e52f1000,0.5369] = 93.4283,0.0128 read-write
+DRAM[86,0x7f7109afb000,0.0084] = 0.0000 read-only
+
+PMEM[20,0x7f710cb01000, 0.0084] = 4.5902 read-only
+PMEM[49,0x7f6c07fec000, 0.1342] = 1.0436,0.05 read-write
+PMEM[39,0x7f70e52f1000, 0.5369] = 0.0156 read-only
+PMEM[18,0x7f6c9ffee000, 1.0737] = 0.0096,4.64 read-write
+PMEM[13,0x7f07c28c8000, 0.0000] = 0.0000 read-only
+PMEM[3,0x7fa138659000, 0.2180] = 0.0000 read-only
+PMEM[4,0x7fa138605000, 0.0003] = 0.0000 read-only
+PMEM[5,0x7fa14624d000, 0.0000] = 0.0000 read-only
+PMEM[6,0x7fdd28037000, 0.2180] = 0.0000 read-only
+PMEM[15,0x7ff32bb35000, 0.0003] = 0.0000 read-only
+PMEM[7,0x7fdd27fe3000, 0.0003] = 0.0000 read-only
+PMEM[8,0x7fdd35bfd000, 0.0000] = 0.0000 read-only
+PMEM[11,0x7f07b4cd4000, 0.2180] = 0.0000 read-only
+PMEM[12,0x7f07b4c80000, 0.0003] = 0.0000 read-only
+PMEM[41,0x7f70dd2f1000, 0.1342] = 0.0000,0.27 read-write
+PMEM[42,0x7f6bfffec000, 0.1342] = 0.0000,0.49 read-write
+PMEM[43,0x7f6c37fec000, 0.1342] = 0.0000 read-only
+PMEM[44,0x7f6c0ffec000, 0.1342] = 0.0000,0.01 read-write
+PMEM[45,0x7f70d52f1000, 0.1342] = 0.0000 read-only
+PMEM[46,0x7f6c1ffec000, 0.1342] = 0.0000 read-only
+PMEM[47,0x7f6c17fec000, 0.1342] = 0.0000 read-only
+PMEM[48,0x7f6c27fec000, 0.1342] = 0.0000 read-only
+PMEM[14,0x7ff32bb89000, 0.2180] = 0.0000 read-only
+PMEM[50,0x7f6c2ffec000, 0.1342] = 0.0000,0.25 read-write
+PMEM[51,0x7f6bf7fec000, 0.1342] = 0.0000,0.22 read-write
+PMEM[52,0x7f6bdffec000, 0.1342] = 0.0000,0.01 read-write
+PMEM[53,0x7f6bd7fec000, 0.1342] = 0.0000 read-only
+PMEM[54,0x7f6bc7fec000, 0.1342] = 0.0000,0.24 read-write
+PMEM[55,0x7f6be7fec000, 0.1342] = 0.0000,0.22 read-write
+PMEM[56,0x7f6bcffec000, 0.1342] = 0.0000 read-only
+PMEM[57,0x7f6beffec000, 0.1342] = 0.0000,0.27 read-write
+PMEM[79,0x7fac193ce000, 0.2180] = 0.0000 read-only
+PMEM[80,0x7fac1937a000, 0.0003] = 0.0000 read-only
+PMEM[81,0x7fac26fc2000, 0.0000] = 0.0000 read-only
+PMEM[82,0x7f26e0bf8000, 0.2180] = 0.0000 read-only
+PMEM[83,0x7f26e0ba4000, 0.0003] = 0.0000 read-only
+PMEM[84,0x7f26ee7be000, 0.0000] = 0.0000 read-only
+PMEM[89,0x7f6c015fc000, 0.2180] = 0.0000 read-only
+PMEM[90,0x7f6c015a8000, 0.0003] = 0.0000 read-only
+PMEM[91,0x7f6c0f1f0000, 0.0000] = 0.0000 read-only
+PMEM[92,0x7f4b3591b000, 0.2180] = 0.0000 read-only
+PMEM[93,0x7f4b358c7000, 0.0003] = 0.0000 read-only
+PMEM[94,0x7f4b434e1000, 0.0000] = 0.0000 read-only
+PMEM[97,0x7fd5c0bb3000, 0.2180] = 0.0000 read-only
+PMEM[98,0x7fd5c0b5f000, 0.0003] = 0.0000 read-only
+PMEM[99,0x7fd5ce7a7000, 0.0000] = 0.0000 read-only
+PMEM[100,0x7f5e43899000, 0.2180] = 0.0000 read-only
+PMEM[101,0x7f5e43845000, 0.0003] = 0.0000 read-only
+PMEM[102,0x7f5e5145f000, 0.0000] = 0.0000 read-only
+PMEM[105,0x7fd0570ea000, 0.2180] = 0.0000 read-only
+PMEM[106,0x7fd057096000, 0.0003] = 0.0000 read-only
+PMEM[107,0x7fd064cde000, 0.0000] = 0.0000 read-only
+PMEM[108,0x7fa0cd7c2000, 0.2180] = 0.0000 read-only
+PMEM[109,0x7fa0cd76e000, 0.0003] = 0.0000 read-only
+PMEM[110,0x7fa0db388000, 0.0000] = 0.0000 read-only
+PMEM[113,0x7fa437271000, 0.2180] = 0.0000 read-only
+PMEM[114,0x7fa43721d000, 0.0003] = 0.0000 read-only
+PMEM[115,0x7fa444e65000, 0.0000] = 0.0000 read-only
+PMEM[116,0x7f8cc3c2c000, 0.2180] = 0.0000 read-only
+PMEM[117,0x7f8cc3bd8000, 0.0003] = 0.0000 read-only
+PMEM[118,0x7f8cd17f2000, 0.0000] = 0.0000 read-only
+PMEM[121,0x7f624252c000, 0.2180] = 0.0000 read-only
+PMEM[122,0x7f62424d8000, 0.0003] = 0.0000 read-only
+PMEM[123,0x7f6250120000, 0.0000] = 0.0000 read-only
+PMEM[124,0x7f4ed7add000, 0.2180] = 0.0000 read-only
+PMEM[125,0x7f4ed7a89000, 0.0003] = 0.0000 read-only
+PMEM[126,0x7f4ee56a3000, 0.0000] = 0.0000 read-only
+PMEM[16,0x7ff33974f000, 0.0000] = 0.0000 read-only
+
+Free DRAM space:0.65(GB), DRAM consumed:3.35
+
+Decisions
+Cant migrate object:20, Error:14, : Bad address
+Cant migrate object:49, Error:14, : Bad address
+Promoted to DRAM object:39, migration cost:2.13 sec
+Cannot promote object 18 to DRAM because of size:1.073746 
+Num obj promoted:1
+-------------------------------------------------------
+Iteration 9
+DRAM[73,0x7f6c3ffec000,0.5369] = 697.6729,171.4797 read-write
+DRAM[76,0x7f6c5ffed000,1.0737] = 383.1465,813.3446 read-write
+DRAM[65,0x7f7105af3000,0.0084] = 333.9207,5.5753 read-write
+DRAM[66,0x7f71052f2000,0.0084] = 302.8679,6.7601 read-write
+DRAM[64,0x7f710d302000,0.0084] = 284.7781,7.4452 read-write
+DRAM[70,0x7f7106af5000,0.0084] = 281.6403,8.2095 read-write
+DRAM[62,0x7f710aafd000,0.0084] = 279.2371,7.8982 read-write
+DRAM[60,0x7f71092fa000,0.0084] = 272.1500,5.5603 read-write
+DRAM[69,0x7f71062f4000,0.0084] = 268.8127,6.2774 read-write
+DRAM[61,0x7f710a2fc000,0.0084] = 249.0123,8.6501 read-write
+DRAM[67,0x7f7109afb000,0.0084] = 243.2849,8.0604 read-write
+DRAM[59,0x7f71082f8000,0.0084] = 242.6347,7.3591 read-write
+DRAM[87,0x7f6c9ffee000,1.0737] = 232.6796 read-only
+DRAM[68,0x7f710b2fe000,0.0084] = 230.8006,6.4179 read-write
+DRAM[77,0x7f70e52f1000,0.5369] = 230.4983,0.0055 read-write
+DRAM[72,0x7f710cb01000,0.0084] = 205.8138,7.8655 read-write
+DRAM[75,0x7f710c300000,0.0084] = 203.5148,7.1888 read-write
+DRAM[58,0x7f710baff000,0.0084] = 198.6123,6.9404 read-write
+DRAM[63,0x7f71072f6000,0.0084] = 196.4795,6.7425 read-write
+DRAM[71,0x7f7107af7000,0.0084] = 186.8314,6.2006 read-write
+DRAM[86,0x7f7109afb000,0.0084] = 0.0000 read-only
+DRAM[129,0x7f70e52f1000,0.5369] = 0.0000 read-only
+
+PMEM[20,0x7f710cb01000, 0.0084] = 1.9759 read-only
+PMEM[49,0x7f6c07fec000, 0.1342] = 0.4493,0.02 read-write
+PMEM[18,0x7f6c9ffee000, 1.0737] = 0.0041,2.00 read-write
+PMEM[13,0x7f07c28c8000, 0.0000] = 0.0000 read-only
+PMEM[3,0x7fa138659000, 0.2180] = 0.0000 read-only
+PMEM[4,0x7fa138605000, 0.0003] = 0.0000 read-only
+PMEM[5,0x7fa14624d000, 0.0000] = 0.0000 read-only
+PMEM[6,0x7fdd28037000, 0.2180] = 0.0000 read-only
+PMEM[15,0x7ff32bb35000, 0.0003] = 0.0000 read-only
+PMEM[7,0x7fdd27fe3000, 0.0003] = 0.0000 read-only
+PMEM[8,0x7fdd35bfd000, 0.0000] = 0.0000 read-only
+PMEM[11,0x7f07b4cd4000, 0.2180] = 0.0000 read-only
+PMEM[12,0x7f07b4c80000, 0.0003] = 0.0000 read-only
+PMEM[41,0x7f70dd2f1000, 0.1342] = 0.0000,0.12 read-write
+PMEM[42,0x7f6bfffec000, 0.1342] = 0.0000,0.21 read-write
+PMEM[43,0x7f6c37fec000, 0.1342] = 0.0000 read-only
+PMEM[44,0x7f6c0ffec000, 0.1342] = 0.0000,0.00 read-write
+PMEM[45,0x7f70d52f1000, 0.1342] = 0.0000 read-only
+PMEM[46,0x7f6c1ffec000, 0.1342] = 0.0000 read-only
+PMEM[47,0x7f6c17fec000, 0.1342] = 0.0000 read-only
+PMEM[48,0x7f6c27fec000, 0.1342] = 0.0000 read-only
+PMEM[14,0x7ff32bb89000, 0.2180] = 0.0000 read-only
+PMEM[50,0x7f6c2ffec000, 0.1342] = 0.0000,0.11 read-write
+PMEM[51,0x7f6bf7fec000, 0.1342] = 0.0000,0.09 read-write
+PMEM[52,0x7f6bdffec000, 0.1342] = 0.0000,0.00 read-write
+PMEM[53,0x7f6bd7fec000, 0.1342] = 0.0000 read-only
+PMEM[54,0x7f6bc7fec000, 0.1342] = 0.0000,0.10 read-write
+PMEM[55,0x7f6be7fec000, 0.1342] = 0.0000,0.09 read-write
+PMEM[56,0x7f6bcffec000, 0.1342] = 0.0000 read-only
+PMEM[57,0x7f6beffec000, 0.1342] = 0.0000,0.12 read-write
+PMEM[79,0x7fac193ce000, 0.2180] = 0.0000 read-only
+PMEM[80,0x7fac1937a000, 0.0003] = 0.0000 read-only
+PMEM[81,0x7fac26fc2000, 0.0000] = 0.0000 read-only
+PMEM[82,0x7f26e0bf8000, 0.2180] = 0.0000 read-only
+PMEM[83,0x7f26e0ba4000, 0.0003] = 0.0000 read-only
+PMEM[84,0x7f26ee7be000, 0.0000] = 0.0000 read-only
+PMEM[89,0x7f6c015fc000, 0.2180] = 0.0000 read-only
+PMEM[90,0x7f6c015a8000, 0.0003] = 0.0000 read-only
+PMEM[91,0x7f6c0f1f0000, 0.0000] = 0.0000 read-only
+PMEM[92,0x7f4b3591b000, 0.2180] = 0.0000 read-only
+PMEM[93,0x7f4b358c7000, 0.0003] = 0.0000 read-only
+PMEM[94,0x7f4b434e1000, 0.0000] = 0.0000 read-only
+PMEM[97,0x7fd5c0bb3000, 0.2180] = 0.0000 read-only
+PMEM[98,0x7fd5c0b5f000, 0.0003] = 0.0000 read-only
+PMEM[99,0x7fd5ce7a7000, 0.0000] = 0.0000 read-only
+PMEM[100,0x7f5e43899000, 0.2180] = 0.0000 read-only
+PMEM[101,0x7f5e43845000, 0.0003] = 0.0000 read-only
+PMEM[102,0x7f5e5145f000, 0.0000] = 0.0000 read-only
+PMEM[105,0x7fd0570ea000, 0.2180] = 0.0000 read-only
+PMEM[106,0x7fd057096000, 0.0003] = 0.0000 read-only
+PMEM[107,0x7fd064cde000, 0.0000] = 0.0000 read-only
+PMEM[108,0x7fa0cd7c2000, 0.2180] = 0.0000 read-only
+PMEM[109,0x7fa0cd76e000, 0.0003] = 0.0000 read-only
+PMEM[110,0x7fa0db388000, 0.0000] = 0.0000 read-only
+PMEM[113,0x7fa437271000, 0.2180] = 0.0000 read-only
+PMEM[114,0x7fa43721d000, 0.0003] = 0.0000 read-only
+PMEM[115,0x7fa444e65000, 0.0000] = 0.0000 read-only
+PMEM[116,0x7f8cc3c2c000, 0.2180] = 0.0000 read-only
+PMEM[117,0x7f8cc3bd8000, 0.0003] = 0.0000 read-only
+PMEM[118,0x7f8cd17f2000, 0.0000] = 0.0000 read-only
+PMEM[121,0x7f624252c000, 0.2180] = 0.0000 read-only
+PMEM[122,0x7f62424d8000, 0.0003] = 0.0000 read-only
+PMEM[123,0x7f6250120000, 0.0000] = 0.0000 read-only
+PMEM[124,0x7f4ed7add000, 0.2180] = 0.0000 read-only
+PMEM[125,0x7f4ed7a89000, 0.0003] = 0.0000 read-only
+PMEM[126,0x7f4ee56a3000, 0.0000] = 0.0000 read-only
+PMEM[16,0x7ff33974f000, 0.0000] = 0.0000 read-only
+PMEM[131,0x7f53ea4dd000, 0.2180] = 0.0000 read-only
+PMEM[132,0x7f53ea489000, 0.0003] = 0.0000 read-only
+PMEM[133,0x7f53f80d1000, 0.0000] = 0.0000 read-only
+PMEM[134,0x7f40adb09000, 0.2180] = 0.0000 read-only
+PMEM[135,0x7f40adab5000, 0.0003] = 0.0000 read-only
+PMEM[136,0x7f40bb6cf000, 0.0000] = 0.0000 read-only
+
+Free DRAM space:0.11(GB), DRAM consumed:3.89
+
+Decisions
+Cant migrate object:20, Error:14, : Bad address
+Cannot promote object 49 to DRAM because of size:0.134218 
+Cannot promote object 18 to DRAM because of size:1.073746 
+Num obj promoted:0
+-------------------------------------------------------
+Elapsed: 1min 3sec
