@@ -32,6 +32,8 @@ static int g_running = 1;
 pthread_t g_sample_processor;
 
 
+void calc_moving_average(struct schedule_manager *);
+
 void close_monitor(int signum, siginfo_t *info, void *uc){
     fprintf(stderr, "[monitor], [sample_processor] closed! \n");
     g_running = 0;
