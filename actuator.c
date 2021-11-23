@@ -105,6 +105,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
 
 //Chamda quando tem espaço na DRAM e objeto hot no pmem
 void policy_migration_promotion(struct schedule_manager *args){
+    struct timespec start, end;
     int i;
     float current_dram_space;
     unsigned long nodemask;
@@ -123,7 +124,7 @@ void policy_migration_promotion(struct schedule_manager *args){
         llcm = args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB);
         if(llcm > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
             if ((args->tier[1].obj_vector[i].size/GB) < current_dram_space){
-                
+                clock_gettime(CLOCK_REALTIME, &start);
                 if(mbind((void *)args->tier[1].obj_vector[i].start_addr,
                          args->tier[1].obj_vector[1].size,
                          MPOL_BIND, &nodemask,
@@ -133,7 +134,9 @@ void policy_migration_promotion(struct schedule_manager *args){
                     fprintf(stderr,"Cant migrate object:%d , Error:%d  , ", args->tier[1].obj_vector[i].index_id, errno);
                     perror("\tError description");
                 }else{
-                    
+                    clock_gettime(CLOCK_REALTIME, &end);
+                    uint64_t delta_us = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_nsec - start.tv_nsec) / 1000;
+                        
                     num_obj_migrated++;
                     remove_allocation_on_pmem(args,
                                           args->tier[1].obj_vector[i].pid,
@@ -146,7 +149,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                                           args->tier[1].obj_vector[i].size);
                     
                     current_dram_space -= args->tier[1].obj_vector[i].size/GB;
-                    fprintf(stderr,"Promoted to DRAM object:%d  now free DRAM space:%.2lf\n", args->tier[1].obj_vector[i].index_id, current_dram_space);
+                    fprintf(stderr,"Promoted to DRAM object:%d, migration cost:%.2lf sec\n", args->tier[1].obj_vector[i].index_id, (float)delta_us/1000000);
                     
                 }
             }else{
