@@ -34,12 +34,12 @@ int g_iteration=0;
 int move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
 {
     //int status_vector[4] = {0,0,0,0};
-    
+    fprintf(stderr, "1\n");
     if ((numa_available() < 0)) {
         fprintf(stderr, "error: not a numa machine\n");
         return -1;
     }
-
+    fprintf(stderr, "2\n");
     //int pid = pid;
     //long int addr = addr;
     //long int = size;
@@ -53,6 +53,7 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
         fprintf(stderr, "error: a minimum of 2 nodes is required\n");
         exit(1);
     }
+    fprintf(stderr, "3\n");
 
     // size must be page-aligned
     size_t pagesize = getpagesize();
@@ -62,11 +63,11 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
     void **pages_addr;
     int *status;
     int *nodes;
-
+    
     pages_addr = malloc(sizeof(char *) * page_count);
     status = malloc(sizeof(int *) * page_count);
     nodes = malloc(sizeof(int *) * page_count);
-
+    fprintf(stderr, "4\n");
     if (!pages_addr || !status || !nodes) {
        fprintf(stderr, "Unable to allocate memory\n");
        exit(1);
@@ -77,13 +78,13 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
         nodes[i] = node;
         status[i] = -1;
     }
-
+    fprintf(stderr, "5\n");
     //fprintf(stderr, "Moving pages of process %lu from addr = %lu, size = %lu, to numa node: %d\n", pid, addr, size, node);
     if (numa_move_pages(pid, page_count, pages_addr, nodes, status, MPOL_MF_MOVE) == -1) {
         fprintf(stderr, "error code: %d\n", errno);
         perror("error description:");
     }
-    
+    fprintf(stderr, "6\n");
     for (int i = 0; i < page_count; i++) {
         fprintf(stderr, "%d ",status[i]);
         if(status[i] >= 0 && status[i] <=2){
@@ -92,6 +93,7 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
             status_vector[3]++;
         }
     }
+    fprintf(stderr, "7\n");
     fprintf(stderr, "\n");
     for(int i=0; i<4; i++){
         status_vector[i] = (float)status_vector[i]/page_count;
@@ -152,8 +154,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
         status_vector[2] = 0;
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
         if(args->tier[0].obj_flag_alloc[i] == 1){
-            move_pages_function(getpid(), args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size, status_vector);
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
+                move_pages_function(getpid(), args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size, status_vector);
                 fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf,%.4lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count, \
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }else{
@@ -172,10 +174,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
         status_vector[2] = 0;
         //if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
         if(args->tier[1].obj_flag_alloc[i] == 1){
-            fprintf(stderr, "Antes move_pages_func\n");
-            move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size, status_vector);
-            fprintf(stderr, "Depois move_pages_func\n");
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
+                move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size, status_vector);
                 fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf,%.2lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count,\
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }else{
