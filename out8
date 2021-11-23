@@ -225,3 +225,82 @@ Cannot promote object 37 to DRAM because of size:0.134218
 Cannot promote object 28 to DRAM because of size:0.536875 
 Num obj promoted:1
 -------------------------------------------------------
+Iteration 4
+DRAM[-468045824,0x42,0.5279] = 1571.9125,1796.5795 read-write
+DRAM[-535756800,0x3b,0.0084] = 604.7081,8.8506 read-write
+DRAM[-611291136,0x3d,0.0084] = 515.0602,10.0536 read-write
+DRAM[-569327616,0x3c,0.0084] = 495.6766,9.0411 read-write
+DRAM[-577720320,0x37,0.0084] = 426.8368,11.0922 read-write
+DRAM[-485400576,0x38,0.0084] = 425.6100,11.0659 read-write
+DRAM[-586113024,0x3a,0.0084] = 418.8824,9.9146 read-write
+DRAM[-560934912,0x3f,0.0084] = 413.6526,9.7355 read-write
+DRAM[-518971392,0x41,0.0084] = 410.5394,8.5682 read-write
+DRAM[-527364096,0x33,0.0084] = 408.1957,9.7381 read-write
+DRAM[-602898432,0x44,0.0084] = 371.8344,9.0921 read-write
+DRAM[-493793280,0x3e,0.0084] = 370.7190,7.0482 read-write
+DRAM[-619683840,0x36,0.0084] = 361.6925,8.5194 read-write
+DRAM[-594505728,0x39,0.0084] = 358.4834,9.8085 read-write
+DRAM[-544149504,0x34,0.0084] = 351.3305,9.4462 read-write
+DRAM[-510578688,0x32,0.0084] = 348.4556,10.1120 read-write
+DRAM[-552542208,0x40,0.0084] = 346.2672,9.9504 read-write
+DRAM[-502185984,0x35,0.0084] = 316.8117,11.5240 read-write
+DRAM[1977622528,0x4f,1.0737] = 189.6275 read-only
+DRAM[903876608,0x43,1.0737] = 188.9616,1555.2698 read-write
+DRAM[-1156558848,0x4e,0.5369] = 186.1958 read-only
+DRAM[59863040,0x45,0.5369] = 130.1484,294.0080 read-write
+DRAM[-602898432,0x58,0.0084] = 0.0000 read-only
+
+PMEM[-602898432,0x19, 0.0084] = 7.1184,0.01 read-write
+PMEM[-975175680,0x21, 0.1342] = 0.0856 read-only
+PMEM[1977622528,0xa, 1.0737] = 0.0439,3.69 read-write
+PMEM[59863040,0x1c, 0.5369] = 0.0307,1.82 read-write
+PMEM[1401004032,0x8, 0.0000] = 0.0000 read-only
+PMEM[637669376,0x5, 0.0000] = 0.0000 read-only
+PMEM[1170554880,0x6, 0.2180] = 0.0000 read-only
+PMEM[407031808,0x3, 0.2180] = 0.0000 read-only
+PMEM[-438304768,0x22, 0.1342] = 0.0000 read-only
+PMEM[-1109393408,0x23, 0.1342] = 0.0000 read-only
+PMEM[-1290776576,0x24, 0.1342] = 0.0000,0.69 read-write
+PMEM[406687744,0x4, 0.0003] = 0.0000 read-only
+PMEM[98566144,0x26, 0.1342] = 0.0000,0.01 read-write
+PMEM[-35651584,0x27, 0.1342] = 0.0000 read-only
+PMEM[-1424994304,0x28, 0.1342] = 0.0000,0.26 read-write
+PMEM[-169869312,0x29, 0.1342] = 0.0000 read-only
+PMEM[-304087040,0x2a, 0.1342] = 0.0000 read-only
+PMEM[-706740224,0x2b, 0.1342] = 0.0000 read-only
+PMEM[-1512046592,0x2c, 0.1342] = 0.0000 read-only
+PMEM[-1646264320,0x2d, 0.1342] = 0.0000 read-only
+PMEM[-1377828864,0x2e, 0.1342] = 0.0000,0.02 read-write
+PMEM[-1243611136,0x2f, 0.1342] = 0.0000 read-only
+PMEM[-572522496,0x30, 0.1342] = 0.0000 read-only
+PMEM[-840957952,0x31, 0.1342] = 0.0000 read-only
+PMEM[-49811456,0x47, 0.2180] = 0.0000 read-only
+PMEM[-50155520,0x48, 0.0003] = 0.0000 read-only
+PMEM[180826112,0x49, 0.0000] = 0.0000 read-only
+PMEM[1348390912,0x4a, 0.2180] = 0.0000 read-only
+PMEM[1348046848,0x4b, 0.0003] = 0.0000 read-only
+PMEM[1578840064,0x4c, 0.0000] = 0.0000 read-only
+PMEM[-655163392,0x51, 0.2180] = 0.0000 read-only
+PMEM[-655507456,0x52, 0.0003] = 0.0000 read-only
+PMEM[-424525824,0x53, 0.0000] = 0.0000 read-only
+PMEM[-19398656,0x54, 0.2180] = 0.0000 read-only
+PMEM[-19742720,0x55, 0.0003] = 0.0000 read-only
+PMEM[211050496,0x56, 0.0000] = 0.0000 read-only
+PMEM[-201396224,0x5a, 0.2180] = 0.0000 read-only
+PMEM[-201740288,0x5b, 0.0003] = 0.0000 read-only
+PMEM[29241344,0x5c, 0.0000] = 0.0000 read-only
+PMEM[-1728495616,0x5d, 0.2180] = 0.0000 read-only
+PMEM[-1728839680,0x5e, 0.0003] = 0.0000 read-only
+PMEM[-1498046464,0x5f, 0.0000] = 0.0000 read-only
+PMEM[1170210816,0x7, 0.0003] = 0.0000 read-only
+
+Free DRAM space:0.10(GB), DRAM consumed:3.90
+
+Decisions
+Cant migrate object:25, Error:14, : Bad address
+Cannot promote object 33 to DRAM because of size:0.134218 
+Cannot promote object 10 to DRAM because of size:1.073746 
+Cannot promote object 28 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+Elapsed: 1min 3sec
