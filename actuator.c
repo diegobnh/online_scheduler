@@ -53,11 +53,11 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size)
         exit(1);
     }
 
-    // len must be page-aligned
+    // size must be page-aligned
     size_t pagesize = getpagesize();
     assert((size % pagesize) == 0);
 
-    unsigned long page_count = len / pagesize;
+    unsigned long page_count = size / pagesize;
     void **pages_addr;
     int *status;
     int *nodes;
@@ -77,7 +77,7 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size)
         status[i] = -1;
     }
 
-    fprintf(stderr, "Moving pages of process %lu from addr = %lu, len = %lu, to numa node: %d\n", pid, addr, len, node);
+    fprintf(stderr, "Moving pages of process %lu from addr = %lu, size = %lu, to numa node: %d\n", pid, addr, size, node);
     if (numa_move_pages(pid, page_count, pages_addr, nodes, status, MPOL_MF_MOVE) == -1) {
         fprintf(stderr, "error code: %d\n", errno);
         perror("error description:");
