@@ -37,7 +37,7 @@ This version is responsible to monitore loads and store only in CPU 0
 #include <perfmon/pfmlib.h>
 #include <perfmon/pfmlib_perf_event.h>
 
-#define STORAGE_ID "SHM_TEST"
+#define STORAGE_ID "SCHEDULER_SHM"
 #include "monitor.h"
 #include "time.h"
 //#include "monitor_binary_search.h"

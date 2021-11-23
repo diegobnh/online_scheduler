@@ -22,7 +22,7 @@
 #include <pthread.h>
 #include "recorder.h"
 #include "sample_processor.h"
-#define STORAGE_ID "SHM_TEST"
+#define STORAGE_ID "SCHEDULER_SHM"
 #define MMAP_DATA_SIZE 1024
 
 

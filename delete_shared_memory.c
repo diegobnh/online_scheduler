@@ -1,5 +1,5 @@
 #include <sys/mman.h>
-#define STORAGE_ID "SHM_TEST"
+#define STORAGE_ID "SCHEDULER_SHM"
 
 int main(void){
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#./compile.sh 2> out2 
+
 OMP_NUM_THREADS=18
 export OMP_NUM_THREADS
 

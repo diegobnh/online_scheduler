@@ -25,7 +25,7 @@
 #include "monitor.h"
 #include "actuator.h"
 
-#define STORAGE_ID "SHM_TEST"
+#define STORAGE_ID "SCHEDULER_SHM"
 
 #define NODE_0_DRAM 0
 #define NODE_0_PMEM 2
