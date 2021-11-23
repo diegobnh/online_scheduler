@@ -14,7 +14,7 @@
 
 #define MONITOR_INTERVAL 1
 #define SAMPLE_PROCESSOR_INTERVAL  1
-#define ACTUATOR_INTERVAL 10
+#define ACTUATOR_INTERVAL 5
 
 typedef struct metrics{
     //The metrics could be Simply Moving Average, Weighted Moving Average, Exponential Moving Average...
