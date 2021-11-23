@@ -111,6 +111,7 @@ void policy_migration_promotion(struct schedule_manager *args){
     unsigned long nodemask;
     int num_obj_migrated=0;
     float llcm;
+    static int iteration=0;
     
     pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
@@ -166,6 +167,10 @@ void policy_migration_promotion(struct schedule_manager *args){
     }
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
+    char cmd[30];
+    sprintf(cmd, "ls -l > %d", iteration)
+    system(cmd);
+    iteration++;
 }
 
 //Chamda quando não tem espaço na DRAM
