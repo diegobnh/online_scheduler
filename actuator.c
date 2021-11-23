@@ -8,6 +8,8 @@
 #include <stdint.h>
 #include <numaif.h>
 #include <errno.h>
+#include <assert.h>
+
 #include "actuator.h"
 #include "monitor.h"
 #include "recorder.h"
@@ -28,7 +30,7 @@
 
 int g_iteration=0;
 
-int move_pages_function(int argc, char **argv)
+int move_pages_function(int pid, long int addr, long int size)
 {
 
     if (argc != 3) {
@@ -41,9 +43,9 @@ int move_pages_function(int argc, char **argv)
         return -1;
     }
 
-    size_t pid = atol(argv[1]);
-    size_t addr = atol(argv[2]);
-    size_t len = atol(argv[3]);
+    size_t pid = pid;
+    size_t addr = addr;
+    size_t len = size;
     unsigned node = NULL;
 
     //struct bitmask *new_nodes = numa_bitmask_alloc(num_nodes);
