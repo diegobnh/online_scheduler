@@ -31,9 +31,9 @@
 
 int g_iteration=0;
 
-int move_pages_function(int pid, unsigned long int addr, unsigned long int size)
+int move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
 {
-    int status_vector[4] = {0,0,0,0};
+    //int status_vector[4] = {0,0,0,0};
     
     if ((numa_available() < 0)) {
         fprintf(stderr, "error: not a numa machine\n");
@@ -131,6 +131,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
     int flag_has_llcm = 0;
+    int status_vector[4];
     
     float current_dram_space;
     float current_dram_consumed;
@@ -144,13 +145,19 @@ int check_candidates_to_migration(struct schedule_manager *args){
     
     fprintf(stderr, "Iteration %d\n", g_iteration);
     for(i=0;i<args->tier[0].num_obj;i++){
+        status_vector[0] = 0;
+        status_vector[1] = 0;
+        status_vector[1] = 0;
+        status_vector[2] = 0;
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
         if(args->tier[0].obj_flag_alloc[i] == 1){
-            
+            move_pages_function(getpid(), args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[1].size, status_vector);
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf,%.4lf read-write\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf,%.4lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count, \
+                        status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }else{
-                fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf read-only\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
+                fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf read-only %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), \
+                        status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }
             
         }
@@ -158,13 +165,19 @@ int check_candidates_to_migration(struct schedule_manager *args){
     }
     fprintf(stderr, "\n");
     for(i=0;i<args->tier[1].num_obj;i++){
+        status_vector[0] = 0;
+        status_vector[1] = 0;
+        status_vector[1] = 0;
+        status_vector[2] = 0;
         //if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
         if(args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf,%.2lf read-write\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf,%.2lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count,\
+                        status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }else{
-                fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf read-only\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB,args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
+                fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf read-only %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB,args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB),\
+                        status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }
             
             flag_has_llcm = 1;
@@ -225,7 +238,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                     fprintf(stderr,"Promoted to DRAM object:%d, migration cost:%.2lf sec\n", args->tier[1].obj_vector[i].index_id, (float)delta_us/1000000);
                     
                 }
-                move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[1].size);
+                //move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[1].size);
             }else{
                 if(args->tier[1].obj_flag_alloc[i] == 1){
                     fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \
