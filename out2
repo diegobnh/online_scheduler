@@ -522,3 +522,260 @@ Cant migrate object:19 , Error:14  , 	Error description: Bad address
 Cant migrate object:20 , Error:14  , 	Error description: Bad address
 Num obj promoted:0
 -------------------------------------------------------
+Context
+DRAM[60,0.5369] = 382.9152,1272.2946 read-write
+DRAM[57,0.0084] = 232.3447,4.7019 read-write
+DRAM[47,0.0084] = 226.4020,5.5543 read-write
+DRAM[45,0.0084] = 125.4051,8.6039 read-write
+DRAM[59,0.0084] = 119.7767,1.6023 read-write
+DRAM[46,0.0084] = 119.1519,3.7495 read-write
+DRAM[49,0.0084] = 119.1511,3.8995 read-write
+DRAM[48,0.0084] = 113.2539,4.9019 read-write
+DRAM[50,0.0084] = 113.2086,5.7544 read-write
+DRAM[52,0.0084] = 113.1944,5.9068 read-write
+DRAM[58,0.5369] = 55.8587,2004.1509 read-write
+DRAM[43,0.5369] = 32.8337,15.6305 read-write
+DRAM[51,0.0084] = 11.9293,7.5066 read-write
+DRAM[44,1.0737] = 9.3637,18.4074 read-write
+DRAM[53,0.0084] = 0.0179,3.9521 read-write
+DRAM[54,0.0084] = 0.0157,5.5018 read-write
+DRAM[55,0.0084] = 0.0015,6.5567 read-write
+DRAM[56,0.5279] = 0.0000 read-only
+DRAM[61,0.0084] = 0.0000 read-only
+
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.05 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.05 read-write
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000,0.05 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.05 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[62,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.68(GB), DRAM consumed:3.32
+
+Decisions
+Cant migrate object:3 , Error:14  , 	Error description: Bad address
+Cant migrate object:19 , Error:14  , 	Error description: Bad address
+Cant migrate object:20 , Error:14  , 	Error description: Bad address
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[42,0.5279] = 1282.9496,0.0887 read-write
+DRAM[60,0.5369] = 529.0644,943.0157 read-write
+DRAM[50,0.0084] = 356.8427,3.8619 read-write
+DRAM[57,0.0084] = 238.2873,1.9118 read-write
+DRAM[47,0.0084] = 238.2725,0.9639 read-write
+DRAM[44,1.0737] = 222.1849,0.0460 read-write
+DRAM[58,0.5369] = 190.8032,2107.3604 read-write
+DRAM[49,0.0084] = 124.8108,0.9597 read-write
+DRAM[45,0.0084] = 119.1667,0.9715 read-write
+DRAM[59,0.0084] = 119.1527,0.0040 read-write
+DRAM[48,0.0084] = 119.1364,0.0123 read-write
+DRAM[52,0.0084] = 119.1362,0.9648 read-write
+DRAM[51,0.0084] = 118.8831,0.9688 read-write
+DRAM[46,0.0084] = 0.2979,0.0094 read-write
+DRAM[43,0.5369] = 0.0821,0.0391 read-write
+DRAM[53,0.0084] = 0.0000,1.9099 read-write
+DRAM[54,0.0084] = 0.0000,0.9638 read-write
+DRAM[55,0.0084] = 0.0000,0.9664 read-write
+DRAM[61,0.0084] = 0.0000 read-only
+
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.00 read-write
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000,0.00 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[62,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.68(GB), DRAM consumed:3.32
+
+Decisions
+Cant migrate object:3 , Error:14  , 	Error description: Bad address
+Cant migrate object:19 , Error:14  , 	Error description: Bad address
+Cant migrate object:20 , Error:14  , 	Error description: Bad address
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[56,0.5279] = 1416.1659 read-only
+DRAM[44,1.0737] = 619.9711,0.0001 read-write
+DRAM[58,0.5369] = 492.3978,2066.1034 read-write
+DRAM[60,0.5369] = 15.1248,596.7250 read-write
+DRAM[50,0.0084] = 12.2115,6.9447 read-write
+DRAM[57,0.0084] = 6.2554,4.9448 read-write
+DRAM[49,0.0084] = 5.9717,2.9474 read-write
+DRAM[59,0.0084] = 5.9576,1.9950 read-write
+DRAM[51,0.0084] = 5.9569,1.9499 read-write
+DRAM[47,0.0084] = 0.5957,1.9499 read-write
+DRAM[45,0.0084] = 0.2979,5.8449 read-write
+DRAM[48,0.0084] = 0.2978,1.9475 read-write
+DRAM[52,0.0084] = 0.2978,1.9499 read-write
+DRAM[46,0.0084] = 0.0007,0.9975 read-write
+DRAM[43,0.5369] = 0.0002,0.0001 read-write
+DRAM[53,0.0084] = 0.0000,4.8498 read-write
+DRAM[54,0.0084] = 0.0000,4.7999 read-write
+DRAM[55,0.0084] = 0.0000,2.9474 read-write
+DRAM[61,0.0084] = 0.0000 read-only
+
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.00 read-write
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000,0.00 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[62,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.68(GB), DRAM consumed:3.32
+
+Decisions
+Cant migrate object:3 , Error:14  , 	Error description: Bad address
+Cant migrate object:19 , Error:14  , 	Error description: Bad address
+Cant migrate object:20 , Error:14  , 	Error description: Bad address
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[56,0.5279] = 1356.8043 read-only
+DRAM[44,1.0737] = 600.8817,0.0000 read-write
+DRAM[58,0.5369] = 459.3544,2524.9928 read-write
+DRAM[60,0.5369] = 8.9738,767.3343 read-write
+DRAM[50,0.0084] = 0.0305,6.0499 read-write
+DRAM[57,0.0084] = 0.0156,4.9999 read-write
+DRAM[49,0.0084] = 0.0149,2.0499 read-write
+DRAM[59,0.0084] = 0.0149,3.9950 read-write
+DRAM[51,0.0084] = 0.0149,3.9474 read-write
+DRAM[47,0.0084] = 0.0015,4.8499 read-write
+DRAM[45,0.0084] = 0.0007,3.1021 read-write
+DRAM[48,0.0084] = 0.0007,3.9474 read-write
+DRAM[52,0.0084] = 0.0007,4.8974 read-write
+DRAM[46,0.0084] = 0.0000,4.9900 read-write
+DRAM[43,0.5369] = 0.0000,0.0000 read-write
+DRAM[53,0.0084] = 0.0000,6.8521 read-write
+DRAM[54,0.0084] = 0.0000,5.9970 read-write
+DRAM[55,0.0084] = 0.0000,3.0474 read-write
+DRAM[61,0.0084] = 0.0000 read-only
+
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.00 read-write
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000,0.00 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[62,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.68(GB), DRAM consumed:3.32
+
+Decisions
+Cant migrate object:3 , Error:14  , 	Error description: Bad address
+Cant migrate object:19 , Error:14  , 	Error description: Bad address
+Cant migrate object:20 , Error:14  , 	Error description: Bad address
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] remove(DRAM) curr_mem_alloc :2.78
+	[recorder] remove(DRAM) curr_mem_alloc :2.26
+	[recorder] remove(DRAM) curr_mem_alloc :1.18
+	[recorder] remove(DRAM) curr_mem_alloc :0.65
+Context
+DRAM[50,0.0084] = 0.0001,5.0976 read-write
+DRAM[57,0.0084] = 0.0000,6.0450 read-write
+DRAM[49,0.0084] = 0.0000,0.0526 read-write
+DRAM[59,0.0084] = 0.0000,5.9950 read-write
+DRAM[51,0.0084] = 0.0000,2.0999 read-write
+DRAM[47,0.0084] = 0.0000,4.9521 read-write
+DRAM[45,0.0084] = 0.0000,3.9503 read-write
+DRAM[48,0.0084] = 0.0000,3.0024 read-write
+DRAM[52,0.0084] = 0.0000,4.0497 read-write
+DRAM[46,0.0084] = 0.0000,3.1000 read-write
+DRAM[43,0.5369] = 0.0000,0.0000 read-write
+DRAM[53,0.0084] = 0.0000,4.0071 read-write
+DRAM[54,0.0084] = 0.0000,3.0075 read-write
+DRAM[55,0.0084] = 0.0000,3.0001 read-write
+DRAM[61,0.0084] = 0.0000 read-only
+
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.00 read-write
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000,0.00 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[62,0.5369] = 0.0000 read-only
+
+Free DRAM space:3.35(GB), DRAM consumed:0.65
+
+Decisions
+Cant migrate object:3 , Error:14  , 	Error description: Bad address
+Elapsed: 0min 40sec
