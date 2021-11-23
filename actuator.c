@@ -64,9 +64,11 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
     void **pages_addr;
     int *status;
     int *nodes;
-    
+    fprintf(stderr, "3.2\n");
     pages_addr = malloc(sizeof(char *) * page_count);
+    fprintf(stderr, "3.3\n");
     status = malloc(sizeof(int *) * page_count);
+    fprintf(stderr, "3.4\n");
     nodes = malloc(sizeof(int *) * page_count);
     fprintf(stderr, "4\n");
     if (!pages_addr || !status || !nodes) {
