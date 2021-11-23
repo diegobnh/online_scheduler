@@ -1,0 +1,702 @@
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[1,16.8931] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000 read-only
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[4,0.0084] = 0.0000 read-only
+PMEM[5,0.0084] = 0.0000 read-only
+PMEM[6,0.0084] = 0.0000 read-only
+PMEM[7,0.0084] = 0.0000 read-only
+PMEM[8,0.0084] = 0.0000 read-only
+PMEM[9,0.0084] = 0.0000 read-only
+PMEM[10,0.0084] = 0.0000 read-only
+PMEM[11,0.0084] = 0.0000 read-only
+PMEM[12,0.0084] = 0.0000 read-only
+PMEM[13,0.0084] = 0.0000 read-only
+PMEM[14,0.0084] = 0.0000 read-only
+PMEM[15,0.0084] = 0.0000 read-only
+PMEM[16,0.0084] = 0.0000 read-only
+PMEM[17,0.0084] = 0.0000 read-only
+PMEM[18,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000 read-only
+PMEM[20,0.5369] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[20,0.5369] = 637.2852,320.20 read-write
+PMEM[14,0.0084] = 339.5807,1.00 read-write
+PMEM[6,0.0084] = 339.5807,3.99 read-write
+PMEM[10,0.0084] = 339.5807,2.99 read-write
+PMEM[12,0.0084] = 232.0468,3.99 read-write
+PMEM[18,0.0084] = 232.0468,2.99 read-write
+PMEM[19,0.0084] = 226.3871,2.99 read-write
+PMEM[4,0.0084] = 118.8532,2.99 read-write
+PMEM[7,0.0084] = 118.8532,3.99 read-write
+PMEM[5,0.0084] = 118.8532,2.99 read-write
+PMEM[8,0.0084] = 113.1936,2.99 read-write
+PMEM[16,0.0084] = 113.1936,2.99 read-write
+PMEM[9,0.0084] = 113.1936,1.00 read-write
+PMEM[24,0.5369] = 76.0885,377.15 read-write
+PMEM[21,1.0737] = 36.2749,743.18 read-write
+PMEM[1,16.8931] = 2.1370 read-only
+PMEM[17,0.0084] = 0.0000,2.99 read-write
+PMEM[11,0.0084] = 0.0000,1.00 read-write
+PMEM[2,1.0737] = 0.0000,765.08 read-write
+PMEM[13,0.0084] = 0.0000,1.00 read-write
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[15,0.0084] = 0.0000 read-only
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.95 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Promoted to DRAM object:20, migration cost:0.38 sec
+Cant migrate object:14 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cant migrate object:10 , Error:14  , 	Error description: Bad address
+Cant migrate object:12 , Error:14  , 	Error description: Bad address
+Cant migrate object:18 , Error:14  , 	Error description: Bad address
+Cant migrate object:19 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:7 , Error:14  , 	Error description: Bad address
+Cant migrate object:5 , Error:14  , 	Error description: Bad address
+Cant migrate object:8 , Error:14  , 	Error description: Bad address
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:9 , Error:14  , 	Error description: Bad address
+Promoted to DRAM object:24, migration cost:0.39 sec
+Promoted to DRAM object:21, migration cost:0.39 sec
+Cannot promote object 1 to DRAM because of size:16.893059 
+Cant migrate object:17 , Error:14  , 	Error description: Bad address
+Cant migrate object:11 , Error:14  , 	Error description: Bad address
+Cant migrate object:13 , Error:14  , 	Error description: Bad address
+Cant migrate object:3 , Error:14  , 	Error description: Bad address
+Cant migrate object:15 , Error:14  , 	Error description: Bad address
+Cant migrate object:0 , Error:14  , 	Error description: Bad address
+Num obj promoted:3
+-------------------------------------------------------
+Context
+DRAM[43,0.5369] = 698.0675,247.5700 read-write
+DRAM[44,1.0737] = 138.0215,564.3000 read-write
+DRAM[42,0.5369] = 0.0000 read-only
+
+PMEM[3,0.0084] = 1280.5021 read-only
+PMEM[18,0.0084] = 1191.6742,0.01 read-write
+PMEM[5,0.0084] = 1167.8894,0.01 read-write
+PMEM[7,0.0084] = 1054.4128,0.01 read-write
+PMEM[6,0.0084] = 851.8239,0.01 read-write
+PMEM[14,0.0084] = 833.9960,0.00 read-write
+PMEM[16,0.0084] = 828.0250,0.01 read-write
+PMEM[12,0.0084] = 715.1293,0.01 read-write
+PMEM[13,0.0084] = 702.9320,0.00 read-write
+PMEM[11,0.0084] = 696.9893,0.00 read-write
+PMEM[10,0.0084] = 613.5515,0.01 read-write
+PMEM[4,0.0084] = 590.0363,0.01 read-write
+PMEM[9,0.0084] = 357.1398,0.00 read-write
+PMEM[24,0.5369] = 288.9511,175.83 read-write
+PMEM[21,1.0737] = 270.9867,699.59 read-write
+PMEM[0,1.0737] = 253.5039,1567.12 read-write
+PMEM[1,16.8931] = 33.9790 read-only
+PMEM[22,0.5279] = 4.2710,7.15 read-write
+PMEM[20,0.5369] = 1.5970,0.80 read-write
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000,1.92 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000,1.00 read-write
+PMEM[30,0.1342] = 0.0000,0.95 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,1.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.05 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,1.00 read-write
+
+Free DRAM space:1.85(GB), DRAM consumed:2.15
+
+Decisions
+Promoted to DRAM object:3, migration cost:0.00 sec
+Promoted to DRAM object:18, migration cost:0.00 sec
+Promoted to DRAM object:5, migration cost:0.00 sec
+Promoted to DRAM object:7, migration cost:0.00 sec
+Promoted to DRAM object:6, migration cost:0.00 sec
+Promoted to DRAM object:14, migration cost:0.00 sec
+Promoted to DRAM object:16, migration cost:0.00 sec
+Promoted to DRAM object:12, migration cost:0.00 sec
+Promoted to DRAM object:13, migration cost:0.00 sec
+Promoted to DRAM object:11, migration cost:0.00 sec
+Promoted to DRAM object:10, migration cost:0.00 sec
+Promoted to DRAM object:4, migration cost:0.00 sec
+Promoted to DRAM object:9, migration cost:0.00 sec
+Promoted to DRAM object:24, migration cost:0.00 sec
+Promoted to DRAM object:21, migration cost:0.00 sec
+Cannot promote object 0 to DRAM because of size:1.073746 
+Cannot promote object 1 to DRAM because of size:16.893059 
+Cannot promote object 22 to DRAM because of size:0.527909 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:15
+-------------------------------------------------------
+Context
+DRAM[43,0.5369] = 2155.9337,466.4039 read-write
+DRAM[51,0.0084] = 565.9678 read-only
+DRAM[54,0.0084] = 565.9678 read-only
+DRAM[55,0.0084] = 565.9678 read-only
+DRAM[45,0.0084] = 452.7742 read-only
+DRAM[57,0.0084] = 452.7742 read-only
+DRAM[44,1.0737] = 444.1814,2140.2407 read-write
+DRAM[52,0.0084] = 339.5807 read-only
+DRAM[47,0.0084] = 226.3871 read-only
+DRAM[49,0.0084] = 226.3871 read-only
+DRAM[53,0.0084] = 226.3871 read-only
+DRAM[48,0.0084] = 113.1936 read-only
+DRAM[46,0.0084] = 113.1936 read-only
+DRAM[56,0.0084] = 113.1936 read-only
+DRAM[50,0.0084] = 113.1936 read-only
+DRAM[42,0.5369] = 0.0000 read-only
+DRAM[58,0.5369] = 0.0000 read-only
+DRAM[59,1.0737] = 0.0000 read-only
+
+PMEM[21,1.0737] = 1.4737,4.46 read-write
+PMEM[24,0.5369] = 0.7224,0.44 read-write
+PMEM[22,0.5279] = 0.0107,0.02 read-write
+PMEM[20,0.5369] = 0.0040,0.00 read-write
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000,0.05 read-write
+PMEM[30,0.1342] = 0.0000,1.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.05 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,1.05 read-write
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 24 to DRAM because of size:0.536875 
+Cannot promote object 22 to DRAM because of size:0.527909 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[43,0.5369] = 2248.2303,224.7960 read-write
+DRAM[51,0.0084] = 1178.6279 read-only
+DRAM[45,0.0084] = 1178.3449,0.9500 read-write
+DRAM[55,0.0084] = 952.2408 read-only
+DRAM[53,0.0084] = 940.0725 read-only
+DRAM[50,0.0084] = 939.7895 read-only
+DRAM[49,0.0084] = 934.4128 read-only
+DRAM[54,0.0084] = 827.7279 read-only
+DRAM[57,0.0084] = 714.2513 read-only
+DRAM[48,0.0084] = 696.4233 read-only
+DRAM[56,0.0084] = 690.7637 read-only
+DRAM[47,0.0084] = 583.5128 read-only
+DRAM[52,0.0084] = 476.2619 read-only
+DRAM[44,1.0737] = 427.9596,2480.8131 read-write
+DRAM[46,0.0084] = 356.8427 read-only
+DRAM[42,0.5369] = 0.0000 read-only
+DRAM[58,0.5369] = 0.0000 read-only
+DRAM[59,1.0737] = 0.0000 read-only
+
+PMEM[6,0.0084] = 0.0053,0.00 read-write
+PMEM[21,1.0737] = 0.0037,0.01 read-write
+PMEM[24,0.5369] = 0.0018,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,1.00 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.05 read-write
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 24 to DRAM because of size:0.536875 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[43,0.5369] = 2333.9279,135.7470 read-write
+DRAM[51,0.0084] = 727.3853 read-only
+DRAM[45,0.0084] = 727.3846,0.9999 read-write
+DRAM[49,0.0084] = 726.7748 read-only
+DRAM[48,0.0084] = 720.5201 read-only
+DRAM[57,0.0084] = 714.9050 read-only
+DRAM[55,0.0084] = 709.8403 read-only
+DRAM[56,0.0084] = 709.1866 read-only
+DRAM[53,0.0084] = 602.2760 read-only
+DRAM[47,0.0084] = 590.0653 read-only
+DRAM[54,0.0084] = 585.0161 read-only
+DRAM[52,0.0084] = 470.9439 read-only
+DRAM[44,1.0737] = 396.3776,2603.1695 read-write
+DRAM[46,0.0084] = 357.4518 read-only
+DRAM[50,0.0084] = 268.3543 read-only
+DRAM[42,0.5369] = 0.0000 read-only
+DRAM[58,0.5369] = 0.0000 read-only
+DRAM[59,1.0737] = 0.0000 read-only
+
+PMEM[8,0.0084] = 0.0156,0.00 read-write
+PMEM[4,0.0084] = 0.0008,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[24,0.5369] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.05 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:8 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 24 to DRAM because of size:0.536875 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[43,0.5369] = 2193.2900,112.1544 read-write
+DRAM[56,0.0084] = 1631.7602 read-only
+DRAM[55,0.0084] = 1190.3069 read-only
+DRAM[53,0.0084] = 1054.2057 read-only
+DRAM[51,0.0084] = 946.9846 read-only
+DRAM[54,0.0084] = 946.6287 read-only
+DRAM[52,0.0084] = 827.4903 read-only
+DRAM[47,0.0084] = 714.5946 read-only
+DRAM[46,0.0084] = 708.3533 read-only
+DRAM[50,0.0084] = 691.1516,0.9500 read-write
+DRAM[49,0.0084] = 596.0831 read-only
+DRAM[57,0.0084] = 494.1792 read-only
+DRAM[45,0.0084] = 477.2314,0.0025 read-write
+DRAM[44,1.0737] = 397.0064,2593.2154 read-write
+DRAM[48,0.0084] = 364.0207 read-only
+DRAM[42,0.5369] = 0.0000 read-only
+DRAM[58,0.5369] = 0.0000 read-only
+DRAM[59,1.0737] = 0.0000 read-only
+
+PMEM[16,0.0084] = 0.0000,0.00 read-write
+PMEM[4,0.0084] = 0.0000,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[24,0.5369] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 24 to DRAM because of size:0.536875 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[43,0.5369] = 2388.2911,234.7404 read-write
+DRAM[56,0.0084] = 1345.4230,0.9975 read-write
+DRAM[52,0.0084] = 952.8946,1.9000 read-write
+DRAM[50,0.0084] = 833.7005,2.8999 read-write
+DRAM[45,0.0084] = 810.5270,0.0000 read-write
+DRAM[55,0.0084] = 738.7339,0.9500 read-write
+DRAM[53,0.0084] = 727.0743,0.9500 read-write
+DRAM[54,0.0084] = 715.4860 read-only
+DRAM[46,0.0084] = 709.2306,1.9000 read-write
+DRAM[57,0.0084] = 589.8419,1.9000 read-write
+DRAM[51,0.0084] = 494.7594 read-only
+DRAM[48,0.0084] = 476.3230 read-only
+DRAM[44,1.0737] = 370.7751,2443.6130 read-write
+DRAM[49,0.0084] = 363.7096,2.8500 read-write
+DRAM[47,0.0084] = 256.4720 read-only
+DRAM[42,0.5369] = 0.0000 read-only
+DRAM[58,0.5369] = 0.0000 read-only
+DRAM[59,1.0737] = 0.0000 read-only
+
+PMEM[16,0.0084] = 0.0000,0.00 read-write
+PMEM[4,0.0084] = 0.0000,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[24,0.5369] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.95 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.95 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000,0.95 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 24 to DRAM because of size:0.536875 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] remove(DRAM) curr_mem_alloc :3.33
+Context
+DRAM[45,0.0084] = 596.2925,25.1275 read-write
+DRAM[46,0.0084] = 482.8457,25.0373 read-write
+DRAM[50,0.0084] = 477.4972,24.0897 read-write
+DRAM[52,0.0084] = 370.2613,29.1223 read-write
+DRAM[54,0.0084] = 364.0081,28.8800 read-write
+DRAM[58,0.5369] = 316.7404,786.6000 read-write
+DRAM[57,0.0084] = 250.5004,25.0847 read-write
+DRAM[53,0.0084] = 245.1838,26.1274 read-write
+DRAM[51,0.0084] = 227.6240,25.0800 read-write
+DRAM[56,0.0084] = 150.5152,22.3275 read-write
+DRAM[48,0.0084] = 131.3634,25.8875 read-write
+DRAM[49,0.0084] = 119.7625,30.0746 read-write
+DRAM[47,0.0084] = 119.4944,22.2775 read-write
+DRAM[44,1.0737] = 107.0973,1204.6290 read-write
+DRAM[42,0.5369] = 42.4680,120.6500 read-write
+DRAM[55,0.0084] = 24.4855,26.1749 read-write
+DRAM[59,1.0737] = 0.0000 read-only
+
+PMEM[16,0.0084] = 0.0000,0.00 read-write
+PMEM[4,0.0084] = 0.0000,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[24,0.5369] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,2.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,1.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,1.00 read-write
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000,1.95 read-write
+PMEM[38,0.1342] = 0.0000,1.99 read-write
+PMEM[39,0.1342] = 0.0000,2.99 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+PMEM[60,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.67(GB), DRAM consumed:3.33
+
+Decisions
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Promoted to DRAM object:24, migration cost:0.58 sec
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:1
+-------------------------------------------------------
+Context
+DRAM[42,0.5369] = 388.5113,505.1316 read-write
+DRAM[58,0.5369] = 356.7267,3103.0515 read-write
+DRAM[51,0.0084] = 351.4691,18.3977 read-write
+DRAM[49,0.0084] = 339.8801,18.5052 read-write
+DRAM[45,0.0084] = 239.1972,17.4478 read-write
+DRAM[52,0.0084] = 238.6321,17.5528 read-write
+DRAM[55,0.0084] = 237.7677,16.5004 read-write
+DRAM[53,0.0084] = 232.6597,17.4503 read-write
+DRAM[46,0.0084] = 125.7200,19.2526 read-write
+DRAM[50,0.0084] = 125.7067,18.2527 read-write
+DRAM[43,0.5369] = 43.5780,24.8118 read-write
+DRAM[44,1.0737] = 15.4413,107.5591 read-write
+DRAM[56,0.0084] = 6.0360,14.4483 read-write
+DRAM[54,0.0084] = 0.9100,22.3972 read-write
+DRAM[57,0.0084] = 0.6263,18.3027 read-write
+DRAM[48,0.0084] = 0.3284,22.2472 read-write
+DRAM[59,1.0737] = 0.0000 read-only
+DRAM[61,0.5369] = 0.0000 read-only
+
+PMEM[16,0.0084] = 0.0000,0.00 read-write
+PMEM[4,0.0084] = 0.0000,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.05 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.05 read-write
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000,1.05 read-write
+PMEM[38,0.1342] = 0.0000,0.10 read-write
+PMEM[39,0.1342] = 0.0000,0.10 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+PMEM[60,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+Context
+DRAM[44,1.0737] = 590.9209,0.2689 read-write
+DRAM[49,0.0084] = 357.4094,3.8938 read-write
+DRAM[42,0.5369] = 276.1284,347.8228 read-write
+DRAM[53,0.0084] = 238.2881,1.9911 read-write
+DRAM[57,0.0084] = 237.7080,3.9883 read-write
+DRAM[47,0.0084] = 131.3477,0.0361 read-write
+DRAM[55,0.0084] = 130.7670,0.9913 read-write
+DRAM[51,0.0084] = 119.7319,1.0435 read-write
+DRAM[56,0.0084] = 118.8683,5.8786 read-write
+DRAM[45,0.0084] = 6.2577,1.9911 read-write
+DRAM[52,0.0084] = 6.2563,2.8939 read-write
+DRAM[46,0.0084] = 5.9740,1.0456 read-write
+DRAM[50,0.0084] = 0.3143,1.9456 read-write
+DRAM[43,0.5369] = 0.1089,0.0620 read-write
+DRAM[54,0.0084] = 0.0023,2.9060 read-write
+DRAM[48,0.0084] = 0.0008,3.9981 read-write
+DRAM[59,1.0737] = 0.0000 read-only
+DRAM[61,0.5369] = 0.0000 read-only
+
+PMEM[16,0.0084] = 0.0000,0.00 read-write
+PMEM[4,0.0084] = 0.0000,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.00 read-write
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000,0.00 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+PMEM[60,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Cant migrate object:6 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] remove(DRAM) curr_mem_alloc :3.33
+	[recorder] remove(DRAM) curr_mem_alloc :2.26
+	[recorder] remove(DRAM) curr_mem_alloc :1.72
+Context
+DRAM[43,0.5369] = 467.1481,1489.6002 read-write
+DRAM[57,0.0084] = 11.9136,5.0450 read-write
+DRAM[53,0.0084] = 6.2554,2.9975 read-write
+DRAM[55,0.0084] = 5.9866,4.8950 read-write
+DRAM[56,0.0084] = 5.9568,7.0922 read-write
+DRAM[49,0.0084] = 0.8935,7.9422 read-write
+DRAM[47,0.0084] = 0.3284,3.8001 read-write
+DRAM[51,0.0084] = 0.2993,3.9926 read-write
+DRAM[45,0.0084] = 0.0156,5.8000 read-write
+DRAM[52,0.0084] = 0.0156,13.7347 read-write
+DRAM[46,0.0084] = 0.0149,3.0426 read-write
+DRAM[54,0.0084] = 0.0000,9.7448 read-write
+DRAM[48,0.0084] = 0.0000,5.1400 read-write
+DRAM[59,1.0737] = 0.0000 read-only
+DRAM[61,0.5369] = 0.0000 read-only
+
+PMEM[16,0.0084] = 0.0000,0.00 read-write
+PMEM[4,0.0084] = 0.0000,0.00 read-write
+PMEM[6,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000,0.00 read-write
+PMEM[30,0.1342] = 0.0000,0.00 read-write
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000,0.00 read-write
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000,0.00 read-write
+PMEM[36,0.1342] = 0.0000,0.00 read-write
+PMEM[37,0.1342] = 0.0000,0.00 read-write
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000,0.00 read-write
+PMEM[60,0.5369] = 0.0000 read-only
+
+Free DRAM space:2.28(GB), DRAM consumed:1.72
+
+Decisions
+Cant migrate object:16 , Error:14  , 	Error description: Bad address
+Cant migrate object:4 , Error:14  , 	Error description: Bad address
+Elapsed: 0min 36sec

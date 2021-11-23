@@ -28,6 +28,70 @@
 
 int g_iteration=0;
 
+int move_pages_function(int argc, char **argv)
+{
+
+    if (argc != 3) {
+        fprintf(stderr, "need 4 args: <pid> <addr> <len> <numa_node>\n");
+        return -1;
+    }
+
+    if ((numa_available() < 0)) {
+        fprintf(stderr, "error: not a numa machine\n");
+        return -1;
+    }
+
+    size_t pid = atol(argv[1]);
+    size_t addr = atol(argv[2]);
+    size_t len = atol(argv[3]);
+    unsigned node = NULL;
+
+    //struct bitmask *new_nodes = numa_bitmask_alloc(num_nodes);
+    //numa_bitmask_setbit(new_nodes, node);
+
+    int num_nodes = numa_max_node() + 1;
+    if (num_nodes < 2) {
+        fprintf(stderr, "error: a minimum of 2 nodes is required\n");
+        exit(1);
+    }
+
+    // len must be page-aligned
+    size_t pagesize = getpagesize();
+    assert((len % pagesize) == 0);
+
+    unsigned long page_count = len / pagesize;
+    void **pages_addr;
+    int *status;
+    int *nodes;
+
+    pages_addr = malloc(sizeof(char *) * page_count);
+    status = malloc(sizeof(int *) * page_count);
+    nodes = malloc(sizeof(int *) * page_count);
+
+    if (!pages_addr || !status || !nodes) {
+       fprintf(stderr, "Unable to allocate memory\n");
+       exit(1);
+    }
+
+    for (int i = 0; i < page_count; i++) {
+        pages_addr[i] = (void *) addr + i * pagesize;
+        nodes[i] = node;
+        status[i] = -1;
+    }
+
+    fprintf(stderr, "Moving pages of process %lu from addr = %lu, len = %lu, to numa node: %d\n", pid, addr, len, node);
+    if (numa_move_pages(pid, page_count, pages_addr, nodes, status, MPOL_MF_MOVE) == -1) {
+        fprintf(stderr, "error code: %d\n", errno);
+        perror("error description:");
+    }
+    
+    for (int i = 0; i < page_count; i++) {
+        fprintf(stderr, "%d\n",status[i]);
+    }
+
+    return 0;
+}
+
 void sort_objects(struct schedule_manager *args){
     int i,j;
     object_t aux;
@@ -153,6 +217,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                     fprintf(stderr,"Promoted to DRAM object:%d, migration cost:%.2lf sec\n", args->tier[1].obj_vector[i].index_id, (float)delta_us/1000000);
                     
                 }
+                move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[1].size);
             }else{
                 if(args->tier[1].obj_flag_alloc[i] == 1){
                     fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \
