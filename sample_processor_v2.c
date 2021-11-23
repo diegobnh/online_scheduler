@@ -166,136 +166,136 @@ void calc_moving_average(struct schedule_manager *args){
 	int i, w;
     struct timespec start, end;
 	
-		//alocate the number of total objects, even if exist deallocated 
-		g_total_dram_objs = args->tier[0].num_obj;
-		g_total_pmem_objs = args->tier[1].num_obj;
-        
-        //first i copy all date from ring buffer to local variable
-		if(g_total_dram_objs > 0 ){
-			g_dram_tier_ring = malloc(sizeof(ring_buffer_t)*g_total_dram_objs);
-			if(g_dram_tier_ring == NULL){
-				fprintf(stderr, "Error during allocation g_dram_tier_ring!!\n");
-				exit(-1);
-			}
-            //Copy variable from shared memory to local variable
-			for(i=0; i< g_total_dram_objs; i++){
-				g_dram_tier_ring[i] = args->tier[0].obj_vector[i].ring;
-			}
+    //alocate the number of total objects, even if exist deallocated
+    g_total_dram_objs = args->tier[0].num_obj;
+    g_total_pmem_objs = args->tier[1].num_obj;
+    
+    //first i copy all date from ring buffer to local variable
+    if(g_total_dram_objs > 0 ){
+        g_dram_tier_ring = malloc(sizeof(ring_buffer_t)*g_total_dram_objs);
+        if(g_dram_tier_ring == NULL){
+            fprintf(stderr, "Error during allocation g_dram_tier_ring!!\n");
+            exit(-1);
         }
-		
-		if(g_total_pmem_objs > 0 ){
-			g_pmem_tier_ring = malloc(sizeof(ring_buffer_t)*g_total_pmem_objs);
-			if(g_pmem_tier_ring == NULL){
-                fprintf(stderr, "Error during allocation g_pmem_tier_ring!!\n");
-				exit(-1);
-			}
-            //Copy variable from shared memory to local variable
-			for(i=0; i< g_total_pmem_objs; i++){
-				g_pmem_tier_ring[i] = args->tier[1].obj_vector[i].ring;
-			}
-		}
-        //now, with shared mamery free, we can calculate the Simple Moving Average(SMA) for each metric
-        if(g_total_dram_objs > 0 ){
-            g_dram_metrics = malloc(sizeof(metric_t)*g_total_dram_objs);
-            if(g_dram_metrics == NULL){
-                fprintf(stderr, "Error during allocation g_dram_metrics!!\n");
-                exit(-1);
+        //Copy variable from shared memory to local variable
+        for(i=0; i< g_total_dram_objs; i++){
+            g_dram_tier_ring[i] = args->tier[0].obj_vector[i].ring;
+        }
+    }
+    
+    if(g_total_pmem_objs > 0 ){
+        g_pmem_tier_ring = malloc(sizeof(ring_buffer_t)*g_total_pmem_objs);
+        if(g_pmem_tier_ring == NULL){
+            fprintf(stderr, "Error during allocation g_pmem_tier_ring!!\n");
+            exit(-1);
+        }
+        //Copy variable from shared memory to local variable
+        for(i=0; i< g_total_pmem_objs; i++){
+            g_pmem_tier_ring[i] = args->tier[1].obj_vector[i].ring;
+        }
+    }
+    //now, with shared mamery free, we can calculate the Simple Moving Average(SMA) for each metric
+    if(g_total_dram_objs > 0 ){
+        g_dram_metrics = malloc(sizeof(metric_t)*g_total_dram_objs);
+        if(g_dram_metrics == NULL){
+            fprintf(stderr, "Error during allocation g_dram_metrics!!\n");
+            exit(-1);
+        }
+        
+        clock_gettime(CLOCK_REALTIME, &start);
+        calculate_SMA_for_DRAM();
+        clock_gettime(CLOCK_REALTIME, &end);
+        
+        D fprintf(stderr, "[sample_processor] Obj in DRAM:%d Time of processing:%f seconds\n", g_total_dram_objs, get_timestamp_diff_in_seconds(start, end));
+        
+        free(g_dram_tier_ring);
+        free(g_dram_metrics);
+    }
+    
+    if(g_total_pmem_objs > 0 ){
+        g_pmem_metrics = malloc(sizeof(metric_t)*g_total_pmem_objs);
+        if(g_pmem_metrics == NULL){
+            fprintf(stderr, "Error during allocation g_pmem_metrics!!\n");
+            exit(-1);
+        }
+        
+        clock_gettime(CLOCK_REALTIME, &start);
+        calculate_SMA_for_PMEM();
+        clock_gettime(CLOCK_REALTIME, &end);
+        
+        D fprintf(stderr, "[sample_processor] Obj in PMEM:%d Time of processing:%f seconds\n", g_total_pmem_objs, get_timestamp_diff_in_seconds(start, end));
+        
+        free(g_pmem_tier_ring);
+        free(g_pmem_metrics);
+    }
+    
+    
+    //Again i get the lock to update the shared memory
+    double old_value;
+    double curr_value;
+    
+    if(g_total_dram_objs > 0 ){
+        for(i=0; i< g_total_dram_objs; i++){
+            for(w=0; w< MEM_LEVELS; w++){
+                //update shared memory
+                old_value = args->tier[0].obj_vector[i].metrics.sum_latency_cost[w];
+                curr_value = g_dram_metrics[i].sum_latency_cost[w];
+                args->tier[0].obj_vector[i].metrics.sum_latency_cost[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
+                
+                old_value = args->tier[0].obj_vector[i].metrics.loads_count[w];
+                curr_value = g_dram_metrics[i].loads_count[w];
+                args->tier[0].obj_vector[i].metrics.loads_count[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = args->tier[0].obj_vector[i].metrics.TLB_hit[w];
+                curr_value = g_dram_metrics[i].TLB_hit[w];
+                args->tier[0].obj_vector[i].metrics.TLB_hit[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = args->tier[0].obj_vector[i].metrics.TLB_miss[w];
+                curr_value = g_dram_metrics[i].TLB_miss[w];
+                args->tier[0].obj_vector[i].metrics.TLB_miss[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
             }
-            
-            clock_gettime(CLOCK_REALTIME, &start);
-            calculate_SMA_for_DRAM();
-            clock_gettime(CLOCK_REALTIME, &end);
-            
-            D fprintf(stderr, "[sample_processor] Obj in DRAM:%d Time of processing:%f seconds\n", g_total_dram_objs, get_timestamp_diff_in_seconds(start, end));
-            
-            free(g_dram_tier_ring);
-            free(g_dram_metrics);
-        }
-        
-        if(g_total_pmem_objs > 0 ){
-        	g_pmem_metrics = malloc(sizeof(metric_t)*g_total_pmem_objs);
-            if(g_pmem_metrics == NULL){
-                fprintf(stderr, "Error during allocation g_pmem_metrics!!\n");
-                exit(-1);
-            }
-            
-            clock_gettime(CLOCK_REALTIME, &start);
-            calculate_SMA_for_PMEM();
-            clock_gettime(CLOCK_REALTIME, &end);
-            
-            D fprintf(stderr, "[sample_processor] Obj in PMEM:%d Time of processing:%f seconds\n", g_total_pmem_objs, get_timestamp_diff_in_seconds(start, end));
-            
-            free(g_pmem_tier_ring);
-            free(g_pmem_metrics);
-        }
-        
-		
-		//Again i get the lock to update the shared memory
-		double old_value;
-		double curr_value;
-		
-		if(g_total_dram_objs > 0 ){
-			for(i=0; i< g_total_dram_objs; i++){
-				for(w=0; w< MEM_LEVELS; w++){ 
-				    //update shared memory
-				    old_value = args->tier[0].obj_vector[i].metrics.sum_latency_cost[w];
-				    curr_value = g_dram_metrics[i].sum_latency_cost[w];
-					args->tier[0].obj_vector[i].metrics.sum_latency_cost[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
-					
-					old_value = args->tier[0].obj_vector[i].metrics.loads_count[w];
-					curr_value = g_dram_metrics[i].loads_count[w];
-                    args->tier[0].obj_vector[i].metrics.loads_count[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                    
-                    old_value = args->tier[0].obj_vector[i].metrics.TLB_hit[w];
-                    curr_value = g_dram_metrics[i].TLB_hit[w];
-                    args->tier[0].obj_vector[i].metrics.TLB_hit[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                    
-                    old_value = args->tier[0].obj_vector[i].metrics.TLB_miss[w];
-                    curr_value = g_dram_metrics[i].TLB_miss[w];
-                    args->tier[0].obj_vector[i].metrics.TLB_miss[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-				}
 
-				old_value = args->tier[0].obj_vector[i].metrics.stores_count;
-				curr_value = g_dram_metrics[i].stores_count;
-                args->tier[0].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                if(args->tier[0].obj_vector[i].metrics.stores_count !=0)
-                    D fprintf(stderr, "DRAM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
-                        args->tier[0].obj_vector[i].metrics.stores_count);
-			}
-		}
-		
-		
-		if(g_total_pmem_objs > 0 ){
-            for(i=0; i< g_total_pmem_objs; i++){
-                for(w=0; w< MEM_LEVELS; w++){
-                    //update shared memory
-                    old_value = args->tier[1].obj_vector[i].metrics.sum_latency_cost[w];
-				    curr_value = g_pmem_metrics[i].sum_latency_cost[w];
-					args->tier[1].obj_vector[i].metrics.sum_latency_cost[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
-					
-					old_value = args->tier[1].obj_vector[i].metrics.loads_count[w];
-					curr_value = g_pmem_metrics[i].loads_count[w];
-                    args->tier[1].obj_vector[i].metrics.loads_count[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                    
-                    old_value = args->tier[1].obj_vector[i].metrics.TLB_hit[w];
-                    curr_value = g_pmem_metrics[i].TLB_hit[w];
-                    args->tier[1].obj_vector[i].metrics.TLB_hit[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                    
-                    old_value = args->tier[1].obj_vector[i].metrics.TLB_miss[w];
-                    curr_value = g_pmem_metrics[i].TLB_miss[w];
-                    args->tier[1].obj_vector[i].metrics.TLB_miss[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                }
+            old_value = args->tier[0].obj_vector[i].metrics.stores_count;
+            curr_value = g_dram_metrics[i].stores_count;
+            args->tier[0].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+            if(args->tier[0].obj_vector[i].metrics.stores_count !=0)
+                D fprintf(stderr, "DRAM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
+                    args->tier[0].obj_vector[i].metrics.stores_count);
+        }
+    }
+    
+    
+    if(g_total_pmem_objs > 0 ){
+        for(i=0; i< g_total_pmem_objs; i++){
+            for(w=0; w< MEM_LEVELS; w++){
+                //update shared memory
+                old_value = args->tier[1].obj_vector[i].metrics.sum_latency_cost[w];
+                curr_value = g_pmem_metrics[i].sum_latency_cost[w];
+                args->tier[1].obj_vector[i].metrics.sum_latency_cost[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
                 
-				old_value = args->tier[1].obj_vector[i].metrics.stores_count;
-				curr_value = g_pmem_metrics[i].stores_count;
+                old_value = args->tier[1].obj_vector[i].metrics.loads_count[w];
+                curr_value = g_pmem_metrics[i].loads_count[w];
+                args->tier[1].obj_vector[i].metrics.loads_count[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                args->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                if(args->tier[1].obj_vector[i].metrics.stores_count != 0)
-                    D fprintf(stderr, "PMEM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
-                        args->tier[1].obj_vector[i].metrics.stores_count);
+                old_value = args->tier[1].obj_vector[i].metrics.TLB_hit[w];
+                curr_value = g_pmem_metrics[i].TLB_hit[w];
+                args->tier[1].obj_vector[i].metrics.TLB_hit[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = args->tier[1].obj_vector[i].metrics.TLB_miss[w];
+                curr_value = g_pmem_metrics[i].TLB_miss[w];
+                args->tier[1].obj_vector[i].metrics.TLB_miss[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
             }
-		}
-        
+            
+            old_value = args->tier[1].obj_vector[i].metrics.stores_count;
+            curr_value = g_pmem_metrics[i].stores_count;
+            
+            args->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+            if(args->tier[1].obj_vector[i].metrics.stores_count != 0)
+                D fprintf(stderr, "PMEM old value : %.2lf, current value : %.2lf, final value: %.2lf\n", old_value,curr_value,\
+                    args->tier[1].obj_vector[i].metrics.stores_count);
+        }
+    }
+    
 	
     D fprintf(stderr, "------------------\n");
 }
