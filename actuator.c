@@ -31,7 +31,7 @@
 
 int g_iteration=0;
 
-int move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
+int move_pages_function(int pid, unsigned long int addr, unsigned long int size, float *status_vector)
 {
     //int status_vector[4] = {0,0,0,0};
     fprintf(stderr, "1\n");
@@ -137,7 +137,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
     int i;
     int j;
     int flag_has_llcm = 0;
-    int status_vector[4];
+    float status_vector[4];
     
     float current_dram_space;
     float current_dram_consumed;
