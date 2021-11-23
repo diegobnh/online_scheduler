@@ -168,7 +168,7 @@ void policy_migration_promotion(struct schedule_manager *args){
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
     char cmd[30];
-    sprintf(cmd, "ls -l > %d", iteration)
+    sprintf(cmd, "ls -l > %d", iteration);
     system(cmd);
     iteration++;
 }
