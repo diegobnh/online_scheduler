@@ -31,7 +31,7 @@
 
 int g_iteration=0;
 
-void move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
+int move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
 {
     //int status_vector[4] = {0,0,0,0};
     
@@ -97,7 +97,7 @@ void move_pages_function(int pid, unsigned long int addr, unsigned long int size
     }
     //fprintf(stderr, "\n");
 
-    //return 0;
+    return 0;
 }
 
 void sort_objects(struct schedule_manager *args){
