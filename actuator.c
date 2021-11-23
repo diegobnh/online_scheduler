@@ -34,19 +34,14 @@ int g_iteration=0;
 int move_pages_function(int pid, long int addr, long int size)
 {
 
-    if (argc != 3) {
-        fprintf(stderr, "need 4 args: <pid> <addr> <len> <numa_node>\n");
-        return -1;
-    }
-
     if ((numa_available() < 0)) {
         fprintf(stderr, "error: not a numa machine\n");
         return -1;
     }
 
-    int pid = pid;
-    long int addr = addr;
-    long int = size;
+    //int pid = pid;
+    //long int addr = addr;
+    //long int = size;
     unsigned node = NULL;
 
     //struct bitmask *new_nodes = numa_bitmask_alloc(num_nodes);
