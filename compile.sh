@@ -12,7 +12,7 @@ gcc -g -I/scratch/build/autonuma-r6/tools/lib/perf/include/ -o monitor monitor_v
 gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recorder.o actuator.o -lpthread -lrt -lnuma -lsyscall_intercept -DINIT_ALLOC=4;
 
 #In case the application in the last execution has finished without remove shared memory
-./delete_shared_memory
+sudo ./delete_shared_memory
 
 #SECONDS=0
 sudo LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
