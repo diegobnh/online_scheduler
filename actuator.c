@@ -86,14 +86,14 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size)
     
     for (int i = 0; i < page_count; i++) {
         //fprintf(stderr, "%d\n",status[i]);
-        if(status[i] >= 0){
+        if(status[i] >= 0 && status[i] <=2){
             status_vector[status[i]]++;//0,1,2
         }else{
             status_vector[3]++;
         }
     }
     for(int i=0; i<4; i++){
-        fprintf(stderr, "[%d] = %.2lf, ", i, (float)status_vector[status[i]]/page_count);
+        fprintf(stderr, "[%d] = %.2lf, ", i, (float)status_vector[i]/page_count);
     }
     fprintf(stderr, "\n");
 
