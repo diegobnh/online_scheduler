@@ -26,6 +26,7 @@
 
 #define MINIMUM_LLCM 0
 
+int g_iteration=0;
 
 void sort_objects(struct schedule_manager *args){
     int i,j;
@@ -69,7 +70,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
         current_dram_space = 0;
     }
     
-    fprintf(stderr, "Context\n");
+    fprintf(stderr, "Iteration %d\n", g_iteration);
     for(i=0;i<args->tier[0].num_obj;i++){
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
         if(args->tier[0].obj_flag_alloc[i] == 1){
@@ -111,7 +112,6 @@ void policy_migration_promotion(struct schedule_manager *args){
     unsigned long nodemask;
     int num_obj_migrated=0;
     float llcm;
-    static int iteration=0;
     
     pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
@@ -168,9 +168,9 @@ void policy_migration_promotion(struct schedule_manager *args){
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
     char cmd[30];
-    sprintf(cmd, "cat /proc/%d/numa_maps > %d", getpid(),iteration);
+    sprintf(cmd, "cat /proc/%d/numa_maps > %d", getpid(),g_iteration);
     system(cmd);
-    iteration++;
+    g_iteration++;
 }
 
 //Chamda quando não tem espaço na DRAM
