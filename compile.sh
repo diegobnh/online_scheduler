@@ -19,8 +19,8 @@ gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so re
 SECONDS=0
 sudo LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
 
-pid_main=$!
-sudo taskset -cp 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34  $pid_main 1> /dev/null
+pid_app=$!
+sudo taskset -cp 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34  $pid_app 1> /dev/null
 
 #Start independent monitor
 sleep 1
@@ -28,7 +28,7 @@ sudo ./monitor &
 pid_monitor=$!
 
 #When the main finish, send a signal to monitor finish
-wait $pid_main
+wait $pid_app
 kill -27 $pid_monitor
 
 ELAPSED="Elapsed: $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
