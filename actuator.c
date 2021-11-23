@@ -92,10 +92,10 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size)
             status_vector[3]++;
         }
     }
-    for(i=0; i<4; i++){
+    for(int i=0; i<4; i++){
         fprintf(stderr, "[%d] = %.2lf, ", i, (float)status_vector[status[i]]/page_count);
     }
-    fprintf(sdterr, "\n");
+    fprintf(stderr, "\n");
 
     return 0;
 }
