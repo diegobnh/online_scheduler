@@ -1,6 +1,4 @@
 #!/bin/bash
-#unset APP
-#export APP="gapbs"
 
 OMP_NUM_THREADS=18
 export OMP_NUM_THREADS
@@ -18,11 +16,10 @@ gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so re
 
 #SECONDS=0
 sudo LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
-
 pid_app=$!
+
 sudo taskset -cp 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34  $pid_app 1> /dev/null
 
-#Start independent monitor
 sleep 1
 sudo ./monitor &
 pid_monitor=$!
