@@ -172,7 +172,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         status_vector[2] = 0;
         //if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
         if(args->tier[1].obj_flag_alloc[i] == 1){
+            fprintf(stderr, "Antes move_pages_func\n");
             move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size, status_vector);
+            fprintf(stderr, "Depois move_pages_func\n");
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
                 fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf,%.2lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count,\
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
