@@ -691,3 +691,60 @@ Cannot promote object 21 to DRAM because of size:1.073746
 Cannot promote object 20 to DRAM because of size:0.536875 
 Num obj promoted:0
 -------------------------------------------------------
+Context
+DRAM[61,0.5279] = 2028.1056,0.0000 read-write
+DRAM[43,1.0737] = 933.3175,0.0000 read-write
+DRAM[60,0.5369] = 631.5974,4443.4052 read-write
+DRAM[42,0.5369] = 21.7075,472.7390 read-write
+DRAM[54,0.0084] = 0.0158,6.9476 read-write
+DRAM[55,0.0084] = 0.0156,7.9926 read-write
+DRAM[46,0.0084] = 0.0149,7.8499 read-write
+DRAM[52,0.0084] = 0.0149,8.8096 read-write
+DRAM[53,0.0084] = 0.0149,2.9501 read-write
+DRAM[45,0.0084] = 0.0149,9.8925 read-write
+DRAM[50,0.0084] = 0.0149,8.9475 read-write
+DRAM[59,0.0084] = 0.0015,11.7950 read-write
+DRAM[56,0.0084] = 0.0015,3.9974 read-write
+DRAM[47,0.0084] = 0.0015,2.1475 read-write
+DRAM[57,0.0084] = 0.0008,5.9521 read-write
+DRAM[51,0.0084] = 0.0007,6.9974 read-write
+DRAM[48,0.0084] = 0.0000,3.9001 read-write
+DRAM[49,0.0084] = 0.0000,7.8472 read-write
+DRAM[44,0.5369] = 0.0000,0.0000 read-write
+DRAM[58,0.0084] = 0.0000,5.8501 read-write
+DRAM[62,0.5369] = 0.0000 read-only
+
+PMEM[9,0.0084] = 0.0000,0.00 read-write
+PMEM[21,1.0737] = 0.0000,0.00 read-write
+PMEM[20,0.5369] = 0.0000,0.00 read-write
+PMEM[26,0.1342] = 0.0000,0.00 read-write
+PMEM[27,0.1342] = 0.0000,0.00 read-write
+PMEM[28,0.1342] = 0.0000,0.00 read-write
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000,0.00 read-write
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000,0.00 read-write
+PMEM[39,0.1342] = 0.0000,0.00 read-write
+PMEM[40,0.1342] = 0.0000,0.00 read-write
+PMEM[41,0.1342] = 0.0000 read-only
+PMEM[63,0.5369] = 0.0000 read-only
+
+Free DRAM space:0.13(GB), DRAM consumed:3.87
+
+Decisions
+Cant migrate object:9 , Error:14  , 	Error description: Bad address
+Cannot promote object 21 to DRAM because of size:1.073746 
+Cannot promote object 20 to DRAM because of size:0.536875 
+Num obj promoted:0
+-------------------------------------------------------
+	[recorder] remove(DRAM) curr_mem_alloc :3.33
+	[recorder] remove(DRAM) curr_mem_alloc :2.80
+	[recorder] remove(DRAM) curr_mem_alloc :1.73
+	[recorder] remove(DRAM) curr_mem_alloc :1.19
+Elapsed: 0min 39sec
