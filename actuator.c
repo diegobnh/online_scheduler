@@ -31,7 +31,7 @@
 
 int g_iteration=0;
 
-int move_pages_function(int pid, long int addr, long int size)
+int move_pages_function(int pid, unsigned long int addr, unsigned long int size)
 {
 
     if ((numa_available() < 0)) {
@@ -55,7 +55,7 @@ int move_pages_function(int pid, long int addr, long int size)
 
     // len must be page-aligned
     size_t pagesize = getpagesize();
-    assert((len % pagesize) == 0);
+    assert((size % pagesize) == 0);
 
     unsigned long page_count = len / pagesize;
     void **pages_addr;
