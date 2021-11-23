@@ -45,7 +45,7 @@
    fprintf(stderr, "INIT_ALLOC value invalid\n");
 #endif
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
