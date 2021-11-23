@@ -24,7 +24,7 @@
   #define D if(0)
 #endif
 
-#define MINIMUM_LLCM 1
+#define MINIMUM_LLCM 0
 
 
 void sort_objects(struct schedule_manager *args){

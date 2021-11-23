@@ -42,5 +42,5 @@ pid_monitor=$!
 wait $pid_main
 kill -27 $pid_monitor
 
-ELAPSED="Elapsed: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
+ELAPSED="Elapsed: $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
 echo $ELAPSED >&2
