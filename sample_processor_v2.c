@@ -202,9 +202,9 @@ void calc_moving_average(struct schedule_manager *args){
             exit(-1);
         }
         
-        clock_gettime(CLOCK_REALTIME, &start);
+        D clock_gettime(CLOCK_REALTIME, &start);
         calculate_SMA_for_DRAM();
-        clock_gettime(CLOCK_REALTIME, &end);
+        D clock_gettime(CLOCK_REALTIME, &end);
         
         D fprintf(stderr, "[sample_processor] Obj in DRAM:%d Time of processing:%f seconds\n", g_total_dram_objs, get_timestamp_diff_in_seconds(start, end));
         
@@ -219,9 +219,9 @@ void calc_moving_average(struct schedule_manager *args){
             exit(-1);
         }
         
-        clock_gettime(CLOCK_REALTIME, &start);
+        D clock_gettime(CLOCK_REALTIME, &start);
         calculate_SMA_for_PMEM();
-        clock_gettime(CLOCK_REALTIME, &end);
+        D clock_gettime(CLOCK_REALTIME, &end);
         
         D fprintf(stderr, "[sample_processor] Obj in PMEM:%d Time of processing:%f seconds\n", g_total_pmem_objs, get_timestamp_diff_in_seconds(start, end));
         
