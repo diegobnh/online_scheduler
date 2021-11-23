@@ -1,0 +1,9 @@
+Iteration 0
+
+PMEM[-477007872,(nil), 1.0737] = 0.0000 read-only
+PMEM[-1243598848,0x1, 16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
