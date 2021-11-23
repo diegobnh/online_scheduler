@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <numa.h>
 #include <numaif.h>
 #include <errno.h>
 #include <assert.h>
@@ -43,9 +44,9 @@ int move_pages_function(int pid, long int addr, long int size)
         return -1;
     }
 
-    size_t pid = pid;
-    size_t addr = addr;
-    size_t len = size;
+    int pid = pid;
+    long int addr = addr;
+    long int = size;
     unsigned node = NULL;
 
     //struct bitmask *new_nodes = numa_bitmask_alloc(num_nodes);
