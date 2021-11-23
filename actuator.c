@@ -168,7 +168,7 @@ void policy_migration_promotion(struct schedule_manager *args){
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
     char cmd[30];
-    sprintf(cmd, "cat /proc/%d/numa_maps > %d", getpid(),g_iteration);
+    sprintf(cmd, "cat /proc/%d/numa_maps > %d.trace", getpid(),g_iteration);
     system(cmd);
     g_iteration++;
 }
