@@ -16,7 +16,7 @@ gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so re
 #In case the application in the last execution has finished without remove shared memory
 ./delete_shared_memory
 
-SECONDS=0
+#SECONDS=0
 sudo LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
 
 pid_app=$!
@@ -31,5 +31,5 @@ pid_monitor=$!
 wait $pid_app
 kill -27 $pid_monitor
 
-ELAPSED="Elapsed: $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
-echo $ELAPSED >&2
+#ELAPSED="Elapsed: $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
+#echo $ELAPSED >&2
