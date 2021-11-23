@@ -129,7 +129,7 @@ void policy_migration_promotion(struct schedule_manager *args){
                          args->tier[1].obj_vector[1].size,
                          MPOL_BIND, &nodemask,
                          64,
-                         MPOL_MF_MOVE_ALL) == -1)
+                         MPOL_MF_MOVE) == -1)
                 {
                     fprintf(stderr,"Cant migrate object:%d, Error:%d,", args->tier[1].obj_vector[i].index_id, errno);
                     perror(" ");
