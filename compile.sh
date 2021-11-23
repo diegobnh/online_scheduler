@@ -25,6 +25,7 @@ gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so re
 
 #Start the main that will spawn other applications
 #LD_PRELOAD=./mmap_intercept.so ./main 1> /dev/null &
+SECONDS=0
 LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
 
 
@@ -40,4 +41,6 @@ pid_monitor=$!
 #When the main finish, send a signal to monitor finish
 wait $pid_main
 kill -27 $pid_monitor
- 
+
+ELAPSED="Elapsed: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
+echo $ELAPSED >&2
