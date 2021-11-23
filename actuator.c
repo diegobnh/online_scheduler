@@ -58,6 +58,7 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
     // size must be page-aligned
     size_t pagesize = getpagesize();
     assert((size % pagesize) == 0);
+    fprintf(stderr, "3.1\n");
 
     unsigned long page_count = size / pagesize;
     void **pages_addr;
@@ -150,8 +151,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[0].num_obj;i++){
         status_vector[0] = 0;
         status_vector[1] = 0;
-        status_vector[1] = 0;
         status_vector[2] = 0;
+        status_vector[3] = 0;
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
         if(args->tier[0].obj_flag_alloc[i] == 1){
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
@@ -170,8 +171,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
     for(i=0;i<args->tier[1].num_obj;i++){
         status_vector[0] = 0;
         status_vector[1] = 0;
-        status_vector[1] = 0;
         status_vector[2] = 0;
+        status_vector[3] = 0;
         //if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
         if(args->tier[1].obj_flag_alloc[i] == 1){
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
