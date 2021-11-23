@@ -9,7 +9,7 @@
 
 #include "recorder.h"
 #include "time.h"
-#define ALPHA 0.8
+#define ALPHA 0.1
 
 //#define DEBUG
 #ifdef DEBUG
