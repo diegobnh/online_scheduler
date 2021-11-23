@@ -7,3 +7,83 @@ Free DRAM space:4.00(GB), DRAM consumed:0.00
 
 Decisions
 Num obj promoted:0
+-------------------------------------------------------
+Iteration 1
+
+PMEM[-510578688,0xe, 0.0084] = 704.7748,0.14 read-write
+PMEM[-527364096,0x10, 0.0084] = 643.2745 read-only
+PMEM[-544149504,0x12, 0.0084] = 609.6224,0.43 read-write
+PMEM[-502185984,0xd, 0.0084] = 607.0325 read-only
+PMEM[-619683840,0x1b, 0.0084] = 596.6133,0.43 read-write
+PMEM[-577720320,0x16, 0.0084] = 524.0342,0.43 read-write
+PMEM[-485400576,0xb, 0.0084] = 483.9399 read-only
+PMEM[-594505728,0x18, 0.0084] = 445.8388,0.43 read-write
+PMEM[-586113024,0x17, 0.0084] = 441.9575,0.43 read-write
+PMEM[-535756800,0x11, 0.0084] = 397.5321,0.61 read-write
+PMEM[-569327616,0x15, 0.0084] = 382.8530,0.61 read-write
+PMEM[-611291136,0x1a, 0.0084] = 380.2082,0.43 read-write
+PMEM[-493793280,0xc, 0.0084] = 352.0807 read-only
+PMEM[-560934912,0x14, 0.0084] = 350.1803,0.43 read-write
+PMEM[-552542208,0x13, 0.0084] = 327.3173,0.43 read-write
+PMEM[-518971392,0xf, 0.0084] = 326.8058,0.58 read-write
+PMEM[-468045824,0x1e, 0.5279] = 255.9457,1192.93 read-write
+PMEM[903876608,0x1d, 1.0737] = 199.5508,1031.43 read-write
+PMEM[-602898432,0x19, 0.0084] = 194.0725,0.43 read-write
+PMEM[-477007872,(nil), 1.0737] = 87.0497 read-only
+PMEM[-1243598848,0x1, 16.8931] = 29.8427 read-only
+PMEM[232783872,0x25, 0.1342] = 1.4719,0.24 read-write
+PMEM[59863040,0x1c, 0.5369] = 0.8942,52.97 read-write
+PMEM[-975175680,0x21, 0.1342] = 0.7451 read-only
+PMEM[637669376,0x5, 0.0000] = 0.0000 read-only
+PMEM[1170554880,0x6, 0.2180] = 0.0000 read-only
+PMEM[1170210816,0x7, 0.0003] = 0.0000 read-only
+PMEM[1401004032,0x8, 0.0000] = 0.0000 read-only
+PMEM[-1156558848,0x1f, 0.5369] = 0.0000 read-only
+PMEM[1977622528,0xa, 1.0737] = 0.0000,107.46 read-write
+PMEM[407031808,0x3, 0.2180] = 0.0000 read-only
+PMEM[-438304768,0x22, 0.1342] = 0.0000 read-only
+PMEM[-1109393408,0x23, 0.1342] = 0.0000 read-only
+PMEM[-1290776576,0x24, 0.1342] = 0.0000,0.24 read-write
+PMEM[406687744,0x4, 0.0003] = 0.0000 read-only
+PMEM[98566144,0x26, 0.1342] = 0.0000,0.20 read-write
+PMEM[-35651584,0x27, 0.1342] = 0.0000 read-only
+PMEM[-1424994304,0x28, 0.1342] = 0.0000 read-only
+PMEM[-169869312,0x29, 0.1342] = 0.0000 read-only
+PMEM[-304087040,0x2a, 0.1342] = 0.0000 read-only
+PMEM[-706740224,0x2b, 0.1342] = 0.0000 read-only
+PMEM[-1512046592,0x2c, 0.1342] = 0.0000 read-only
+PMEM[-1646264320,0x2d, 0.1342] = 0.0000 read-only
+PMEM[-1377828864,0x2e, 0.1342] = 0.0000,0.22 read-write
+PMEM[-1243611136,0x2f, 0.1342] = 0.0000 read-only
+PMEM[-572522496,0x30, 0.1342] = 0.0000 read-only
+PMEM[-840957952,0x31, 0.1342] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Promoted to DRAM object:14, migration cost:0.00 sec
+Promoted to DRAM object:16, migration cost:0.00 sec
+Promoted to DRAM object:18, migration cost:0.00 sec
+Promoted to DRAM object:13, migration cost:0.00 sec
+Promoted to DRAM object:27, migration cost:0.00 sec
+Promoted to DRAM object:22, migration cost:0.00 sec
+Promoted to DRAM object:11, migration cost:0.00 sec
+Promoted to DRAM object:24, migration cost:0.00 sec
+Promoted to DRAM object:23, migration cost:0.00 sec
+Promoted to DRAM object:17, migration cost:0.00 sec
+Promoted to DRAM object:21, migration cost:0.00 sec
+Promoted to DRAM object:26, migration cost:0.00 sec
+Promoted to DRAM object:12, migration cost:0.00 sec
+Promoted to DRAM object:20, migration cost:0.00 sec
+Promoted to DRAM object:19, migration cost:0.00 sec
+Promoted to DRAM object:15, migration cost:0.00 sec
+Promoted to DRAM object:30, migration cost:0.02 sec
+Promoted to DRAM object:29, migration cost:0.02 sec
+Promoted to DRAM object:25, migration cost:0.00 sec
+Cant migrate object:0, Error:14, : Bad address
+Cannot promote object 1 to DRAM because of size:16.893059 
+Cant migrate object:37, Error:14, : Bad address
+Promoted to DRAM object:28, migration cost:0.02 sec
+Cant migrate object:33, Error:14, : Bad address
+Num obj promoted:20
+-------------------------------------------------------

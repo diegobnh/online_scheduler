@@ -2,15 +2,89 @@
 00403000 default file=/scratch/gapbs/bc mapped=15 N1=15 kernelpagesize_kB=4
 00412000 default file=/scratch/gapbs/bc mapped=3 N1=3 kernelpagesize_kB=4
 00415000 default file=/scratch/gapbs/bc anon=1 dirty=1 active=0 N1=1 kernelpagesize_kB=4
-00416000 default file=/scratch/gapbs/bc anon=1 dirty=1 active=0 N1=1 kernelpagesize_kB=4
-00bbe000 default heap anon=10 dirty=10 active=0 N0=10 kernelpagesize_kB=4
-7f75b5e03000 bind:2 anon=3676515 dirty=3676515 active=0 N2=3676515 kernelpagesize_kB=4
+00416000 default file=/scratch/gapbs/bc anon=1 dirty=1 active=0 N0=1 kernelpagesize_kB=4
+00bbe000 default heap anon=27 dirty=27 active=0 N0=27 kernelpagesize_kB=4
+7f74a0000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74a0021000 bind:2
+7f74a8000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74a8021000 bind:2
+7f74b0000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74b0021000 bind:2
+7f74b8000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74b8021000 bind:2
+7f74c0000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74c0021000 bind:2
+7f74c8000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74c8021000 bind:2
+7f74d0000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74d0021000 bind:2
+7f74d8000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74d8021000 bind:2
+7f74e0000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74e0021000 bind:2
+7f74e8000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74e8021000 bind:2
+7f74f0000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74f0021000 bind:2
+7f74f8000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f74f8021000 bind:2
+7f7500000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f7500021000 bind:2
+7f7508000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f7508021000 bind:2
+7f7510000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f7510021000 bind:2
+7f7515e00000 bind:2 anon=131073 dirty=131073 active=0 N2=131073 kernelpagesize_kB=4
+7f7535e01000 bind:0 anon=2049 dirty=2049 active=0 N0=2049 kernelpagesize_kB=4
+7f7536602000 bind:2 anon=4646522 dirty=4646522 active=0 N2=4646522 kernelpagesize_kB=4
 7f79a4c7d000 default anon=3 dirty=3 active=0 N0=3 kernelpagesize_kB=4
 7f79a4cec000 default anon=1 dirty=1 active=0 N0=1 kernelpagesize_kB=4
-7f79e3917000 bind:2 anon=262145 dirty=262145 active=0 N2=262145 kernelpagesize_kB=4
+7f79ac000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f79ac021000 bind:2
+7f79b4000000 bind:2 anon=17 dirty=17 active=0 N2=17 kernelpagesize_kB=4
+7f79b4021000 bind:2
+7f79bb105000 bind:2 anon=37042 dirty=37042 active=0 N2=37042 kernelpagesize_kB=4
+7f79db106000 bind:0
+7f79db107000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79db907000 bind:0
+7f79db908000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79dc108000 bind:0
+7f79dc109000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79dc909000 bind:0
+7f79dc90a000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79dd10a000 bind:0
+7f79dd10b000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79dd90b000 bind:0
+7f79dd90c000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79de10c000 bind:0
+7f79de10d000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79de90d000 bind:0
+7f79de90e000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79df10e000 bind:0
+7f79df10f000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79df90f000 bind:0
+7f79df910000 bind:0 anon=4 dirty=4 active=0 N0=4 kernelpagesize_kB=4
+7f79e0110000 bind:0
+7f79e0111000 bind:0 anon=4 dirty=4 active=0 N0=4 kernelpagesize_kB=4
+7f79e0911000 bind:0
+7f79e0912000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79e1112000 bind:0
+7f79e1113000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79e1913000 bind:0
+7f79e1914000 bind:0 anon=4 dirty=4 active=0 N0=4 kernelpagesize_kB=4
+7f79e2114000 bind:0
+7f79e2115000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79e2915000 bind:0
+7f79e2916000 bind:0 anon=4 dirty=4 active=0 N0=4 kernelpagesize_kB=4
+7f79e3116000 bind:0
+7f79e3117000 bind:0 anon=2 dirty=2 active=0 N0=2 kernelpagesize_kB=4
+7f79e41a3000 bind:0 anon=2049 dirty=2049 active=0 N0=2049 kernelpagesize_kB=4
+7f79e49a4000 bind:2 anon=126835 dirty=126835 active=0 N2=126835 kernelpagesize_kB=4
+7f7a03917000 bind:0 anon=2049 dirty=2049 active=0 N0=2049 kernelpagesize_kB=4
+7f7a04118000 bind:2 anon=129024 dirty=129024 active=0 N2=129024 kernelpagesize_kB=4
 7f7a23918000 default
 7f7a23919000 default anon=5 dirty=5 active=0 N0=5 kernelpagesize_kB=4
-7f7a24119000 default file=/dev/shm/SCHEDULER_SHM dirty=358 mapmax=4 active=0 N0=358 kernelpagesize_kB=4
+7f7a24119000 default file=/dev/shm/SCHEDULER_SHM dirty=358 mapmax=4 active=15 N0=358 kernelpagesize_kB=4
 7f7a2427f000 default anon=34 dirty=34 active=0 N0=34 kernelpagesize_kB=4
 7f7a242d3000 default anon=66 dirty=66 active=0 N0=66 kernelpagesize_kB=4
 7f7a24351000 default anon=10 dirty=10 active=0 N0=10 kernelpagesize_kB=4
@@ -53,7 +127,7 @@
 7f7a24cc9000 default file=/usr/lib64/libc-2.31.so anon=3 dirty=3 active=0 N0=3 kernelpagesize_kB=4
 7f7a24ccc000 default file=/usr/lib64/libc-2.31.so anon=3 dirty=3 active=0 N0=3 kernelpagesize_kB=4
 7f7a24ccf000 default anon=4 dirty=4 active=0 N0=4 kernelpagesize_kB=4
-7f7a24cd5000 default file=/usr/lib64/libpthread-2.31.so mapped=7 mapmax=47 N0=7 kernelpagesize_kB=4
+7f7a24cd5000 default file=/usr/lib64/libpthread-2.31.so mapped=7 mapmax=46 N0=7 kernelpagesize_kB=4
 7f7a24cdc000 default file=/usr/lib64/libpthread-2.31.so anon=16 dirty=16 active=0 N0=16 kernelpagesize_kB=4
 7f7a24cec000 default file=/usr/lib64/libpthread-2.31.so mapped=5 mapmax=21 N0=5 kernelpagesize_kB=4
 7f7a24cf1000 default file=/usr/lib64/libpthread-2.31.so anon=1 dirty=1 active=0 N0=1 kernelpagesize_kB=4
@@ -75,7 +149,7 @@
 7f7a24e97000 default file=/usr/lib64/libm-2.31.so anon=1 dirty=1 active=0 N0=1 kernelpagesize_kB=4
 7f7a24e98000 default file=/usr/lib64/libm-2.31.so anon=1 dirty=1 active=0 N0=1 kernelpagesize_kB=4
 7f7a24e99000 default file=/usr/lib64/libstdc++.so.6.0.28 mapped=150 mapmax=7 N0=38 N1=112 kernelpagesize_kB=4
-7f7a24f2f000 default file=/usr/lib64/libstdc++.so.6.0.28 mapped=156 mapmax=7 N0=44 N1=112 kernelpagesize_kB=4
+7f7a24f2f000 default file=/usr/lib64/libstdc++.so.6.0.28 mapped=171 mapmax=7 N0=44 N1=127 kernelpagesize_kB=4
 7f7a25027000 default file=/usr/lib64/libstdc++.so.6.0.28 mapped=16 mapmax=7 N0=15 N1=1 kernelpagesize_kB=4
 7f7a25077000 default file=/usr/lib64/libstdc++.so.6.0.28
 7f7a25078000 default file=/usr/lib64/libstdc++.so.6.0.28 anon=11 dirty=11 active=0 N0=11 kernelpagesize_kB=4
