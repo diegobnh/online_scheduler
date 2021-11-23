@@ -1,0 +1,198 @@
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000 read-only
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[4,0.0084] = 0.0000 read-only
+PMEM[5,0.0084] = 0.0000 read-only
+PMEM[6,0.0084] = 0.0000 read-only
+PMEM[7,0.0084] = 0.0000 read-only
+PMEM[8,0.0084] = 0.0000 read-only
+PMEM[9,0.0084] = 0.0000 read-only
+PMEM[10,0.0084] = 0.0000 read-only
+PMEM[11,0.0084] = 0.0000 read-only
+PMEM[12,0.0084] = 0.0000 read-only
+PMEM[13,0.0084] = 0.0000 read-only
+PMEM[14,0.0084] = 0.0000 read-only
+PMEM[15,0.0084] = 0.0000 read-only
+PMEM[16,0.0084] = 0.0000 read-only
+PMEM[17,0.0084] = 0.0000 read-only
+PMEM[18,0.0084] = 0.0000 read-only
+PMEM[19,0.0084] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[19,0.0084] = 232.0468,2.99 read-write
+PMEM[15,0.0084] = 232.0468,2.99 read-write
+PMEM[4,0.0084] = 118.8532,3.99 read-write
+PMEM[18,0.0084] = 118.8532,2.99 read-write
+PMEM[10,0.0084] = 118.8532,2.99 read-write
+PMEM[14,0.0084] = 118.8532,2.99 read-write
+PMEM[21,1.0737] = 4.4238,665.00 read-write
+PMEM[24,0.5369] = 1.7695,330.60 read-write
+PMEM[1,16.8931] = 0.2249 read-only
+PMEM[2,1.0737] = 0.0000,770.07 read-write
+PMEM[11,0.0084] = 0.0000,2.99 read-write
+PMEM[12,0.0084] = 0.0000,2.99 read-write
+PMEM[13,0.0084] = 0.0000,2.99 read-write
+PMEM[3,0.0084] = 0.0000 read-only
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[16,0.0084] = 0.0000,2.99 read-write
+PMEM[17,0.0084] = 0.0000,2.99 read-write
+PMEM[5,0.0084] = 0.0000,1.00 read-write
+PMEM[6,0.0084] = 0.0000,3.99 read-write
+PMEM[7,0.0084] = 0.0000,1.00 read-write
+PMEM[8,0.0084] = 0.0000,0.95 read-write
+PMEM[22,0.5279] = 0.0000,19.95 read-write
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[9,0.0084] = 0.0000,2.99 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Promoted to DRAM object:19  now free DRAM space:3.99
+Promoted to DRAM object:15  now free DRAM space:3.98
+Promoted to DRAM object:4  now free DRAM space:3.97
+Promoted to DRAM object:18  now free DRAM space:3.97
+Promoted to DRAM object:10  now free DRAM space:3.96
+Promoted to DRAM object:14  now free DRAM space:3.95
+Promoted to DRAM object:21  now free DRAM space:2.88
+Promoted to DRAM object:24  now free DRAM space:2.34
+Cannot promote object 1 to DRAM because of size:16.893059 
+Num obj promoted:8
+-------------------------------------------------------
+Context
+DRAM[42,0.0084] = 1946.9291,191.5675 read-write
+DRAM[43,0.0084] = 124.5129,0.1425 read-write
+DRAM[44,0.0084] = 124.5129,0.1425 read-write
+DRAM[49,0.5369] = 9.2899,698.2500 read-write
+DRAM[46,0.0084] = 5.6597,0.1425 read-write
+DRAM[47,0.0084] = 5.6597,0.1425 read-write
+DRAM[45,0.0084] = 5.6597,0.1900 read-write
+DRAM[48,1.0737] = 0.0442,0.1425 read-write
+
+PMEM[16,0.0084] = 826.3129,0.15 read-write
+PMEM[17,0.0084] = 345.2403,0.15 read-write
+PMEM[0,1.0737] = 301.9220,1555.15 read-write
+PMEM[19,0.0084] = 125.0930,0.15 read-write
+PMEM[15,0.0084] = 125.0930,0.15 read-write
+PMEM[1,16.8931] = 33.0168 read-only
+PMEM[20,0.5369] = 32.0332,192.33 read-write
+PMEM[18,0.0084] = 5.9568,0.15 read-write
+PMEM[10,0.0084] = 5.9568,0.15 read-write
+PMEM[14,0.0084] = 5.9568,0.15 read-write
+PMEM[4,0.0084] = 5.9568,0.20 read-write
+PMEM[21,1.0737] = 4.6560,699.91 read-write
+PMEM[24,0.5369] = 1.8624,347.96 read-write
+PMEM[22,0.5279] = 0.0000,21.00 read-write
+PMEM[23,0.5369] = 0.0000 read-only
+PMEM[2,1.0737] = 0.0000,38.60 read-write
+PMEM[25,0.1342] = 0.0000 read-only
+PMEM[26,0.1342] = 0.0000 read-only
+PMEM[27,0.1342] = 0.0000 read-only
+PMEM[28,0.1342] = 0.0000 read-only
+PMEM[29,0.1342] = 0.0000 read-only
+PMEM[30,0.1342] = 0.0000 read-only
+PMEM[31,0.1342] = 0.0000 read-only
+PMEM[32,0.1342] = 0.0000 read-only
+PMEM[33,0.1342] = 0.0000 read-only
+PMEM[34,0.1342] = 0.0000 read-only
+PMEM[35,0.1342] = 0.0000 read-only
+PMEM[36,0.1342] = 0.0000 read-only
+PMEM[37,0.1342] = 0.0000 read-only
+PMEM[38,0.1342] = 0.0000 read-only
+PMEM[39,0.1342] = 0.0000 read-only
+PMEM[40,0.1342] = 0.0000 read-only
+PMEM[41,0.1342] = 0.0000 read-only
+
+Free DRAM space:2.34(GB), DRAM consumed:1.66
+
+Decisions
+Promoted to DRAM object:16  now free DRAM space:2.33
+Promoted to DRAM object:17  now free DRAM space:2.32
+Cant migrate object:0 , Error:14  , 	Error description: Bad address
+Promoted to DRAM object:19  now free DRAM space:2.31
+Promoted to DRAM object:15  now free DRAM space:2.31
+Cannot promote object 1 to DRAM because of size:16.893059 
+Promoted to DRAM object:20  now free DRAM space:1.77
+Promoted to DRAM object:18  now free DRAM space:1.76
+Promoted to DRAM object:10  now free DRAM space:1.75
+Promoted to DRAM object:14  now free DRAM space:1.74
+Promoted to DRAM object:4  now free DRAM space:1.74
+Promoted to DRAM object:21  now free DRAM space:0.66
+Promoted to DRAM object:24  now free DRAM space:0.12
+Num obj promoted:11
+-------------------------------------------------------
