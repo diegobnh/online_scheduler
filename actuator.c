@@ -31,7 +31,7 @@
 
 int g_iteration=0;
 
-int move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
+void move_pages_function(int pid, unsigned long int addr, unsigned long int size, int *status_vector)
 {
     //int status_vector[4] = {0,0,0,0};
     
@@ -78,7 +78,7 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
         status[i] = -1;
     }
 
-    fprintf(stderr, "Moving pages of process %lu from addr = %lu, size = %lu, to numa node: %d\n", pid, addr, size, node);
+    //fprintf(stderr, "Moving pages of process %lu from addr = %lu, size = %lu, to numa node: %d\n", pid, addr, size, node);
     if (numa_move_pages(pid, page_count, pages_addr, nodes, status, MPOL_MF_MOVE) == -1) {
         fprintf(stderr, "error code: %d\n", errno);
         perror("error description:");
@@ -93,11 +93,11 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
         }
     }
     for(int i=0; i<4; i++){
-        fprintf(stderr, "[%d] = %.2lf, ", i, (float)status_vector[i]/page_count);
+        status_vector[i] = (float)status_vector[i]/page_count;
     }
-    fprintf(stderr, "\n");
+    //fprintf(stderr, "\n");
 
-    return 0;
+    //return 0;
 }
 
 void sort_objects(struct schedule_manager *args){
