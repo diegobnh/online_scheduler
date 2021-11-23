@@ -131,8 +131,8 @@ void policy_migration_promotion(struct schedule_manager *args){
                          64,
                          MPOL_MF_MOVE_ALL) == -1)
                 {
-                    fprintf(stderr,"Cant migrate object:%d, Error:%d, ", args->tier[1].obj_vector[i].index_id, errno);
-                    perror();
+                    fprintf(stderr,"Cant migrate object:%d, Error:%d,", args->tier[1].obj_vector[i].index_id, errno);
+                    perror(" ");
                 }else{
                     clock_gettime(CLOCK_REALTIME, &end);
                     uint64_t delta_us = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_nsec - start.tv_nsec) / 1000;
