@@ -150,7 +150,7 @@ int remove_allocation_on_dram(struct schedule_manager *args, int pid, unsigned l
             args->tier[0].current_memory_consumption -= size;
             D fprintf(stderr,"\t[recorder] remove_allocation_on_dram Free lock!!\n");
             
-            fprintf(stderr,"\t[recorder] remove(DRAM) curr_mem_alloc :%.2lf\n", args->tier[0].current_memory_consumption/GB);
+            D fprintf(stderr,"\t[recorder] remove(DRAM) curr_mem_alloc :%.2lf\n", args->tier[0].current_memory_consumption/GB);
             pthread_mutex_unlock(&args->global_mutex);
     		return 1;
     	}

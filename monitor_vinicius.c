@@ -432,7 +432,7 @@ int main(int argc, char **argv)
     
     setup_shared_memory();
     
-    pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
+    //pthread_create(&g_sample_processor, NULL, thread_sample_processor, g_shared_memory);
 
     int curr_err = pfm_initialize();
     if (curr_err != PFM_SUCCESS) {
@@ -623,6 +623,7 @@ int main(int argc, char **argv)
             perf_mmap__read_done(map);
         }
         
+        calc_moving_average(g_shared_memory);
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
         incremental_ring_index++;
