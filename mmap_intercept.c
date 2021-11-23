@@ -45,7 +45,7 @@
    fprintf(stderr, "INIT_ALLOC value invalid\n");
 #endif
 
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
@@ -65,7 +65,7 @@ void init_lib(void)
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
    if(fd == -1)
    {
-        //D fprintf(stderr,"\n\t Instance of shared-library already exist (Pid:%d)!\n\n", getpid());
+        D fprintf(stderr,"\n\t Instance of shared-library already exist (Pid:%d)!\n\n", getpid());
         
         fd=shm_open(STORAGE_ID, O_RDWR, 0);
         shared_memory = mmap(0,sizeof(struct schedule_manager),PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);
@@ -77,7 +77,7 @@ void init_lib(void)
    }//So, this else will run just one time, even if several process instantiate this shared library
    else
    {
-        //D fprintf(stderr,"\n\t First instance of shared-library (Pid:%d)\n\n", getpid());
+        D fprintf(stderr,"\n\t First instance of shared-library (Pid:%d)\n\n", getpid());
         ftruncate(fd,sizeof(struct schedule_manager)); // set the size
         shared_memory = mmap(0,sizeof(struct schedule_manager),PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);
        
@@ -151,7 +151,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		   if((unsigned long)arg1 + mem_consumption < MAXIMUM_DRAM_CAPACITY){
                nodemask = 1<<NODE_0_DRAM;
                
-		       fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
+		       D fprintf(stderr, "[mmap - dram] %p %llu\n", (void*)*result, (unsigned long)arg1);
            
 		       if(mbind((void*)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
 		       {
@@ -170,7 +170,7 @@ hook(long syscall_number, long arg0, long arg1,	long arg2, long arg3, long arg4,
 		{
            //nodemask = 1<<NODE_1_DRAM ;
            nodemask = 1<<NODE_0_PMEM;
-		   fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
+		   D fprintf(stderr, "[mmap - pmem] %p %llu\n", (void*)*result, (unsigned long)arg1);
 
 		   if(mbind((void *)*result, (unsigned long)arg1, MPOL_BIND, &nodemask, 64, MPOL_MF_MOVE) == -1)
 		   {
