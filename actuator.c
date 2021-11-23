@@ -75,9 +75,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         if(args->tier[0].obj_flag_alloc[i] == 1){
             
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf,%.4lf read-write\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf,%.4lf read-write\n", args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "DRAM[%d,%.4lf] = %04.4lf read-only\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
+                fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf read-only\n", args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB));
             }
             
         }
@@ -89,9 +89,9 @@ int check_candidates_to_migration(struct schedule_manager *args){
         if(args->tier[1].obj_flag_alloc[i] == 1){
             
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf,%.2lf read-write\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
+                fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf,%.2lf read-write\n", args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count);
             }else{
-                fprintf(stderr, "PMEM[%d,%06.4lf] = %04.4lf read-only\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
+                fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf read-only\n", args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB));
             }
             
             flag_has_llcm = 1;
@@ -168,7 +168,7 @@ void policy_migration_promotion(struct schedule_manager *args){
     fprintf(stderr, "Num obj promoted:%d\n", num_obj_migrated);
     
     char cmd[30];
-    sprintf(cmd, "ls -l > %d", iteration);
+    sprintf(cmd, "cat /proc/%d/numa_maps > %d", getpid(),iteration);
     system(cmd);
     iteration++;
 }
