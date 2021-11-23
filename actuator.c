@@ -320,6 +320,7 @@ void *thread_actuator(void *_args){
     float current_dram_space;
     float current_dram_consumed;
     
+    fprintf(stderr, "[Actuator] Started !")
     while(1){
        sleep(ACTUATOR_INTERVAL);
         
