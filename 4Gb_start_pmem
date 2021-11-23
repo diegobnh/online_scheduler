@@ -1,0 +1,36 @@
+/usr/bin/ld: cannot open output file delete_shared_memory: Permission denied
+collect2: error: ld returned 1 exit status
+Assembler messages:
+Fatal error: can't create time.o: Permission denied
+Assembler messages:
+Fatal error: can't create recorder.o: Permission denied
+Assembler messages:
+Fatal error: can't create actuator.o: Permission denied
+Assembler messages:
+Fatal error: can't create sample_processor.o: Permission denied
+/usr/bin/ld: cannot open output file monitor: Permission denied
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: cannot open output file main: Permission denied
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: cannot open output file mmap_intercept.so: Permission denied
+collect2: error: ld returned 1 exit status
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
+Context
+
+PMEM[0,1.0737] = 0.0000 read-only
+PMEM[1,16.8931] = 0.0000 read-only
+
+Free DRAM space:4.00(GB), DRAM consumed:0.00
+
+Decisions
+Num obj promoted:0
+-------------------------------------------------------
