@@ -166,9 +166,6 @@ void calc_moving_average(struct schedule_manager *args){
 	int i, w;
     struct timespec start, end;
 	
-	while(1){
-		sleep(SAMPLE_PROCESSOR_INTERVAL);
-        		
 		//alocate the number of total objects, even if exist deallocated 
 		g_total_dram_objs = args->tier[0].num_obj;
 		g_total_pmem_objs = args->tier[1].num_obj;
@@ -299,6 +296,6 @@ void calc_moving_average(struct schedule_manager *args){
             }
 		}
         
-	}
+	
     D fprintf(stderr, "------------------\n");
 }
