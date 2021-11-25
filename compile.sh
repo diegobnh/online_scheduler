@@ -18,8 +18,8 @@ gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so re
 #In case the application in the last execution has finished without remove shared memory
 ./delete_shared_memory
 
-sudo echo 1 > /proc/sys/vm/drop_caches
-
+#sudo echo 1 > /proc/sys/vm/drop_caches
+sudo sh -c "/usr/bin/echo 1 > /proc/sys/vm/drop_caches"
 
 SECONDS=0
 LD_PRELOAD=./mmap_intercept.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n1 1> /dev/null &
