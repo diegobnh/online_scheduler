@@ -34,16 +34,14 @@ int g_iteration=0;
 int move_pages_function(int pid, unsigned long int addr, unsigned long int size, float *status_vector)
 {
     //int status_vector[4] = {0,0,0,0};
-    fprintf(stderr, "1\n");
     if ((numa_available() < 0)) {
         fprintf(stderr, "error: not a numa machine\n");
         return -1;
     }
-    fprintf(stderr, "2\n");
     //int pid = pid;
     //long int addr = addr;
     //long int = size;
-    unsigned node = NULL;
+    unsigned node = 0;
 
     //struct bitmask *new_nodes = numa_bitmask_alloc(num_nodes);
     //numa_bitmask_setbit(new_nodes, node);
@@ -53,24 +51,19 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
         fprintf(stderr, "error: a minimum of 2 nodes is required\n");
         exit(1);
     }
-    fprintf(stderr, "3\n");
-
     // size must be page-aligned
     size_t pagesize = getpagesize();
     assert((size % pagesize) == 0);
-    fprintf(stderr, "3.1\n");
 
     unsigned long page_count = size / pagesize;
     void **pages_addr;
     int *status;
     int *nodes;
-    fprintf(stderr, "3.2\n");
+    
     pages_addr = malloc(sizeof(char *) * page_count);
-    fprintf(stderr, "3.3\n");
     status = malloc(sizeof(int *) * page_count);
-    fprintf(stderr, "3.4\n");
     nodes = malloc(sizeof(int *) * page_count);
-    fprintf(stderr, "4\n");
+
     if (!pages_addr || !status || !nodes) {
        fprintf(stderr, "Unable to allocate memory\n");
        exit(1);
@@ -81,13 +74,13 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
         nodes[i] = node;
         status[i] = -1;
     }
-    fprintf(stderr, "5\n");
+
     //fprintf(stderr, "Moving pages of process %lu from addr = %lu, size = %lu, to numa node: %d\n", pid, addr, size, node);
     if (numa_move_pages(pid, page_count, pages_addr, nodes, status, MPOL_MF_MOVE) == -1) {
         fprintf(stderr, "error code: %d\n", errno);
         perror("error description:");
     }
-    fprintf(stderr, "6\n");
+
     for (int i = 0; i < page_count; i++) {
         fprintf(stderr, "%d ",status[i]);
         if(status[i] >= 0 && status[i] <=2){
@@ -96,8 +89,8 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
             status_vector[3]++;
         }
     }
-    fprintf(stderr, "7\n");
-    fprintf(stderr, "\n");
+    
+    //fprintf(stderr, "\n");
     for(int i=0; i<4; i++){
         status_vector[i] = (float)status_vector[i]/page_count;
     }
@@ -105,7 +98,6 @@ int move_pages_function(int pid, unsigned long int addr, unsigned long int size,
 
     return 0;
 }
-
 void sort_objects(struct schedule_manager *args){
     int i,j;
     object_t aux;
@@ -158,7 +150,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
         if(args->tier[0].obj_flag_alloc[i] == 1){
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
-                move_pages_function(getpid(), args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size, status_vector);
+                //move_pages_function(getpid(), args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size, status_vector);
+                
                 fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf,%.4lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), args->tier[0].obj_vector[i].metrics.stores_count, \
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }else{
@@ -178,7 +171,8 @@ int check_candidates_to_migration(struct schedule_manager *args){
         //if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
         if(args->tier[1].obj_flag_alloc[i] == 1){
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
-                move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size, status_vector);
+                //move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size, status_vector);
+                
                 fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf,%.2lf read-write %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB, args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB), args->tier[1].obj_vector[i].metrics.stores_count,\
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }else{
@@ -194,15 +188,16 @@ int check_candidates_to_migration(struct schedule_manager *args){
     fprintf(stderr, "\nFree DRAM space:%.2lf(GB), DRAM consumed:%.2lf\n", current_dram_space, current_dram_consumed);
     return flag_has_llcm;
 }
-
 //Chamda quando tem espaço na DRAM e objeto hot no pmem
 void policy_migration_promotion(struct schedule_manager *args){
     struct timespec start, end;
-    int i;
+    int i,j;
     float current_dram_space;
     unsigned long nodemask;
     int num_obj_migrated=0;
     float llcm;
+    float status_vector[4];
+    
     
     pthread_mutex_lock(&args->global_mutex);
     current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
@@ -244,7 +239,14 @@ void policy_migration_promotion(struct schedule_manager *args){
                     fprintf(stderr,"Promoted to DRAM object:%d, migration cost:%.2lf sec\n", args->tier[1].obj_vector[i].index_id, (float)delta_us/1000000);
                     
                 }
-                //move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[1].size);
+                status_vector[0] = 0;
+                status_vector[1] = 0;
+                status_vector[2] = 0;
+                status_vector[3] = 0;
+                move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[1].size);
+                for(j=0; j<4; j++){
+                    fprintf(stderr, "status_vector: %.2lf, %.2lf, %.2lf, %.2lf", status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
+                }
             }else{
                 if(args->tier[1].obj_flag_alloc[i] == 1){
                     fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \
@@ -264,7 +266,6 @@ void policy_migration_promotion(struct schedule_manager *args){
     system(cmd);
     g_iteration++;
 }
-
 //Chamda quando não tem espaço na DRAM
 int policy_migration_demotion(struct schedule_manager *args){
     int i;
@@ -412,7 +413,6 @@ int policy_migration_demotion(struct schedule_manager *args){
     fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
     
 }
-
 void *thread_actuator(void *_args){
     struct schedule_manager *args = (struct schedule_manager *) _args;
     int i,j;
