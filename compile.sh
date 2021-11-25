@@ -5,6 +5,7 @@
 OMP_NUM_THREADS=18
 export OMP_NUM_THREADS
 
+rm -f *.trace
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
 gcc -g -c -fPIC time.c
 gcc -g -c -fPIC recorder.c -lpthread;
