@@ -421,7 +421,7 @@ void *thread_actuator(void *_args){
     int flag_has_llcm;
     float current_dram_space;
     float current_dram_consumed;
-    
+    fprintf(stderr, "\Actuator\n");
     while(1){
        sleep(ACTUATOR_INTERVAL);
         
