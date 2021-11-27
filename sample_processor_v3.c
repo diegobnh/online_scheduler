@@ -70,19 +70,19 @@ void calc_moving_average(struct schedule_manager *args){
                 args->tier[1].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
                 
                 old_value = args->tier[1].obj_vector[i].metrics.loads_count[j];
-                curr_value = tier[1].obj_vector[i].samples.loads_count[j];
+                curr_value = args->tier[1].obj_vector[i].samples.loads_count[j];
                 args->tier[1].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
                 old_value = args->tier[1].obj_vector[i].metrics.TLB_hit[j];
-                curr_value = tier[1].obj_vector[i].samples.TLB_hit[j];
+                curr_value =  args->tier[1].obj_vector[i].samples.TLB_hit[j];
                 args->tier[1].obj_vector[i].metrics.TLB_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
                 old_value = args->tier[1].obj_vector[i].metrics.TLB_miss[j];
-                curr_value = tier[1].obj_vector[i].samples.TLB_miss[j];
+                curr_value =  args->tier[1].obj_vector[i].samples.TLB_miss[j];
                 args->tier[1].obj_vector[i].metrics.TLB_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
             }
             old_value = args->tier[1].obj_vector[i].metrics.stores_count;
-            curr_value = tier[1].obj_vector[i].stores_count;
+            curr_value =  args->tier[1].obj_vector[i].samples.stores_count;
             args->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
         }
     }
