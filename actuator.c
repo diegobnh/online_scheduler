@@ -429,12 +429,12 @@ void *thread_actuator(void *_args){
        unsigned long nodemask = 1<<NODE_1_DRAM;
        
        pthread_mutex_lock(&args->global_mutex);
-        
+       fprintf(stderr, "\nSort\n");
        sort_objects(args);
        current_dram_space = (MAXIMUM_DRAM_CAPACITY - args->tier[0].current_memory_consumption)/GB;
        current_dram_consumed = args->tier[0].current_memory_consumption/GB;
        flag_has_llcm = check_candidates_to_migration(args);
-        
+       fprintf(stderr, "\unlock\n");
        pthread_mutex_unlock(&args->global_mutex);
 
        fprintf(stderr, "\nDecisions\n");
