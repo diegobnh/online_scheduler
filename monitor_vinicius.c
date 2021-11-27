@@ -619,7 +619,7 @@ int main(int argc, char **argv)
             }
             perf_mmap__read_done(map);
         }
-        calc_moving_average(g_shared_memory);
+        //calc_moving_average(g_shared_memory);
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
     }
