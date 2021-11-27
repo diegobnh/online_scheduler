@@ -38,6 +38,7 @@ void calc_moving_average(struct schedule_manager *args){
         
         for(i=0; i< g_total_dram_objs; i++){
             for(j=0; j< MEM_LEVELS; j++){
+                fprintf(stderr, "DRAM i=%d, j=%d\n", i, j);
                 old_value = args->tier[0].obj_vector[i].metrics.sum_latency_cost[j];
                 curr_value = args->tier[0].obj_vector[i].samples.sum_latency_cost[j];
                 args->tier[0].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
@@ -65,6 +66,7 @@ void calc_moving_average(struct schedule_manager *args){
        
         for(i=0; i< g_total_pmem_objs; i++){
             for(j=0; j< MEM_LEVELS; j++){
+                fprintf(stderr, "PMEM i=%d, j=%d\n", i, j);
                 old_value = args->tier[1].obj_vector[i].metrics.sum_latency_cost[j];
                 curr_value = args->tier[1].obj_vector[i].samples.sum_latency_cost[j];
                 args->tier[1].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
