@@ -42,17 +42,17 @@ void calc_moving_average(struct schedule_manager *args){
                 curr_value = args->tier[0].obj_vector[i].samples.sum_latency_cost[j];
                 args->tier[0].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
                 
-                old_value = args->tier[0].obj_vector[i].metrics.loads_count[w];
-                curr_value = args->tier[0].obj_vector[i].samples.loads_count[w];
-                args->tier[0].obj_vector[i].metrics.loads_count[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                old_value = args->tier[0].obj_vector[i].metrics.loads_count[j];
+                curr_value = args->tier[0].obj_vector[i].samples.loads_count[j];
+                args->tier[0].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                old_value = args->tier[0].obj_vector[i].metrics.TLB_hit[w];
-                curr_value = args->tier[0].obj_vector[i].samples.TLB_hit[w];
-                args->tier[0].obj_vector[i].metrics.TLB_hit[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                old_value = args->tier[0].obj_vector[i].metrics.TLB_hit[j];
+                curr_value = args->tier[0].obj_vector[i].samples.TLB_hit[j];
+                args->tier[0].obj_vector[i].metrics.TLB_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                old_value = args->tier[0].obj_vector[i].metrics.TLB_miss[w];
-                curr_value = args->tier[0].obj_vector[i].samples.TLB_miss[w];
-                args->tier[0].obj_vector[i].metrics.TLB_miss[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                old_value = args->tier[0].obj_vector[i].metrics.TLB_miss[j];
+                curr_value = args->tier[0].obj_vector[i].samples.TLB_miss[j];
+                args->tier[0].obj_vector[i].metrics.TLB_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
             }
             old_value = args->tier[0].obj_vector[i].metrics.stores_count;
@@ -65,21 +65,21 @@ void calc_moving_average(struct schedule_manager *args){
        
         for(i=0; i< g_total_pmem_objs; i++){
             for(j=0; j< MEM_LEVELS; j++){
-                old_value = args->tier[1].obj_vector[i].metrics.sum_latency_cost[w];
-                curr_value = args->tier[1].obj_vector[i].samples.sum_latency_cost[w];
-                args->tier[1].obj_vector[i].metrics.sum_latency_cost[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
+                old_value = args->tier[1].obj_vector[i].metrics.sum_latency_cost[j];
+                curr_value = args->tier[1].obj_vector[i].samples.sum_latency_cost[j];
+                args->tier[1].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
                 
-                old_value = args->tier[1].obj_vector[i].metrics.loads_count[w];
-                curr_value = tier[1].obj_vector[i].samples.loads_count[w];
-                args->tier[1].obj_vector[i].metrics.loads_count[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                old_value = args->tier[1].obj_vector[i].metrics.loads_count[j];
+                curr_value = tier[1].obj_vector[i].samples.loads_count[j];
+                args->tier[1].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                old_value = args->tier[1].obj_vector[i].metrics.TLB_hit[w];
-                curr_value = tier[1].obj_vector[i].samples.TLB_hit[w];
-                args->tier[1].obj_vector[i].metrics.TLB_hit[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                old_value = args->tier[1].obj_vector[i].metrics.TLB_hit[j];
+                curr_value = tier[1].obj_vector[i].samples.TLB_hit[j];
+                args->tier[1].obj_vector[i].metrics.TLB_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                old_value = args->tier[1].obj_vector[i].metrics.TLB_miss[w];
-                curr_value = tier[1].obj_vector[i].samples.TLB_miss[w];
-                args->tier[1].obj_vector[i].metrics.TLB_miss[w] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                old_value = args->tier[1].obj_vector[i].metrics.TLB_miss[j];
+                curr_value = tier[1].obj_vector[i].samples.TLB_miss[j];
+                args->tier[1].obj_vector[i].metrics.TLB_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
             }
             old_value = args->tier[1].obj_vector[i].metrics.stores_count;
             curr_value = tier[1].obj_vector[i].stores_count;

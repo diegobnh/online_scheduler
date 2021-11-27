@@ -33,8 +33,8 @@ void initialize_recorder(struct schedule_manager *args)
     
     for(i=0; i< MAX_OBJECTS; i++){
         
-            args->tier[0].obj_vector[i].samples.stores_count[w] = 0;
-            args->tier[1].obj_vector[i].samples.stores_count[w] = 0;
+            args->tier[0].obj_vector[i].samples.stores_count[i] = 0;
+            args->tier[1].obj_vector[i].samples.stores_count[i] = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
                 args->tier[0].obj_vector[i].samples.sum_latency_cost[j] = 0;

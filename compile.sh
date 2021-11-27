@@ -11,7 +11,7 @@ gcc -g -c -fPIC time.c
 gcc -g -c -fPIC recorder.c -lpthread;
 gcc -g -c -fPIC actuator.c -lrt -lnuma;
 gcc -g -c -fPIC sample_processor_v3.c
-gcc -g -c -fPIC sample_processor.c
+#gcc -g -c -fPIC sample_processor.c
 gcc -g -I/scratch/build/autonuma-r6/tools/lib/perf/include/ -o monitor monitor_vinicius.c recorder.o sample_processor_v2.o -lrt -lm -lpfm -lpthread -lperf -lnuma
 gcc -g -fno-pie mmap_intercept.c -rdynamic -fpic -shared -o mmap_intercept.so recorder.o actuator.o -lpthread -lrt -lnuma -lsyscall_intercept -DINIT_ALLOC=4;
 
