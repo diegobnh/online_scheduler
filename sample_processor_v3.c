@@ -29,6 +29,7 @@ void calc_moving_average(struct schedule_manager *args){
     double old_value;
     double curr_value;
 	
+    fprintf(stderr, "Inicio do calc movind averaging\n");
     //alocate the number of total objects, even if exist deallocated
     g_total_dram_objs = args->tier[0].num_obj;
     g_total_pmem_objs = args->tier[1].num_obj;
