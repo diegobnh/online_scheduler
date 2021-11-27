@@ -186,7 +186,7 @@ void *thread_sample_processor(void *_args){
 			}
             //Copy variable from shared memory to local variable
 			for(i=0; i< g_total_dram_objs; i++){
-				g_dram_tier_ring[i] = args->tier[0].obj_vector[i].ring;
+				g_dram_tier_ring[i] = args->tier[0].obj_vector[i].samples;
 			}
         }
 		
@@ -198,7 +198,7 @@ void *thread_sample_processor(void *_args){
 			}
             //Copy variable from shared memory to local variable
 			for(i=0; i< g_total_pmem_objs; i++){
-				g_pmem_tier_ring[i] = args->tier[1].obj_vector[i].ring;
+				g_pmem_tier_ring[i] = args->tier[1].obj_vector[i].samples;
 			}
 		}
 		pthread_mutex_unlock(&args->global_mutex);

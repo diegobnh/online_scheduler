@@ -7,7 +7,7 @@
 #include <limits.h>
 
 #define MAX_OBJECTS 1000
-#define RING_BUFFER_SIZE  3
+//#define RING_BUFFER_SIZE  3
 #define MEM_LEVELS 5
 #define MAXIMUM_DRAM_CAPACITY  4E+9  //means 2GB //ULONG_MAX
 #define GB 1000000000.0
@@ -25,9 +25,19 @@ typedef struct metrics{
     double TLB_miss[MEM_LEVELS];
 }metric_t;
 
+
+typedef struct samples {
+    int allocation_index;
+    int node_allocation; //we assume 0 to DRAM and 1 to PMEM
+    unsigned long sum_latency_cost[MEM_LEVELS];
+    unsigned long loads_count[MEM_LEVELS]; //We split to several mem level: L0, LFB, L1, L2, L3, DRAM
+    unsigned long stores_count; //Limited to L1
+    unsigned long TLB_hit[MEM_LEVELS];
+    unsigned long TLB_miss[MEM_LEVELS];
+}samples_t;
+/*
 typedef struct ring_buffer {
     int allocation_index;
-    int current_ring_index;
     int node_allocation; //we assume 0 to DRAM and 1 to PMEM
     unsigned long sum_latency_cost[RING_BUFFER_SIZE][MEM_LEVELS];
     unsigned long loads_count[RING_BUFFER_SIZE][MEM_LEVELS]; //We split to several mem level: L0, LFB, L1, L2, L3, DRAM
@@ -35,7 +45,7 @@ typedef struct ring_buffer {
     unsigned long TLB_hit[RING_BUFFER_SIZE][MEM_LEVELS];
     unsigned long TLB_miss[RING_BUFFER_SIZE][MEM_LEVELS];
 }ring_buffer_t;
-
+*/
 
 typedef struct object{
     unsigned long start_addr;
@@ -44,7 +54,7 @@ typedef struct object{
     unsigned long pages;
     int index_id; //this value represent the index of the vector where the allocations was saved
     int pid;
-    ring_buffer_t ring;
+    samples_t samples;
     metric_t metrics;
 }object_t;
 

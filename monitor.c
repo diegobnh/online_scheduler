@@ -282,45 +282,45 @@ long long perf_mmap_read(void *our_mmap, \
                             if (src & (PERF_MEM_OP_STORE<<PERF_MEM_OP_SHIFT)){
 								D fprintf(stderr,"Store_");
                                 //fprintf(stderr, "Store count in index:%d\n", vector_index);
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.stores_count[curr_ring_index]++;
                             }
                             if (src & (PERF_MEM_LVL_L1<<PERF_MEM_LVL_SHIFT)){
 								D fprintf(stderr,"L1,");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][0]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.loads_count[curr_ring_index][0]++;
                                 mem_level = 0;
                             }
                             if (src & (PERF_MEM_LVL_LFB<<PERF_MEM_LVL_SHIFT)){
 								D fprintf(stderr,"LFB,");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][1]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.loads_count[curr_ring_index][1]++;
                                 mem_level = 1;
                             }
                             if (src & (PERF_MEM_LVL_L2<<PERF_MEM_LVL_SHIFT)){
 								D fprintf(stderr, "L2,");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][2]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.loads_count[curr_ring_index][2]++;
                                 mem_level = 2;
                             }
                             if (src & (PERF_MEM_LVL_L3<<PERF_MEM_LVL_SHIFT)){
 								D fprintf(stderr, "L3,");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][3]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.loads_count[curr_ring_index][3]++;
                                 mem_level = 3;
                             }
                             if (src & (PERF_MEM_LVL_LOC_RAM<<PERF_MEM_LVL_SHIFT)){
 								D fprintf(stderr, "DRAM,");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.loads_count[curr_ring_index][4]++;
                                 mem_level = 4;
                             }
                             if(load == 1 && mem_level != -1){
                                 D fprintf(stderr,"Weight=%lld, ",weight);
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.sum_latency_cost[curr_ring_index][mem_level] += weight;
                                 load = 0;
                             }
                             if (src & (PERF_MEM_TLB_HIT<<PERF_MEM_TLB_SHIFT)){
 								D fprintf(stderr,"TLB_Hit ");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_hit[curr_ring_index][mem_level]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.TLB_hit[curr_ring_index][mem_level]++;
                             }
                             if (src & (PERF_MEM_TLB_MISS<<PERF_MEM_TLB_SHIFT)){
 								D fprintf(stderr,"TLB_Miss ");
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
+                                g_shared_memory->tier[tier_type].obj_vector[vector_index].samples.TLB_miss[curr_ring_index][mem_level]++;
                             }
                             D fprintf(stderr,"\n");
 						}
@@ -420,28 +420,26 @@ int account_samples_to_allocations(void){
     
     pthread_mutex_lock(&g_shared_memory->global_mutex);
 
-    clock_gettime(CLOCK_REALTIME, &start);
-    //g_shared_memory->tier[0].obj_vector[i].ring.current_ring_index = curr_ring_index;
-    
+    clock_gettime(CLOCK_REALTIME, &start);    
     
     for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
-            g_shared_memory->tier[0].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
+            g_shared_memory->tier[0].obj_vector[i].samples.stores_count[curr_ring_index] = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
-                g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j] = 0;
-                g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j] = 0;
-                g_shared_memory->tier[0].obj_vector[i].ring.TLB_hit[curr_ring_index][j] = 0;
-                g_shared_memory->tier[0].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.sum_latency_cost[curr_ring_index][j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.loads_count[curr_ring_index][j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.TLB_hit[curr_ring_index][j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.TLB_miss[curr_ring_index][j] = 0;
             }
     }
     for(i=0; i< g_shared_memory->tier[1].num_obj; i++){
-            g_shared_memory->tier[1].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
+            g_shared_memory->tier[1].obj_vector[i].samples.stores_count[curr_ring_index] = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
-                g_shared_memory->tier[1].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j] = 0;
-                g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j] = 0;
-                g_shared_memory->tier[1].obj_vector[i].ring.TLB_hit[curr_ring_index][j] = 0;
-                g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.sum_latency_cost[curr_ring_index][j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.loads_count[curr_ring_index][j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.TLB_hit[curr_ring_index][j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.TLB_miss[curr_ring_index][j] = 0;
             }
     }
     
@@ -468,17 +466,17 @@ int account_samples_to_allocations(void){
     
     /*
     for(i=0 ;i< g_shared_memory->tier[0].num_obj; i++){
-        if(g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][4] != 0){
+        if(g_shared_memory->tier[0].obj_vector[i].samples.loads_count[curr_ring_index][4] != 0){
             fprintf(stderr, "\t DRAM Start_addr:%p index:%d LLC miss:%d \n", \
             					g_shared_memory->tier[0].obj_vector[i].start_addr,\
             					i,\
-            					g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][4]);
+            					g_shared_memory->tier[0].obj_vector[i].samples.loads_count[curr_ring_index][4]);
         }
     }
     
     for(i=0 ;i< g_shared_memory->tier[1].num_obj; i++){
-        if(g_shared_memory->tier[1].obj_vector[i].ring.loads_count[4] != 0){
-            fprintf(stderr, "\t PMEM Start_addr:0x%p index:%d LLC miss:%d \n", g_shared_memory->tier[1].obj_vector[i].start_addr,i, g_shared_memory->tier[1].obj_vector[i].ring.loads_count[4]);
+        if(g_shared_memory->tier[1].obj_vector[i].samples.loads_count[4] != 0){
+            fprintf(stderr, "\t PMEM Start_addr:0x%p index:%d LLC miss:%d \n", g_shared_memory->tier[1].obj_vector[i].start_addr,i, g_shared_memory->tier[1].obj_vector[i].samples.loads_count[4]);
         }
     }
     */

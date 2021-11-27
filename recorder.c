@@ -15,7 +15,7 @@
 
 void initialize_recorder(struct schedule_manager *args)
 {
-	int i, j, w;
+	int i, j;
 	
     args->global_index = 0;
 	for(i = 0; i < MAX_OBJECTS; i++){
@@ -32,22 +32,22 @@ void initialize_recorder(struct schedule_manager *args)
 	args->tier[1].current_memory_consumption = 0;
     
     for(i=0; i< MAX_OBJECTS; i++){
-        for(w=0;w<RING_BUFFER_SIZE;w++){
-            args->tier[0].obj_vector[i].ring.stores_count[w] = 0;
-            args->tier[1].obj_vector[i].ring.stores_count[w] = 0;
+        
+            args->tier[0].obj_vector[i].samples.stores_count[w] = 0;
+            args->tier[1].obj_vector[i].samples.stores_count[w] = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
-                args->tier[0].obj_vector[i].ring.sum_latency_cost[w][j] = 0;
-                args->tier[0].obj_vector[i].ring.loads_count[w][j] = 0;
-                args->tier[0].obj_vector[i].ring.TLB_hit[w][j] = 0;
-                args->tier[0].obj_vector[i].ring.TLB_miss[w][j] = 0;
+                args->tier[0].obj_vector[i].samples.sum_latency_cost[j] = 0;
+                args->tier[0].obj_vector[i].samples.loads_count[j] = 0;
+                args->tier[0].obj_vector[i].samples.TLB_hit[j] = 0;
+                args->tier[0].obj_vector[i].samples.TLB_miss[j] = 0;
                 
-                args->tier[1].obj_vector[i].ring.sum_latency_cost[w][j] = 0;
-                args->tier[1].obj_vector[i].ring.loads_count[w][j] = 0;
-                args->tier[1].obj_vector[i].ring.TLB_hit[w][j] = 0;
-                args->tier[1].obj_vector[i].ring.TLB_miss[w][j] = 0;
+                args->tier[1].obj_vector[i].samples.sum_latency_cost[j] = 0;
+                args->tier[1].obj_vector[i].samples.loads_count[j] = 0;
+                args->tier[1].obj_vector[i].samples.TLB_hit[j] = 0;
+                args->tier[1].obj_vector[i].samples.TLB_miss[j] = 0;
             }
-        }
+        
     }
    
 }

@@ -37,28 +37,28 @@ void close_monitor(int signum, siginfo_t *info, void *uc){
     fprintf(stderr, "[monitor], [sample_processor] closed! \n");
     g_running = 0;
 }
-void clear_number_of_samples(int curr_ring_index){
+void clear_number_of_samples(void){
 	int i;
 	int j;
 	
 	for(i=0; i< g_shared_memory->tier[0].num_obj; i++){
-            g_shared_memory->tier[0].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
+            g_shared_memory->tier[0].obj_vector[i].samples.stores_count = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
-                g_shared_memory->tier[0].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j] = 0;
-                g_shared_memory->tier[0].obj_vector[i].ring.loads_count[curr_ring_index][j] = 0;
-                g_shared_memory->tier[0].obj_vector[i].ring.TLB_hit[curr_ring_index][j] = 0;
-                g_shared_memory->tier[0].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.sum_latency_cost[j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.loads_count[j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.TLB_hit[j] = 0;
+                g_shared_memory->tier[0].obj_vector[i].samples.TLB_miss[j] = 0;
             }
     }
     for(i=0; i< g_shared_memory->tier[1].num_obj; i++){
-            g_shared_memory->tier[1].obj_vector[i].ring.stores_count[curr_ring_index] = 0;
+            g_shared_memory->tier[1].obj_vector[i].samples.stores_count = 0;
             
             for(j=0 ; j< MEM_LEVELS; j++){
-                g_shared_memory->tier[1].obj_vector[i].ring.sum_latency_cost[curr_ring_index][j] = 0;
-                g_shared_memory->tier[1].obj_vector[i].ring.loads_count[curr_ring_index][j] = 0;
-                g_shared_memory->tier[1].obj_vector[i].ring.TLB_hit[curr_ring_index][j] = 0;
-                g_shared_memory->tier[1].obj_vector[i].ring.TLB_miss[curr_ring_index][j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.sum_latency_cost[j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.loads_count[j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.TLB_hit[j] = 0;
+                g_shared_memory->tier[1].obj_vector[i].samples.TLB_miss[j] = 0;
             }
     }
 
@@ -413,9 +413,7 @@ int main(int argc, char **argv)
     struct perf_mmap *map;
     struct perf_cpu_map *cpus;
     
-    int incremental_ring_index=0;
-    int curr_ring_index;
-    int vector_index;
+    int obj_index;
     int mem_level;//L1=0, LFB=1, L2=2, L3=3, DRAM=4
     int mem_type_oper; //load or store
     int tlb_type;
@@ -526,11 +524,9 @@ int main(int argc, char **argv)
         sleep(MONITOR_INTERVAL);
         perf_evlist__disable(evlist);
         
-        curr_ring_index = incremental_ring_index % RING_BUFFER_SIZE;
-        
         pthread_mutex_lock(&g_shared_memory->global_mutex);
 
-        clear_number_of_samples(curr_ring_index);
+        clear_number_of_samples();
 
         perf_evlist__for_each_mmap(evlist, map, false) {
             if (perf_mmap__read_init(map) < 0)
@@ -556,15 +552,15 @@ int main(int argc, char **argv)
                 sample_addr = *array;
                 array++;
                 
-                vector_index = get_vector_index(sample_addr, &tier_type);
+                obj_index = get_vector_index(sample_addr, &tier_type);
                 
                 weight = *array;
                 array++;
 
                 data_src.val = *array;
                 
-                //vector_index = -1 means sample didn't match with any one object from application
-                if (vector_index != -1){
+                //obj_index = -1 means sample didn't match with any one object from application
+                if (obj_index != -1){
                     mem_type_oper = get_data_src_opcode(data_src);
                     mem_level = -1;
                     //fprintf(stderr, "%s\n", get_data_src_level(data_src));
@@ -576,44 +572,44 @@ int main(int argc, char **argv)
                 		}
                 		if (is_served_by_local_cache1(data_src)) {
                     		mem_level = 0;
-                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][0]++;
+                            g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[0]++;
                 		}
                 		if (is_served_by_local_lfb(data_src)) {
                     		mem_level = 1;
-                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][1]++;
+                            g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[1]++;
               		  	}
                 		if (is_served_by_local_cache2(data_src)) {
                     		mem_level = 2;
-                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][2]++;
+                            g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[2]++;
                 		}
                 		if (is_served_by_local_cache3(data_src)) {
                     		mem_level = 3;
-                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][3]++;
+                            g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[3]++;
                 		}
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
-                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
+                            g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[4]++;
                 		}
                         if (is_served_by_local_pmem(data_src)) {
                             mem_level = 4;
-                            g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.loads_count[curr_ring_index][4]++;
+                            g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[4]++;
                         }
                 		
                 		if(mem_level != -1){
                 			tlb_type = get_data_src_dtlb(data_src);
                 			if(tlb_type == 1){
-                				g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_hit[curr_ring_index][mem_level]++;
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
+                				g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.TLB_hit[mem_level]++;
+                                g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.sum_latency_cost[mem_level] += weight;
                 			}else if(tlb_type == 2){
-                				g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.TLB_miss[curr_ring_index][mem_level]++;
-                                g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.sum_latency_cost[curr_ring_index][mem_level] += weight;
+                				g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.TLB_miss[mem_level]++;
+                                g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.sum_latency_cost[mem_level] += weight;
                             }else{
                                 fprintf(stderr, "get_data_src_dtlb() is returning -1\n");
                             }
                 		}
                 		
                     }else if(mem_type_oper == 2){ // 2 is store
-                    	g_shared_memory->tier[tier_type].obj_vector[vector_index].ring.stores_count[curr_ring_index]++;
+                    	g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.stores_count++;
                     
                     }
                     
@@ -626,7 +622,6 @@ int main(int argc, char **argv)
         calc_moving_average(g_shared_memory);
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
-        incremental_ring_index++;
     }
 
   out_evlist:
