@@ -141,7 +141,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
         current_dram_space = 0;
     }
     
-    fprintf(stderr, "Iteration %d\n", g_iteration);
+    //fprintf(stderr, "Iteration %d\n", g_iteration);
     for(i=0;i<args->tier[0].num_obj;i++){
         status_vector[0] = 0;
         status_vector[1] = 0;
@@ -149,7 +149,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
         status_vector[3] = 0;
         //if(args->tier[0].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[0].obj_flag_alloc[i] == 1){
         if(args->tier[0].obj_flag_alloc[i] == 1){
-            
+            /*
             if(args->tier[0].obj_vector[i].metrics.stores_count != 0){
                 //move_pages_function(getpid(), args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].size, status_vector);
                 
@@ -159,11 +159,11 @@ int check_candidates_to_migration(struct schedule_manager *args){
                 fprintf(stderr, "DRAM[%d,%p,%.4lf] = %04.4lf read-only %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[0].obj_vector[i].index_id, args->tier[0].obj_vector[i].size/GB,args->tier[0].obj_vector[i].start_addr, args->tier[0].obj_vector[i].metrics.loads_count[4]/(args->tier[0].obj_vector[i].size/GB), \
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }
-            
+            */
         }
         
     }
-    fprintf(stderr, "\n");
+    //fprintf(stderr, "\n");
     for(i=0;i<args->tier[1].num_obj;i++){
         status_vector[0] = 0;
         status_vector[1] = 0;
@@ -171,7 +171,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
         status_vector[3] = 0;
         //if(args->tier[1].obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && args->tier[1].obj_flag_alloc[i] == 1){
         if(args->tier[1].obj_flag_alloc[i] == 1){
-            
+            /*
             if(args->tier[1].obj_vector[i].metrics.stores_count != 0){
                 //move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].size, status_vector);
                 
@@ -181,7 +181,7 @@ int check_candidates_to_migration(struct schedule_manager *args){
                 fprintf(stderr, "PMEM[%d,%p, %06.4lf] = %04.4lf read-only %.2lf, %.2lf,%.2lf, %.2lf\n", args->tier[1].obj_vector[i].index_id, args->tier[1].obj_vector[i].size/GB,args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[i].metrics.loads_count[4]/(args->tier[1].obj_vector[i].size/GB),\
                         status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
             }
-            
+            */
             flag_has_llcm = 1;
         }
     }
