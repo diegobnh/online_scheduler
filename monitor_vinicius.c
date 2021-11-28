@@ -23,6 +23,7 @@
 #include "sample_processor.h"
 #define STORAGE_ID "SCHEDULER_SHM"
 #define MMAP_DATA_SIZE 1024
+#define ALPHA 0.9
 
 
 struct schedule_manager *g_shared_memory; //variable that stores the contents of the shared memory
