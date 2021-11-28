@@ -246,9 +246,9 @@ void policy_migration_promotion(struct schedule_manager *args){
                 status_vector[2] = 0;
                 status_vector[3] = 0;
                 //move_pages_function(getpid(), args->tier[1].obj_vector[i].start_addr, args->tier[1].obj_vector[1].size, status_vector);
-                for(j=0; j<4; j++){
-                    fprintf(stderr, "status_vector: %.2lf, %.2lf, %.2lf, %.2lf\n", status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
-                }
+                //for(j=0; j<4; j++){
+                //    fprintf(stderr, "status_vector: %.2lf, %.2lf, %.2lf, %.2lf\n", status_vector[0], status_vector[1], status_vector[2], status_vector[3]);
+                //}
             }else{
                 if(args->tier[1].obj_flag_alloc[i] == 1){
                     fprintf(stderr,"Cannot promote object %d to DRAM because of size:%lf \n", \

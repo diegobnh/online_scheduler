@@ -97,6 +97,18 @@ void calc_moving_average(void){
             curr_value =  g_shared_memory->tier[1].obj_vector[i].samples.stores_count;
             g_shared_memory->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
         }
+        
+        for(i=0; i< total_pmem_objs; i++){
+            for(j=4; j< MEM_LEVELS; j++){
+                
+                double aux = g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j] = (curr_value) + (old_value) ;
+                
+                if(aux !=0){
+                    fprintf(stderr, "Moving average PMEM Obj:%d %.2lf\n", i, aux);
+                }
+            }
+           
+        }
     }
 }
 
