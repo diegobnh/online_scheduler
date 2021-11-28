@@ -33,19 +33,20 @@ pthread_t g_sample_processor;
 
 void calc_moving_average(void){
     int i, j;
+    int total_dram_objs,total_pmem_objs;
     struct timespec start, end;
     double old_value;
     double curr_value;
     
     fprintf(stderr, "Inicio do calc movind averaging\n");
     //alocate the number of total objects, even if exist deallocated
-    g_total_dram_objs = g_shared_memory->tier[0].num_obj;
-    g_total_pmem_objs = g_shared_memory->tier[1].num_obj;
+    total_dram_objs = g_shared_memory->tier[0].num_obj;
+    total_pmem_objs = g_shared_memory->tier[1].num_obj;
     
     //first i copy all date from ring buffer to local variable
-    if(g_total_dram_objs > 0 ){
+    if(total_dram_objs > 0 ){
         
-        for(i=0; i< g_total_dram_objs; i++){
+        for(i=0; i< total_dram_objs; i++){
             for(j=0; j< MEM_LEVELS; j++){
                 fprintf(stderr, "DRAM i=%d, j=%d\n", i, j);
                 old_value = g_shared_memory->tier[0].obj_vector[i].metrics.sum_latency_cost[j];
@@ -71,9 +72,9 @@ void calc_moving_average(void){
         }
     }
     
-    if(g_total_pmem_objs > 0 ){
+    if(total_pmem_objs > 0 ){
        
-        for(i=0; i< g_total_pmem_objs; i++){
+        for(i=0; i< total_pmem_objs; i++){
             for(j=0; j< MEM_LEVELS; j++){
                 fprintf(stderr, "PMEM i=%d, j=%d\n", i, j);
                 old_value = g_shared_memory->tier[1].obj_vector[i].metrics.sum_latency_cost[j];
