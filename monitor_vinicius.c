@@ -54,7 +54,8 @@ void calc_moving_average(void){
                 
                 old_value = g_shared_memory->tier[0].obj_vector[i].metrics.loads_count[j];
                 curr_value = g_shared_memory->tier[0].obj_vector[i].samples.loads_count[j];
-                g_shared_memory->tier[0].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                //g_shared_memory->tier[0].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                g_shared_memory->tier[0].obj_vector[i].metrics.loads_count[j] = (curr_value) + (old_value) ;
                 
                 old_value = g_shared_memory->tier[0].obj_vector[i].metrics.TLB_hit[j];
                 curr_value = g_shared_memory->tier[0].obj_vector[i].samples.TLB_hit[j];
