@@ -18,7 +18,8 @@
 typedef struct metrics{
     //The metrics could be Simply Moving Average, Weighted Moving Average, Exponential Moving Average...
     double sum_latency_cost[MEM_LEVELS];
-    double loads_count[MEM_LEVELS];
+    //double loads_count[MEM_LEVELS];
+    int loads_count[MEM_LEVELS];
     double stores_count;
     double TLB_hit[MEM_LEVELS];
     double TLB_miss[MEM_LEVELS];
