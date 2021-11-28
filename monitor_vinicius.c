@@ -23,7 +23,7 @@
 #include "sample_processor.h"
 #define STORAGE_ID "SCHEDULER_SHM"
 #define MMAP_DATA_SIZE 1024
-#define ALPHA 0.9
+#define ALPHA 0.1
 
 
 struct schedule_manager *g_shared_memory; //variable that stores the contents of the shared memory
@@ -39,7 +39,6 @@ void calc_moving_average(void){
     double old_value;
     double curr_value;
     
-    fprintf(stderr, "Inicio do calc movind averaging\n");
     //alocate the number of total objects, even if exist deallocated
     total_dram_objs = g_shared_memory->tier[0].num_obj;
     total_pmem_objs = g_shared_memory->tier[1].num_obj;

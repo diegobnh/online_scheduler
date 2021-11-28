@@ -13,7 +13,7 @@
 #define GB 1000000000.0
 
 #define MONITOR_INTERVAL 1
-#define ACTUATOR_INTERVAL 3
+#define ACTUATOR_INTERVAL 2
 
 typedef struct metrics{
     //The metrics could be Simply Moving Average, Weighted Moving Average, Exponential Moving Average...
