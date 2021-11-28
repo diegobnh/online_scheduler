@@ -666,12 +666,12 @@ int main(int argc, char **argv)
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
                             g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[4]++;
-                            //fprintf(stderr, "LLCM  on DRAM, obj:%d\n", obj_index);
+                            fprintf(stderr, "LLCM  on DRAM, obj:%d\n", obj_index);
                 		}
                         if (is_served_by_local_pmem(data_src)) {
                             mem_level = 4;
                             g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[4]++;
-                            //fprintf(stderr, "LLCM  on PMEM, obj:%d \n", obj_index);
+                            fprintf(stderr, "LLCM  on PMEM, obj:%d \n", obj_index);
                         }
                 		
                 		if(mem_level != -1){
