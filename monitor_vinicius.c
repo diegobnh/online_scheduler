@@ -590,7 +590,7 @@ int main(int argc, char **argv)
         
         pthread_mutex_lock(&g_shared_memory->global_mutex);
 
-        clear_number_of_samples();
+        //clear_number_of_samples();
 
         perf_evlist__for_each_mmap(evlist, map, false) {
             if (perf_mmap__read_init(map) < 0)
