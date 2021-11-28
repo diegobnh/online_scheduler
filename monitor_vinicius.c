@@ -83,8 +83,6 @@ void calc_moving_average(void){
                 curr_value = g_shared_memory->tier[1].obj_vector[i].samples.loads_count[j];
                 //g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j] = (curr_value) + (old_value) ;
-                if(g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j] != 0)
-                   fprintf(stderr, "Obj:%d LLCM:%lf\n", i, g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j]);
                 
                 old_value = g_shared_memory->tier[1].obj_vector[i].metrics.TLB_hit[j];
                 curr_value =  g_shared_memory->tier[1].obj_vector[i].samples.TLB_hit[j];
@@ -655,10 +653,12 @@ int main(int argc, char **argv)
                 		if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
                             g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[4]++;
+                            fprintf(stderr, "LLCM  on DRAM, obj:%d\n", obj_index);
                 		}
                         if (is_served_by_local_pmem(data_src)) {
                             mem_level = 4;
                             g_shared_memory->tier[tier_type].obj_vector[obj_index].samples.loads_count[4]++;
+                            fprintf(stderr, "LLCM  on PMEM, obj:%d \n", obj_index);
                         }
                 		
                 		if(mem_level != -1){
