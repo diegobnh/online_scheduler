@@ -1,0 +1,36 @@
+7fba95435000 bind:2 anon=4198225 dirty=4198225 active=0 N2=4198225 kernelpagesize_kB=4
+7fbefa7e1000 bind:2
+7fbefa7e2000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefafe2000 bind:2
+7fbefafe3000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefb7e3000 bind:2
+7fbefb7e4000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefbfe4000 bind:2
+7fbefbfe5000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefc7e5000 bind:2
+7fbefc7e6000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefcfe6000 bind:2
+7fbefcfe7000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefd7e7000 bind:2
+7fbefd7e8000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefdfe8000 bind:2
+7fbefdfe9000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefe7e9000 bind:2
+7fbefe7ea000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefefea000 bind:2
+7fbefefeb000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbeff7eb000 bind:2
+7fbeff7ec000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbefffec000 bind:2
+7fbefffed000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbf007ed000 bind:2
+7fbf007ee000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbf00fee000 bind:2
+7fbf00fef000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbf017ef000 bind:2
+7fbf017f0000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbf01ff0000 bind:2
+7fbf01ff1000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbf027f1000 bind:2
+7fbf027f2000 bind:2 anon=2 dirty=2 active=0 N2=2 kernelpagesize_kB=4
+7fbf02ff2000 bind:2 anon=262145 dirty=262145 active=0 N2=262145 kernelpagesize_kB=4
