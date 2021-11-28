@@ -427,7 +427,7 @@ void *thread_actuator(void *_args){
         
        int random_index;
        unsigned long nodemask = 1<<NODE_1_DRAM;
-        fprintf(stderr, "antes do lock\n");
+        fprintf(stderr, "antes do lock no atuador\n");
        pthread_mutex_lock(&args->global_mutex);
         
        fprintf(stderr, "\nSort\n");

@@ -31,7 +31,73 @@ static int g_running = 1;
 pthread_t g_sample_processor;
 
 
-void calc_moving_average(struct schedule_manager *);
+void calc_moving_average(void){
+    int i, j;
+    struct timespec start, end;
+    double old_value;
+    double curr_value;
+    
+    fprintf(stderr, "Inicio do calc movind averaging\n");
+    //alocate the number of total objects, even if exist deallocated
+    g_total_dram_objs = g_shared_memory->tier[0].num_obj;
+    g_total_pmem_objs = g_shared_memory->tier[1].num_obj;
+    
+    //first i copy all date from ring buffer to local variable
+    if(g_total_dram_objs > 0 ){
+        
+        for(i=0; i< g_total_dram_objs; i++){
+            for(j=0; j< MEM_LEVELS; j++){
+                fprintf(stderr, "DRAM i=%d, j=%d\n", i, j);
+                old_value = g_shared_memory->tier[0].obj_vector[i].metrics.sum_latency_cost[j];
+                curr_value = g_shared_memory->tier[0].obj_vector[i].samples.sum_latency_cost[j];
+                g_shared_memory->tier[0].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
+                
+                old_value = g_shared_memory->tier[0].obj_vector[i].metrics.loads_count[j];
+                curr_value = g_shared_memory->tier[0].obj_vector[i].samples.loads_count[j];
+                g_shared_memory->tier[0].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = g_shared_memory->tier[0].obj_vector[i].metrics.TLB_hit[j];
+                curr_value = g_shared_memory->tier[0].obj_vector[i].samples.TLB_hit[j];
+                g_shared_memory->tier[0].obj_vector[i].metrics.TLB_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = g_shared_memory->tier[0].obj_vector[i].metrics.TLB_miss[j];
+                curr_value = g_shared_memory->tier[0].obj_vector[i].samples.TLB_miss[j];
+                g_shared_memory->tier[0].obj_vector[i].metrics.TLB_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+            }
+            old_value = g_shared_memory->tier[0].obj_vector[i].metrics.stores_count;
+            curr_value = g_shared_memory->tier[0].obj_vector[i].samples.stores_count;
+            g_shared_memory->tier[0].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+        }
+    }
+    
+    if(g_total_pmem_objs > 0 ){
+       
+        for(i=0; i< g_total_pmem_objs; i++){
+            for(j=0; j< MEM_LEVELS; j++){
+                fprintf(stderr, "PMEM i=%d, j=%d\n", i, j);
+                old_value = g_shared_memory->tier[1].obj_vector[i].metrics.sum_latency_cost[j];
+                curr_value = g_shared_memory->tier[1].obj_vector[i].samples.sum_latency_cost[j];
+                g_shared_memory->tier[1].obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
+                
+                old_value = g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j];
+                curr_value = g_shared_memory->tier[1].obj_vector[i].samples.loads_count[j];
+                g_shared_memory->tier[1].obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = g_shared_memory->tier[1].obj_vector[i].metrics.TLB_hit[j];
+                curr_value =  g_shared_memory->tier[1].obj_vector[i].samples.TLB_hit[j];
+                g_shared_memory->tier[1].obj_vector[i].metrics.TLB_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                
+                old_value = g_shared_memory->tier[1].obj_vector[i].metrics.TLB_miss[j];
+                curr_value =  g_shared_memory->tier[1].obj_vector[i].samples.TLB_miss[j];
+                g_shared_memory->tier[1].obj_vector[i].metrics.TLB_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+            }
+            old_value = g_shared_memory->tier[1].obj_vector[i].metrics.stores_count;
+            curr_value =  g_shared_memory->tier[1].obj_vector[i].samples.stores_count;
+            g_shared_memory->tier[1].obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+        }
+    }
+}
 
 void close_monitor(int signum, siginfo_t *info, void *uc){
     fprintf(stderr, "[monitor], [sample_processor] closed! \n");
@@ -617,8 +683,8 @@ int main(int argc, char **argv)
             }
             perf_mmap__read_done(map);
         }
-        fprintf(stderr, "Monitor antes call moving_average\n");
-        calc_moving_average(g_shared_memory);
+        
+        calc_moving_average();
         pthread_mutex_unlock(&g_shared_memory->global_mutex);
         
     }
