@@ -125,6 +125,7 @@ void calculate_DRAM_consumption(void){
     if(g_current_free_dram_space < 0){
         g_current_free_dram_space = 0;
     }
+    fprintf(stderr, "---------------------------------------------------------------[DRAM_consumption] Free:%.2lf Consumed:%.2lf\n", g_current_free_dram_space, 
 }
 int comp(const void * elem1, const void * elem2)
 {
@@ -431,13 +432,13 @@ int policy_migration_demotion(void){
     for(j=0;j<MAX_OBJECTS;j++){
         i = g_sorted_obj[j].index;
         
-        if(g_sorted_obj[j].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
+        if(g_sorted_obj[i].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
             pmem_candidate_size = g_sorted_obj[j].value;
             if(pmem_candidate_size < g_dram_capacity){
                 pmem_candidate_metric = g_sorted_obj[j].value;
                 pmem_candidate_index = i;
                 
-                D fprintf(stderr, "\n[Demotion] PMEM candidate index:%d, %.2lf, size:%.2lf\n", i, pmem_candidate_metric, pmem_candidate_size);
+                D fprintf(stderr, "\n[Demotion] PMEM candidate index to promotion:%d, %.2lf, size:%.2lf\n", i, pmem_candidate_metric, pmem_candidate_size);
                 break;
             }
         }
@@ -555,7 +556,7 @@ void *thread_actuator(void *_args){
         
     char FIFO_PATH_MIGRATION[50];
     sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", g_tier_manager.pids_to_manager[0]);
-    guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
+    //guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
     g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION, O_WRONLY), "[actuator] Could not open pipe MIGRATION for writing");
 
     sleep(1); //time to preload create the named pipe;
@@ -567,14 +568,16 @@ void *thread_actuator(void *_args){
         check_migration_error();
         calculate_DRAM_consumption();
         sort_objects();
-        
         flag_has_value_in_metric = check_candidates_to_migration();
-        
-        D fprintf(stderr, "\nFree DRAM space:%.2lf(GB), DRAM consumed:%.2lf, PMEM consumed:%.2lf\n", g_current_free_dram_space, g_current_dram_consumption,g_current_pmem_consumption);
-        
+
+
         if(flag_has_value_in_metric == 1 && g_current_free_dram_space > 0)  {
             policy_migration_promotion();//move top objects from PMEM to DRAM
         }
+
+        check_migration_error();
+        calculate_DRAM_consumption();
+
         if(g_current_free_dram_space <= g_minimum_space_to_active_downgrade){
             policy_migration_demotion();//move non-top objetcts from DRAM to PMEM
         }

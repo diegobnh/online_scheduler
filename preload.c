@@ -79,7 +79,6 @@ void init_lib(void)
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
    if(fd != -1)
    {
-        sleep(3);//time to writer create the pipe. If reader create the pipe, it dosen' t work.
         pthread_create(&thread_mbind, NULL, thread_mbind_function, NULL);
    }
 }
@@ -171,11 +170,13 @@ void mbind_function(data_bind_t data)
         //perror(" ");
         
         char cmd1[100];
-        sprintf(cmd1, "echo %lu.%lu, %p, %ld > bind_error_%d.%d", \
+        sprintf(cmd1, "echo %lu.%lu, %d, %p, %ld, %lu > bind_error_%d.%d", \
                 timestamp.tv_sec, \
                 timestamp.tv_nsec, \
+                data.obj_index, \
                 data.start_addr, \
                 data.size, \
+                data.nodemask_target_node,\
                 count, \
                 getpid());
         system(cmd1);
@@ -212,7 +213,7 @@ void *thread_mbind_function(void * _args){
     sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", getpid());
     sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", getpid());
 
-    //guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
+    guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION, O_RDONLY), "[preload] Could not open pipe MIGRATION for reading");
 
     guard(mkfifo(FIFO_PATH_MIGRATION_ERROR, 0777), "Could not create pipe");
