@@ -27,8 +27,6 @@
 #include <stdint.h>
 
 #define STORAGE_ID "MY_SHARED_MEMORY"
-#define NUMA_NODES_AVAILABLE 3 // nodes (0-2)
-
 
 //#define DEBUG
 #ifdef DEBUG
@@ -43,6 +41,7 @@ FILE *g_fp;
 int g_pipe_read_fd;
 int g_pipe_write_fd;
 static int g_running = 1;
+static int g_num_nodes_available;
 
 typedef struct data_bind
 {
@@ -57,19 +56,29 @@ static void __attribute__ ((constructor)) init_lib(void);
 
 void *thread_mbind_function(void * _args);
 
+void set_number_of_nodes_availables(void)
+{
+    if ((numa_available() < 0)) {
+        fprintf(stderr, "error: not a numa machine\n");
+        exit(-1);
+    }
+    
+    unsigned node = 0;
+
+    int num_nodes = numa_max_node() + 1;
+    if (num_nodes < 2) {
+        fprintf(stderr, "error: a minimum of 2 nodes is required\n");
+        exit(-1);
+    }
+    
+    g_num_nodes_available = num_nodes;
+    
+}
 void init_lib(void)
 {
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
-   if(fd == -1)
+   if(fd != -1)
    {
-        fd=shm_open(STORAGE_ID, O_RDWR, 0);
-        //fprintf(stderr, "Another instance of preload : %d\n", getpid());
-
-   }//So, this else will run just one time, even if several process instantiate this shared library
-   else
-   {
-        //fprintf(stderr, "First instance of preload : %d\n", getpid());
-        //ftruncate(fd,sizeof(int)); // set the size
         sleep(3);//time to writer create the pipe. If reader create the pipe, it dosen' t work.
         pthread_create(&thread_mbind, NULL, thread_mbind_function, NULL);
    }
@@ -88,18 +97,7 @@ void init_lib(void)
  */
 int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int size, float *status_memory_pages)
 {
-    if ((numa_available() < 0)) {
-        fprintf(stderr, "error: not a numa machine\n");
-        return -1;
-    }
-    
     unsigned node = 0;
-
-    int num_nodes = numa_max_node() + 1;
-    if (num_nodes < 2) {
-        fprintf(stderr, "error: a minimum of 2 nodes is required\n");
-        exit(1);
-    }
     // size must be page-aligned
     size_t pagesize = getpagesize();
     assert((size % pagesize) == 0);
@@ -130,15 +128,15 @@ int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int
     }
 
     for (int i = 0; i < page_count; i++) {
-        if(status[i] >= 0 && status[i] < NUMA_NODES_AVAILABLE){
+        if(status[i] >= 0 && status[i] < g_num_nodes_available){
             status_memory_pages[status[i]]++;//0,1,2
         }else{
-            status_memory_pages[3]++;
+            status_memory_pages[g_num_nodes_available]++;
         }
     }
     
     int i;
-    for(i=0; i<NUMA_NODES_AVAILABLE + 1; i++){
+    for(i = 0; i < g_num_nodes_available + 1; i++){
         status_memory_pages[i] = (float)status_memory_pages[i]/page_count;
     }
     
@@ -190,10 +188,19 @@ void mbind_function(data_bind_t data)
 }
 void *thread_mbind_function(void * _args){
     char filename[50];
-    float status_memory_pages_before[NUMA_NODES_AVAILABLE + 1];//The last position is to save unmapped pages
-    float status_memory_pages_after[NUMA_NODES_AVAILABLE + 1];//The last position is to save unmapped pages
+    float *status_memory_pages_before = NULL;//The last position is to save unmapped pages
+    float *status_memory_pages_after = NULL;//The last position is to save unmapped pages
     char FIFO_PATH_MIGRATION[50];
     char FIFO_PATH_MIGRATION_ERROR[50];
+    
+    set_number_of_nodes_availables();
+    
+    status_memory_pages_before = malloc((g_num_nodes_available + 1) * sizeof(float));
+    status_memory_pages_after = malloc((g_num_nodes_available + 1) * sizeof(float));
+    if(status_memory_pages_before == NULL || status_memory_pages_after==NULL){
+        fprintf(stderr, "Error during malloc to status_memory_pages\n");
+        exit(-1);
+    }
     
     sprintf(filename, "migration_cost.%d", getpid());
     g_fp = fopen(filename, "w");
@@ -221,7 +228,7 @@ void *thread_mbind_function(void * _args){
         }
         else
         {
-           for(int i=0 ;i< NUMA_NODES_AVAILABLE+1; i++){
+           for(int i=0 ;i< g_num_nodes_available + 1; i++){
                status_memory_pages_before[i] = 0;
            }
            query_status_memory_pages(getpid(), buf.start_addr, buf.size, status_memory_pages_before);
@@ -241,7 +248,7 @@ void *thread_mbind_function(void * _args){
                    buf.nodemask_target_node, \
                    delta_us/1000.0);
             
-           for(int i=0 ;i< NUMA_NODES_AVAILABLE+1; i++){
+           for(int i=0 ;i< g_num_nodes_available + 1; i++){
                status_memory_pages_after[i] = 0;
            }
             
