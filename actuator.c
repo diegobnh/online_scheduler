@@ -125,7 +125,7 @@ void calculate_DRAM_consumption(void){
     if(g_current_free_dram_space < 0){
         g_current_free_dram_space = 0;
     }
-    fprintf(stderr, "---------------------------------------------------------------[DRAM_consumption] Free:%.2lf Consumed:%.2lf\n", g_current_free_dram_space, 
+    fprintf(stderr, "---------------------------------------------------------------[DRAM_consumption] Free:%.2lf Consumed:%.2lf\n", g_current_free_dram_space, g_current_dram_consumption);
 }
 int comp(const void * elem1, const void * elem2)
 {
