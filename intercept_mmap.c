@@ -218,7 +218,8 @@ void *thread_intercept_mmap(void){
                     
                     // was it annon?
                     if (mmap_enter_args->addr == 0) {
-                        if(g_tier_manager.pids_to_manager[0] == sample->pid){
+                        //if(g_tier_manager.pids_to_manager[0] == sample->pid){
+                        if(g_tier_manager.pids_to_manager[0] == sample->pid && mmap_enter_args->flags != 0x4022){
                             D printf("sys_enter_mmap(pid=%d,tid=%d) - addr: 0x%lx, len: 0x%lx,\
                                 prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
                                    sample->pid, sample->tid, mmap_enter_args->addr, mmap_enter_args->len, mmap_enter_args->prot,\
