@@ -1,12 +1,5 @@
 #!/bin/bash
 
-#chmod +x compile.sh; time numactl --cpubind=0 --membind=2 ./compile.sh
-
-#chmod +x compile.sh;for i in {1..2}; do ./compile.sh > "output_"$i".txt" 2>&1; done
-#chmod +x compile.sh;for i in {1..3}; do sleep 3; sed -i 's/DMETRIC=3/DMETRIC=4/' compile.sh; numactl --cpubind=0 --membind=2 ./compile.sh > "output_metric1_"$i".txt" 2>&1; done
-
-#grep "Execution_time*" results/ABS_LLCM/*/output*
-
 export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
@@ -44,18 +37,12 @@ for ((j = 0; j < ${#METRICS[@]}; j++)); do
         sudo rm -f /tmp/migration.*
         sudo rm -f /tmp/migration_error.*
 
-        #gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=4 "-DMETRIC=""$j" -lpthread -lnuma;
         actuator="actuator_"$j".o"
         gcc -O2 -o start_threads start_threads.c recorder.o $actuator monitor.o intercept_mmap.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
         ./delete_shared_memory
 
         LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n2 1> /dev/null &
         app_pid=$!
-
-        #export LD_PRELOAD=$(pwd)/preload.so
-        #numactl --cpubind=0 --membind=2 /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n2 1> /dev/null &
-        #app_pid=$!
-        #unset LD_PRELOAD
 
         sudo env MAXIMUM_DRAM_CAPACITY=4 MINIMUM_SPACE_TO_ACTIVE_DOWNGRADE=0.2 ACTUATOR_INTERVAL=2 MONITOR_INTERVAL=1  ./start_threads $app_pid > "output.txt" 2>&1 &
         app_threads=$!
