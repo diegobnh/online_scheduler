@@ -1,6 +1,6 @@
 ![Screenshot](Design.png)
 
-[Start_threads]
+#Start_threads
 
 - Instancia a estrutura de dados que será compartilhada entre todas as threads
   *tier_manager_t g_tier_manager;
