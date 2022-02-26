@@ -22,7 +22,7 @@
 - Implementa diferentes políticas de dataplacement inicial
 - Implementa diferentes políticas de cálculo de hotness
 - Implementa política de promotion/demotion
-  * O atuador apenas envia os dados para que o preload realizar o bind, já que esse função não pode ser chamada por um processo externo.
+  * O atuador apenas envia os dados para que o preload realize o bind. Isso porque o bind não pode ser chamada por um processo externo.
 
 # Track_decisions
 
