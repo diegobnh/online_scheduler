@@ -3,8 +3,8 @@
 # Start_threads
 
 - Instancia a estrutura de dados que será compartilhada entre todas as threads
-  *tier_manager_t g_tier_manager;
-  *volatile sig_atomic_t g_running = 1;
+  * tier_manager_t g_tier_manager;
+  * volatile sig_atomic_t g_running = 1;
 - Inicia/encerra todas as threads
 
 # Intercept_mmap
