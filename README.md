@@ -1,23 +1,23 @@
 ![Screenshot](Design.png)
 
-#Start_threads
+# Start_threads
 
 - Instancia a estrutura de dados que será compartilhada entre todas as threads
   *tier_manager_t g_tier_manager;
   *volatile sig_atomic_t g_running = 1;
 - Inicia/encerra todas as threads
 
-[Intercept_mmap]
+# Intercept_mmap
 
 - Intercepta os mmaps de um dado PID e registra na estrutura de dados através do módulo recorder
 - Intercepta também as desalocações e registra na estrutura de dados através do módulo recorder
 
-[Monitor]
+# Monitor
 
 - Habilita/desabilita a leitura dos samples
 - Contabiliza samples por objetos
 
-[Atuador]
+# Atuador
 
 - Implementa diferentes políticas de dataplacement inicial
 - Implementa diferentes políticas de cálculo de hotness
