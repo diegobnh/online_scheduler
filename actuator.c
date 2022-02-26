@@ -548,21 +548,27 @@ void check_migration_error(void){
         }
     }
 }
-void *thread_actuator(void *_args){
-    //g_tier_manager = (tier_manager_t *) _args;
-    int i,j;
-    int flag_has_value_in_metric;
-    struct timespec start, end;
-        
+
+void open_pipes(void){
+
     char FIFO_PATH_MIGRATION[50];
+    char FIFO_PATH_MIGRATION_ERROR[50];
+    
     sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", g_tier_manager.pids_to_manager[0]);
     //guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
     g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION, O_WRONLY), "[actuator] Could not open pipe MIGRATION for writing");
 
     sleep(1); //time to preload create the named pipe;
-    char FIFO_PATH_MIGRATION_ERROR[50];
+    
     sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", g_tier_manager.pids_to_manager[0]);
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_RDONLY | O_NONBLOCK), "[actuator] Could not open pipe MIGRATION_ERROR for reading");
+}
+void *thread_actuator(void *_args){
+    int i,j;
+    int flag_has_value_in_metric;
+    struct timespec start, end;
+    
+    open_pipes();
     
     while(g_running){
         check_migration_error();
