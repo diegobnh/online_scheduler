@@ -1,4 +1,4 @@
-![Screenshot](New_Design.png)
+![Screenshot](Design.png)
 
 [Start_threads]
 
