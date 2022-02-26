@@ -23,3 +23,6 @@
 - Implementa diferentes políticas de cálculo de hotness
 - Implementa política de promotion/demotion
 
+# Track_decisions
+
+- Imprime o percentual de páginas alocadas em cada nodo para todos os objetos a cada intervalo de tempo
