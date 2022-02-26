@@ -17,7 +17,7 @@
 - Habilita/desabilita a leitura dos samples
 - Contabiliza samples por objetos
 
-# Atuador
+# Actuador
 
 - Implementa diferentes políticas de dataplacement inicial
 - Implementa diferentes políticas de cálculo de hotness
