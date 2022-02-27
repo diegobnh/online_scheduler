@@ -188,6 +188,7 @@ void execute_mbind(data_bind_t data)
     }
 }
 void *thread_manager_mbind(void * _args){
+    int i;
     char filename[50];
     float *status_memory_pages_before = NULL;//The last position is to save unmapped pages
     float *status_memory_pages_after = NULL;//The last position is to save unmapped pages
@@ -249,22 +250,26 @@ void *thread_manager_mbind(void * _args){
                    buf.nodemask_target_node, \
                    delta_us/1000.0);
             
-           for(int i=0 ;i< g_num_nodes_available + 1; i++){
+           for(i=0 ;i< g_num_nodes_available + 1; i++){
                status_memory_pages_after[i] = 0;
            }
             
            //Get page state after migration
            query_status_memory_pages(getpid(), buf.start_addr, buf.size, status_memory_pages_after);
            
-           fprintf(g_fp, "[%.2f, %.2f, %.2f, %.2f], [%.2f, %.2f, %.2f, %.2f]\n", \
-                    status_memory_pages_before[0],\
-                    status_memory_pages_before[1],\
-                    status_memory_pages_before[2],\
-                    status_memory_pages_before[3],\
-                    status_memory_pages_after[0],\
-                    status_memory_pages_after[1],\
-                    status_memory_pages_after[2],\
-                    status_memory_pages_after[3]);
+           fprintf(g_fp, "[%.2f,",status_memory_pages_before[0]);
+      	   for(i=1; i<g_num_nodes_available; i++)
+	         {
+		           fprintf(g_fp, "%.2f,",status_memory_pages_before[i]);
+	         }
+	         fprintf(g_fp, "%.2f],",status_memory_pages_before[i]);
+
+           fprintf(g_fp, "[%.2f,",status_memory_pages_after[0]);
+           for(i=1; i<g_num_nodes_available; i++)
+           {
+               fprintf(g_fp, "%.2f,",status_memory_pages_after[i]);
+           }
+           fprintf(g_fp, "%.2f]\n,",status_memory_pages_after[i]);
           
         }
     }
