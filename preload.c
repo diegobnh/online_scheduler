@@ -54,7 +54,7 @@ typedef struct data_bind
 static void __attribute__ ((constructor)) init_lib(void);
 //static void __attribute__((destructor)) exit_lib(void);
 
-void *thread_mbind_function(void * _args);
+void *thread_manager_mbind(void * _args);
 
 void set_number_of_nodes_availables(void)
 {
@@ -79,7 +79,7 @@ void init_lib(void)
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
    if(fd != -1)
    {
-        pthread_create(&thread_mbind, NULL, thread_mbind_function, NULL);
+        pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
    }
 }
 
@@ -150,7 +150,7 @@ int guard(int ret, char *err)
     }
     return ret;
 }
-void mbind_function(data_bind_t data)
+void execute_mbind(data_bind_t data)
 {
     static int count = 0;
     static struct timespec timestamp;
@@ -187,7 +187,7 @@ void mbind_function(data_bind_t data)
         count++;
     }
 }
-void *thread_mbind_function(void * _args){
+void *thread_manager_mbind(void * _args){
     char filename[50];
     float *status_memory_pages_before = NULL;//The last position is to save unmapped pages
     float *status_memory_pages_after = NULL;//The last position is to save unmapped pages
@@ -235,7 +235,7 @@ void *thread_mbind_function(void * _args){
            query_status_memory_pages(getpid(), buf.start_addr, buf.size, status_memory_pages_before);
             
            clock_gettime(CLOCK_REALTIME, &g_start);
-           mbind_function(buf);
+           execute_mbind(buf);
             
            clock_gettime(CLOCK_REALTIME, &g_end);
            uint64_t delta_us = (g_end.tv_sec - g_start.tv_sec) * 1000000 + (g_end.tv_nsec - g_start.tv_nsec) / 1000;
@@ -274,7 +274,7 @@ int main_hook(int argc, char **argv, char **envp)
 {
     //start of main
     //sleep(3);
-    //pthread_create(&thread_mbind, NULL, thread_mbind_function, NULL);
+    //pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
     int ret = main_orig(argc, argv, envp);
     //end of main
     //fprintf(stderr, "[preload] Fim do main()\n");
