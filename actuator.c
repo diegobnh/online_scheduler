@@ -287,7 +287,7 @@ int check_candidates_to_migration(void){
     return flag_has_value_in_metric;
 }
 //Chamada quando tem espaço na DRAM e objeto hot no pmem
-void policy_migration_promotion(void){
+void policy_promotion(void){
     int i;
     int j;
     unsigned long nodemask;
@@ -405,7 +405,7 @@ int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, flo
     return 1;
 }
 //Chamada quando não tem espaço na DRAM
-int policy_migration_demotion(void){
+int policy_demotion(void){
     int i;
     int j;
     unsigned long nodemask;
@@ -574,12 +574,12 @@ void *thread_actuator(void *_args){
         calculate_DRAM_consumption();
         
         if(flag_has_value_in_metric == 1 && g_current_free_dram_space > 0)  {
-            policy_migration_promotion();//move top objects from PMEM to DRAM
+            policy_promotion();//move top objects from PMEM to DRAM
         }
         calculate_DRAM_consumption();
                 
         if(g_current_free_dram_space <= g_minimum_space_to_active_downgrade){
-            policy_migration_demotion();//move non-top objetcts from DRAM to PMEM
+            policy_demotion();//move non-top objetcts from DRAM to PMEM
         }
         //D fprintf(stderr, "-----------------------------------------------------------------------------\n");
         
