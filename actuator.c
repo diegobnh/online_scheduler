@@ -566,21 +566,20 @@ void *thread_actuator(void *_args){
     struct timespec start, end;
     
     open_pipes();
-    
     while(g_running){
         check_migration_error();
         calculate_DRAM_consumption();
         sort_objects();
         flag_has_value_in_metric = check_candidates_to_migration();
-
-
+        
+        check_migration_error();
+        calculate_DRAM_consumption();
+        
         if(flag_has_value_in_metric == 1 && g_current_free_dram_space > 0)  {
             policy_migration_promotion();//move top objects from PMEM to DRAM
         }
-
-        check_migration_error();
         calculate_DRAM_consumption();
-
+                
         if(g_current_free_dram_space <= g_minimum_space_to_active_downgrade){
             policy_migration_demotion();//move non-top objetcts from DRAM to PMEM
         }
