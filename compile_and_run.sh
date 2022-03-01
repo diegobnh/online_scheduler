@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo sleep 10
+
 export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
