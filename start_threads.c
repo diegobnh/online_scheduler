@@ -89,17 +89,13 @@ int main(int argc, char *argv[]){
     
     pthread_create(&intercept_mmap, NULL, thread_intercept_mmap, NULL);
     pthread_create(&monitor, NULL, thread_monitor, NULL);
+    sleep(1);
     pthread_create(&actuator, NULL, thread_actuator, NULL);
 
     pthread_join(intercept_mmap, NULL);
     clock_gettime(CLOCK_REALTIME, &g_end);
-    //fprintf(stderr, "intercept_mmap thread joined\n");
     pthread_join(monitor, NULL);
-    //fprintf(stderr, "monitor thread joined\n");
     pthread_join(actuator, NULL);
-    //fprintf(stderr, "actuator thread joined\n");
-
-    
     
     uint64_t delta_us = (g_end.tv_sec - g_start.tv_sec) * 1000000 + (g_end.tv_nsec - g_start.tv_nsec) / 1000;
     fprintf(stderr, "Execution_time(sec):%.2lf\n", delta_us/1000000.0);
