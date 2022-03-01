@@ -97,8 +97,7 @@ struct key_value g_key_value;
 struct key_value g_sorted_obj[MAX_OBJECTS];
 
 
-int guard(int ret, char *err)
-{
+int guard(int ret, char *err){
     if (ret == -1)
     {
         perror(err);
@@ -124,8 +123,7 @@ void calculate_DRAM_consumption(void){
     }
     D fprintf(stderr, "---------------------------------------------------------------[DRAM_consumption] Free:%.2lf Consumed:%.2lf\n", g_current_free_dram_space, g_current_dram_consumption);
 }
-int comp(const void * elem1, const void * elem2)
-{
+int comp(const void * elem1, const void * elem2){
     struct key_value *k_v1, *k_v2;
     
     k_v1 = (struct key_value*)elem1;
@@ -192,8 +190,7 @@ void sort_objects(void){
     
     qsort (g_sorted_obj, sizeof(g_sorted_obj)/sizeof(*g_sorted_obj), sizeof(*g_sorted_obj), comp);
 }
-void my_send_bind(unsigned long start_addr, unsigned long size ,int target_node, int obj_index)
-{
+void my_send_bind(unsigned long start_addr, unsigned long size ,int target_node, int obj_index){
     data_bind_t data;
     
     data.obj_index = obj_index;
@@ -230,8 +227,7 @@ int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, i
     }
     
 }
-void check_initial_dataplacement_and_desalocations(void)
-{
+void check_initial_dataplacement_and_desalocations(void){
     int i;
     int node_bind;
 
@@ -249,8 +245,7 @@ void check_initial_dataplacement_and_desalocations(void)
         }
     }
 }
-int check_candidates_to_migration(void)
-{
+int check_candidates_to_migration(void){
     int i;
     int j;
     int flag_has_value_in_metric = 0;
@@ -287,9 +282,8 @@ int check_candidates_to_migration(void)
     
     return flag_has_value_in_metric;
 }
-//Chamda quando tem espaço na DRAM e objeto hot no pmem
-void policy_migration_promotion(void)
-{
+//Chamada quando tem espaço na DRAM e objeto hot no pmem
+void policy_migration_promotion(void){
     int i;
     int j;
     unsigned long nodemask;
@@ -326,8 +320,7 @@ void policy_migration_promotion(void)
     
 }
 
-int calculate_total_active_pages(unsigned long int addr, unsigned long int size, int node_to_count)
-{
+int calculate_total_active_pages(unsigned long int addr, unsigned long int size, int node_to_count){
     int status_memory_pages[4]={0,0,0,0};
     
     if ((numa_available() < 0)) {
@@ -382,8 +375,7 @@ int calculate_total_active_pages(unsigned long int addr, unsigned long int size,
 }
         
         
-int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, float gain_metric_factor)
-{
+int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, float gain_metric_factor){
     int i=0;
     int index;
     int sum_pages_dram = 0;
@@ -408,9 +400,8 @@ int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, flo
     //fprintf(stderr, "Total Active Pages on PMEM:%d , Stores:%.2f\n", sum_pages_pmem, sum_stores_pmem);
     return 1;
 }
-//Chamda quando não tem espaço na DRAM
-int policy_migration_demotion(void)
-{
+//Chamada quando não tem espaço na DRAM
+int policy_migration_demotion(void){
     int i;
     int j;
     unsigned long nodemask;
@@ -552,7 +543,7 @@ void check_migration_error(void)
     }
 }
 
-void open_pipes(){
+void open_pipes(void){
 
     char FIFO_PATH_MIGRATION[50];
     char FIFO_PATH_MIGRATION_ERROR[50];
