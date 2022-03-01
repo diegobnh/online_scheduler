@@ -315,7 +315,7 @@ void policy_migration_promotion(void){
         }
     }
     clock_gettime(CLOCK_REALTIME, &timestamp);
-    D fprintf(stderr, " -> Total promoted:%d\n", num_obj_migrated);
+    D fprintf(stderr, " -> Total promoted:%d , %lu.%lu\n", num_obj_migrated, timestamp.tv_sec, timestamp.tv_nsec);
     fflush(stderr);
     
 }
