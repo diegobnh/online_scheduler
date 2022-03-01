@@ -408,7 +408,6 @@ int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, flo
 int policy_migration_demotion(void){
     int i;
     int j;
-    float g_current_free_dram_space;
     unsigned long nodemask;
     int pmem_candidate_index;
     float pmem_candidate_metric;
