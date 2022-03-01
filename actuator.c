@@ -195,8 +195,7 @@ void sort_objects(void){
     
     qsort (g_sorted_obj, sizeof(g_sorted_obj)/sizeof(*g_sorted_obj), sizeof(*g_sorted_obj), comp);
 }
-void my_send_bind(unsigned long start_addr, unsigned long size ,int target_node, int obj_index)
-{
+void my_send_bind(unsigned long start_addr, unsigned long size ,int target_node, int obj_index){
     data_bind_t data;
     
     data.obj_index = obj_index;
@@ -327,8 +326,7 @@ void policy_migration_promotion(void){
     
 }
 
-int calculate_total_active_pages(unsigned long int addr, unsigned long int size, int node_to_count)
-{
+int calculate_total_active_pages(unsigned long int addr, unsigned long int size, int node_to_count){
     int status_memory_pages[4]={0,0,0,0};
     
     if ((numa_available() < 0)) {
@@ -383,8 +381,7 @@ int calculate_total_active_pages(unsigned long int addr, unsigned long int size,
 }
         
         
-int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, float gain_metric_factor)
-{
+int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, float gain_metric_factor){
     int i=0;
     int index;
     int sum_pages_dram = 0;
