@@ -41,7 +41,7 @@ for ((j = 0; j < ${#METRICS[@]}; j++)); do
         gcc -O2 -o start_threads start_threads.c recorder.o $actuator monitor.o intercept_mmap.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
         ./delete_shared_memory
 
-        LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/kron.sg -n2 1> /dev/null &
+        LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /scratch/gapbs/benchmark/graphs/urand.sg -n2 1> /dev/null &
         app_pid=$!
 
         sudo env MAXIMUM_DRAM_CAPACITY=4 MINIMUM_SPACE_TO_ACTIVE_DOWNGRADE=0.2 ACTUATOR_INTERVAL=2 MONITOR_INTERVAL=1  ./start_threads $app_pid > "output.txt" 2>&1 &
