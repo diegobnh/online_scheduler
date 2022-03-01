@@ -99,8 +99,7 @@ struct key_value g_key_value;
 struct key_value g_sorted_obj[MAX_OBJECTS];
 
 
-int guard(int ret, char *err)
-{
+int guard(int ret, char *err){
     if (ret == -1)
     {
         perror(err);
@@ -127,8 +126,7 @@ void calculate_DRAM_consumption(void){
     }
     fprintf(stderr, "---------------------------------------------------------------[DRAM_consumption] Free:%.2lf Consumed:%.2lf\n", g_current_free_dram_space, g_current_dram_consumption);
 }
-int comp(const void * elem1, const void * elem2)
-{
+int comp(const void * elem1, const void * elem2){
     struct key_value *k_v1, *k_v2;
     
     k_v1 = (struct key_value*)elem1;
@@ -288,7 +286,7 @@ int check_candidates_to_migration(void){
     
     return flag_has_value_in_metric;
 }
-//Chamda quando tem espaço na DRAM e objeto hot no pmem
+//Chamada quando tem espaço na DRAM e objeto hot no pmem
 void policy_migration_promotion(void){
     int i;
     int j;
@@ -406,7 +404,7 @@ int decide_demotion_migration(int *list_obj_index, int pmem_candidate_index, flo
     //fprintf(stderr, "Total Active Pages on PMEM:%d , Stores:%.2f\n", sum_pages_pmem, sum_stores_pmem);
     return 1;
 }
-//Chamda quando não tem espaço na DRAM
+//Chamada quando não tem espaço na DRAM
 int policy_migration_demotion(void){
     int i;
     int j;
