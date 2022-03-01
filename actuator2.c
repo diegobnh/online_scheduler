@@ -494,8 +494,7 @@ int policy_migration_demotion(void){
     D fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
     
 }
-void check_migration_error(void)
-{
+void check_migration_error(void){
     /*
     1 << 0 = `0000 0001`
     1 << 1 = `0000 0010`
@@ -558,7 +557,6 @@ void open_pipes(void){
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_RDONLY | O_NONBLOCK), "[actuator] Could not open pipe MIGRATION_ERROR for reading");
 }
 void *thread_actuator(void *_args){
-    //g_tier_manager = (tier_manager_t *) _args;
     int i,j;
     int flag_has_value_in_metric;
     struct timespec start, end;
