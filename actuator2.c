@@ -557,8 +557,7 @@ void open_pipes(void){
     sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", g_tier_manager.pids_to_manager[0]);
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_RDONLY | O_NONBLOCK), "[actuator] Could not open pipe MIGRATION_ERROR for reading");
 }
-void *thread_actuator(void *_args)
-{
+void *thread_actuator(void *_args){
     //g_tier_manager = (tier_manager_t *) _args;
     int i,j;
     int flag_has_value_in_metric;
