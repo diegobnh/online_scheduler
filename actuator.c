@@ -490,9 +490,10 @@ int policy_migration_demotion(void){
                 num_obj_migrated++;
             }
         }
-    }else{
-        D fprintf(stderr,"Sum of all objs from DRAM has more value (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_metric_candidates_demotion, pmem_candidate_metric);
     }
+    //else{
+    //    D fprintf(stderr,"Sum of all objs from DRAM has more value (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_metric_candidates_demotion, pmem_candidate_metric);
+    //}
     
     D fprintf(stderr, "Num obj demoted:%d\n", num_obj_migrated);
     
