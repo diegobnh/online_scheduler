@@ -426,8 +426,8 @@ int policy_demotion(void){
     for(j=0;j<MAX_OBJECTS;j++){
         i = g_sorted_obj[j].index;
         
-        if(g_sorted_obj[i].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
-            pmem_candidate_size = g_sorted_obj[j].value;
+        if(g_sorted_obj[j].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
+            pmem_candidate_size = g_tier_manager.obj_vector[i].size/GB;
             if(pmem_candidate_size < g_dram_capacity){
                 pmem_candidate_metric = g_sorted_obj[j].value;
                 pmem_candidate_index = i;
