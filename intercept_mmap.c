@@ -18,7 +18,7 @@
 #include "recorder.h"
 #define rmb()   asm volatile("lfence" ::: "memory")
 
-//#define DEBUG
+//define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
@@ -172,7 +172,9 @@ void *thread_intercept_mmap(void){
         goto out_evlist;
     }
     
-    err = perf_evlist__mmap(evlist, 4);
+    err = perf_evlist__mmap(evlist, 4); //size of ring buffer
+    //err = perf_evlist__mmap(evlist, 16); //size of ring buffer
+    
     if (err) {
         fprintf(stderr, "failed to mmap evlist\n");
         goto out_evlist;
@@ -181,12 +183,12 @@ void *thread_intercept_mmap(void){
     struct syscall_mmap_enter_args *mmap_enter_args;
     
     perf_evlist__enable(evlist);
-        
+    int count=0;
     while (g_running) {
         perf_evlist__poll(evlist, -1);
+        //perf_evlist__poll(evlist, 500);
         
         perf_evlist__for_each_mmap(evlist, map, false) {
-            
             if (perf_mmap__read_init(map) < 0)
                 continue;
             
@@ -196,7 +198,6 @@ void *thread_intercept_mmap(void){
                 const __u32 type = event->header.type;
                 
                 if (type != PERF_RECORD_SAMPLE) {
-                    //printf("other type: %d\n", type);
                     //return -1;
                     perf_mmap__consume(map);
                     continue;
@@ -208,10 +209,6 @@ void *thread_intercept_mmap(void){
                 
                 if (sys_type == sys_enter_mmap_id) {
                     mmap_enter_args = (struct syscall_mmap_enter_args *) sample->data;
-                    //D printf("sys_enter_mmap(pid=%d,tid=%d) - addr: 0x%lx, len: 0x%lx,\
-                        prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
-                           sample->pid, sample->tid, mmap_enter_args->addr, mmap_enter_args->len, mmap_enter_args->prot,\
-                           mmap_enter_args->flags, mmap_enter_args->fd, mmap_enter_args->off);
                     
                 } else if (sys_type == sys_exit_mmap_id) {
                     struct syscall_mmap_exit_args *args = (struct syscall_mmap_exit_args *) sample->data;
@@ -219,48 +216,28 @@ void *thread_intercept_mmap(void){
                     // was it annon?
                     if (mmap_enter_args->addr == 0) {
                         //if(g_tier_manager.pids_to_manager[0] == sample->pid){
-                        if(g_tier_manager.pids_to_manager[0] == sample->pid && mmap_enter_args->flags != 0x4022){
-                            D printf("sys_enter_mmap(pid=%d,tid=%d) - addr: 0x%lx, len: 0x%lx,\
-                                prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
+                        //if(g_tier_manager.pids_to_manager[0] == sample->pid && mmap_enter_args->flags != 0x4022){
+                            D fprintf(stderr, "sys_enter_mmap2(pid=%d,tid=%d), addr: 0x%lx, len: %ld, prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
                                    sample->pid, sample->tid, mmap_enter_args->addr, mmap_enter_args->len, mmap_enter_args->prot,\
                                    mmap_enter_args->flags, mmap_enter_args->fd, mmap_enter_args->off);
-                            //D printf("sys_exit_mmap(pid=%d,tid=%d) - ret=%ld\n", sample->pid, sample->tid, args->ret);
                             insert_object(sample->pid, args->ret, mmap_enter_args->len);
-                        }
-                        
+                        //}
                     }
-                    
                 } else if (sys_type == sys_enter_munmap_id) {
                     struct syscall_munmap_enter_args *args = (struct syscall_munmap_enter_args *) sample->data;
                     
                     if(g_tier_manager.pids_to_manager[0] == sample->pid){
-                        D printf("sys_enter_munmap(pid=%d,tid=%d) - addr: 0x%lx, len: 0x%lx\n",
-                               sample->pid, sample->tid, args->addr, args->len);
                         remove_object(sample->pid, args->addr, args->len);
                     }
-                    
-                    
                 }
+                
                 perf_mmap__consume(map);
             }
             perf_mmap__read_done(map);
             
         }
-        /*
-        fprintf(stderr, "[intercept mmap] Total Objs:%d\n", g_tier_manager.total_objs);
-        for(int i=0;i<MAX_OBJECTS;i++){
-            //if(g_tier_manager.obj_vector[i].metrics.loads_count[4] > MINIMUM_LLCM && g_tier_manager.obj_alloc[i] == 1){
-            if(g_tier_manager.obj_alloc[i] == 1 ){
-                fprintf(stderr, "Obj:%d Start_addr:%p\n", \
-                        g_tier_manager.obj_vector[i].obj_index, \
-                        g_tier_manager.obj_vector[i].start_addr);
-                
-            }
-        }
-        */
-    }
-    
-    
+    }    
+
 out_evlist:
     perf_evlist__delete(evlist);
 out_cpus:

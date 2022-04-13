@@ -6,7 +6,7 @@
 #include <pthread.h>
 #include <limits.h>
 
-#define MAX_OBJECTS 500
+#define MAX_OBJECTS 5000
 #define MEM_LEVELS 5
 
 //#define MAXIMUM_DRAM_CAPACITY  4  //means 4GB //ULONG_MAX

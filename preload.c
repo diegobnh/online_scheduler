@@ -74,12 +74,20 @@ void set_number_of_nodes_availables(void)
     g_num_nodes_available = num_nodes;
     
 }
+
+/*
+ O único objetivo de uma shared memory nesse escalonador é evitar que novas instancias (novos processos)
+ gerados a partir do PID monitorado, crie novos processos e por consequência instancie novamente
+ thread_mbind.
+ */
 void init_lib(void)
 {
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
    if(fd != -1)
    {
-        pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
+       pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
+   }else{
+       fprintf(stderr, "[preload] PID: %d trying to create thread mbind. Has shared memory been removed?\n", getpid());
    }
 }
 
@@ -99,7 +107,13 @@ int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int
     unsigned node = 0;
     // size must be page-aligned
     size_t pagesize = getpagesize();
-    assert((size % pagesize) == 0);
+    if((size % pagesize) != 0){
+        for(int i = 0; i < g_num_nodes_available + 1; i++){
+            status_memory_pages[i] = -1;
+        }
+        return -1;
+    }
+    //assert((size % pagesize) == 0);
 
     unsigned long page_count = size / pagesize;
     void **pages_addr;
@@ -122,7 +136,7 @@ int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int
     }
 
     if (numa_move_pages(pid, page_count, pages_addr, NULL, status, MPOL_MF_MOVE) == -1) {
-        fprintf(stderr, "error code: %d\n", errno);
+        fprintf(stderr, "[preload - numa_move_pages] error code: %d\n", errno);
         perror("error description:");
     }
 
@@ -170,6 +184,7 @@ void execute_mbind(data_bind_t data)
         //perror(" ");
         
         char cmd1[100];
+        //sprintf(cmd1, "echo %lu.%lu, %d, %p, %ld, %lu > /tmp/bind_error_%d.%d", 
         sprintf(cmd1, "echo %lu.%lu, %d, %p, %ld, %lu > bind_error_%d.%d", \
                 timestamp.tv_sec, \
                 timestamp.tv_nsec, \
@@ -204,22 +219,26 @@ void *thread_manager_mbind(void * _args){
         exit(-1);
     }
     
-    sprintf(filename, "migration_cost.%d", getpid());
+    //sprintf(filename, "/tmp/preload_migration_cost.txt");
+    sprintf(filename, "preload_migration_cost.txt");
     g_fp = fopen(filename, "w");
     if(g_fp == NULL){
         fprintf(stderr, "Error while trying to open Migration cost\n");
         perror(filename);
     }
     
-    sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", getpid());
-    sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", getpid());
+    //sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", getpid());
+    //sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", getpid());
+    sprintf(FIFO_PATH_MIGRATION, "migration.%d", getpid());
+    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error.%d", getpid());
 
+    
     guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION, O_RDONLY), "[preload] Could not open pipe MIGRATION for reading");
 
     guard(mkfifo(FIFO_PATH_MIGRATION_ERROR, 0777), "Could not create pipe");
     g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_WRONLY), "[preload] Could not open pipe MIGRATION_ERROR for writing");
-    
+        
     while(g_running){
         data_bind_t buf;
 
@@ -259,17 +278,17 @@ void *thread_manager_mbind(void * _args){
            
            fprintf(g_fp, "[%.2f,",status_memory_pages_before[0]);
       	   for(i=1; i<g_num_nodes_available; i++)
-	         {
-		           fprintf(g_fp, "%.2f,",status_memory_pages_before[i]);
-	         }
-	         fprintf(g_fp, "%.2f],",status_memory_pages_before[i]);
+	       {
+	       		fprintf(g_fp, "%.2f,",status_memory_pages_before[i]);
+	       }
+	       fprintf(g_fp, "%.2f],",status_memory_pages_before[i]);
 
            fprintf(g_fp, "[%.2f,",status_memory_pages_after[0]);
            for(i=1; i<g_num_nodes_available; i++)
            {
-               fprintf(g_fp, "%.2f,",status_memory_pages_after[i]);
+                fprintf(g_fp, "%.2f,",status_memory_pages_after[i]);
            }
-           fprintf(g_fp, "%.2f]\n,",status_memory_pages_after[i]);
+           fprintf(g_fp, "%.2f]\n",status_memory_pages_after[i]);
           
         }
     }
@@ -277,20 +296,11 @@ void *thread_manager_mbind(void * _args){
 static int (*main_orig)(int, char **, char **);
 int main_hook(int argc, char **argv, char **envp)
 {
-    //start of main
-    //sleep(3);
-    //pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
     int ret = main_orig(argc, argv, envp);
-    //end of main
-    //fprintf(stderr, "[preload] Fim do main()\n");
     
     g_running = 0;
-    //pthread_join(thread_mbind, NULL);
-    //fclose(g_fp);
-    //close(g_pipe_read_fd);
+    
     return ret;
-    
-    
 }
 int __libc_start_main(
     int (*main)(int, char **, char **),

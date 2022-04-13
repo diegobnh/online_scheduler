@@ -8,7 +8,7 @@
 
 #define mfence()   asm volatile("mfence" ::: "memory")
 
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
@@ -45,11 +45,15 @@ void initialize_recorder(void)
 int insert_object(int pid, unsigned long start_addr, unsigned long size)
 {
     clock_gettime(CLOCK_REALTIME, &timestamp);
-    int index = 0 ; //get last index assigned
+    static int index = 0 ; //get last index assigned
     //this loop will be in infinit loop if the number objects is bigger than MAX_OBJECTS
     while(g_tier_manager.obj_alloc[index] == 1 || g_tier_manager.obj_status[index] != -1){
     	index ++;
-    	index = index % MAX_OBJECTS;
+    	//index = index % MAX_OBJECTS;
+        if(index == MAX_OBJECTS){
+            fprintf(stderr, "Please..increase the variable MAX_OBJECTS!!!\n");
+            exit(-1);
+        }
     }
     
 	g_tier_manager.obj_vector[index].start_addr = start_addr;
@@ -60,13 +64,15 @@ int insert_object(int pid, unsigned long start_addr, unsigned long size)
     g_tier_manager.obj_vector[index].obj_index = index ;
     g_tier_manager.obj_alloc[index] = 1 ;
         
-    D fprintf(stderr,"\t[recorder] insert_object (%lu.%lu, %d, %p, %ld) \n", \
+    //D fprintf(stderr,"[recorder] insert_object (%lu.%lu, %d, %p, %ld) \n",
+    D fprintf(stderr,"recorder_insert, %lu.%lu, %d, %p, %ld\n", \
               timestamp.tv_sec, \
               timestamp.tv_nsec, \
               g_tier_manager.obj_vector[index].obj_index, \
               g_tier_manager.obj_vector[index].start_addr, \
               g_tier_manager.obj_vector[index].size);
     D fflush(stderr);
+    index ++;
 }
 
 int remove_object(int pid, unsigned long start_addr, unsigned long size)
@@ -74,7 +80,8 @@ int remove_object(int pid, unsigned long start_addr, unsigned long size)
     int i;
     for(i = 0; i < MAX_OBJECTS; i++){
     	if(g_tier_manager.obj_vector[i].start_addr == start_addr && g_tier_manager.obj_vector[i].size == size && g_tier_manager.obj_alloc[i] == 1){
-            D fprintf(stderr,"\t[recorder] remove_object (%lu.%lu, %d, %p, %ld) \n", \
+            //D fprintf(stderr,"[recorder] remove_object (%lu.%lu, %d, %p, %ld) \n",
+            D fprintf(stderr,"recorder_remove, %lu.%lu, %d, %p, %ld\n", \
                       timestamp.tv_sec, \
                       timestamp.tv_nsec, \
                       g_tier_manager.obj_vector[i].obj_index, \

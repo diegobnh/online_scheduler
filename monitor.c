@@ -21,7 +21,6 @@
 
 #include <pthread.h>
 #include "recorder.h"
-#define STORAGE_ID "SCHEDULER_SHM"
 #define MMAP_DATA_SIZE 1024
 #define ALPHA 0.33
 #define MONITOR_INTERVAL 0.1
@@ -75,7 +74,7 @@ void update_metrics(void){
     
 }
 void clear_metrics(void){
-	int i;
+    int i;
     int j;
     
     for(i=0; i< MAX_OBJECTS; i++){
