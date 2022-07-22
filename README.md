@@ -1,5 +1,5 @@
 
-<embed src="/online_scheduler/blob/stable_1.0/design.pdf" type="application/pdf">
+<embed src="https://github.com/diegobnh/online_scheduler/blob/stable_1.0/design.pdf" type="application/pdf">
 
 # Start_threads
 
