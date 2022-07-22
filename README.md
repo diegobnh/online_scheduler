@@ -1,4 +1,5 @@
-![Screenshot](design.png)
+![Screenshot](design2.png)
+<embed src="design.pdf" type="application/pdf">
 
 # Start_threads
 
