@@ -1,5 +1,5 @@
-![Screenshot](design2.png)
-<embed src="design.pdf" type="application/pdf">
+
+<embed src="/online_scheduler/blob/stable_1.0/design.pdf" type="application/pdf">
 
 # Start_threads
 
