@@ -1,5 +1,6 @@
 
-<embed src="https://github.com/diegobnh/online_scheduler/blob/stable_1.0/design.pdf" type="application/pdf">
+<a href="design.pdf" class="image fit"><img src="design.png" alt=""></a>
+
 
 # Start_threads
 
