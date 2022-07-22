@@ -1,4 +1,4 @@
-![Screenshot](Design.png)
+![Screenshot](Design.pdf)
 
 # Start_threads
 
