@@ -29,3 +29,10 @@
 # Track_decisions
 
 - Imprime o percentual de páginas alocadas em cada nodo para todos os objetos a cada intervalo de tempo
+
+# Requirements/installations
+``
+apt-get install numactl libnuma-dev libpthread* libpfm4*
+``
+
+
