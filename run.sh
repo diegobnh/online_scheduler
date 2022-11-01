@@ -1,22 +1,7 @@
 #!/bin/bash
 : '
-Vários comandos aqui necessitam de sudo. Existem duas formas de executar esse script.
-(1) A primeira é usando o comando sudo ./run_this_script.sh
-
-Nesse caso todo os comandos que exigem a senha de sudo já estarão cobertos.
-O que precisa ser feito apenas saber se o sudo tem permissão de escrita no diretório onde
-estão esses arquivos. Para criar um diretório com essa epermissão basta executar:
-mkdir -m 777 dirname
-
-(2) A segunda opção é rodar o script sem o sudo.
-Nesse caso, o primeiro comando que ele encontrar que vier precedido de sudo ele vai solicitar a senha.
-Entretando, se o próximo comando  a ser executado do sudo for executado com um intervalo de tempo superior
-ao tempo em que a senha do sudo fica ativa, um novo pedido de senha será feito o que fará o script ficar
-parado esperando essa senha.
-
-Para subir os arquivos da minha máquina sem levar a pasta result/
-rsync *.h *.c *.sh -avz  -e ssh 'dmoura@h2p.crc.pitt.edu:/ihome/dmosse/dmoura/test/'
-
+chmod +777 online_scheduler
+sudo ./run.sh our_schedule
 '
 
 if [ $# -lt 1 ] ; then
