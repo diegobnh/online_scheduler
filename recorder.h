@@ -42,8 +42,8 @@ typedef struct object{
     unsigned long end_addr;
     unsigned long size;
     unsigned long pages;
-    int sliced;
-    int obj_index; //this value represent the index of the vector where the allocations was saved
+    int sliced;//If 1, means this is a chunk. If 0, means the size is less than chunk size
+    int obj_index; //This value represent the index of the vector where the allocations was saved
     int pid;
     metric_t metrics;
 }object_t;
