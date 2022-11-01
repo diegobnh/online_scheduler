@@ -607,7 +607,7 @@ void *thread_monitor(void *_args){
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
                             D fprintf(stderr, "Load on DRAM\n");
                 		}
-                        else if (is_served_by_remote_memory(data_src)) {
+                		else if (is_served_by_remote_memory(data_src)) {
                         //else if (is_served_by_local_pmem(data_src)) {
                             mem_level = 4;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;

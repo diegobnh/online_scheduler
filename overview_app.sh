@@ -48,10 +48,10 @@ mkdir -p results
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
 gcc -O2 -g -c recorder.c -lpthread;
 gcc -O2 -I/include -g -c intercept_mmap.c -lpthread;
-gcc -O1 -I/include -g -c monitor.c hashmap.c -lrt -lm -lpfm -lpthread -lperf;
+gcc -O1 -I/include -g -c monitor.c -lrt -lm -lpfm -lpthread -lperf;
 gcc -O2 -g -c track_mapping.c -DMETRIC=1 -lpthread -lnuma
-gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=4 -DMETRIC=2 -lpthread -lnuma
-gcc -O2 -o start_threads start_threads.c recorder.o monitor.o hashmap.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
+gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=5 -DMETRIC=2 -lpthread -lnuma
+gcc -O2 -o start_threads start_threads.c recorder.o monitor.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
 gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnuma;
 
 gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
@@ -71,7 +71,7 @@ function track_info {
     track_info="track_info_"$2".csv"
     rm -f $track_info
 
-    echo "timestamp,dram_app,pmem_app,dram_page_cache_active,dram_page_cache_inactive"  >> $track_info
+    echo "timestamp,dram_app,pmem_app"  >> $track_info
     while true
     do
     if ps -p $app_pid > /dev/null
@@ -80,11 +80,8 @@ function track_info {
         nanosec=$(date +%s)
         timestamp=$(awk '{print $1}' /proc/uptime)
         memory=$(numastat -p $app_pid -c | grep Private | awk '{printf "%s,%s\n", $2,$4}')
-        dram_page_cache=$(grep "Active(file)\|Inactive(file)" /sys/devices/system/node/node0/meminfo | awk '{print $(NF-1)}' | datamash transpose | awk '{printf "%s,%s\n", $1, $2}')
-        
-        echo $timestamp","$memory","$dram_page_cache >> $track_info
+        echo $timestamp","$memory >> $track_info
     else
-        sed -i '$ d' $track_info   #Remove the last line. Usally some column is empty
         break
     fi
         sleep 1
@@ -96,53 +93,23 @@ for ((j = 0; j < ${#METRICS[@]}; j++)); do
     mkdir -p results/${METRICS[$j]}
     for i in {1..1}
     do
-        #echo -n "."
         sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
         sleep 3
-        sudo rm -f *.txt bind_error_* -f min_max* *.o
-        sudo ./delete_shared_memory
-        
+
         track_info "bc" "bc_kron" &
-        sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt"  2>&1 &
-        start_threads_pid=$!
-        
-        sleep 3  #if you dont wait, you could lose some mmaps'interception
-        
-        LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g27_k16.sg -n1 1> /dev/null &
-
+        strace -e trace=mmap -- /scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g26_k16.sg -n1 1> out1.txt 2> out2.txt  &
         app_pid=$!
-        echo $app_pid > pid.txt
-        
-        #./track_memory_ranges.sh $app_pid ${METRICS[$j]} &
-
         wait $app_pid
-        sudo kill -10 start_threads
-        wait $start_threads_pid
-        
-        
-        #Organize output files and clean
-        #------------------------------------------------------------------------
-        sleep 3
-        mkdir -p results/${METRICS[$j]}/$app_pid
-        rm -f mem_consumption.txt
-        
-        
-        echo -n "DRAM(max) memfootprint    : " >> mem_consumption.txt
-        cat track_info_bc_kron.csv | awk -F, 'NR>1{print $2}' | datamash max 1 >> mem_consumption.txt
 
-        echo -n "(DRAM + PMEM) memfootprint: " >> mem_consumption.txt
-        cat track_info_bc_kron.csv | awk -F, '{print $2+$3}' | datamash max 1 >> mem_consumption.txt
-
-        echo -n "Page Cache DRAM (max)     : " >> mem_consumption.txt
-        cat track_info_bc_kron.csv | awk -F, '{print ($4+$5)/1000}' | datamash max 1 >> mem_consumption.txt
-
-        #cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
-        cat preload_migration_cost.txt | awk -F, 'NR!=1{print $6}' | tr -d '(ms)' | datamash min 1 max 1 sum 1 > min_max_sum_migration_cost.txt
-        wc -l preload_migration_cost.txt >> min_max_sum_migration_cost.txt
-        mv *.txt *.csv results/${METRICS[$j]}/$app_pid/
-        cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
-        rm *.pipe
-        sleep 10
+        echo -n "Maximum Consumption:"
+        cat track_info_bc_kron.csv | awk -F, '{print $2+$3}' | datamash max 1 
+        echo -n "Maximum in DRAM:"
+        cat track_info_bc_kron.csv | awk -F, 'NR>1{print $2}' | datamash max 1
+        echo -n "Maximum in PMEM:"
+        cat track_info_bc_kron.csv | awk -F, 'NR>1{print $3}' | datamash max 1
+        echo "---------------------"
+        echo "Different allocations:"
+        cat out2.txt | awk -F, '{printf "%.6f\n", $2/1000000000}'  | datamash -sC -g 1 count 1
     done
 done
 

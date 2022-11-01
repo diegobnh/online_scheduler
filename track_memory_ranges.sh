@@ -14,7 +14,7 @@ do
 	    sec=$(date +%s)
 	    nanosec=$(date +%s)
 	    echo $sec"."$nanosec >> $out1
-   		cat /proc/$app_pid/numa_maps  >> $out1
+   		cat /proc/$app_pid/numa_maps  >> $out1 2> /dev/null
    		#cat /proc/$app_pid/numa_maps | grep bind  >> $out1
    		echo " " >>  $out1
    		

@@ -7,9 +7,14 @@
 #include <limits.h>
 
 #define MAX_OBJECTS 5000
+//#define CHUNK_SIZE 10000003072UL ////10GB aligned in pages of 4kb - The size is in bytes
+//#define CHUNK_SIZE 1000001536UL  //1GB
+//#define CHUNK_SIZE 1073741824UL //1GB usando potencia de 2
+//#define CHUNK_SIZE 2000003072UL //2GB
+#define CHUNK_SIZE 4000002048UL  //4GB
 #define MEM_LEVELS 5
 
-//#define MAXIMUM_DRAM_CAPACITY  4  //means 4GB //ULONG_MAX
+//#define GB 1e9
 #define GB 1000000000.0
 
 #define MAXIMUM_APPS 1
@@ -28,8 +33,8 @@ typedef struct metrics{
     double sum_latency_cost[MEM_LEVELS];
     double loads_count[MEM_LEVELS];
     double stores_count;
-    double TLB_hit[MEM_LEVELS];
-    double TLB_miss[MEM_LEVELS];
+    double tlb_hit[MEM_LEVELS];
+    double tlb_miss[MEM_LEVELS];
 }metric_t;
 
 typedef struct object{
@@ -37,8 +42,7 @@ typedef struct object{
     unsigned long end_addr;
     unsigned long size;
     unsigned long pages;
-    //int alloc_flag;
-    //int status;
+    int sliced;
     int obj_index; //this value represent the index of the vector where the allocations was saved
     int pid;
     metric_t metrics;
@@ -61,8 +65,9 @@ typedef struct tier_manager{
 }tier_manager_t;
 
 
-int insert_object(int pid, unsigned long start_addr, unsigned long size);
-int remove_object(int pid, unsigned long start_addr, unsigned long size);
+int insert_object(int, unsigned long, unsigned long);
+int _insert_object(int, unsigned long, unsigned long, int);
+int remove_object(int, unsigned long, unsigned long);
 void initialize_recorder();
 
 #endif

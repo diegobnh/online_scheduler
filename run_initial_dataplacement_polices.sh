@@ -26,34 +26,24 @@ export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
 
-#Disable address space layout randomization the
-#echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+#disable autonuma
+sudo sysctl -w kernel.perf_event_max_sample_rate=10000 1> /dev/null
+sudo sysctl -w kernel.numa_balancing=0 >  /dev/null
+sudo sh -c "echo false > /sys/kernel/mm/numa/demotion_enabled"
 
-sudo sysctl -w kernel.numa_balancing=2 >  /dev/null
-sudo sh -c 'echo false > /sys/kernel/mm/numa/demotion_enabled'
 
 METRICS=("LLCM_PER_SIZE")
-#METRICS=("ABS_LLCM" "LLCM_PER_SIZE" "ABS_TLB_MISS" "TLB_MISS_PER_SIZE" "ABS_WRITE" "WRITE_PER_SIZE" "ABS_LATENCY" "LATENCY_PER_SIZE")
+INITIAL_DATAPLACEMENT=("ROUND_ROBIN" "RANDOM" "FIRST_DRAM" "BASED_ON_SIZE")
 
 mkdir -p results
-#rm -rf results/*
-
-#Initial Dataplacement Options
-#1 - ROUND_ROBIN
-#2 - RANDOM
-#3 - FIRST_DRAM
-#4 - FIRST_PMEM
-#5 - BASED ON SIZE
+mkdir -p results/initial_dataplacement
 
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
 gcc -O2 -g -c recorder.c -lpthread;
 gcc -O2 -I/include -g -c intercept_mmap.c -lpthread;
-gcc -O1 -I/include -g -c monitor.c hashmap.c -lrt -lm -lpfm -lpthread -lperf;
+gcc -O1 -I/include -g -c monitor.c -lrt -lm -lpfm -lpthread -lperf;
 gcc -O2 -g -c track_mapping.c -DMETRIC=1 -lpthread -lnuma
-gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=4 -DMETRIC=2 -lpthread -lnuma
-gcc -O2 -o start_threads start_threads.c recorder.o monitor.o hashmap.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
 gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnuma;
-
 gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
 
 function track_info {
@@ -91,12 +81,16 @@ function track_info {
     done
 }
 
-for ((j = 0; j < ${#METRICS[@]}; j++)); do
-    #echo -n ${METRICS[$j]}
-    mkdir -p results/${METRICS[$j]}
-    for i in {1..1}
+for ((j = 0; j < ${#INITIAL_DATAPLACEMENT[@]}; j++)); do
+    echo ${INITIAL_DATAPLACEMENT[$j]}
+	init_data_plac=$((j+1))
+    gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=$init_data_plac -DMETRIC=2 -lpthread -lnuma
+    gcc -O2 -o start_threads start_threads.c recorder.o monitor.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
+
+    mkdir -p results/initial_dataplacement/${INITIAL_DATAPLACEMENT[$j]}
+    for i in {1..3}
     do
-        #echo -n "."
+        echo -n "."
         sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
         sleep 3
         sudo rm -f *.txt bind_error_* -f min_max* *.o
@@ -123,7 +117,7 @@ for ((j = 0; j < ${#METRICS[@]}; j++)); do
         #Organize output files and clean
         #------------------------------------------------------------------------
         sleep 3
-        mkdir -p results/${METRICS[$j]}/$app_pid
+        mkdir -p results/initial_dataplacement/${METRICS[$j]}/$app_pid
         rm -f mem_consumption.txt
         
         
@@ -139,8 +133,8 @@ for ((j = 0; j < ${#METRICS[@]}; j++)); do
         #cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
         cat preload_migration_cost.txt | awk -F, 'NR!=1{print $6}' | tr -d '(ms)' | datamash min 1 max 1 sum 1 > min_max_sum_migration_cost.txt
         wc -l preload_migration_cost.txt >> min_max_sum_migration_cost.txt
-        mv *.txt *.csv results/${METRICS[$j]}/$app_pid/
-        cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
+        mv *.txt *.csv results/initial_dataplacement/${METRICS[$j]}/$app_pid/
+        cp bind_error_* results/initial_dataplacement/${METRICS[$j]}/$app_pid 2>/dev/null
         rm *.pipe
         sleep 10
     done

@@ -30,8 +30,7 @@
 #define ROUND_ROBIN 1
 #define RANDOM 2
 #define FIRST_DRAM 3
-#define FIRST_PMEM 4
-
+#define BASED_ON_SIZE 4
 
 #define METRIC_ABS_LLCM 1
 #define METRIC_LLCM_PER_SIZE 2
@@ -42,12 +41,11 @@
 #define METRIC_ABS_LATENCY 7
 #define METRIC_LATENCY_PER_SIZE 8
 
-
 #ifndef INIT_DATAPLACEMENT
 #error "INIT_DATAPLACEMENT is not defined."
 #endif
 
-#if !(INIT_DATAPLACEMENT == 1 || INIT_DATAPLACEMENT == 2 || INIT_DATAPLACEMENT == 3 || INIT_DATAPLACEMENT == 4)
+#if !(INIT_DATAPLACEMENT >= 1 && INIT_DATAPLACEMENT <= 4)
 #error "INIT_DATAPLACEMENT value invalid."
 #endif
 
@@ -69,23 +67,26 @@
 #endif
 
 
-int g_iteration=0;
-double g_current_dram_consumption;
-double g_current_pmem_consumption;
-double g_current_free_dram_space;
 extern int g_hotness_threshold;
-
 extern float g_actuator_interval;
-extern float g_dram_capacity;
-extern float g_minimum_space_to_active_downgrade;
 extern tier_manager_t g_tier_manager;
 extern volatile sig_atomic_t g_running;
+
+float g_dram_pressure_threshold = 0.90;
+int g_app_pid = -1;
+int g_iteration = 0;
+double g_current_dram_consumption;
+double g_start_free_DRAM;
 int g_pipe_write_fd;
 int g_pipe_read_fd;
+float g_median_metric;
 
 struct key_value{
-    int index;
+    int key; //key will be the the index object
     double value;
+    double llcm;//this is just for trace
+    double stores;//this is just for trace
+    double tlbm;//this is just for trace
 };
 
 static struct key_value g_key_value;
@@ -100,27 +101,51 @@ int guard(int ret, char *err){
     }
     return ret;
 }
+void set_current_free_dram(void){
+    char buf[256];
+    char cmd[256];
+    
+    FILE *stream_file;
+    
+    sprintf(cmd, "grep MemFree /sys/devices/system/node/node0/meminfo | awk '{print $4/1000}' ");
+
+    if (NULL == (stream_file = popen(cmd, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
+    }
+
+    fgets(buf, sizeof(buf), stream_file);
+    sscanf(buf, "%lf",&g_start_free_DRAM);//measured in megabytes
+    
+    g_start_free_DRAM = (g_start_free_DRAM/1000.0); //convert to GB
+    
+    fclose(stream_file);
+    D fprintf(stderr, "Free DRAM start:%.4lf(GB)\n",g_start_free_DRAM);
+}
 void update_dram_consumption(void){
-    int i;
-    int active_obj_DRAM = 0;
-    int active_obj_PMEM = 0;
+    char buf[256];
+    char cmd[256];
+    static int count = 0;
     
-    g_current_dram_consumption = 0;
-    g_current_pmem_consumption = 0;
-    for(i=0;i<MAX_OBJECTS;i++){
-        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
-            g_current_dram_consumption += g_tier_manager.obj_vector[i].size/GB;
-            active_obj_DRAM++;
-        }else if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
-            g_current_pmem_consumption += g_tier_manager.obj_vector[i].size/GB;
-            active_obj_PMEM++;
-        }
-    }
+    count++;
     
-    g_current_free_dram_space = g_dram_capacity - g_current_dram_consumption ;
-    if(g_current_free_dram_space < 0){
-        g_current_free_dram_space = 0;
+    FILE *stream_file;
+    
+    sprintf(cmd, "numastat -p %d -c | grep Private | awk '{print $2}' ", g_app_pid);
+
+    if (NULL == (stream_file = popen(cmd, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
     }
+
+    fgets(buf, sizeof(buf), stream_file);
+    sscanf(buf, "%lf",&g_current_dram_consumption);//measured in megabytes
+    
+    g_current_dram_consumption = (g_current_dram_consumption/1000.0);//convert to GB
+    
+    fclose(stream_file);
+    if(count%10 == 0)
+        D fprintf(stderr, "App DRAM usage:%.4lf (GB)\n",g_current_dram_consumption);
 }
 static int comp(const void * elem1, const void * elem2){
     struct key_value *k_v1, *k_v2;
@@ -138,21 +163,21 @@ static int comp(const void * elem1, const void * elem2){
 static double get_hotness_metric(int obj_index){
     
 #if METRIC == METRIC_ABS_LLCM
-    return g_tier_manager.obj_vector[obj_index].metrics.loads_count[4];
+    return g_tier_manager.obj_vector[obj_index].metrics.loads_count[4]; //4 is the index of last level cache
 #elif METRIC == METRIC_LLCM_PER_SIZE
     return g_tier_manager.obj_vector[obj_index].metrics.loads_count[4]/(g_tier_manager.obj_vector[obj_index].size/GB);
 #elif METRIC == METRIC_ABS_TLB_MISS
     double all_tlb_miss = 0;
     int i;
     for(i=0; i<MEM_LEVELS;i++){
-        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.TLB_miss[i];
+        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.tlb_miss[i];
     }
     return all_tlb_miss;
 #elif METRIC == METRIC_TLB_MISS_PER_SIZE
     double all_tlb_miss = 0;
     int i;
     for(i=0; i<MEM_LEVELS;i++){
-        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.TLB_miss[i];
+        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.tlb_miss[i];
     }
     return all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
 #elif METRIC == METRIC_ABS_WRITE
@@ -181,14 +206,64 @@ static void sort_objects(void){
     int aux;
     
     for(i=0;i<MAX_OBJECTS;i++){
-        g_key_value.index = i;
+        g_key_value.key = i;
         g_key_value.value = get_hotness_metric(i);
+        
+        //comment after
+        double all_tlb_miss = 0;
+        int k;
+        for(k=0; k<MEM_LEVELS;k++){
+            all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[k];
+        }
+        g_key_value.tlbm = all_tlb_miss;
+        g_key_value.stores = g_tier_manager.obj_vector[i].metrics.stores_count;
+        //erase until here
+        
         g_sorted_obj[i] = g_key_value;
     }
     
     qsort (g_sorted_obj, sizeof(g_sorted_obj)/sizeof(*g_sorted_obj), sizeof(*g_sorted_obj), comp);
 }
-void my_send_bind(unsigned long start_addr, unsigned long size ,int target_node, int obj_index){
+
+static void sort_objects2(void){
+    int i, j, k;
+    int aux;
+    double all_tlb_miss;
+    double tlb_miss;
+    double llcm_per_size;
+    double stores;
+    
+    for(i=0;i<MAX_OBJECTS;i++){
+        g_key_value.key = i;
+        
+        llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
+        
+        all_tlb_miss = 0;
+        for(k=0; k<MEM_LEVELS;k++){
+            all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[k];
+        }
+        tlb_miss = g_tier_manager.obj_vector[i].metrics.tlb_miss[4];//4 means DRAM
+        stores = g_tier_manager.obj_vector[i].metrics.stores_count;
+        
+        //Store is the unique that we accumulate over time. All the other we update using average moving
+        //g_key_value.value = llcm_per_size + (all_tlb_miss * 2) + (stores * 3) ;
+        g_key_value.value = llcm_per_size + (tlb_miss * 2) + (stores * 3) ;
+        
+        //only for tracing
+        g_key_value.llcm = llcm_per_size;
+        g_key_value.stores = stores;
+        g_key_value.tlbm = tlb_miss;
+        
+        g_sorted_obj[i] = g_key_value;
+        if(g_key_value.value > 0){
+            fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_key_value.value);
+        }
+    }
+    
+    qsort (g_sorted_obj, sizeof(g_sorted_obj)/sizeof(*g_sorted_obj), sizeof(*g_sorted_obj), comp);
+}
+
+void bind_order(unsigned long start_addr, unsigned long size ,int target_node, int obj_index){
     data_bind_t data;
     
     data.obj_index = obj_index;
@@ -198,7 +273,7 @@ void my_send_bind(unsigned long start_addr, unsigned long size ,int target_node,
 
     write(g_pipe_write_fd, &data, sizeof(data_bind_t));
 }
-int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, int obj_index){
+int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, int sliced, int obj_index){
     static int memory_index = 0;
     int flag_dram_alloc = 0;
     struct timespec timestamp;
@@ -209,36 +284,30 @@ int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, i
     if(rand() % 2){
 #elif INIT_DATAPLACEMENT == FIRST_DRAM
     if(1){
-#elif INIT_DATAPLACEMENT == FIRST_PMEM
-    if(0){
+#elif INIT_DATAPLACEMENT == BASED_ON_SIZE
+    if(size < CHUNK_SIZE){
 #endif
-        if((size/GB) + g_current_dram_consumption < g_dram_capacity){
+        if((g_start_free_DRAM - (size/GB)) > 0 && sliced == 0){
             clock_gettime(CLOCK_REALTIME, &timestamp);
-            D fprintf(stderr, "[actuator] initial_dataplacement_dram, %lu.%lu, %d, %p\n", timestamp.tv_sec, timestamp.tv_nsec,obj_index, start_addr);
-            my_send_bind(start_addr, size, NODE_0_DRAM, obj_index);
+            D fprintf(stderr, "[actuator] initial_dataplacement_dram, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
+            bind_order(start_addr, size, NODE_0_DRAM, obj_index);
             return NODE_0_DRAM;
-        }else{
-            flag_dram_alloc = 0;
         }
     }
-    if(flag_dram_alloc == 0)
-    {
-        clock_gettime(CLOCK_REALTIME, &timestamp);
-        D fprintf(stderr, "[actuator] initial_dataplacement_pmem, %lu.%lu, %d, %p\n", timestamp.tv_sec, timestamp.tv_nsec,obj_index, start_addr);
-        my_send_bind(start_addr, size, NODE_0_PMEM, obj_index);
-        return NODE_0_PMEM;
-    }
-    
+    clock_gettime(CLOCK_REALTIME, &timestamp);
+    D fprintf(stderr, "[actuator] initial_dataplacement_pmem, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
+    bind_order(start_addr, size, NODE_0_PMEM, obj_index);
+    return NODE_0_PMEM;
 }
 void check_initial_dataplacement_and_desalocations(void){
     int i;
     int node_bind;
-
+    
     rmb();
 
     for(i=0;i<MAX_OBJECTS;i++){
         if(g_tier_manager.obj_alloc[i] == 1 &&  g_tier_manager.obj_status[i] == -1){ //require first bind
-            node_bind = initial_dataplacement_policy(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, i);
+            node_bind = initial_dataplacement_policy(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, g_tier_manager.obj_vector[i].sliced, i);
             g_tier_manager.obj_status[i] = node_bind;
             
         }else if(g_tier_manager.obj_alloc[i] == 0  && g_tier_manager.obj_status[i] != -1){
@@ -250,46 +319,66 @@ void check_initial_dataplacement_and_desalocations(void){
 int check_candidates_to_promotion(void){
     int i;
     int j;
+    int count=0;
     int flag_promotion = 0;
+    float size_factor;
+    float metric_factor;
+    float factor;
     
     //Esse loop não é necessário depois. Hoje é apenas utilizado para fins de análise.
-    D fprintf(stderr,"\n[actuator] Hottest Objects\n");
+    //Remover por questão de performance
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].index;
-        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
-                D fprintf(stderr, "[actuator] DRAM, %d, %p,%.2lf,%.2lf\n", \
+        i = g_sorted_obj[j].key;
+        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_sorted_obj[j].value > g_hotness_threshold){
+            //D fprintf(stderr, "[actuator] Hottest Object in DRAM, %d, %p,%.2lf,%.2lf\n", \
                         g_tier_manager.obj_vector[i].obj_index, \
                         g_tier_manager.obj_vector[i].start_addr,\
                         g_tier_manager.obj_vector[i].size/GB,\
                         g_sorted_obj[j].value);
+            count++;
+            //if (count > 10) break;
         }
-            
     }
-        
+    if(count > 0){
+        g_median_metric = g_sorted_obj[count/2].value;
+        D fprintf(stderr, "Mediana Objects in DRAM, llcm:%.2lf, store:%.2lf, tlbm:%.2lf\n", \
+                  g_sorted_obj[count/2].llcm, \
+                  g_sorted_obj[count/2].stores, \
+                  g_sorted_obj[count/2].tlbm,\
+                  g_sorted_obj[count/2].value);
+    }
     //Esse for pode ser otimizado depois usando o break. Por enquanto fica melhor do jeito que está para visualizarmos os objetos candidatos.
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].index;
+        i = g_sorted_obj[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && g_sorted_obj[j].value >= g_hotness_threshold){
-            D fprintf(stderr, "[actuator] PMEM, %d, %p, %.2lf, %.2lf\n", \
+            D fprintf(stderr, "\t[actuator - candidates from PMEM] %d, size:%.2lf, llcm:%.2lf, store:%.2lf, tlbm:%.2lf, value:%.2lf\n", \
                     g_tier_manager.obj_vector[i].obj_index, \
-                    g_tier_manager.obj_vector[i].start_addr,\
                     g_tier_manager.obj_vector[i].size/GB,\
+                    g_sorted_obj[j].llcm,\
+                    g_sorted_obj[j].stores,\
+                    g_sorted_obj[j].tlbm, \
                     g_sorted_obj[j].value);
             
-            flag_promotion = 1;
+            size_factor = g_tier_manager.obj_vector[i].size/GB;
+            metric_factor = g_median_metric/g_sorted_obj[j].value;//if median in DRAM is less , so we have value under 1 which means will reduce the size factor
+            factor = size_factor * metric_factor;
+            
+            D fprintf(stderr, "Factor:%.2lf  (Quanto maior o fator pior. Threshold:10)\n", factor);
+            if(factor < 10)
+                flag_promotion = 1;
+            //break we can break if exist at least one
         }
     }
     
     return flag_promotion;
 }
-        
 int check_candidates_to_demotion(void){
     int i;
     int j;
     int flag_demotion = 0;
     
     for(j=MAX_OBJECTS-1;j>=0;j--){
-        i = g_sorted_obj[j].index;
+        i = g_sorted_obj[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_sorted_obj[j].value < g_hotness_threshold){
             flag_demotion = 1;
             break;
@@ -304,7 +393,7 @@ void policy_promotion(void){
     unsigned long nodemask;
     int num_obj_promoted=0;
     float metric_value;
-    double free_dram_space = g_current_free_dram_space;
+    double free_dram_space = g_start_free_DRAM;
     struct timespec timestamp;
 
     
@@ -314,15 +403,15 @@ void policy_promotion(void){
     //D fprintf(stderr, "[actuator] ANTES promotion free_dram:%.2lf, used_dram:%.2lf\n", free_dram_space, g_current_dram_consumption);
     
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].index;
+        i = g_sorted_obj[j].key;
         
         metric_value = g_sorted_obj[j].value;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && metric_value > g_hotness_threshold){
         //if(g_tier_manager.obj_vector[i].alloc_flag  == 1 && g_tier_manager.obj_vector[i].status == NODE_0_PMEM && llcm > g_hotness_threshold){
             if ((g_tier_manager.obj_vector[i].size/GB) < free_dram_space){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
-                D fprintf(stderr, "[actuator] %lu.%lu, Promotion obj: %d, %p\n",timestamp.tv_sec, timestamp.tv_nsec,i, g_tier_manager.obj_vector[i].start_addr);
-                my_send_bind(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_DRAM, i);
+                D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec,i, metric_value, g_sorted_obj[j].stores, g_sorted_obj[j].tlbm);
+                bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_DRAM, i);
                 g_tier_manager.obj_status[i] = NODE_0_DRAM;
                 
                 free_dram_space -= g_tier_manager.obj_vector[i].size/GB;
@@ -331,12 +420,10 @@ void policy_promotion(void){
         }
     }
     
-    D fprintf(stderr, "[actuator] Total Promoted:%d, free_dram:%.2lf, used_dram:%.2lf\n\n", num_obj_promoted,  free_dram_space, g_current_dram_consumption + (g_current_free_dram_space - free_dram_space));
-    fflush(stderr);
+    D fprintf(stderr, "\t[actuator - promotion] Total Promoted:%d\n", num_obj_promoted);
     update_dram_consumption();
     
 }
-
 int calculate_total_active_pages(unsigned long int addr, unsigned long int size, int node_to_count){
     int status_memory_pages[4]={0,0,0,0};
     
@@ -390,24 +477,23 @@ int calculate_total_active_pages(unsigned long int addr, unsigned long int size,
     }
     return status_memory_pages[node_to_count];
 }
-        
 //Chamada mesmo quando existe espaço na DRAM. A ideia é remover cold objetos da DRAM e evitar memory pressure.
 void policy_demotion_cold_objects(void){
     int i;
     int j;
     int count_obj_demoted = 0;
     double free_dram = 0;
-    double current_free_dram = g_current_free_dram_space;
+    double current_free_dram = g_start_free_DRAM;
     struct timespec timestamp;
     
     
     for(j=MAX_OBJECTS-1;j>=0;j--){
-        i = g_sorted_obj[j].index;
+        i = g_sorted_obj[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
             if(g_sorted_obj[j].value < g_hotness_threshold){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
-                D fprintf(stderr, "[actuator] %lu.%lu, Demotion obj: %d, %p\n",timestamp.tv_sec, timestamp.tv_nsec,i, g_tier_manager.obj_vector[i].start_addr);
-                my_send_bind(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_PMEM, i);
+                D fprintf(stderr, "\t[actuator - demotion 1] %lu.%lu, Demotion obj: %d\n",timestamp.tv_sec, timestamp.tv_nsec,i);
+                bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_PMEM, i);
                 g_tier_manager.obj_status[i] = NODE_0_PMEM;
                 count_obj_demoted++;
                 free_dram += g_tier_manager.obj_vector[i].size/GB;
@@ -416,14 +502,10 @@ void policy_demotion_cold_objects(void){
             }
         }
     }
-    D fprintf(stderr, "[actuator] Total Demoted:%d, free_dram:%.2lf, used_dram:%.2lf\n\n",\
-              count_obj_demoted,\
-              g_current_free_dram_space + free_dram, \
-              g_current_dram_consumption - free_dram);
+    D fprintf(stderr, "\t[actuator - demotion 1] Total Demoted:%d\n", count_obj_demoted);
 
     update_dram_consumption();
 }
-        
 int decide_demotion_based_on_cost_benefit(int *list_obj_index, int pmem_candidate_index, float gain_metric_factor){
     int i=0;
     int index;
@@ -449,9 +531,6 @@ int decide_demotion_based_on_cost_benefit(int *list_obj_index, int pmem_candidat
     //fprintf(stderr, "Total Active Pages on PMEM:%d , Stores:%.2f\n", sum_pages_pmem, sum_stores_pmem);
     return 1;
 }
-
-
-        
 //Chamada quando não tem espaço na DRAM
 int policy_demotion_memory_pressure(void){
     int i;
@@ -473,16 +552,16 @@ int policy_demotion_memory_pressure(void){
     pmem_candidate_index = -1;
     
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].index;
+        i = g_sorted_obj[j].key;
         
         if(g_sorted_obj[j].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
             //pmem_candidate_size = g_sorted_obj[j].value;
             pmem_candidate_size = g_tier_manager.obj_vector[i].size/GB;
-            if(pmem_candidate_size < g_dram_capacity){
+            if(pmem_candidate_size < (g_start_free_DRAM - g_current_dram_consumption)){
                 pmem_candidate_metric = g_sorted_obj[j].value;
                 pmem_candidate_index = i;
                 
-                D fprintf(stderr, "\n[actuator] Demotion PMEM candidate index to promotion:%d, %.2lf, size:%.2lf\n", i, pmem_candidate_metric, pmem_candidate_size);
+                D fprintf(stderr, "\t[actuator - demotion 2] Demotion PMEM candidate index to promotion:%d, %.2lf, size:%.2lf\n", i, pmem_candidate_metric, pmem_candidate_size);
                 break;
             }
         }
@@ -497,14 +576,14 @@ int policy_demotion_memory_pressure(void){
     cont = 0;
     //Stay in the loop until achieve space necessary to move PMEM object candidate
     for(j=MAX_OBJECTS-1; j>= 0; j--){
-        i = g_sorted_obj[j].index;
+        i = g_sorted_obj[j].key;
         
         curr_metric = g_sorted_obj[j].value;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
             sum_metric_candidates_demotion += curr_metric;
             pmem_candidate_size -= g_tier_manager.obj_vector[i].size/GB;
             list_obj_index[cont] = i;
-            //fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", cont, g_tier_manager.obj_vector[i].index_id,\
+            //fprintf(stderr, "list_obj_index[%d] = %d \t addr: %p, size:%.4lf\n", cont, g_tier_manager.obj_vector[i].key_id,\
                         g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size/GB);
             cont++;
             if(pmem_candidate_size <= 0){
@@ -533,9 +612,9 @@ int policy_demotion_memory_pressure(void){
                 curr_index = list_obj_index[cont];
                 
                 clock_gettime(CLOCK_REALTIME, &timestamp);
-                D fprintf(stderr, "[actuator] %lu.%lu, Demotion obj: %d, %p\n",timestamp.tv_sec, timestamp.tv_nsec, curr_index, g_tier_manager.obj_vector[curr_index].start_addr);
+                D fprintf(stderr, "\t[actuator - demotion 2] %lu.%lu, Demotion obj: %d, %p\n",timestamp.tv_sec, timestamp.tv_nsec, curr_index, g_tier_manager.obj_vector[curr_index].start_addr);
                 
-                my_send_bind(g_tier_manager.obj_vector[curr_index].start_addr, g_tier_manager.obj_vector[curr_index].size, NODE_0_PMEM, curr_index);
+                bind_order(g_tier_manager.obj_vector[curr_index].start_addr, g_tier_manager.obj_vector[curr_index].size, NODE_0_PMEM, curr_index);
                 g_tier_manager.obj_status[curr_index] = NODE_0_PMEM;
          
                 cont++;
@@ -547,7 +626,7 @@ int policy_demotion_memory_pressure(void){
     //    D fprintf(stderr,"Sum of all objs from DRAM has more value (%.2lf) than Top1 from PMEM (%.2lf)!!\n",sum_metric_candidates_demotion, pmem_candidate_metric);
     //}
     
-    D fprintf(stderr, "[actuator] Total Demoted:%d\n", num_obj_demoted);
+    D fprintf(stderr, "\t[actuator - demotion 2] Total Demoted:%d\n", num_obj_demoted);
     update_dram_consumption();
     
 }
@@ -587,10 +666,10 @@ void check_migration_error(void){
                         //D fprintf(stderr, " - record undone to object:%d\n", i);
                         if(buf.nodemask_target_node == 1){
                             g_tier_manager.obj_status[i] = NODE_0_PMEM;
-                            D fprintf(stderr, "record undone to PMEM\n");
+                            D fprintf(stderr, "record undone to PMEM, obj_index:%d\n", i);
                         }else if(buf.nodemask_target_node == 4){
                             g_tier_manager.obj_status[i] = NODE_0_DRAM;
-                            D fprintf(stderr, "record undone to DRAM\n");
+                            D fprintf(stderr, "record undone to DRAM, obj_index:%d\n", i);
                         }
                     }
                 }
@@ -598,80 +677,146 @@ void check_migration_error(void){
             num_read = read(g_pipe_read_fd, &buf, sizeof(data_bind_t));
         }
     }
-    update_dram_consumption();
+    //update_dram_consumption();
 }
 
-void open_pipes(void){
+void open_pipes(){
 
     char FIFO_PATH_MIGRATION[50];
     char FIFO_PATH_MIGRATION_ERROR[50];
     
     //sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", g_tier_manager.pids_to_manager[0]);
-    sprintf(FIFO_PATH_MIGRATION, "migration.%d", g_tier_manager.pids_to_manager[0]);
+    sprintf(FIFO_PATH_MIGRATION, "migration_%d.pipe", g_app_pid);
     //guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
     g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION, O_WRONLY), "[actuator] Could not open pipe MIGRATION for writing");
 
     sleep(1); //time to preload create the named pipe;
     
     //sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", g_tier_manager.pids_to_manager[0]);
-    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error.%d", g_tier_manager.pids_to_manager[0]);
+    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error_%d.pipe", g_app_pid);
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_RDONLY | O_NONBLOCK), "[actuator] Could not open pipe MIGRATION_ERROR for reading");
 }
+        
+void get_current_memory_system(float *dram_page_cache, float *pmem_page_cache, float *app_dram_usage, float *app_pmem_usage){
+    /*
+     usually if we use default paramters system, this code will give this error: "Too many open files"
+     To fix: #nano /etc/security/limits.conf
+             Add theses lines:
+                * hard nofile 97816
+                * soft nofile 97816
+     */
+    char buf1[256];
+    char buf2[256];
+    char buf3[256];
+    char cmd1[256];
+    char cmd2[256];
+    char cmd3[256];
+    float page_cache_active;
+    float page_cache_inactive;
+    int dram_usage;
+    int pmem_usage;
+    
+    FILE *stream_file1;
+    FILE *stream_file2;
+    FILE *stream_file3;
+
+    sprintf(cmd1, "grep \"Active(file)\\|Inactive(file)\" /sys/devices/system/node/node0/meminfo | awk '{print $(NF-1)}' | datamash transpose ");
+    sprintf(cmd2, "grep \"Active(file)\\|Inactive(file)\" /sys/devices/system/node/node2/meminfo | awk '{print $(NF-1)}' | datamash transpose ");
+    sprintf(cmd3, "numastat -p %d -c | grep Private | awk '{print $2,$4}' ", g_app_pid);
+
+    if (NULL == (stream_file1 = popen(cmd1, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
+    }
+    fgets(buf1, sizeof(buf1), stream_file1);
+    sscanf(buf1, "%f %f",&page_cache_active, &page_cache_inactive);
+    
+    *dram_page_cache = (page_cache_active/1000000) + (page_cache_inactive/1000000) ;
+    
+    if (NULL == (stream_file2 = popen(cmd2, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
+    }
+    fgets(buf2, sizeof(buf2), stream_file2);
+    sscanf(buf2, "%f %f",&page_cache_active, &page_cache_inactive);
+
+    *pmem_page_cache = (page_cache_active/1000000) + (page_cache_inactive/1000000) ;
+    
+    if (NULL == (stream_file3 = popen(cmd3, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
+    }
+    fgets(buf3, sizeof(buf3), stream_file3);
+    sscanf(buf3, "%d %d",&dram_usage, &pmem_usage);
+    
+    *app_dram_usage = dram_usage/1000.0;
+    *app_pmem_usage = pmem_usage/1000.0;
+    
+    fclose(stream_file1);
+    fclose(stream_file2);
+    fclose(stream_file3);
+}
+
+        
 void *thread_actuator(void *_args){
     int i,j;
     int flag_promotion;
     int flag_demotion;
-    struct timespec start, end;
+    struct timespec start;
+    struct timespec end;
+    float dram_page_cache;
+    float pmem_page_cache;
+    float app_dram_usage;
+    float app_pmem_usage;
+    FILE *fptr;
     
-    open_pipes();
-    
-    /*
-    while(1){
-        check_initial_dataplacement_and_desalocations();
-        //check_migration_error();
-        
-        float usage = g_current_dram_consumption/g_dram_capacity;
-        if(usage > 0.75){
-            break;
+   
+    while(g_app_pid == -1){
+        fptr = fopen("pid.txt", "r");
+        if(fptr != NULL )
+        {
+            fscanf(fptr, "%d", &g_app_pid);
+            fseek(fptr, 0, SEEK_SET);
         }
-        D fprintf(stderr, "USAGE:%f (DRAM) %f (PMEM) %f\n", usage, g_current_dram_consumption, g_current_pmem_consumption);
-        sleep(g_actuator_interval);
     }
-    */
     
-    while(g_running){
+    sleep(1);
+    open_pipes();
+    set_current_free_dram();
         
+    while(g_running){
         check_initial_dataplacement_and_desalocations();
         check_migration_error();
         
-        sort_objects();
+        sort_objects2();
         flag_promotion = check_candidates_to_promotion();
         
-        if(flag_promotion == 1 && g_current_free_dram_space > 0)  {
+        if(flag_promotion == 1 && g_start_free_DRAM > 0)  {
             policy_promotion();//move top objects from PMEM to DRAM
             check_migration_error();
             D fprintf(stderr, "\n");
         }
         
-        sort_objects();
-        //Essa e a primeira forma de demotion. Remover antigos objetos hots. Ou seja, remover objetos colds.
         
-        flag_demotion = check_candidates_to_demotion();
-        if(flag_demotion == 1){
-            policy_demotion_cold_objects();
-            D fprintf(stderr, "\n");
-        }
-         
+        //Essa e a primeira forma de demotion. Remover antigos objetos hots. Ou seja, remover objetos colds.
+        //Poderia pensar em algo do tipo , se ele for marcado por 5 iterações consecutivas sem atividade
+        
+        //sort_objects();
+        //flag_demotion = check_candidates_to_demotion();
+        //if(flag_demotion == 1){
+        //    policy_demotion_cold_objects();
+            //D fprintf(stderr, "\n");
+        //}
         
         //Esse segundo modo é quando a memória está próxima do limite. Nesse caso, faz-se troca de objetos mais hots por menos hots.
-        if(g_current_free_dram_space <= g_minimum_space_to_active_downgrade){
+        
+        if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
             policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
             check_migration_error();
-            D fprintf(stderr, "\n");
+            //D fprintf(stderr, "\n");
         }
-        
         sleep(g_actuator_interval);
-        D fprintf(stderr, "usage %.2lf %.2lf\n", g_current_dram_consumption, g_current_pmem_consumption);
+        
     }//while end
 }
 

@@ -52,7 +52,7 @@ static int g_num_nodes_available;
 extern int g_hotness_threshold;//When this value is very low,we have errors in numa_move_pages()
 
 struct key_value{
-    int index;
+    int key;
     double value;
 };
 
@@ -134,7 +134,7 @@ int open_output_file(void){
     //sprintf(filename, "/tmp/track_mapping.txt");
     g_fp = fopen(filename, "w");
     if(g_fp == NULL){
-        fprintf(stderr, "Error while trying to open track decisions\n");
+        fprintf(stderr, "[track_mapping] Error while trying to open track decisions\n");
         perror(filename);
         return -1;
     }else{
@@ -165,14 +165,14 @@ static double get_hotness_metric(int obj_index){
     double all_tlb_miss = 0;
     int i;
     for(i=0; i<MEM_LEVELS;i++){
-        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.TLB_miss[i];
+        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.tlb_miss[i];
     }
     return all_tlb_miss;
 #elif METRIC == METRIC_TLB_MISS_PER_SIZE
     double all_tlb_miss = 0;
     int i;
     for(i=0; i<MEM_LEVELS;i++){
-        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.TLB_miss[i];
+        all_tlb_miss += g_tier_manager.obj_vector[obj_index].metrics.tlb_miss[i];
     }
     return all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
 #elif METRIC == METRIC_ABS_WRITE
@@ -202,7 +202,7 @@ static void sort_objects(void){
     int aux;
     
     for(i=0;i<MAX_OBJECTS;i++){
-        g_key_value.index = i;
+        g_key_value.key = i;
         g_key_value.value = get_hotness_metric(i);
         g_sorted_obj[i] = g_key_value;
     }
@@ -226,7 +226,7 @@ int register_on_file(int interval, int index, unsigned long int addr, float size
         status_memory_pages[i] = 0;
     }
 }
-void check_and_register_decisions(int pid, float *status_memory_pages){
+void check_and_register_decisions(int app_pid, float *status_memory_pages){
     int i;
     int j;
     static int counter=0;
@@ -235,12 +235,12 @@ void check_and_register_decisions(int pid, float *status_memory_pages){
     counter++;
     
     for(j=0;j<MAX_OBJECTS;j++){
-        //i = g_sorted_obj[j].index;
+        //i = g_sorted_obj[j].key;
         metric_value = get_hotness_metric(j);
         //if(g_tier_manager.obj_alloc[i] == 1 && g_sorted_obj[j].value >= g_hotness_threshold){
         if(g_tier_manager.obj_alloc[j] == 1 && metric_value >= g_hotness_threshold){
 
-            query_status_memory_pages(pid, \
+            query_status_memory_pages(app_pid, \
                                       g_tier_manager.obj_vector[j].start_addr, \
                                       g_tier_manager.obj_vector[j].size, \
                                       status_memory_pages);
@@ -257,7 +257,9 @@ void check_and_register_decisions(int pid, float *status_memory_pages){
 }
 void *thread_track_mapping(void *_args){
     float *status_memory_pages = NULL;//The last position is to save unmapped pages
-    int pid = g_tier_manager.pids_to_manager[0];//I'm assuming only one single application to monitor
+    //int pid = g_tier_manager.pids_to_manager[0];//I'm assuming only one single application to monitor
+    int app_pid=-1;
+    FILE *fptr;
     
     //calculate the total number of numa nodes
     set_number_of_nodes_availables();
@@ -272,9 +274,19 @@ void *thread_track_mapping(void *_args){
         exit(-1);
     }
     
+    while(app_pid == -1){
+        fptr = fopen("pid.txt", "r");
+        if(fptr != NULL )
+        {
+            fscanf(fptr, "%d", &app_pid);
+            fseek(fptr, 0, SEEK_SET);
+        }
+    }
+    
+    
     while(g_running){
         //sort_objects();
-        check_and_register_decisions(pid, status_memory_pages);
+        check_and_register_decisions(app_pid, status_memory_pages);
         sleep(g_track_mapping_interval);
         
     }

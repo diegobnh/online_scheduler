@@ -85,9 +85,10 @@ void init_lib(void)
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
    if(fd != -1)
    {
+       D fprintf(stderr, "[preload] creating thread_mbind\n");
        pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
    }else{
-       fprintf(stderr, "[preload] PID: %d trying to create thread mbind. Has shared memory been removed?\n", getpid());
+       D fprintf(stderr, "[preload] PID: %d trying to create thread mbind. Has shared memory been removed?\n", getpid());
    }
 }
 
@@ -173,7 +174,8 @@ void execute_mbind(data_bind_t data)
     
     if (mbind((void *)data.start_addr,
               data.size,
-              MPOL_BIND, &data.nodemask_target_node,
+              MPOL_BIND, &data.nodemask_target_node,  //avoiding to invoke the OOM killer
+              //MPOL_PREFERRED, &data.nodemask_target_node,
               64,
               MPOL_MF_MOVE) == -1)
     {
@@ -202,13 +204,29 @@ void execute_mbind(data_bind_t data)
         count++;
     }
 }
+
+
+void open_pipes(void)
+{
+    char FIFO_PATH_MIGRATION[50] ;
+    char FIFO_PATH_MIGRATION_ERROR[50] ;
+
+    sprintf(FIFO_PATH_MIGRATION, "migration_%d.pipe", getpid());
+    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error_%d.pipe", getpid());
+    
+    guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
+    g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION, O_RDONLY), "[preload] Could not open pipe MIGRATION for reading");
+
+    guard(mkfifo(FIFO_PATH_MIGRATION_ERROR, 0777), "Could not create pipe");
+    g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_WRONLY), "[preload] Could not open pipe MIGRATION_ERROR for writing");
+}
+
+
 void *thread_manager_mbind(void * _args){
     int i;
     char filename[50];
     float *status_memory_pages_before = NULL;//The last position is to save unmapped pages
     float *status_memory_pages_after = NULL;//The last position is to save unmapped pages
-    char FIFO_PATH_MIGRATION[50];
-    char FIFO_PATH_MIGRATION_ERROR[50];
     
     set_number_of_nodes_availables();
     
@@ -227,17 +245,7 @@ void *thread_manager_mbind(void * _args){
         perror(filename);
     }
     
-    //sprintf(FIFO_PATH_MIGRATION, "/tmp/migration.%d", getpid());
-    //sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", getpid());
-    sprintf(FIFO_PATH_MIGRATION, "migration.%d", getpid());
-    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error.%d", getpid());
-
-    
-    guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
-    g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION, O_RDONLY), "[preload] Could not open pipe MIGRATION for reading");
-
-    guard(mkfifo(FIFO_PATH_MIGRATION_ERROR, 0777), "Could not create pipe");
-    g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_WRONLY), "[preload] Could not open pipe MIGRATION_ERROR for writing");
+    open_pipes();
         
     while(g_running){
         data_bind_t buf;
