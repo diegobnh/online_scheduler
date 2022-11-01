@@ -19,18 +19,49 @@ rsync *.h *.c *.sh -avz  -e ssh 'dmoura@h2p.crc.pitt.edu:/ihome/dmosse/dmoura/te
 
 '
 
-sudo sleep 3
+if [ $# -lt 1 ] ; then
+    echo "You must passed three arguments!"
+    echo "e.g.  sudo ./run.sh autonuma"
+    echo "e.g.  sudo ./run.sh our_schedule"
+    exit
+fi
 
 #bind this script to run in only one socket . In our case, node 0!
 export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
 
+
+
+function setup_our_schedule_mapping_parameters {
+    sudo sysctl -w kernel.perf_event_max_sample_rate=10000 1> /dev/null
+    sudo sysctl -w kernel.numa_balancing=0 >  /dev/null
+    sudo sh -c "echo false > /sys/kernel/mm/numa/demotion_enabled"
+    sudo sh -c "echo 65536 > /proc/sys/kernel/numa_balancing_rate_limit_mbps"
+    sudo sh -c "echo 0 > /proc/sys/kernel/numa_balancing_wake_up_kswapd_early"
+    sudo sh -c "echo 0 > /proc/sys/kernel/numa_balancing_scan_demoted"
+    sudo sh -c "echo 0 > /proc/sys/kernel/numa_balancing_demoted_threshold"
+    #sudo sh -c "echo false > /sys/kernel/mm/numa/demotion_enabled"
+    sudo sysctl -w vm.vfs_cache_pressure=100 > /dev/null
+    sudo sysctl -w vm.drop_caches=3 > /dev/null
+}
+
+function setup_autonuma_parameters {
+    sudo sysctl -w kernel.perf_event_max_sample_rate=10000 1> /dev/null
+    sudo sysctl -w kernel.numa_balancing=2 >  /dev/null
+    sudo sh -c "echo true > /sys/kernel/mm/numa/demotion_enabled"
+    sudo sh -c "echo 65536 > /proc/sys/kernel/numa_balancing_rate_limit_mbps"
+    sudo sh -c "echo 0 > /proc/sys/kernel/numa_balancing_wake_up_kswapd_early"
+    sudo sh -c "echo 0 > /proc/sys/kernel/numa_balancing_scan_demoted"
+    sudo sh -c "echo 0 > /proc/sys/kernel/numa_balancing_demoted_threshold"
+    #sudo sh -c "echo true > /sys/kernel/mm/numa/demotion_enabled"
+    sudo sysctl -w vm.vfs_cache_pressure=100 > /dev/null
+    sudo sysctl -w vm.drop_caches=3 > /dev/null
+}
+
+
 #Disable address space layout randomization the
 #echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-
-sudo sysctl -w kernel.numa_balancing=2 >  /dev/null
-sudo sh -c 'echo false > /sys/kernel/mm/numa/demotion_enabled'
 
 METRICS=("LLCM_PER_SIZE")
 #METRICS=("ABS_LLCM" "LLCM_PER_SIZE" "ABS_TLB_MISS" "TLB_MISS_PER_SIZE" "ABS_WRITE" "WRITE_PER_SIZE" "ABS_LATENCY" "LATENCY_PER_SIZE")
@@ -97,7 +128,14 @@ for ((j = 0; j < ${#METRICS[@]}; j++)); do
     for i in {1..1}
     do
         #echo -n "."
-        sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
+        if [[ $1 == "autonuma" ]]; then
+            setup_autonuma_parameters
+        elif [[ $1 == "our_schedule" ]] ; then
+            setup_our_schedule_mapping_parameters
+        else
+            echo "Invalid parameter!"
+        fi;
+        
         sleep 3
         sudo rm -f *.txt bind_error_* -f min_max* *.o
         sudo ./delete_shared_memory
