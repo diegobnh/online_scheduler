@@ -122,66 +122,69 @@ function track_info {
     done
 }
 
-for ((j = 0; j < ${#METRICS[@]}; j++)); do
-    #echo -n ${METRICS[$j]}
-    mkdir -p results/${METRICS[$j]}
-    for i in {1..1}
-    do
-        #echo -n "."
-        if [[ $1 == "autonuma" ]]; then
-            setup_autonuma_parameters
-        elif [[ $1 == "our_schedule" ]] ; then
-            setup_our_schedule_mapping_parameters
-        else
-            echo "Invalid parameter!"
-        fi;
-        
-        sleep 3
-        sudo rm -f *.txt bind_error_* -f min_max* *.o
-        sudo ./delete_shared_memory
-        
-        track_info "bc" "bc_kron" &
-        sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt"  2>&1 &
-        start_threads_pid=$!
-        
-        sleep 3  #if you dont wait, you could lose some mmaps'interception
-        
-        LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g27_k16.sg -n1 1> /dev/null &
 
-        app_pid=$!
-        echo $app_pid > pid.txt
-        
-        #./track_memory_ranges.sh $app_pid ${METRICS[$j]} &
+if [[ $1 == "autonuma" ]]; then
+    setup_autonuma_parameters
+    
+elif [[ $1 == "our_schedule" ]] ; then
+    setup_our_schedule_mapping_parameters
+    
+    for ((j = 0; j < ${#METRICS[@]}; j++)); do
+        #echo -n ${METRICS[$j]}
+        mkdir -p results/${METRICS[$j]}
+        for i in {1..1}
+        do
+            sleep 3
+            sudo rm -f *.txt bind_error_* -f min_max* *.o
+            sudo ./delete_shared_memory
 
-        wait $app_pid
-        sudo kill -10 start_threads
-        wait $start_threads_pid
-        
-        
-        #Organize output files and clean
-        #------------------------------------------------------------------------
-        sleep 3
-        mkdir -p results/${METRICS[$j]}/$app_pid
-        rm -f mem_consumption.txt
-        
-        
-        echo -n "DRAM(max) memfootprint    : " >> mem_consumption.txt
-        cat track_info_bc_kron.csv | awk -F, 'NR>1{print $2}' | datamash max 1 >> mem_consumption.txt
+            track_info "bc" "bc_kron" &
+            sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt"  2>&1 &
+            start_threads_pid=$!
 
-        echo -n "(DRAM + PMEM) memfootprint: " >> mem_consumption.txt
-        cat track_info_bc_kron.csv | awk -F, '{print $2+$3}' | datamash max 1 >> mem_consumption.txt
+            sleep 3  #if you dont wait, you could lose some mmaps'interception
 
-        echo -n "Page Cache DRAM (max)     : " >> mem_consumption.txt
-        cat track_info_bc_kron.csv | awk -F, '{print ($4+$5)/1000}' | datamash max 1 >> mem_consumption.txt
+            LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g27_k16.sg -n1 1> /dev/null &
 
-        #cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
-        cat preload_migration_cost.txt | awk -F, 'NR!=1{print $6}' | tr -d '(ms)' | datamash min 1 max 1 sum 1 > min_max_sum_migration_cost.txt
-        wc -l preload_migration_cost.txt >> min_max_sum_migration_cost.txt
-        mv *.txt *.csv results/${METRICS[$j]}/$app_pid/
-        cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
-        rm *.pipe
-        sleep 10
+            app_pid=$!
+            echo $app_pid > pid.txt
+
+            #./track_memory_ranges.sh $app_pid ${METRICS[$j]} &
+
+            wait $app_pid
+            sudo kill -10 start_threads
+            wait $start_threads_pid
+
+
+            #Organize output files and clean
+            #------------------------------------------------------------------------
+            sleep 3
+            mkdir -p results/${METRICS[$j]}/$app_pid
+            rm -f mem_consumption.txt
+
+
+            echo -n "DRAM(max) memfootprint    : " >> mem_consumption.txt
+            cat track_info_bc_kron.csv | awk -F, 'NR>1{print $2}' | datamash max 1 >> mem_consumption.txt
+
+            echo -n "(DRAM + PMEM) memfootprint: " >> mem_consumption.txt
+            cat track_info_bc_kron.csv | awk -F, '{print $2+$3}' | datamash max 1 >> mem_consumption.txt
+
+            echo -n "Page Cache DRAM (max)     : " >> mem_consumption.txt
+            cat track_info_bc_kron.csv | awk -F, '{print ($4+$5)/1000}' | datamash max 1 >> mem_consumption.txt
+
+            #cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
+            cat preload_migration_cost.txt | awk -F, 'NR!=1{print $6}' | tr -d '(ms)' | datamash min 1 max 1 sum 1 > min_max_sum_migration_cost.txt
+            wc -l preload_migration_cost.txt >> min_max_sum_migration_cost.txt
+            mv *.txt *.csv results/${METRICS[$j]}/$app_pid/
+            cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
+            rm *.pipe
+            sleep 10
+        done
     done
-done
+else
+    echo "Invalid parameter!"
+fi;
+
+
 
 
