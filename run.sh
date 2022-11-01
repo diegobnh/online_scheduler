@@ -11,13 +11,6 @@ if [ $# -lt 1 ] ; then
     exit
 fi
 
-#bind this script to run in only one socket . In our case, node 0!
-export OMP_NUM_THREADS=18
-export OMP_PLACES={0}:18:2
-export OMP_PROC_BIND=true
-
-
-
 function setup_our_schedule_mapping_parameters {
     sudo sysctl -w kernel.perf_event_max_sample_rate=10000 1> /dev/null
     sudo sysctl -w kernel.numa_balancing=0 >  /dev/null
@@ -44,33 +37,6 @@ function setup_autonuma_parameters {
     sudo sysctl -w vm.drop_caches=3 > /dev/null
 }
 
-
-#Disable address space layout randomization the
-#echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-
-METRICS=("LLCM_PER_SIZE")
-#METRICS=("ABS_LLCM" "LLCM_PER_SIZE" "ABS_TLB_MISS" "TLB_MISS_PER_SIZE" "ABS_WRITE" "WRITE_PER_SIZE" "ABS_LATENCY" "LATENCY_PER_SIZE")
-
-mkdir -p results
-#rm -rf results/*
-
-#Initial Dataplacement Options
-#1 - ROUND_ROBIN
-#2 - RANDOM
-#3 - FIRST_DRAM
-#4 - FIRST_PMEM
-#5 - BASED ON SIZE
-
-gcc -o delete_shared_memory delete_shared_memory.c -lrt
-gcc -O2 -g -c recorder.c -lpthread;
-gcc -O2 -I/include -g -c intercept_mmap.c -lpthread;
-gcc -O2 -I/include -g -c monitor.c hashmap.c -lrt -lm -lpfm -lpthread -lperf;
-gcc -O2 -g -c track_mapping.c -DMETRIC=1 -lpthread -lnuma
-gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=4 -DMETRIC=2 -lpthread -lnuma
-gcc -O2 -o start_threads start_threads.c recorder.o monitor.o hashmap.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
-gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnuma;
-gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
-
 function track_info {
     rm -rf track_info*
     #While application dosen't exist, we continue in this loop
@@ -96,7 +62,6 @@ function track_info {
         timestamp=$(awk '{print $1}' /proc/uptime)
         memory=$(numastat -p $app_pid -c | grep Private | awk '{printf "%s,%s\n", $2,$4}')
         dram_page_cache=$(grep "Active(file)\|Inactive(file)" /sys/devices/system/node/node0/meminfo | awk '{print $(NF-1)}' | datamash transpose | awk '{printf "%s,%s\n", $1, $2}')
-        
         echo $timestamp","$memory","$dram_page_cache >> $track_info
     else
         sed -i '$ d' $track_info   #Remove the last line. Usally some column is empty
@@ -106,71 +71,88 @@ function track_info {
     done
 }
 
+function postprocess_track_info {
+    sleep 3
+    rm -f mem_consumption.txt
+
+    echo -n "memfootprint: " >> mem_consumption.txt
+    cat track_info_*.csv | awk -F, '{print $2+$3}' | datamash max 1 >> mem_consumption.txt
+
+    start=$(head -n2 track_info_bc_kron.csv | awk -F, 'NR>1{print $1}')
+    end=$(tail -n1 track_info_bc_kron.csv | awk -F, '{print $1}')
+
+    echo $start,$end | awk -F, '{print $2-$1}' > exec_time.txt
+}
+
+METRICS=("LLCM_PER_SIZE")
+#METRICS=("ABS_LLCM" "LLCM_PER_SIZE" "ABS_TLB_MISS" "TLB_MISS_PER_SIZE" "ABS_WRITE" "WRITE_PER_SIZE" "ABS_LATENCY" "LATENCY_PER_SIZE")
+
+mkdir -p results
+rm -f migration_*.pipe
+
+#Initial Dataplacement Options
+#1 - ROUND_ROBIN
+#2 - RANDOM
+#3 - FIRST_DRAM
+#4 - FIRST_PMEM
+#5 - BASED ON SIZE
+
+#bind this script to run in only one socket . In our case, node 0!
+export OMP_NUM_THREADS=18
+export OMP_PLACES={0}:18:2
+export OMP_PROC_BIND=true
+
+gcc -o delete_shared_memory delete_shared_memory.c -lrt
+gcc -O2 -g -c recorder.c -lpthread;
+gcc -O2 -I/include -g -c intercept_mmap.c -lpthread;
+gcc -O2 -I/include -g -c monitor.c hashmap.c -lrt -lm -lpfm -lpthread -lperf;
+gcc -O2 -g -c track_mapping.c -DMETRIC=1 -lpthread -lnuma
+gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=4 -DMETRIC=2 -lpthread -lnuma
+gcc -O2 -o start_threads start_threads.c recorder.o monitor.o hashmap.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
+gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnuma;
+gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
+
+
 
 if [[ $1 == "autonuma" ]]; then
     setup_autonuma_parameters
     track_info "bc" "bc_kron" &
-	/scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g27_k16.sg -n1 1> /dev/null
-    
+	/mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
+    app_pid=$!
+    wait $app_pid
+    mkdir -p results/autonuma/$app_pid
+    postprocess_track_info
+    mv mem_consumption.txt results/autonuma/$app_pid
+    mv track_info* exec_time.txt results/autonuma/$app_pid
 elif [[ $1 == "our_schedule" ]] ; then
     setup_our_schedule_mapping_parameters
-    
-    for ((j = 0; j < ${#METRICS[@]}; j++)); do
-        #echo -n ${METRICS[$j]}
-        mkdir -p results/${METRICS[$j]}
-        for i in {1..1}
-        do
-            sleep 3
-            sudo rm -f *.txt bind_error_* -f min_max* *.o
-            sudo ./delete_shared_memory
+    mkdir -p results/our_schedule/
+    for i in {1..1}
+    do
+        sleep 3
+        sudo rm -f *.txt bind_error_* -f min_max* *.o
+        sudo ./delete_shared_memory
 
-            track_info "bc" "bc_kron" &
-            sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt"  2>&1 &
-            start_threads_pid=$!
+        track_info "bc" "bc_kron" &
+        sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt"  2>&1 &
+        start_threads_pid=$!
 
-            sleep 3  #if you dont wait, you could lose some mmaps'interception
+        sleep 3  #if you dont wait, you could lose some mmaps'interception
+        echo "starting the preload"
+        LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
 
-            LD_PRELOAD=$(pwd)/preload.so /scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g27_k16.sg -n1 1> /dev/null &
+        app_pid=$!
+        #echo $app_pid > pid.txt
 
-            app_pid=$!
-            echo $app_pid > pid.txt
+        wait $app_pid
+        sudo kill -10 start_threads
+        wait $start_threads_pid
 
-            #./track_memory_ranges.sh $app_pid ${METRICS[$j]} &
-
-            wait $app_pid
-            sudo kill -10 start_threads
-            wait $start_threads_pid
-
-
-            #Organize output files and clean
-            #------------------------------------------------------------------------
-            sleep 3
-            mkdir -p results/${METRICS[$j]}/$app_pid
-            rm -f mem_consumption.txt
-
-
-            echo -n "DRAM(max) memfootprint    : " >> mem_consumption.txt
-            cat track_info_bc_kron.csv | awk -F, 'NR>1{print $2}' | datamash max 1 >> mem_consumption.txt
-
-            echo -n "(DRAM + PMEM) memfootprint: " >> mem_consumption.txt
-            cat track_info_bc_kron.csv | awk -F, '{print $2+$3}' | datamash max 1 >> mem_consumption.txt
-
-            echo -n "Page Cache DRAM (max)     : " >> mem_consumption.txt
-            cat track_info_bc_kron.csv | awk -F, '{print ($4+$5)/1000}' | datamash max 1 >> mem_consumption.txt
-
-            #cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
-            cat preload_migration_cost.txt | awk -F, 'NR!=1{print $6}' | tr -d '(ms)' | datamash min 1 max 1 sum 1 > min_max_sum_migration_cost.txt
-            wc -l preload_migration_cost.txt >> min_max_sum_migration_cost.txt
-            mv *.txt *.csv results/${METRICS[$j]}/$app_pid/
-            cp bind_error_* results/${METRICS[$j]}/$app_pid 2>/dev/null
-            rm *.pipe
-            sleep 10
-        done
+        mkdir -p results/our_schedule/$app_pid
+        postprocess_track_info
+        mv mem_consumption.txt results/our_schedule/$app_pid
+        mv track_info* exec_time.txt results/our_schedule/$app_pid
     done
 else
     echo "Invalid parameter!"
 fi;
-
-
-
-
