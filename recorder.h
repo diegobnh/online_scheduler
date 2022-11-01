@@ -7,11 +7,7 @@
 #include <limits.h>
 
 #define MAX_OBJECTS 5000
-//#define CHUNK_SIZE 10000003072UL ////10GB aligned in pages of 4kb - The size is in bytes
-//#define CHUNK_SIZE 1000001536UL  //1GB
-//#define CHUNK_SIZE 1073741824UL //1GB usando potencia de 2
-//#define CHUNK_SIZE 2000003072UL //2GB
-#define CHUNK_SIZE 4000002048UL  //4GB
+#define CHUNK_SIZE 1000001536UL  //1GB
 #define MEM_LEVELS 5
 
 //#define GB 1e9
