@@ -125,6 +125,8 @@ function track_info {
 
 if [[ $1 == "autonuma" ]]; then
     setup_autonuma_parameters
+    track_info "bc" "bc_kron" &
+	/scratch/gapbs/./bc -f /ihome/dmosse/dmoura/datasets/kron_g27_k16.sg -n1 1> /dev/null
     
 elif [[ $1 == "our_schedule" ]] ; then
     setup_our_schedule_mapping_parameters
