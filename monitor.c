@@ -18,13 +18,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
 #include <pthread.h>
+#include "hashmap.h"
 #include "recorder.h"
 #define MMAP_DATA_SIZE 1024
 #define ALPHA 0.33
 #define MONITOR_INTERVAL 0.1
 
+int address_compare(const void *a, const void *b, void *udata) ;
+bool addr_iter(const void *item, void *udata);
+uint64_t address_hash(const void *item, uint64_t seed0, uint64_t seed1);
 
 //#define DEBUG
 #ifdef DEBUG
@@ -38,12 +41,36 @@ extern tier_manager_t g_tier_manager;
 extern volatile sig_atomic_t g_running;
 tier_manager_t g_tier_manager_copy;
 
+struct hashmap *g_hashmap;
+
+int address_compare(const void *a, const void *b, void *udata) {
+    const unsigned long *ua = a;
+    const unsigned long *ub = b;
+    if(ua == ub){
+       return 1;
+    }else{
+       return 0;
+    }
+}
+
+bool addr_iter(const void *item, void *udata) {
+    const unsigned long *addr = item;
+    printf("0x%lx\n", addr);
+    return true;
+}
+
+uint64_t address_hash(const void *item, uint64_t seed0, uint64_t seed1) {
+    const unsigned long *addr = item;
+    return hashmap_sip(addr, sizeof(addr), seed0, seed1);
+}
+
+
+
 void update_metrics(void){
     int i, j;
     struct timespec start, end;
     double old_value;
     double curr_value;
-    
     
     for(i=0; i< MAX_OBJECTS; i++){
         if(g_tier_manager.obj_alloc[i] == 1){
@@ -56,22 +83,22 @@ void update_metrics(void){
                 old_value = g_tier_manager.obj_vector[i].metrics.loads_count[j];
                 g_tier_manager.obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                curr_value = g_tier_manager_copy.obj_vector[i].metrics.TLB_hit[j];
-                old_value = g_tier_manager.obj_vector[i].metrics.TLB_hit[j];
-                g_tier_manager.obj_vector[i].metrics.TLB_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                curr_value = g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j];
+                old_value = g_tier_manager.obj_vector[i].metrics.tlb_hit[j];
+                g_tier_manager.obj_vector[i].metrics.tlb_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
                 
-                curr_value = g_tier_manager_copy.obj_vector[i].metrics.TLB_miss[j];
-                old_value = g_tier_manager.obj_vector[i].metrics.TLB_miss[j];
-                g_tier_manager.obj_vector[i].metrics.TLB_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                curr_value = g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j];
+                //old_value = g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
+                //g_tier_manager.obj_vector[i].metrics.tlb_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                g_tier_manager.obj_vector[i].metrics.tlb_miss[j] += curr_value;
                 
             }
             curr_value = g_tier_manager_copy.obj_vector[i].metrics.stores_count;
-            old_value = g_tier_manager.obj_vector[i].metrics.stores_count;
-            g_tier_manager.obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-            
+            //old_value = g_tier_manager.obj_vector[i].metrics.stores_count;
+            //g_tier_manager.obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+            g_tier_manager.obj_vector[i].metrics.stores_count += curr_value;
         }
     }
-    
 }
 void clear_metrics(void){
     int i;
@@ -81,12 +108,11 @@ void clear_metrics(void){
         for(j=0 ; j< MEM_LEVELS; j++){
             g_tier_manager_copy.obj_vector[i].metrics.sum_latency_cost[j] = 0;
             g_tier_manager_copy.obj_vector[i].metrics.loads_count[j] = 0;
-            g_tier_manager_copy.obj_vector[i].metrics.TLB_hit[j] = 0;
-            g_tier_manager_copy.obj_vector[i].metrics.TLB_miss[j] = 0;
+            g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j] = 0;
+            //g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j] = 0;
         }
-        g_tier_manager_copy.obj_vector[i].metrics.stores_count = 0;
+        //g_tier_manager_copy.obj_vector[i].metrics.stores_count = 0;
     }
-
 }
 int get_vector_index(long long chave){
     int i;
@@ -411,6 +437,9 @@ void *thread_monitor(void *_args){
     int tlb_type;
     int i, j, w;
     
+    unsigned long *result;
+    
+    g_hashmap = hashmap_new(sizeof(unsigned long), 0, 0, 0, address_hash, address_compare, NULL, NULL);
         
     int curr_err = pfm_initialize();
     if (curr_err != PFM_SUCCESS) {
@@ -553,32 +582,33 @@ void *thread_monitor(void *_args){
                     	if (is_served_by_local_NA_miss(data_src)) {
                 	    	mem_level = -1;
                 		}
-                		if (is_served_by_local_cache1(data_src)) {
+                		else if (is_served_by_local_cache1(data_src)) {
                     		mem_level = 0;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[0]++;
                             D fprintf(stderr, "Load on L1\n");
                 		}
-                		if (is_served_by_local_lfb(data_src)) {
+                		else if (is_served_by_local_lfb(data_src)) {
                     		mem_level = 1;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[1]++;
                             D fprintf(stderr, "Load on LFB\n");
               		  	}
-                		if (is_served_by_local_cache2(data_src)) {
+                		else if (is_served_by_local_cache2(data_src)) {
                     		mem_level = 2;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[2]++;
                             D fprintf(stderr, "Load on L2\n");
                 		}
-                		if (is_served_by_local_cache3(data_src)) {
+                		else if (is_served_by_local_cache3(data_src)) {
                     		mem_level = 3;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[3]++;
                             D fprintf(stderr, "Load on L3\n");
                 		}
-                		if (is_served_by_local_memory(data_src)) {
+                		else if (is_served_by_local_memory(data_src)) {
                     		mem_level = 4;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
                             D fprintf(stderr, "Load on DRAM\n");
                 		}
-                        if (is_served_by_local_pmem(data_src)) {
+                        else if (is_served_by_remote_memory(data_src)) {
+                        //else if (is_served_by_local_pmem(data_src)) {
                             mem_level = 4;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
                             D fprintf(stderr, "Load on PMEM\n");
@@ -587,10 +617,10 @@ void *thread_monitor(void *_args){
                 		if(mem_level != -1){
                 			tlb_type = get_data_src_dtlb(data_src);
                 			if(tlb_type == 1){
-                                g_tier_manager_copy.obj_vector[vector_index].metrics.TLB_hit[mem_level]++;
+                                g_tier_manager_copy.obj_vector[vector_index].metrics.tlb_hit[mem_level]++;
                                 g_tier_manager_copy.obj_vector[vector_index].metrics.sum_latency_cost[mem_level] += weight;
                 			}else if(tlb_type == 2){
-                                g_tier_manager_copy.obj_vector[vector_index].metrics.TLB_miss[mem_level]++;
+                                g_tier_manager_copy.obj_vector[vector_index].metrics.tlb_miss[mem_level]++;
                                 g_tier_manager_copy.obj_vector[vector_index].metrics.sum_latency_cost[mem_level] += weight;
                             }else{
                                 fprintf(stderr, "get_data_src_dtlb() is returning -1\n");
@@ -598,8 +628,12 @@ void *thread_monitor(void *_args){
                 		}
                 		
                     }else if(mem_type_oper == 2){ // 2 is store
-                        g_tier_manager_copy.obj_vector[vector_index].metrics.stores_count++;
-                    
+                        result = hashmap_get(g_hashmap, &sample_addr);
+                        
+                        if(result == NULL){//not exist yet in the hashmap
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.stores_count++;
+                            hashmap_set(g_hashmap, &sample_addr);
+                        }
                     }
                 }
                 perf_mmap__consume(map);
@@ -608,7 +642,7 @@ void *thread_monitor(void *_args){
         }
         update_metrics();
     }
-
+    hashmap_free(g_hashmap);
   out_evlist:
     perf_evlist__delete(evlist);
   out_cpus:
