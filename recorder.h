@@ -10,7 +10,7 @@
 #define CHUNK_SIZE 1000001536UL  //1GB
 #define MEM_LEVELS 5
 
-//#define GB 1e9
+//#define GB 1.0e9
 #define GB 1000000000.0
 
 #define MAXIMUM_APPS 1
