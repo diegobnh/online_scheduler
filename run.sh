@@ -79,12 +79,11 @@ mkdir -p results
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
 gcc -O2 -g -c recorder.c -lpthread;
 gcc -O2 -I/include -g -c intercept_mmap.c -lpthread;
-gcc -O1 -I/include -g -c monitor.c hashmap.c -lrt -lm -lpfm -lpthread -lperf;
+gcc -O2 -I/include -g -c monitor.c hashmap.c -lrt -lm -lpfm -lpthread -lperf;
 gcc -O2 -g -c track_mapping.c -DMETRIC=1 -lpthread -lnuma
 gcc -O2 -g -c actuator.c -DINIT_DATAPLACEMENT=4 -DMETRIC=2 -lpthread -lnuma
 gcc -O2 -o start_threads start_threads.c recorder.o monitor.o hashmap.o intercept_mmap.o actuator.o track_mapping.o  -lrt -lm -lpfm -lpthread -lperf -lnuma;
 gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnuma;
-
 gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
 
 function track_info {
