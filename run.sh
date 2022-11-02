@@ -136,7 +136,7 @@ elif [[ $1 == "our_schedule" ]] ; then
         mkdir -p results/our_schedule/$app_pid
         python3 plots/plot_mem_usage.py our_schedule
         mv mem_usage*.pdf results/our_schedule/$app_pid
-        mv track_info* results/our_schedule/$app_pid
+        mv track_info* scheduler_output.txt results/our_schedule/$app_pid
     done
 else
     echo "Invalid parameter!"
