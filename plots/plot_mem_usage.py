@@ -26,7 +26,7 @@ def plot_memory_usage():
     label = "Exec.Time:" + str(exec_time)
     ax.annotate(label, xy=(0.35, 1.05), xycoords='axes fraction')
 
-    filename = "mem_usage" + app_dataset + ".pdf"
+    filename = "mem_usage_" + app_dataset + ".pdf"
     plt.savefig(filename, bbox_inches="tight")
     plt.clf()
 
