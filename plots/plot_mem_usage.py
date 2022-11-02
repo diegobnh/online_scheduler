@@ -9,7 +9,6 @@ def plot_memory_usage():
 
     df = pd.read_csv(files[0])
     exec_time = round(df['timestamp'].iloc[-1] - df['timestamp'].iloc[0],1)
-    print(exec_time)
     df.set_index('timestamp', inplace=True)
 
     df['dram_app'] = df['dram_app']/1000
