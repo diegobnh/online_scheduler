@@ -676,10 +676,6 @@ void *thread_actuator(void *_args){
     int flag_demotion;
     struct timespec start;
     struct timespec end;
-    float dram_page_cache;
-    float pmem_page_cache;
-    float app_dram_usage;
-    float app_pmem_usage;
     FILE *fptr;
     
    
