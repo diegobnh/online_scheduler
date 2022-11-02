@@ -79,7 +79,7 @@ int main(int argc, char *argv[]){
 
     struct sigaction sa;
     sa.sa_sigaction = close_start_threads;
-    sa.sa_flags = SA_SIGUSR1;
+    sa.sa_flags = SIGUSR1;
     
     if (sigaction(SIGUSR1, &sa, NULL) < 0) { 
         fprintf(stderr,"Error setting up signal handler\n");
