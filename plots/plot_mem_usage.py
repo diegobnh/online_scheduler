@@ -1,6 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import glob
+import sys
+
+
+schedule_type = str(sys.argv[1])
 
 def plot_memory_usage():
     files = glob.glob('track_info_*.csv')
@@ -26,7 +30,7 @@ def plot_memory_usage():
     label = "Exec.Time:" + str(exec_time)
     ax.annotate(label, xy=(0.35, 1.05), xycoords='axes fraction')
 
-    filename = "mem_usage_" + app_dataset + ".pdf"
+    filename = "mem_usage_" + app_dataset + "_" + schedule_type + ".pdf"
     plt.savefig(filename, bbox_inches="tight")
     plt.clf()
 
