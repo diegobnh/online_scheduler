@@ -88,6 +88,7 @@ export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
 
+gcc -o lock_memory lock_memory.c
 gcc -o delete_shared_memory delete_shared_memory.c -lrt
 gcc -O2 -g -c recorder.c -lpthread;
 gcc -O2 -I/include -g -c intercept_mmap.c -lpthread;
@@ -98,6 +99,10 @@ gcc -O2 -o start_threads start_threads.c recorder.o monitor.o hashmap.o intercep
 gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnuma;
 gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
 
+#bc kron has around 20GB of footprint. We have 17.5 dram space. So, reduce 8 GB we will force around 50% of access in NVM.
+numactl --membind=0 .././lock_memory 8 &
+lock_memory_pid=$!
+sleep 5
 
 
 if [[ $1 == "autonuma" ]]; then
@@ -141,4 +146,5 @@ elif [[ $1 == "our_schedule" ]] ; then
 else
     echo "Invalid parameter!"
 fi;
+kill -10 $lock_memory_pid
 rm -f migration_*.pipe pid.txt
