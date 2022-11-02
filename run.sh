@@ -107,7 +107,7 @@ if [[ $1 == "autonuma" ]]; then
     app_pid=$!
     wait $app_pid
     mkdir -p results/autonuma/$app_pid
-    python3 plots/plot_mem_usage.py
+    python3 plots/plot_mem_usage.py autonuma
     mv mem_usage*.pdf results/autonuma/$app_pid
     mv track_info* results/autonuma/$app_pid
 elif [[ $1 == "our_schedule" ]] ; then
@@ -134,7 +134,7 @@ elif [[ $1 == "our_schedule" ]] ; then
         wait $start_threads_pid
 
         mkdir -p results/our_schedule/$app_pid
-        python3 plots/plot_mem_usage.py
+        python3 plots/plot_mem_usage.py our_schedule
         mv mem_usage*.pdf results/our_schedule/$app_pid
         mv track_info* results/our_schedule/$app_pid
     done
