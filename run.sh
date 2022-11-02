@@ -74,7 +74,6 @@ METRICS=("LLCM_PER_SIZE")
 #METRICS=("ABS_LLCM" "LLCM_PER_SIZE" "ABS_TLB_MISS" "TLB_MISS_PER_SIZE" "ABS_WRITE" "WRITE_PER_SIZE" "ABS_LATENCY" "LATENCY_PER_SIZE")
 
 mkdir -p results
-rm -f migration_*.pipe
 
 #Initial Dataplacement Options
 #1 - ROUND_ROBIN
@@ -142,3 +141,4 @@ elif [[ $1 == "our_schedule" ]] ; then
 else
     echo "Invalid parameter!"
 fi;
+rm -f migration_*.pipe
