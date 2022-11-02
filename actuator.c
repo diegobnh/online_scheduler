@@ -1,5 +1,3 @@
-
-
 #define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
@@ -67,6 +65,14 @@
 #endif
 
 
+struct key_value{
+    int key; //key will be the the index object
+    double value;
+    double llcm;//this is just for trace
+    double stores;//this is just for trace
+    double tlbm;//this is just for trace
+};
+
 extern int g_hotness_threshold;
 extern float g_actuator_interval;
 extern tier_manager_t g_tier_manager;
@@ -81,17 +87,8 @@ int g_pipe_write_fd;
 int g_pipe_read_fd;
 float g_median_metric;
 
-struct key_value{
-    int key; //key will be the the index object
-    double value;
-    double llcm;//this is just for trace
-    double stores;//this is just for trace
-    double tlbm;//this is just for trace
-};
-
 static struct key_value g_key_value;
 static struct key_value g_sorted_obj[MAX_OBJECTS];
-
 
 int guard(int ret, char *err){
     if (ret == -1)
@@ -160,8 +157,8 @@ static int comp(const void * elem1, const void * elem2){
     if (f > s) return -1;
     return 0;
 }
-static double get_hotness_metric(int obj_index){
-    
+
+static double get_hotness_metric(int obj_index){    
 #if METRIC == METRIC_ABS_LLCM
     return g_tier_manager.obj_vector[obj_index].metrics.loads_count[4]; //4 is the index of last level cache
 #elif METRIC == METRIC_LLCM_PER_SIZE
