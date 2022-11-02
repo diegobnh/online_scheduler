@@ -694,7 +694,7 @@ void *thread_actuator(void *_args){
     
     sleep(1);
     open_pipes();
-    set_current_free_dram();
+    set_current_free_dram();//setup the current DRAM available 
         
     while(g_running){
         check_initial_dataplacement_and_desalocations();
