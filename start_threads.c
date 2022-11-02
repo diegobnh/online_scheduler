@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
     initialize_recorder();
 
     pthread_create(&intercept_mmap, NULL, thread_intercept_mmap, NULL);
-    //pthread_create(&monitor, NULL, thread_monitor, NULL);
+    pthread_create(&monitor, NULL, thread_monitor, NULL);
     //pthread_create(&actuator, NULL, thread_actuator, NULL);
     //pthread_create(&track_mapping, NULL, thread_track_mapping, NULL);
 
@@ -97,8 +97,8 @@ int main(int argc, char *argv[]){
     clock_gettime(CLOCK_REALTIME, &g_end);
     fprintf(stderr, "\n[start_threads] Join intercept mmap\n");
     
-    //pthread_join(monitor, NULL);
-    //fprintf(stderr, "[start_threads] Join monitor\n");
+    pthread_join(monitor, NULL);
+    fprintf(stderr, "[start_threads] Join monitor\n");
     
     //pthread_join(actuator, NULL);
     //fprintf(stderr, "[start_threads] Join atuador\n");
