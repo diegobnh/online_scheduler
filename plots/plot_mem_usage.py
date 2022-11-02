@@ -12,10 +12,6 @@ def plot_memory_usage():
     print(exec_time)
     df.set_index('timestamp', inplace=True)
 
-    df['dram_page_cache'] = df['dram_page_cache_active'] + df['dram_page_cache_inactive']
-    #df['dram_page_cache']  = df['dram_page_cache']/1000000
-    #df['dram_page_cache'] = df['dram_page_cache'].round(2)
-
     df['dram_app'] = df['dram_app']/1000
     df['pmem_app'] = df['pmem_app']/1000
 
