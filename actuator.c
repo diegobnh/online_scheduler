@@ -198,31 +198,8 @@ static double get_hotness_metric(int obj_index){
 #endif
     
 }
-static void sort_objects(void){
-    int i,j;
-    int aux;
-    
-    for(i=0;i<MAX_OBJECTS;i++){
-        g_key_value.key = i;
-        g_key_value.value = get_hotness_metric(i);
-        
-        //comment after
-        double all_tlb_miss = 0;
-        int k;
-        for(k=0; k<MEM_LEVELS;k++){
-            all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[k];
-        }
-        g_key_value.tlbm = all_tlb_miss;
-        g_key_value.stores = g_tier_manager.obj_vector[i].metrics.stores_count;
-        //erase until here
-        
-        g_sorted_obj[i] = g_key_value;
-    }
-    
-    qsort (g_sorted_obj, sizeof(g_sorted_obj)/sizeof(*g_sorted_obj), sizeof(*g_sorted_obj), comp);
-}
 
-static void sort_objects2(void){
+static void sort_objects(void){
     int i, j, k;
     int aux;
     double all_tlb_miss;
@@ -721,10 +698,10 @@ void *thread_actuator(void *_args){
         
     while(g_running){
         check_initial_dataplacement_and_desalocations();
+        /*
         check_migration_error();
         
-        /*
-        sort_objects2();
+        sort_objects();
         flag_promotion = check_candidates_to_promotion();
         
         if(flag_promotion == 1 && g_start_free_DRAM > 0)  {
@@ -732,25 +709,23 @@ void *thread_actuator(void *_args){
             check_migration_error();
             D fprintf(stderr, "\n");
         }
-        */
         
         //Essa e a primeira forma de demotion. Remover antigos objetos hots. Ou seja, remover objetos colds.
         //Poderia pensar em algo do tipo , se ele for marcado por 5 iterações consecutivas sem atividade
-        
-        //sort_objects();
-        //flag_demotion = check_candidates_to_demotion();
-        //if(flag_demotion == 1){
-        //    policy_demotion_cold_objects();
-            //D fprintf(stderr, "\n");
-        //}
+        sort_objects();
+        flag_demotion = check_candidates_to_demotion();
+        if(flag_demotion == 1){
+            policy_demotion_cold_objects();
+            D fprintf(stderr, "\n");
+        }
         
         //Esse segundo modo é quando a memória está próxima do limite. Nesse caso, faz-se troca de objetos mais hots por menos hots.
-        
-        //if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
-        //    policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
-        //    check_migration_error();
-            //D fprintf(stderr, "\n");
-        //}
+        if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
+            policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
+            check_migration_error();
+            D fprintf(stderr, "\n");
+        }
+        */
         sleep(g_actuator_interval);
         
     }//while end
