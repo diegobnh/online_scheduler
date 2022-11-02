@@ -788,6 +788,7 @@ void *thread_actuator(void *_args){
         check_initial_dataplacement_and_desalocations();
         check_migration_error();
         
+        /*
         sort_objects2();
         flag_promotion = check_candidates_to_promotion();
         
@@ -796,7 +797,7 @@ void *thread_actuator(void *_args){
             check_migration_error();
             D fprintf(stderr, "\n");
         }
-        
+        */
         
         //Essa e a primeira forma de demotion. Remover antigos objetos hots. Ou seja, remover objetos colds.
         //Poderia pensar em algo do tipo , se ele for marcado por 5 iterações consecutivas sem atividade
@@ -810,11 +811,11 @@ void *thread_actuator(void *_args){
         
         //Esse segundo modo é quando a memória está próxima do limite. Nesse caso, faz-se troca de objetos mais hots por menos hots.
         
-        if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
-            policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
-            check_migration_error();
+        //if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
+        //    policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
+        //    check_migration_error();
             //D fprintf(stderr, "\n");
-        }
+        //}
         sleep(g_actuator_interval);
         
     }//while end
