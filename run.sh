@@ -52,7 +52,7 @@ function track_info {
     track_info="track_info_"$2".csv"
     rm -f $track_info
 
-    echo "timestamp,dram_app,pmem_app,dram_page_cache_active,dram_page_cache_inactive"  >> $track_info
+    echo "timestamp,dram_app,pmem_app"  >> $track_info
     while true
     do
     if ps -p $app_pid > /dev/null
@@ -61,27 +61,13 @@ function track_info {
         nanosec=$(date +%s)
         timestamp=$(awk '{print $1}' /proc/uptime)
         memory=$(numastat -p $app_pid -c | grep Private | awk '{printf "%s,%s\n", $2,$4}')
-        dram_page_cache=$(grep "Active(file)\|Inactive(file)" /sys/devices/system/node/node0/meminfo | awk '{print $(NF-1)}' | datamash transpose | awk '{printf "%s,%s\n", $1, $2}')
-        echo $timestamp","$memory","$dram_page_cache >> $track_info
+        echo $timestamp","$memory >> $track_info
     else
         sed -i '$ d' $track_info   #Remove the last line. Usally some column is empty
         break
     fi
-        sleep 1
+        sleep 0.20
     done
-}
-
-function postprocess_track_info {
-    sleep 3
-    rm -f mem_consumption.txt
-
-    echo -n "memfootprint: " >> mem_consumption.txt
-    cat track_info_*.csv | awk -F, '{print $2+$3}' | datamash max 1 >> mem_consumption.txt
-
-    start=$(head -n2 track_info_bc_kron.csv | awk -F, 'NR>1{print $1}')
-    end=$(tail -n1 track_info_bc_kron.csv | awk -F, '{print $1}')
-
-    echo $start,$end | awk -F, '{print $2-$1}' > exec_time.txt
 }
 
 METRICS=("LLCM_PER_SIZE")
@@ -121,7 +107,8 @@ if [[ $1 == "autonuma" ]]; then
     app_pid=$!
     wait $app_pid
     mkdir -p results/autonuma/$app_pid
-    postprocess_track_info
+    python3 plots/plot_mem_usage.py
+    mv mem_usage*.pdf results/autonuma/$app_pid
     mv mem_consumption.txt results/autonuma/$app_pid
     mv track_info* exec_time.txt results/autonuma/$app_pid
 elif [[ $1 == "our_schedule" ]] ; then
@@ -149,9 +136,9 @@ elif [[ $1 == "our_schedule" ]] ; then
         wait $start_threads_pid
 
         mkdir -p results/our_schedule/$app_pid
-        postprocess_track_info
-        mv mem_consumption.txt results/our_schedule/$app_pid
-        mv track_info* exec_time.txt results/our_schedule/$app_pid
+        python3 plots/plot_mem_usage.py
+        mv mem_usage*.pdf results/our_schedule/$app_pid
+        mv track_info* results/our_schedule/$app_pid
     done
 else
     echo "Invalid parameter!"
