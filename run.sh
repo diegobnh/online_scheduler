@@ -127,7 +127,7 @@ elif [[ $1 == "our_schedule" ]] ; then
         LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
 
         app_pid=$!
-        #echo $app_pid > pid.txt
+        echo $app_pid > pid.txt
 
         wait $app_pid
         sudo kill -10 start_threads
@@ -141,4 +141,4 @@ elif [[ $1 == "our_schedule" ]] ; then
 else
     echo "Invalid parameter!"
 fi;
-rm -f migration_*.pipe
+rm -f migration_*.pipe pid.txt
