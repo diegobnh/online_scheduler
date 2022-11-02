@@ -1,7 +1,8 @@
 #!/bin/bash
 : '
-chmod +777 online_scheduler
+git clone https://github.com/diegobnh/online_scheduler.git; chmod +777 online_scheduler; cd online_scheduler
 sudo ./run.sh our_schedule
+sudo ./run.sh autonuma
 '
 
 if [ $# -lt 1 ] ; then
