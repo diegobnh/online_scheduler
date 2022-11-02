@@ -79,31 +79,29 @@ int main(int argc, char *argv[]){
 
     struct sigaction sa;
     sa.sa_sigaction = close_start_threads;
-    sa.sa_flags = SA_SIGINFO;
+    sa.sa_flags = SA_SIGUSR1;
     
-    //if (sigaction(SIGPROF, &sa, NULL) < 0) { //SIGPROF Profiling timer expired
-    if (sigaction(SIGUSR1, &sa, NULL) < 0) { //SIGPROF Profiling timer expired
+    if (sigaction(SIGUSR1, &sa, NULL) < 0) { 
         fprintf(stderr,"Error setting up signal handler\n");
         return 1;
     }
-    //fprintf(stderr, "Monitoring pid:%d\n", g_tier_manager.pids_to_manager[0]);
 
     initialize_recorder();
 
     pthread_create(&intercept_mmap, NULL, thread_intercept_mmap, NULL);
-    pthread_create(&monitor, NULL, thread_monitor, NULL);
-    pthread_create(&actuator, NULL, thread_actuator, NULL);
+    //pthread_create(&monitor, NULL, thread_monitor, NULL);
+    //pthread_create(&actuator, NULL, thread_actuator, NULL);
     //pthread_create(&track_mapping, NULL, thread_track_mapping, NULL);
 
     pthread_join(intercept_mmap, NULL);
     clock_gettime(CLOCK_REALTIME, &g_end);
     fprintf(stderr, "\n[start_threads] Join intercept mmap\n");
     
-    pthread_join(monitor, NULL);
-    fprintf(stderr, "[start_threads] Join monitor\n");
+    //pthread_join(monitor, NULL);
+    //fprintf(stderr, "[start_threads] Join monitor\n");
     
-    pthread_join(actuator, NULL);
-    fprintf(stderr, "[start_threads] Join atuador\n");
+    //pthread_join(actuator, NULL);
+    //fprintf(stderr, "[start_threads] Join atuador\n");
     
     //pthread_join(track_mapping, NULL);
     //fprintf(stderr, "[start_threads] Join track decisions\n");
