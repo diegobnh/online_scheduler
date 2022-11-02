@@ -125,7 +125,6 @@ elif [[ $1 == "our_schedule" ]] ; then
         start_threads_pid=$!
 
         sleep 3  #if you dont wait, you could lose some mmaps'interception
-        echo "starting the preload"
         LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
 
         app_pid=$!
