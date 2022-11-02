@@ -695,69 +695,7 @@ void open_pipes(){
     //sprintf(FIFO_PATH_MIGRATION_ERROR, "/tmp/migration_error.%d", g_tier_manager.pids_to_manager[0]);
     sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error_%d.pipe", g_app_pid);
     g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_RDONLY | O_NONBLOCK), "[actuator] Could not open pipe MIGRATION_ERROR for reading");
-}
-        
-void get_current_memory_system(float *dram_page_cache, float *pmem_page_cache, float *app_dram_usage, float *app_pmem_usage){
-    /*
-     usually if we use default paramters system, this code will give this error: "Too many open files"
-     To fix: #nano /etc/security/limits.conf
-             Add theses lines:
-                * hard nofile 97816
-                * soft nofile 97816
-     */
-    char buf1[256];
-    char buf2[256];
-    char buf3[256];
-    char cmd1[256];
-    char cmd2[256];
-    char cmd3[256];
-    float page_cache_active;
-    float page_cache_inactive;
-    int dram_usage;
-    int pmem_usage;
-    
-    FILE *stream_file1;
-    FILE *stream_file2;
-    FILE *stream_file3;
-
-    sprintf(cmd1, "grep \"Active(file)\\|Inactive(file)\" /sys/devices/system/node/node0/meminfo | awk '{print $(NF-1)}' | datamash transpose ");
-    sprintf(cmd2, "grep \"Active(file)\\|Inactive(file)\" /sys/devices/system/node/node2/meminfo | awk '{print $(NF-1)}' | datamash transpose ");
-    sprintf(cmd3, "numastat -p %d -c | grep Private | awk '{print $2,$4}' ", g_app_pid);
-
-    if (NULL == (stream_file1 = popen(cmd1, "r"))) {
-        perror("popen");
-        exit(EXIT_FAILURE);
-    }
-    fgets(buf1, sizeof(buf1), stream_file1);
-    sscanf(buf1, "%f %f",&page_cache_active, &page_cache_inactive);
-    
-    *dram_page_cache = (page_cache_active/1000000) + (page_cache_inactive/1000000) ;
-    
-    if (NULL == (stream_file2 = popen(cmd2, "r"))) {
-        perror("popen");
-        exit(EXIT_FAILURE);
-    }
-    fgets(buf2, sizeof(buf2), stream_file2);
-    sscanf(buf2, "%f %f",&page_cache_active, &page_cache_inactive);
-
-    *pmem_page_cache = (page_cache_active/1000000) + (page_cache_inactive/1000000) ;
-    
-    if (NULL == (stream_file3 = popen(cmd3, "r"))) {
-        perror("popen");
-        exit(EXIT_FAILURE);
-    }
-    fgets(buf3, sizeof(buf3), stream_file3);
-    sscanf(buf3, "%d %d",&dram_usage, &pmem_usage);
-    
-    *app_dram_usage = dram_usage/1000.0;
-    *app_pmem_usage = pmem_usage/1000.0;
-    
-    fclose(stream_file1);
-    fclose(stream_file2);
-    fclose(stream_file3);
-}
-
-        
+}        
 void *thread_actuator(void *_args){
     int i,j;
     int flag_promotion;
