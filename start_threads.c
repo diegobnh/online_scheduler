@@ -90,7 +90,7 @@ int main(int argc, char *argv[]){
 
     pthread_create(&intercept_mmap, NULL, thread_intercept_mmap, NULL);
     pthread_create(&monitor, NULL, thread_monitor, NULL);
-    //pthread_create(&actuator, NULL, thread_actuator, NULL);
+    pthread_create(&actuator, NULL, thread_actuator, NULL);
     //pthread_create(&track_mapping, NULL, thread_track_mapping, NULL);
 
     pthread_join(intercept_mmap, NULL);
@@ -100,8 +100,8 @@ int main(int argc, char *argv[]){
     pthread_join(monitor, NULL);
     fprintf(stderr, "[start_threads] Join monitor\n");
     
-    //pthread_join(actuator, NULL);
-    //fprintf(stderr, "[start_threads] Join atuador\n");
+    pthread_join(actuator, NULL);
+    fprintf(stderr, "[start_threads] Join atuador\n");
     
     //pthread_join(track_mapping, NULL);
     //fprintf(stderr, "[start_threads] Join track decisions\n");
