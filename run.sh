@@ -109,8 +109,7 @@ if [[ $1 == "autonuma" ]]; then
     mkdir -p results/autonuma/$app_pid
     python3 plots/plot_mem_usage.py
     mv mem_usage*.pdf results/autonuma/$app_pid
-    mv mem_consumption.txt results/autonuma/$app_pid
-    mv track_info* exec_time.txt results/autonuma/$app_pid
+    mv track_info* results/autonuma/$app_pid
 elif [[ $1 == "our_schedule" ]] ; then
     setup_our_schedule_mapping_parameters
     mkdir -p results/our_schedule/
