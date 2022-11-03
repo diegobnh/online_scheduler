@@ -31,14 +31,14 @@
 - Imprime o percentual de páginas alocadas em cada nodo para todos os objetos a cada intervalo de tempo
 
 # Requirements/installations
-``
-# sudo apt-get install numactl libnuma-dev libpthread* libpfm4*
+
+``console
+[root@dmoura]# apt-get install numactl libnuma-dev libpthread* libpfm4*
 ``
 
 Compilar o perf para instalar os headers and after copiar os headers para o path default
-
-``
-# sudo cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
+``console
+[root@dmoura]# cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
 ``
 
 
