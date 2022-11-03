@@ -48,7 +48,12 @@ Compilar o perf para instalar os headers and after install the files will be in:
 
 - In the actuator thread replace **NODE_0_PMEM** by **NODE_1_DRAM**.
 
-- In the monitor thread comment out the line **else if (is_served_by_local_pmem(data_src))** and enable the line **else if (is_served_by_remote_memory(data_src))** .
+- In the monitor thread comment out the line **is_served_by_local_pmem** and enable the line **is_served_by_remote_memory** .
+
+```console
+else if (is_served_by_local_pmem(data_src))
+else if (is_served_by_remote_memory(data_src))
+```
 
 - Change the number of threads and cpus identification
 
