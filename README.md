@@ -34,15 +34,15 @@
 
 ``console
 [root@dmoura]# apt-get install numactl libnuma-dev libpthread* libpfm4*
-``
+```
 
 Compilar o perf para instalar os headers and after install the files will be in: /include/
 
-``console
+```console
 [root@dmoura]# cd /linux/tools/lib/perf
 [root@dmoura]# make
 [root@dmoura]# make install
-``
+```
 
 # Adaptations for Emulated NVM
 
@@ -52,12 +52,9 @@ Compilar o perf para instalar os headers and after install the files will be in:
 
 - Change the number of threads and cpus identification
 
-``console
+```console
 export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
-``
-
-
-
+```
 
