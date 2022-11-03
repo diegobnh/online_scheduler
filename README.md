@@ -36,9 +36,11 @@
 [root@dmoura]# apt-get install numactl libnuma-dev libpthread* libpfm4*
 ``
 
-Compilar o perf para instalar os headers and after copiar os headers para o path default
+Compilar o perf para instalar os headers and after install the files will be in: /include/
 ``console
-[root@dmoura]# cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
+[root@dmoura]# cd /linux/tools/lib/perf
+[root@dmoura]# make
+[root@dmoura]# make install
 ``
 
 # Adaptations for Emulated NVM
@@ -48,11 +50,13 @@ Compilar o perf para instalar os headers and after copiar os headers para o path
 - In the monitor thread comment out the line **else if (is_served_by_local_pmem(data_src))** and enable the line **else if (is_served_by_remote_memory(data_src))** .
 
 - Change the number of threads and cpus identification
+
 ``console
 export OMP_NUM_THREADS=18
 export OMP_PLACES={0}:18:2
 export OMP_PROC_BIND=true
 ``
+
 
 
 
