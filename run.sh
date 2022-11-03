@@ -117,7 +117,7 @@ if [[ $1 == "autonuma" ]]; then
     app_pid=$!
     wait $app_pid
     
-    pkill perf &> /dev/null
+    pkill perf 1>&2 /dev/null
     sleep 5
     post_process_perfmem
 	
@@ -148,7 +148,7 @@ elif [[ $1 == "our_schedule" ]] ; then
         sudo kill -10 start_threads
         wait $start_threads_pid
 
-	pkill perf &> /dev/null
+	pkill perf 1>&2 /dev/null
 	sleep 5
 	post_process_perfmem
 
