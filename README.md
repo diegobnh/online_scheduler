@@ -37,6 +37,7 @@
 ``
 
 Compilar o perf para instalar os headers and after install the files will be in: /include/
+
 ``console
 [root@dmoura]# cd /linux/tools/lib/perf
 [root@dmoura]# make
