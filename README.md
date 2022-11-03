@@ -34,11 +34,11 @@
 ``
 apt-get install numactl libnuma-dev libpthread* libpfm4*
 ``
-``
-//compilar o perf para instalar os headers and after copiar os headers para o path default
-sudo cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
 
+Compilar o perf para instalar os headers and after copiar os headers para o path default
 ``
-libsycall intercept
+sudo cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
+``
+
 
 
