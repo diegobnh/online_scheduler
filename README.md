@@ -44,4 +44,5 @@ Compilar o perf para instalar os headers and after copiar os headers para o path
 # Adaptations for Emulated NVM
 
 In the actuator thread replace **NODE_0_PMEM** with **NODE_1_DRAM**.
+
 In the monitor thread comment out the line **else if (is_served_by_local_pmem(data_src))** and enable the line **else if (is_served_by_remote_memory(data_src))** .
