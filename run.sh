@@ -104,6 +104,7 @@ numactl --membind=0 ./lock_memory 8 &
 lock_memory_pid=$!
 sleep 5
 
+perf mem -D --phys-data record -k CLOCK_MONOTONIC --all-user 2> /dev/null &
 
 if [[ $1 == "autonuma" ]]; then
     setup_autonuma_parameters
@@ -146,5 +147,7 @@ elif [[ $1 == "our_schedule" ]] ; then
 else
     echo "Invalid parameter!"
 fi;
+
+pkill perf &> /dev/null
 kill -10 $lock_memory_pid
 rm -f migration_*.pipe pid.txt
