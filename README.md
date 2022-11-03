@@ -47,6 +47,12 @@ Compilar o perf para instalar os headers and after copiar os headers para o path
 
 - In the monitor thread comment out the line **else if (is_served_by_local_pmem(data_src))** and enable the line **else if (is_served_by_remote_memory(data_src))** .
 
-- export OMP_NUM_THREADS=18
-- export OMP_PLACES={0}:18:2
-- export OMP_PROC_BIND=true
+- Change the number of threads and cpus identification
+``console
+export OMP_NUM_THREADS=18
+export OMP_PLACES={0}:18:2
+export OMP_PROC_BIND=true
+``
+
+
+
