@@ -32,12 +32,13 @@
 
 # Requirements/installations
 ``
-apt-get install numactl libnuma-dev libpthread* libpfm4*
+# sudo apt-get install numactl libnuma-dev libpthread* libpfm4*
 ``
 
 Compilar o perf para instalar os headers and after copiar os headers para o path default
+
 ``
-sudo cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
+# sudo cp -r /usr/src/linux-source-5.4.0/linux-source-5.4.0/tools/perf/lib/include/ /usr/include
 ``
 
 
