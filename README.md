@@ -51,7 +51,7 @@ Compilar o perf para instalar os headers and after install the files will be in:
 - In the monitor thread comment out the line **is_served_by_local_pmem** and enable the line **is_served_by_remote_memory** .
 
 ```console
-else if (is_served_by_local_pmem(data_src))
+//else if (is_served_by_local_pmem(data_src))
 else if (is_served_by_remote_memory(data_src))
 ```
 
