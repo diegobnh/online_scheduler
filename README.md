@@ -32,7 +32,7 @@
 
 # Requirements/installations
 
-``console
+```console
 [root@dmoura]# apt-get install numactl libnuma-dev libpthread* libpfm4*
 ```
 
