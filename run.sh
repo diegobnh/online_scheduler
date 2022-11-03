@@ -71,6 +71,10 @@ function track_info {
     done
 }
 
+function post_process_perfmem {
+    perf script -f --comms=bc | sed 's/cpu\/mem-loads,ldlat=30\/P:/loads/g' | sed 's/cpu\/mem-stores\/P:/stores/g' | grep -w "loads" | sed 's/Local RAM or RAM/Ram_hit/g' | sed 's/LFB or LFB hit/LFB_hit/g' | sed 's/L1 or L1 hit/L1_hit/g' | sed 's/L2 or L2 hit/L2_hit/g' | sed 's/L3 or L3 hit/L3_hit/g' | sed 's/L3 miss/L3_miss/g' | sed 's/PMEM hit/PMEM_hit/g' | tr -d ":" | sed 's/|SNP//g' | awk '{OFS=","}{print $4,"0x"$7,$9}' | grep "PMEM_hit\|Ram_hit" > loads.txt 
+}
+
 METRICS=("LLCM_PER_SIZE")
 #METRICS=("ABS_LLCM" "LLCM_PER_SIZE" "ABS_TLB_MISS" "TLB_MISS_PER_SIZE" "ABS_WRITE" "WRITE_PER_SIZE" "ABS_LATENCY" "LATENCY_PER_SIZE")
 
@@ -112,6 +116,11 @@ if [[ $1 == "autonuma" ]]; then
 	/mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
     app_pid=$!
     wait $app_pid
+    
+    pkill perf &> /dev/null
+    sleep 5
+    post_process_perfmem
+	
     mkdir -p results/autonuma/$app_pid
     python3 plots/plot_mem_usage.py autonuma
     mv mem_usage*.pdf results/autonuma/$app_pid
@@ -139,15 +148,19 @@ elif [[ $1 == "our_schedule" ]] ; then
         sudo kill -10 start_threads
         wait $start_threads_pid
 
+	pkill perf &> /dev/null
+	sleep 5
+	post_process_perfmem
+
         mkdir -p results/our_schedule/$app_pid
         python3 plots/plot_mem_usage.py our_schedule
         mv mem_usage*.pdf results/our_schedule/$app_pid
-        mv track_info* scheduler_output.txt results/our_schedule/$app_pid
+        mv loads.txt track_info* scheduler_output.txt results/our_schedule/$app_pid
     done
 else
     echo "Invalid parameter!"
 fi;
 
-pkill perf &> /dev/null
+
 kill -10 $lock_memory_pid
 rm -f migration_*.pipe pid.txt
