@@ -18,17 +18,33 @@ def plot_memory_usage():
     df['dram_app'] = df['dram_app']/1000
     df['pmem_app'] = df['pmem_app']/1000
 
-    fig = plt.figure()
 
-    ax = df[["dram_app"]].plot(linewidth=0.75)
-    df[["pmem_app"]].plot(ax=ax, style="-.",linewidth=0.75)
-    ax.legend(['DRAM (App)','NVM (App)'], prop={'size': 10}, ncol=2, fancybox=True, framealpha=0.5, bbox_to_anchor=(0.75, 1.21))
-    ax.tick_params(axis='x', rotation=45)
-    ax.set_xlabel('Timestamp(seconds)')
-    ax.set_ylabel('Memory Consumption (GB)')
+    df_external_access = pd.read_csv("loads.txt", names=["ts_event", "virt_addr", "mem_access"])
+    df_external_access['ts_event'] = df_external_access['ts_event'].astype(int)
+    df_dram = df_external_access.loc[df_external_access.mem_access == "DRAM_hit"]    
+    df_nvm = df_external_access.loc[df_external_access.mem_access == "NVM_hit"]
+    df_dram = df_dram.groupby(['ts_event']).size().reset_index(name='DRAM')
+    df_dram.set_index("ts_event", inplace=True)
+    df_nvm = df_nvm.groupby(['ts_event']).size().reset_index(name='NVM')
+    df_nvm.set_index("ts_event", inplace=True)
+
+    fig, axes = plt.subplots(figsize=(5,4),nrows=2,sharex=True)
+
+    df[["dram_app"]].plot(linewidth=0.75, ax=axes[0])
+    df[["pmem_app"]].plot(style="-.",linewidth=0.75, ax=axes[0])
+    axes[0].legend(['DRAM','NVM'], prop={'size': 10}, ncol=2, fancybox=True, framealpha=0.5, bbox_to_anchor=(0.9, 1.41))
+    axes[0].tick_params(axis='x', rotation=45)
+    #ax.set_xlabel('Timestamp(seconds)')
+    axes[0].set_ylabel('Memory \n Consumption (GB)')
+
+    #ax2 = ax.twinx()
+    df_dram["DRAM"].plot(ax=axes[1], linewidth=0.75, color="tab:blue")
+    df_nvm["NVM"].plot(ax=axes[1], style="-.",linewidth=0.75, color="tab:orange")
+    axes[1].set_ylabel('Number of Load \n Access')
+    axes[1].set_xlabel("Timestamp")
 
     label = "Exec.Time:" + str(exec_time)
-    ax.annotate(label, xy=(0.35, 1.05), xycoords='axes fraction')
+    axes[0].annotate(label, xy=(0.35, 1.05), xycoords='axes fraction')
 
     filename = "mem_usage_" + app_dataset + "_" + schedule_type + ".pdf"
     plt.savefig(filename, bbox_inches="tight")
