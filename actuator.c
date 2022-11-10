@@ -263,7 +263,7 @@ int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, i
 #elif INIT_DATAPLACEMENT == BASED_ON_SIZE
     if(size < CHUNK_SIZE){
 #endif
-        if((g_start_free_DRAM - (size/GB)) > 0 && sliced == 0){
+        if((g_current_free_dram_space - (size/GB)) > 0 && sliced == 0){
             clock_gettime(CLOCK_REALTIME, &timestamp);
             D fprintf(stderr, "[actuator] initial_dataplacement_dram, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
             bind_order(start_addr, size, NODE_0_DRAM, obj_index);
