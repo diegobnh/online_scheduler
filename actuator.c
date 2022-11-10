@@ -83,6 +83,7 @@ int g_app_pid = -1;
 int g_iteration = 0;
 double g_current_dram_consumption;
 double g_start_free_DRAM;
+double g_current_free_dram_space;
 int g_pipe_write_fd;
 int g_pipe_read_fd;
 float g_median_metric;
@@ -119,7 +120,7 @@ void set_current_free_dram(void){
     fclose(stream_file);
     D fprintf(stderr, "Free DRAM start:%.4lf(GB)\n",g_start_free_DRAM);
 }
-void update_dram_consumption(void){
+void update_free_dram_space(void){
     char buf[256];
     char cmd[256];
     static int count = 0;
@@ -139,6 +140,7 @@ void update_dram_consumption(void){
     sscanf(buf, "%lf",&g_current_dram_consumption);//measured in megabytes
     
     g_current_dram_consumption = (g_current_dram_consumption/1000.0);//convert to GB
+    g_current_free_dram_space = g_start_free_DRAM - g_current_dram_consumption;
     
     fclose(stream_file);
     if(count%10 == 0)
@@ -288,7 +290,7 @@ void check_initial_dataplacement_and_desalocations(void){
             g_tier_manager.obj_status[i] = -1;
         }
     }
-    update_dram_consumption();
+    update_free_dram_space();
 }
 int check_candidates_to_promotion(void){
     int i;
@@ -367,7 +369,7 @@ void policy_promotion(void){
     unsigned long nodemask;
     int num_obj_promoted=0;
     float metric_value;
-    double free_dram_space = g_start_free_DRAM;
+    double free_dram_space = g_current_free_dram_space;
     struct timespec timestamp;
 
     
@@ -395,7 +397,7 @@ void policy_promotion(void){
     }
     
     D fprintf(stderr, "\t[actuator - promotion] Total Promoted:%d\n", num_obj_promoted);
-    update_dram_consumption();
+    update_free_dram_space();
     
 }
 int calculate_total_active_pages(unsigned long int addr, unsigned long int size, int node_to_count){
@@ -457,7 +459,7 @@ void policy_demotion_cold_objects(void){
     int j;
     int count_obj_demoted = 0;
     double free_dram = 0;
-    double current_free_dram = g_start_free_DRAM;
+    double current_free_dram = g_current_free_dram_space;
     struct timespec timestamp;
     
     
@@ -478,7 +480,7 @@ void policy_demotion_cold_objects(void){
     }
     D fprintf(stderr, "\t[actuator - demotion 1] Total Demoted:%d\n", count_obj_demoted);
 
-    update_dram_consumption();
+    update_free_dram_space();
 }
 int decide_demotion_based_on_cost_benefit(int *list_obj_index, int pmem_candidate_index, float gain_metric_factor){
     int i=0;
@@ -601,7 +603,7 @@ int policy_demotion_memory_pressure(void){
     //}
     
     D fprintf(stderr, "\t[actuator - demotion 2] Total Demoted:%d\n", num_obj_demoted);
-    update_dram_consumption();
+    update_free_dram_space();
     
 }
 void check_migration_error(void){
