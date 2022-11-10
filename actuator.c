@@ -653,7 +653,7 @@ void check_migration_error(void){
             num_read = read(g_pipe_read_fd, &buf, sizeof(data_bind_t));
         }
     }
-    //update_dram_consumption();
+    //update_free_dram_space();
 }
 
 void open_pipes(){
