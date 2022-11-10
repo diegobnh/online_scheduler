@@ -156,7 +156,7 @@ elif [[ $1 == "our_schedule" ]] ; then
         mkdir -p results/our_schedule/$app_pid
         mv mem_usage*.pdf results/our_schedule/$app_pid
         mv loads.txt track_info* scheduler_output.txt results/our_schedule/$app_pid
-	results/our_schedule/$app_pid
+	cd results/our_schedule/$app_pid
 	python3 ../../../plots/plot_mem_usage.py our_schedule
     done
 else
