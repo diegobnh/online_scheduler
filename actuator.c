@@ -247,13 +247,13 @@ int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, i
 #endif
         if((g_current_free_dram_space - (size/GB)) > 0 && sliced == 0){
             clock_gettime(CLOCK_REALTIME, &timestamp);
-            D fprintf(stderr, "[actuator] initial_dataplacement_dram, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
+            D fprintf(stderr, "[actuator] initial_data_placement_dram, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
             bind_order(start_addr, size, NODE_0_DRAM, obj_index);
             return NODE_0_DRAM;
         }
     }
     clock_gettime(CLOCK_REALTIME, &timestamp);
-    D fprintf(stderr, "[actuator] initial_dataplacement_pmem, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
+    D fprintf(stderr, "[actuator] initial_data_placement_pmem, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
     bind_order(start_addr, size, NODE_0_PMEM, obj_index);
     return NODE_0_PMEM;
 }
