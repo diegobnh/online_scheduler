@@ -96,6 +96,7 @@ void set_current_free_dram(void){
     sscanf(buf, "%lf",&g_start_free_DRAM);//measured in megabytes
     
     g_start_free_DRAM = (g_start_free_DRAM/1000.0); //convert to GB
+    g_current_free_dram_space = g_start_free_DRAM;
     
     fclose(stream_file);
     D fprintf(stderr, "Free DRAM start:%.4lf(GB)\n",g_start_free_DRAM);
