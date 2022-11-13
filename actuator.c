@@ -88,8 +88,7 @@ int g_pipe_write_fd;
 int g_pipe_read_fd;
 float g_median_metric;
 
-static struct key_value g_key_value;
-static struct key_value g_sorted_obj[MAX_OBJECTS];
+static struct key_value g_key_value_list[MAX_OBJECTS];
 
 int guard(int ret, char *err){
     if (ret == -1)
@@ -230,13 +229,13 @@ static void sort_objects(void){
         aux.stores = stores;
         aux.tlbm = tlb_miss;
         
-        g_sorted_obj[i] = aux;
-        if(g_sorted_obj[i].value > 0){
-            fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_sorted_obj[i].value);
+        g_key_value_list[i] = aux;
+        if(g_key_value_list[i].value > 0){
+            fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_key_value_list[i].value);
         }
     }
     
-    qsort (g_sorted_obj, sizeof(g_sorted_obj)/sizeof(*g_sorted_obj), sizeof(*g_sorted_obj), comp);
+    qsort (g_key_value_list, sizeof(g_key_value_list)/sizeof(*g_key_value_list), sizeof(*g_key_value_list), comp);
 }
 
 void bind_order(unsigned long start_addr, unsigned long size ,int target_node, int obj_index){
@@ -304,39 +303,39 @@ int check_candidates_to_promotion(void){
     //Esse loop não é necessário depois. Hoje é apenas utilizado para fins de análise.
     //Remover por questão de performance
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].key;
-        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_sorted_obj[j].value > g_hotness_threshold){
+        i = g_key_value_list[j].key;
+        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_key_value_list[j].value > g_hotness_threshold){
             //D fprintf(stderr, "[actuator] Hottest Object in DRAM, %d, %p,%.2lf,%.2lf\n", \
                         g_tier_manager.obj_vector[i].obj_index, \
                         g_tier_manager.obj_vector[i].start_addr,\
                         g_tier_manager.obj_vector[i].size/GB,\
-                        g_sorted_obj[j].value);
+                        g_key_value_list[j].value);
             count++;
             //if (count > 10) break;
         }
     }
     if(count > 0){
-        g_median_metric = g_sorted_obj[count/2].value;
+        g_median_metric = g_key_value_list[count/2].value;
         D fprintf(stderr, "Mediana Objects in DRAM, llcm:%.2lf, store:%.2lf, tlbm:%.2lf\n", \
-                  g_sorted_obj[count/2].llcm, \
-                  g_sorted_obj[count/2].stores, \
-                  g_sorted_obj[count/2].tlbm,\
-                  g_sorted_obj[count/2].value);
+                  g_key_value_list[count/2].llcm, \
+                  g_key_value_list[count/2].stores, \
+                  g_key_value_list[count/2].tlbm,\
+                  g_key_value_list[count/2].value);
     }
     //Esse for pode ser otimizado depois usando o break. Por enquanto fica melhor do jeito que está para visualizarmos os objetos candidatos.
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].key;
-        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && g_sorted_obj[j].value >= g_hotness_threshold){
+        i = g_key_value_list[j].key;
+        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && g_key_value_list[j].value >= g_hotness_threshold){
             D fprintf(stderr, "\t[actuator - candidates from PMEM] %d, size:%.2lf, llcm:%.2lf, store:%.2lf, tlbm:%.2lf, value:%.2lf\n", \
                     g_tier_manager.obj_vector[i].obj_index, \
                     g_tier_manager.obj_vector[i].size/GB,\
-                    g_sorted_obj[j].llcm,\
-                    g_sorted_obj[j].stores,\
-                    g_sorted_obj[j].tlbm, \
-                    g_sorted_obj[j].value);
+                    g_key_value_list[j].llcm,\
+                    g_key_value_list[j].stores,\
+                    g_key_value_list[j].tlbm, \
+                    g_key_value_list[j].value);
             
             size_factor = g_tier_manager.obj_vector[i].size/GB;
-            metric_factor = g_median_metric/g_sorted_obj[j].value;//if median in DRAM is less , so we have value under 1 which means will reduce the size factor
+            metric_factor = g_median_metric/g_key_value_list[j].value;//if median in DRAM is less , so we have value under 1 which means will reduce the size factor
             factor = size_factor * metric_factor;
             
             D fprintf(stderr, "Factor:%.2lf  (Quanto maior o fator pior. Threshold:10)\n", factor);
@@ -354,8 +353,8 @@ int check_candidates_to_demotion(void){
     int flag_demotion = 0;
     
     for(j=MAX_OBJECTS-1;j>=0;j--){
-        i = g_sorted_obj[j].key;
-        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_sorted_obj[j].value < g_hotness_threshold){
+        i = g_key_value_list[j].key;
+        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_key_value_list[j].value < g_hotness_threshold){
             flag_demotion = 1;
             break;
         }
@@ -379,14 +378,14 @@ void policy_promotion(void){
     //D fprintf(stderr, "[actuator] ANTES promotion free_dram:%.2lf, used_dram:%.2lf\n", free_dram_space, g_current_dram_consumption);
     
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].key;
+        i = g_key_value_list[j].key;
         
-        metric_value = g_sorted_obj[j].value;
+        metric_value = g_key_value_list[j].value;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && metric_value > g_hotness_threshold){
         //if(g_tier_manager.obj_vector[i].alloc_flag  == 1 && g_tier_manager.obj_vector[i].status == NODE_0_PMEM && llcm > g_hotness_threshold){
             if ((g_tier_manager.obj_vector[i].size/GB) < free_dram_space){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
-                D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec,i, metric_value, g_sorted_obj[j].stores, g_sorted_obj[j].tlbm);
+                D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec,i, metric_value, g_key_value_list[j].stores, g_key_value_list[j].tlbm);
                 bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_DRAM, i);
                 g_tier_manager.obj_status[i] = NODE_0_DRAM;
                 
@@ -463,9 +462,9 @@ void policy_demotion_cold_objects(void){
     
     
     for(j=MAX_OBJECTS-1;j>=0;j--){
-        i = g_sorted_obj[j].key;
+        i = g_key_value_list[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
-            if(g_sorted_obj[j].value < g_hotness_threshold){
+            if(g_key_value_list[j].value < g_hotness_threshold){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
                 D fprintf(stderr, "\t[actuator - demotion 1] %lu.%lu, Demotion obj: %d\n",timestamp.tv_sec, timestamp.tv_nsec,i);
                 bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_PMEM, i);
@@ -526,13 +525,13 @@ int policy_demotion_memory_pressure(void){
     pmem_candidate_index = -1;
     
     for(j=0;j<MAX_OBJECTS;j++){
-        i = g_sorted_obj[j].key;
+        i = g_key_value_list[j].key;
         
-        if(g_sorted_obj[j].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
-            //pmem_candidate_size = g_sorted_obj[j].value;
+        if(g_key_value_list[j].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
+            //pmem_candidate_size = g_key_value_list[j].value;
             pmem_candidate_size = g_tier_manager.obj_vector[i].size/GB;
             if(pmem_candidate_size < (g_start_free_DRAM - g_current_dram_consumption)){
-                pmem_candidate_metric = g_sorted_obj[j].value;
+                pmem_candidate_metric = g_key_value_list[j].value;
                 pmem_candidate_index = i;
                 
                 D fprintf(stderr, "\t[actuator - demotion 2] Demotion PMEM candidate index to promotion:%d, %.2lf, size:%.2lf\n", i, pmem_candidate_metric, pmem_candidate_size);
@@ -550,9 +549,9 @@ int policy_demotion_memory_pressure(void){
     cont = 0;
     //Stay in the loop until achieve space necessary to move PMEM object candidate
     for(j=MAX_OBJECTS-1; j>= 0; j--){
-        i = g_sorted_obj[j].key;
+        i = g_key_value_list[j].key;
         
-        curr_metric = g_sorted_obj[j].value;
+        curr_metric = g_key_value_list[j].value;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
             sum_metric_candidates_demotion += curr_metric;
             pmem_candidate_size -= g_tier_manager.obj_vector[i].size/GB;
