@@ -122,7 +122,6 @@ if [[ $1 == "autonuma" ]]; then
     post_process_perfmem
 	
     mkdir -p results/autonuma/$app_pid
-    mv mem_usage*.pdf results/autonuma/$app_pid
     mv loads.txt track_info* results/autonuma/$app_pid
     cd results/autonuma/$app_pid
     python3 ../../../plots/plot_mem_usage.py autonuma
@@ -154,7 +153,6 @@ elif [[ $1 == "our_schedule" ]] ; then
 	post_process_perfmem
 
         mkdir -p results/our_schedule/$app_pid
-        mv mem_usage*.pdf results/our_schedule/$app_pid
         mv loads.txt track_info* scheduler_output.txt results/our_schedule/$app_pid
 	cd results/our_schedule/$app_pid
 	python3 ../../../plots/plot_mem_usage.py our_schedule
