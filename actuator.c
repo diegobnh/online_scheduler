@@ -202,8 +202,7 @@ static double get_hotness_metric(int obj_index){
 }
 
 static void sort_objects(void){
-    int i, j, k;
-    int aux;
+    int i;
     double all_tlb_miss;
     double tlb_miss;
     double llcm_per_size;
