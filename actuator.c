@@ -458,7 +458,6 @@ void policy_demotion_cold_objects(void){
     int i;
     int j;
     int count_obj_demoted = 0;
-    double free_dram = 0;
     double current_free_dram = g_current_free_dram_space;
     struct timespec timestamp;
     
@@ -472,7 +471,6 @@ void policy_demotion_cold_objects(void){
                 bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_PMEM, i);
                 g_tier_manager.obj_status[i] = NODE_0_PMEM;
                 count_obj_demoted++;
-                free_dram += g_tier_manager.obj_vector[i].size/GB;
             }else{
                 break;
             }
