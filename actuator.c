@@ -201,11 +201,12 @@ static double get_hotness_metric(int obj_index){
 }
 
 static void sort_objects(void){
-    int i;
+    int i, j;
     double all_tlb_miss;
-    double tlb_miss;
+
     double llcm_per_size;
-    double stores;
+	double tlb_miss_per_size;
+    double stores_per_size;
     struct key_value aux;
     
     for(i=0;i<MAX_OBJECTS;i++){
@@ -214,15 +215,15 @@ static void sort_objects(void){
         llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
         
         all_tlb_miss = 0;
-        for(k=0; k<MEM_LEVELS;k++){
-            all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[k];
+        for(j=0; j<MEM_LEVELS;j++){
+            all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
         }
-        tlb_miss = g_tier_manager.obj_vector[i].metrics.tlb_miss[4];//4 means DRAM
-        stores = g_tier_manager.obj_vector[i].metrics.stores_count;
+        //tlb_miss_per_size = g_tier_manager.obj_vector[i].metrics.tlb_miss[4]/(g_tier_manager.obj_vector[i].size/GB);//4 means DRAM
+        tlb_miss_per_size = all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
+        stores_per_size = g_tier_manager.obj_vector[i].metrics.stores_count/(g_tier_manager.obj_vector[i].size/GB);
         
         //Store is the unique that we accumulate over time. All the other we update using average moving
-        //aux.value = llcm_per_size + (all_tlb_miss * 2) + (stores * 3) ;
-        aux.value = llcm_per_size + (tlb_miss * 2) + (stores * 3) ;
+        aux.value = llcm_per_size + (tlb_miss_per_size * 2) + (stores_per_size * 3) ;
         
         //only for tracing
         aux.llcm = llcm_per_size;
