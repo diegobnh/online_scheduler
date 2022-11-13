@@ -163,4 +163,4 @@ fi;
 
 
 kill -10 $lock_memory_pid
-rm -f migration_*.pipe pid.txt
+rm -f ../../../migration_*.pipe pid.txt
