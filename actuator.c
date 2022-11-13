@@ -208,9 +208,10 @@ static void sort_objects(void){
     double tlb_miss;
     double llcm_per_size;
     double stores;
+    struct key_value aux;
     
     for(i=0;i<MAX_OBJECTS;i++){
-        g_key_value.key = i;
+        aux.key = i;
         
         llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
         
@@ -222,17 +223,17 @@ static void sort_objects(void){
         stores = g_tier_manager.obj_vector[i].metrics.stores_count;
         
         //Store is the unique that we accumulate over time. All the other we update using average moving
-        //g_key_value.value = llcm_per_size + (all_tlb_miss * 2) + (stores * 3) ;
-        g_key_value.value = llcm_per_size + (tlb_miss * 2) + (stores * 3) ;
+        //aux.value = llcm_per_size + (all_tlb_miss * 2) + (stores * 3) ;
+        aux.value = llcm_per_size + (tlb_miss * 2) + (stores * 3) ;
         
         //only for tracing
-        g_key_value.llcm = llcm_per_size;
-        g_key_value.stores = stores;
-        g_key_value.tlbm = tlb_miss;
+        aux.llcm = llcm_per_size;
+        aux.stores = stores;
+        aux.tlbm = tlb_miss;
         
-        g_sorted_obj[i] = g_key_value;
-        if(g_key_value.value > 0){
-            fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_key_value.value);
+        g_sorted_obj[i] = aux;
+        if(g_sorted_obj[i].value > 0){
+            fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_sorted_obj[i].value);
         }
     }
     
