@@ -360,7 +360,7 @@ void policy_promotion(void){
     for(i=0;i<MAX_OBJECTS;i++){
         obj_index = g_key_value_list[i].key;
         metric_value = g_key_value_list[i].value;
-	curr_alloc_size_gb = g_tier_manager.obj_vector[obj_index].size/GB
+	curr_alloc_size_gb = g_tier_manager.obj_vector[obj_index].size/GB;
 		
 	//The maximum migration per instant of time is one CHUNK_SIZE	
         if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && curr_alloc_size_gb <= max_migration_gb){
