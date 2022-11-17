@@ -347,33 +347,37 @@ int check_candidates_to_demotion(void){
 //Chamada quando tem espaço na DRAM e objeto hot no pmem
 void policy_promotion(void){
     int i;
-    int j;
+    int obj_index;
+    int max_migration_gb = CHUNK_SIZE;
     unsigned long nodemask;
     int num_obj_promoted=0;
     float metric_value;
+    float curr_alloc_size_gb;
     double free_dram_space = g_current_free_dram_space;
     struct timespec timestamp;
-
-    
-    //Percorre todos os objetos que possuem um LLCM mínimo e que ainda estão alocados
-    //Depois verifica se ele também cabe no espaço atual de memória
     data_bind_t data;
-    //D fprintf(stderr, "[actuator] ANTES promotion free_dram:%.2lf, used_dram:%.2lf\n", free_dram_space, g_current_dram_consumption);
     
-    for(j=0;j<MAX_OBJECTS;j++){
-        i = g_key_value_list[j].key;
-        
-        metric_value = g_key_value_list[j].value;
-        if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && metric_value > g_hotness_threshold){
-        //if(g_tier_manager.obj_vector[i].alloc_flag  == 1 && g_tier_manager.obj_vector[i].status == NODE_0_PMEM && llcm > g_hotness_threshold){
-            if ((g_tier_manager.obj_vector[i].size/GB) < free_dram_space){
+    //Iterates over all objects from hottest to least hot.
+    for(i=0;j<MAX_OBJECTS;i++){
+        obj_index = g_key_value_list[i].key;
+        metric_value = g_key_value_list[i].value;
+	curr_alloc_size_gb = g_tier_manager.obj_vector[obj_index].size/GB
+		
+	//The maximum migration per instant of time is one CHUNK_SIZE	
+        if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM &&  curr_alloc_size_gb <= max_migration_gb){
+        #if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && metric_value > g_hotness_threshold){
+            if (curr_alloc_size_gb < free_dram_space){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
                 D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec,i, metric_value, g_key_value_list[j].stores, g_key_value_list[j].tlbm);
-                bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_DRAM, i);
-                g_tier_manager.obj_status[i] = NODE_0_DRAM;
+                bind_order(g_tier_manager.obj_vector[obj_index].start_addr, g_tier_manager.obj_vector[obj_index].size, NODE_0_DRAM, obj_index);
+                g_tier_manager.obj_status[obj_index] = NODE_0_DRAM;
                 
-                free_dram_space -= g_tier_manager.obj_vector[i].size/GB;
+                free_dram_space -= curr_alloc_size_gb;
+		max_migration_gb -= curr_alloc_size_gb;
                 num_obj_promoted++;
+		    
+		if(max_migration_gb == 0)
+		    break;	
             }
         }
     }
