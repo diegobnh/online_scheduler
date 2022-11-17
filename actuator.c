@@ -367,7 +367,7 @@ void policy_promotion(void){
         //if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && metric_value > g_hotness_threshold){
             if (curr_alloc_size_gb < free_dram_space){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
-                D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec,i, metric_value, g_key_value_list[j].stores, g_key_value_list[j].tlbm);
+                D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, llcm:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec, obj_index, metric_value, g_key_value_list[i].llcm, g_key_value_list[i].stores, g_key_value_list[i].tlbm);
                 bind_order(g_tier_manager.obj_vector[obj_index].start_addr, g_tier_manager.obj_vector[obj_index].size, NODE_0_DRAM, obj_index);
                 g_tier_manager.obj_status[obj_index] = NODE_0_DRAM;
                 
