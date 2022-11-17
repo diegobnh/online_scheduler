@@ -104,6 +104,7 @@ gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnum
 gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
 
 #bc kron has around 20GB of footprint. We have 17.5 dram space. So, reduce 8 GB we will force around 50% of access in NVM.
+sudo pkill lock_memory
 numactl --membind=0 ./lock_memory 8 &
 lock_memory_pid=$!
 sleep 5
