@@ -185,9 +185,8 @@ static double get_hotness_metric(int obj_index){
 static void sort_objects(void){
     int i, j;
     double all_tlb_miss;
-
     double llcm_per_size;
-	double tlb_miss_per_size;
+    double tlb_miss_per_size;
     double stores_per_size;
     struct key_value aux;
     
@@ -209,8 +208,8 @@ static void sort_objects(void){
         
         //only for tracing
         aux.llcm = llcm_per_size;
-        aux.stores = stores;
-        aux.tlbm = tlb_miss;
+        aux.stores = stores_per_size;
+        aux.tlbm = tlb_miss_per_size;
         
         g_key_value_list[i] = aux;
         if(g_key_value_list[i].value > 0){
@@ -358,13 +357,13 @@ void policy_promotion(void){
     data_bind_t data;
     
     //Iterates over all objects from hottest to least hot.
-    for(i=0;j<MAX_OBJECTS;i++){
+    for(i=0;i<MAX_OBJECTS;i++){
         obj_index = g_key_value_list[i].key;
         metric_value = g_key_value_list[i].value;
 	curr_alloc_size_gb = g_tier_manager.obj_vector[obj_index].size/GB
 		
 	//The maximum migration per instant of time is one CHUNK_SIZE	
-        if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM &&  curr_alloc_size_gb <= max_migration_gb){
+        if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && curr_alloc_size_gb <= max_migration_gb){
         #if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && metric_value > g_hotness_threshold){
             if (curr_alloc_size_gb < free_dram_space){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
@@ -376,8 +375,9 @@ void policy_promotion(void){
 		max_migration_gb -= curr_alloc_size_gb;
                 num_obj_promoted++;
 		    
-		if(max_migration_gb == 0)
+		if(max_migration_gb == 0){
 		    break;	
+		}
             }
         }
     }
