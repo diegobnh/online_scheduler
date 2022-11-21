@@ -53,7 +53,7 @@ function track_info {
     track_info="track_info_"$2".csv"
     rm -f $track_info
 
-    echo "timestamp,dram_app,pmem_app"  >> $track_info
+    echo "timestamp,dram_app,nvm_app"  >> $track_info
     while true
     do
     if ps -p $app_pid > /dev/null
