@@ -91,10 +91,10 @@ int _insert_object(int pid, unsigned long start_addr, unsigned long size, int sl
         }
     }
     
-	g_tier_manager.obj_vector[index].start_addr = start_addr;
-	g_tier_manager.obj_vector[index].end_addr = start_addr + size;
-	g_tier_manager.obj_vector[index].size = size;
-	g_tier_manager.obj_vector[index].pages = size / getpagesize();
+    g_tier_manager.obj_vector[index].start_addr = start_addr;
+    g_tier_manager.obj_vector[index].end_addr = start_addr + size;
+    g_tier_manager.obj_vector[index].size = size;
+    g_tier_manager.obj_vector[index].pages = size / getpagesize();
     g_tier_manager.obj_vector[index].pid = pid;
     g_tier_manager.obj_vector[index].obj_index = index ;
     g_tier_manager.obj_vector[index].sliced = sliced;
