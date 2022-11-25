@@ -45,10 +45,9 @@ typedef struct object{
 }object_t;
 
 /*
- obj_alloc = 1 and obj_status = -1 -> require bind
+ obj_alloc = 0 and obj_status == -1 -> Not exist
+ obj_alloc = 1 and obj_status == -1 -> require bind
  obj_alloc = 1 and obj_status != -1 -> not require bind.
- obj_alloc = 0 requires always obj_status = -1. But always will exist obj_alloc = 0 and obj_status !=0  temporarily,
- because first the intercept will change the obj_alloc and after some time the actuator thread will notice.
  */
 
 typedef struct tier_manager{
