@@ -104,11 +104,14 @@ gcc -O2 -fno-pie preload.c -rdynamic -fpic -shared -o preload.so -ldl -lrt -lnum
 gcc -fno-pie libsyscall_intercept.c -rdynamic -fpic -shared -o libsyscall_intercept.so -lpthread -lsyscall_intercept
 
 #bc kron has around 20GB of footprint. We have 17.5 dram space. So, reduce 8 GB we will force around 50% of access in NVM.
-sudo pkill lock_memory
+sudo pkill -9 lock_memory
+sudo pkill -9 perf
+sudo pkill -9 start_threads
+sudo pkill -9 bc
+
 numactl --membind=0 ./lock_memory 8 &
 lock_memory_pid=$!
 sleep 5
-
 perf mem -D --phys-data record -k CLOCK_MONOTONIC --all-user 2> /dev/null &
 
 if [[ $1 == "autonuma" ]]; then
@@ -119,9 +122,8 @@ if [[ $1 == "autonuma" ]]; then
     wait $app_pid
     
     pkill perf &> /dev/null
-    sleep 5
+    sleep 30
     post_process_perfmem
-	
     mkdir -p results/autonuma/$app_pid
     mv loads.txt track_info* results/autonuma/$app_pid
     cd results/autonuma/$app_pid
@@ -132,15 +134,15 @@ elif [[ $1 == "our_schedule" ]] ; then
     for i in {1..1}
     do
         sleep 3
-        sudo rm -f *.txt bind_error_* -f min_max* *.o
+        sudo rm -f *.txt -f min_max* *.o
         sudo ./delete_shared_memory
 
         track_info "bc" "bc_kron" &
-        sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt"  2>&1 &
+        sudo env TRACK_MAPPING_INTERVAL=0.5 ACTUATOR_INTERVAL=1 MONITOR_INTERVAL=1  ./start_threads > "scheduler_output.txt" 2>&1 &
         start_threads_pid=$!
 
         sleep 3  #if you dont wait, you could lose some mmaps'interception
-        LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
+        LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3  1> /dev/null &
 
         app_pid=$!
         echo $app_pid > pid.txt
@@ -150,11 +152,12 @@ elif [[ $1 == "our_schedule" ]] ; then
         wait $start_threads_pid
 
 	pkill perf &> /dev/null
-	sleep 5
+	sleep 30
 	post_process_perfmem
 
         mkdir -p results/our_schedule/$app_pid
-        mv loads.txt track_info* scheduler_output.txt results/our_schedule/$app_pid
+        sed -i '1 i\timestamp, obj_index, start_addr, size, nodemask_target_node,  status_pages_before, migration_cost_ms, status_pages_after, bind_type' preload_migration_cost.txt
+        mv preload_migration_cost.txt loads.txt track_info* scheduler_output.txt results/our_schedule/$app_pid
 	cd results/our_schedule/$app_pid
 	python3 ../../../plots/plot_mem_usage.py our_schedule
     done

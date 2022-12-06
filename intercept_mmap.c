@@ -229,7 +229,7 @@ void *thread_intercept_mmap(void){
                         
                         if(sample->pid == app_pid && mmap_enter_args->flags != 0x4022)
                         {
-                            D fprintf(stderr, "sys_enter_mmap(pid=%d,tid=%d), addr: 0x%lx, len: %ld, prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
+                            D fprintf(stderr, "[intercept] sys_enter_mmap(pid=%d,tid=%d), addr: 0x%lx, len: %ld, prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
                                    sample->pid, sample->tid, mmap_enter_args->addr, mmap_enter_args->len, mmap_enter_args->prot,\
                                    mmap_enter_args->flags, mmap_enter_args->fd, mmap_enter_args->off);
                             insert_object(sample->pid, args->ret, mmap_enter_args->len);
@@ -239,6 +239,7 @@ void *thread_intercept_mmap(void){
                     struct syscall_munmap_enter_args *args = (struct syscall_munmap_enter_args *) sample->data;
                     
                     if(sample->pid == app_pid){
+                        D fprintf(stderr, "[intercept] sys_enter_munmap(pid=%d,tid=%d), addr: 0x%lx, len: %ld\n",sample->pid, sample->tid, args->addr, args->len);
                         remove_object(sample->pid, args->addr, args->len);
                     }
                 }

@@ -68,8 +68,14 @@ double g_current_free_dram_space;
 int g_pipe_write_fd;
 int g_pipe_read_fd;
 float g_median_metric;
+//int g_current_obj_undone_mapping = -1;
 
 static struct key_value g_key_value_list[MAX_OBJECTS];
+
+static char g_buf[256];
+static char g_cmd[256];
+static double g_timestamp;
+static FILE *g_stream_file;
 
 int guard(int ret, char *err){
     if (ret == -1)
@@ -190,7 +196,8 @@ static void sort_objects(void){
     double stores_per_size;
     struct key_value aux;
     
-    for(i=0;i<MAX_OBJECTS;i++){
+    for(i=0; i<g_tier_manager.total_obj;i++){
+    //for(i=0;i<MAX_OBJECTS;i++){
         aux.key = i;
         
         llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
@@ -212,28 +219,28 @@ static void sort_objects(void){
         aux.tlbm = tlb_miss_per_size;
         
         g_key_value_list[i] = aux;
-        if(g_key_value_list[i].value > 0){
-            fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_key_value_list[i].value);
-        }
+        //if(g_key_value_list[i].value > 0){
+        //    fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_key_value_list[i].value);
+        //}
     }
     
     qsort (g_key_value_list, sizeof(g_key_value_list)/sizeof(*g_key_value_list), sizeof(*g_key_value_list), comp);
 }
 
-void bind_order(unsigned long start_addr, unsigned long size ,int target_node, int obj_index){
+void bind_order(unsigned long start_addr, unsigned long size ,int target_node, int obj_index, int type){
     data_bind_t data;
     
     data.obj_index = obj_index;
     data.start_addr = start_addr;
     data.size = size;
     data.nodemask_target_node = 1<<target_node;
+    data.type = type;
 
     write(g_pipe_write_fd, &data, sizeof(data_bind_t));
 }
 int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, int sliced, int obj_index){
     static int memory_index = 0;
     int flag_dram_alloc = 0;
-    struct timespec timestamp;
     
 #if INIT_DATAPLACEMENT == ROUND_ROBIN
     if(((memory_index ++) %2)){
@@ -242,18 +249,25 @@ int initial_dataplacement_policy(unsigned long start_addr, unsigned long size, i
 #elif INIT_DATAPLACEMENT == FIRST_DRAM
     if(1){
 #elif INIT_DATAPLACEMENT == BASED_ON_SIZE
+    if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
+           perror("popen");
+           exit(EXIT_FAILURE);
+    }
+
+    fgets(g_buf, sizeof(g_buf), g_stream_file);
+    sscanf(g_buf, "%lf",& g_timestamp);
+
     if(size < CHUNK_SIZE){
 #endif
         if((g_current_free_dram_space - (size/GB)) > 0 && sliced == 0){
-            clock_gettime(CLOCK_REALTIME, &timestamp);
-            D fprintf(stderr, "[actuator] initial_data_placement_dram, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
-            bind_order(start_addr, size, NODE_0_DRAM, obj_index);
+            //clock_gettime(CLOCK_REALTIME, &timestamp);
+            D fprintf(stderr, "[actuator] initial_data_placement_dram, %lf, %d, %p, %.4lf (GB)\n", g_timestamp, obj_index, start_addr, (size/GB));
+            bind_order(start_addr, size, NODE_0_DRAM, obj_index, INITIAL_DATAPLACEMENT);
             return NODE_0_DRAM;
         }
     }
-    clock_gettime(CLOCK_REALTIME, &timestamp);
-    D fprintf(stderr, "[actuator] initial_data_placement_pmem, %d, %p, %.4lf (GB)\n", obj_index, start_addr, (size/GB));
-    bind_order(start_addr, size, NODE_0_PMEM, obj_index);
+    D fprintf(stderr, "[actuator] initial_data_placement_pmem, %lf, %d, %p, %.4lf (GB)\n", g_timestamp, obj_index, start_addr, (size/GB));
+    bind_order(start_addr, size, NODE_0_PMEM, obj_index, INITIAL_DATAPLACEMENT);
     return NODE_0_PMEM;
 }
 void check_initial_dataplacement_and_desalocations(void){
@@ -262,7 +276,8 @@ void check_initial_dataplacement_and_desalocations(void){
     
     rmb();
 
-    for(i=0;i<MAX_OBJECTS;i++){
+    for(i=0; i<g_tier_manager.total_obj;i++){
+    //for(i=0;i<MAX_OBJECTS;i++){
         if(g_tier_manager.obj_alloc[i] == 1 &&  g_tier_manager.obj_status[i] == -1){ //require first bind
             node_bind = initial_dataplacement_policy(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, g_tier_manager.obj_vector[i].sliced, i);
             g_tier_manager.obj_status[i] = node_bind;
@@ -284,7 +299,8 @@ int check_candidates_to_promotion(void){
     
     //Esse loop não é necessário depois. Hoje é apenas utilizado para fins de análise.
     //Remover por questão de performance
-    for(j=0;j<MAX_OBJECTS;j++){
+    for(j=0; j<g_tier_manager.total_obj;j++){
+    //for(j=0;j<MAX_OBJECTS;j++){
         i = g_key_value_list[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_key_value_list[j].value > g_hotness_threshold){
             //D fprintf(stderr, "[actuator] Hottest Object in DRAM, %d, %p,%.2lf,%.2lf\n", \
@@ -305,7 +321,8 @@ int check_candidates_to_promotion(void){
                   g_key_value_list[count/2].value);
     }
     //Esse for pode ser otimizado depois usando o break. Por enquanto fica melhor do jeito que está para visualizarmos os objetos candidatos.
-    for(j=0;j<MAX_OBJECTS;j++){
+    for(j=0; j<g_tier_manager.total_obj;j++){
+    //for(j=0;j<MAX_OBJECTS;j++){
         i = g_key_value_list[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM && g_key_value_list[j].value >= g_hotness_threshold){
             D fprintf(stderr, "\t[actuator - candidates from PMEM] %d, size:%.2lf, llcm:%.2lf, store:%.2lf, tlbm:%.2lf, value:%.2lf\n", \
@@ -334,7 +351,8 @@ int check_candidates_to_demotion(void){
     int j;
     int flag_demotion = 0;
     
-    for(j=MAX_OBJECTS-1;j>=0;j--){
+    for(j=0; j<g_tier_manager.total_obj;j++){
+    //for(j=MAX_OBJECTS-1;j>=0;j--){
         i = g_key_value_list[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM && g_key_value_list[j].value < g_hotness_threshold){
             flag_demotion = 1;
@@ -347,7 +365,7 @@ int check_candidates_to_demotion(void){
 void policy_promotion(void){
     int i;
     int obj_index;
-    int max_migration_gb = CHUNK_SIZE;
+    float max_migration_gb = CHUNK_SIZE/GB;
     unsigned long nodemask;
     int num_obj_promoted=0;
     float metric_value;
@@ -355,20 +373,27 @@ void policy_promotion(void){
     double free_dram_space = g_current_free_dram_space;
     struct timespec timestamp;
     data_bind_t data;
-    
+
     //Iterates over all objects from hottest to least hot.
-    for(i=0;i<MAX_OBJECTS;i++){
+    for(i=0; i<g_tier_manager.total_obj;i++){
+    //for(i=0;i<MAX_OBJECTS;i++){
         obj_index = g_key_value_list[i].key;
         metric_value = g_key_value_list[i].value;
 	curr_alloc_size_gb = g_tier_manager.obj_vector[obj_index].size/GB;
-		
 	//The maximum migration per instant of time is one CHUNK_SIZE	
         if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && curr_alloc_size_gb <= max_migration_gb){
         //if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && metric_value > g_hotness_threshold){
-            if (curr_alloc_size_gb < free_dram_space){
-                clock_gettime(CLOCK_REALTIME, &timestamp);
-                D fprintf(stderr, "\t[actuator - promotion] %lu.%lu, Promotion obj: %d, metric:%lf, llcm:%lf, stores:%lf, tlb_miss:%lf\n",timestamp.tv_sec, timestamp.tv_nsec, obj_index, metric_value, g_key_value_list[i].llcm, g_key_value_list[i].stores, g_key_value_list[i].tlbm);
-                bind_order(g_tier_manager.obj_vector[obj_index].start_addr, g_tier_manager.obj_vector[obj_index].size, NODE_0_DRAM, obj_index);
+            if (curr_alloc_size_gb < free_dram_space && metric_value > 1 && obj_index){  //!= g_current_obj_undone_mapping){
+                //clock_gettime(CLOCK_REALTIME, &timestamp);
+                if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
+                    perror("popen");
+                    exit(EXIT_FAILURE);
+                }
+
+                fgets(g_buf, sizeof(g_buf), g_stream_file);
+                sscanf(g_buf, "%lf",& g_timestamp);
+                D fprintf(stderr, "\t[actuator] Promotion, %lf, obj: %d, metric:%.1lf, llcm:%.1lf, stores:%.1lf, tlb_miss:%.1lf\n", g_timestamp, obj_index, metric_value, g_key_value_list[i].llcm, g_key_value_list[i].stores, g_key_value_list[i].tlbm);
+                bind_order(g_tier_manager.obj_vector[obj_index].start_addr, g_tier_manager.obj_vector[obj_index].size, NODE_0_DRAM, obj_index, PROMOTION);
                 g_tier_manager.obj_status[obj_index] = NODE_0_DRAM;
                 
                 free_dram_space -= curr_alloc_size_gb;
@@ -382,7 +407,7 @@ void policy_promotion(void){
         }
     }
     
-    D fprintf(stderr, "\t[actuator - promotion] Total Promoted:%d\n", num_obj_promoted);
+    //D fprintf(stderr, "\t[actuator - promotion] Total Promoted:%d\n", num_obj_promoted);
     update_free_dram_space();
     
 }
@@ -447,14 +472,14 @@ void policy_demotion_cold_objects(void){
     double current_free_dram = g_current_free_dram_space;
     struct timespec timestamp;
     
-    
-    for(j=MAX_OBJECTS-1;j>=0;j--){
+    for(j=g_tier_manager.total_obj-1; j>=0; j--){
+    //for(j=MAX_OBJECTS-1;j>=0;j--){
         i = g_key_value_list[j].key;
         if(g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_DRAM){
             if(g_key_value_list[j].value < g_hotness_threshold){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
                 D fprintf(stderr, "\t[actuator - demotion 1] %lu.%lu, Demotion obj: %d\n",timestamp.tv_sec, timestamp.tv_nsec,i);
-                bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_PMEM, i);
+                bind_order(g_tier_manager.obj_vector[i].start_addr, g_tier_manager.obj_vector[i].size, NODE_0_PMEM, i, DEMOTION);
                 g_tier_manager.obj_status[i] = NODE_0_PMEM;
                 count_obj_demoted++;
             }else{
@@ -511,7 +536,8 @@ int policy_demotion_memory_pressure(void){
     //First get the PMEM object candidate
     pmem_candidate_index = -1;
     
-    for(j=0;j<MAX_OBJECTS;j++){
+    for(j=0; j<g_tier_manager.total_obj;j++){
+    //for(j=0;j<MAX_OBJECTS;j++){
         i = g_key_value_list[j].key;
         
         if(g_key_value_list[j].value >= g_hotness_threshold && g_tier_manager.obj_alloc[i] == 1 && g_tier_manager.obj_status[i] == NODE_0_PMEM){
@@ -535,7 +561,8 @@ int policy_demotion_memory_pressure(void){
     list_obj_index[0] = -1;
     cont = 0;
     //Stay in the loop until achieve space necessary to move PMEM object candidate
-    for(j=MAX_OBJECTS-1; j>= 0; j--){
+    for(j=g_tier_manager.total_obj-1; j>=0; j--){
+    //for(j=MAX_OBJECTS-1; j>= 0; j--){
         i = g_key_value_list[j].key;
         
         curr_metric = g_key_value_list[j].value;
@@ -574,7 +601,7 @@ int policy_demotion_memory_pressure(void){
                 clock_gettime(CLOCK_REALTIME, &timestamp);
                 D fprintf(stderr, "\t[actuator - demotion 2] %lu.%lu, Demotion obj: %d, %p\n",timestamp.tv_sec, timestamp.tv_nsec, curr_index, g_tier_manager.obj_vector[curr_index].start_addr);
                 
-                bind_order(g_tier_manager.obj_vector[curr_index].start_addr, g_tier_manager.obj_vector[curr_index].size, NODE_0_PMEM, curr_index);
+                bind_order(g_tier_manager.obj_vector[curr_index].start_addr, g_tier_manager.obj_vector[curr_index].size, NODE_0_PMEM, curr_index, DEMOTION);
                 g_tier_manager.obj_status[curr_index] = NODE_0_PMEM;
          
                 cont++;
@@ -619,17 +646,19 @@ void check_migration_error(void){
         //Se tiver 4 signfifica que continuou na DRAM
         while(num_read > 0){
             //D fprintf(stderr, "[actuator] Detected bind error: %p %lu ", buf.start_addr, buf.size);
-            
-            for(i=0;i<MAX_OBJECTS;i++){
+            for(i=0; i<g_tier_manager.total_obj;i++){
+            //for(i=0;i<MAX_OBJECTS;i++){
                 if(g_tier_manager.obj_vector[i].start_addr == buf.start_addr && g_tier_manager.obj_vector[i].size == buf.size){
-                    if(g_tier_manager.obj_alloc[i] == 1){
+                    if(g_tier_manager.obj_alloc[i] == 1 && buf.type != INITIAL_DATAPLACEMENT){
                         //D fprintf(stderr, " - record undone to object:%d\n", i);
                         if(buf.nodemask_target_node == 1){
                             g_tier_manager.obj_status[i] = NODE_0_PMEM;
                             D fprintf(stderr, "record undone to PMEM, obj_index:%d\n", i);
+                            //g_current_obj_undone_mapping = i;
                         }else if(buf.nodemask_target_node == 4){
                             g_tier_manager.obj_status[i] = NODE_0_DRAM;
                             D fprintf(stderr, "record undone to DRAM, obj_index:%d\n", i);
+                            //g_current_obj_undone_mapping = i;
                         }
                     }
                 }
@@ -664,6 +693,7 @@ void *thread_actuator(void *_args){
     struct timespec end;
     FILE *fptr;
     
+    set_current_free_dram();//setup the current DRAM available
    
     while(g_app_pid == -1){
         fptr = fopen("pid.txt", "r");
@@ -673,41 +703,40 @@ void *thread_actuator(void *_args){
             fseek(fptr, 0, SEEK_SET);
         }
     }
-    
     sleep(1);
     open_pipes();
-    set_current_free_dram();//setup the current DRAM available 
+    sprintf(g_cmd, "awk '{print $1}' /proc/uptime");
+
         
     while(g_running){
         check_initial_dataplacement_and_desalocations();
-        /*
+
         check_migration_error();
         
         sort_objects();
-        flag_promotion = check_candidates_to_promotion();
+        //flag_promotion = check_candidates_to_promotion();
         
-        if(flag_promotion == 1 && g_start_free_DRAM > 0)  {
-            policy_promotion();//move top objects from PMEM to DRAM
-            check_migration_error();
-            D fprintf(stderr, "\n");
-        }
+        //if(flag_promotion == 1 && g_start_free_DRAM > 0)  {
+        policy_promotion();//move top objects from PMEM to DRAM
+        check_migration_error();
+        //D fprintf(stderr, "\n");
+        //}
         
         //Essa e a primeira forma de demotion. Remover antigos objetos hots. Ou seja, remover objetos colds.
         //Poderia pensar em algo do tipo , se ele for marcado por 5 iterações consecutivas sem atividade
-        sort_objects();
-        flag_demotion = check_candidates_to_demotion();
-        if(flag_demotion == 1){
-            policy_demotion_cold_objects();
-            D fprintf(stderr, "\n");
-        }
+        //sort_objects();
+        //flag_demotion = check_candidates_to_demotion();
+        //if(flag_demotion == 1){
+        //    policy_demotion_cold_objects();
+        //    D fprintf(stderr, "\n");
+        //}
         
         //Esse segundo modo é quando a memória está próxima do limite. Nesse caso, faz-se troca de objetos mais hots por menos hots.
-        if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
-            policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
-            check_migration_error();
-            D fprintf(stderr, "\n");
-        }
-        */
+        //if((g_current_dram_consumption/g_start_free_DRAM) > g_dram_pressure_threshold){
+        //    policy_demotion_memory_pressure();//move non-top objetcts from DRAM to PMEM
+        //    check_migration_error();
+        //    D fprintf(stderr, "\n");
+        //}
         sleep(g_actuator_interval);
         
     }//while end

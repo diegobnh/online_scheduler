@@ -6,14 +6,19 @@
 #include <pthread.h>
 #include <limits.h>
 
-#define MAX_OBJECTS 5000
+#define MAX_OBJECTS 2000
 #define CHUNK_SIZE 1000001536UL  //1GB
 #define MEM_LEVELS 5
 
 //#define GB 1.0e9
 #define GB 1000000000.0
-
 #define MAXIMUM_APPS 1
+
+typedef enum bind_type {
+    INITIAL_DATAPLACEMENT = 1,
+    PROMOTION = 2,
+    DEMOTION = 3
+} bind_type_t;
 
 typedef struct data_bind
 {
@@ -21,6 +26,7 @@ typedef struct data_bind
     unsigned long size;
     unsigned long nodemask_target_node;
     int obj_index;
+    bind_type_t type;
 } data_bind_t;
 
 
@@ -55,6 +61,7 @@ typedef struct tier_manager{
     int obj_alloc[MAX_OBJECTS]; //-1 could means not bind yet or already binded. Depends on the value on obj_status. 0 means desalocated.
     int obj_status[MAX_OBJECTS]; //-1 means unmapped by our software control, 0 means DRAM, 2 means PMEM, 
     int pids_to_manager[MAXIMUM_APPS];
+    int total_obj;
     //pthread_mutex_t global_mutex; //mutex for account_shared_library_instances variable
     //pthread_mutexattr_t global_attr_mutex; //mutex for account_shared_library_instances variable
 }tier_manager_t;
@@ -63,6 +70,7 @@ typedef struct tier_manager{
 int insert_object(int, unsigned long, unsigned long);
 int _insert_object(int, unsigned long, unsigned long, int);
 int remove_object(int, unsigned long, unsigned long);
+int _remove_object(int, unsigned long, unsigned long, int);
 void initialize_recorder();
 
 #endif

@@ -105,7 +105,8 @@ int main(int argc, char *argv[]){
     
     //pthread_join(track_mapping, NULL);
     //fprintf(stderr, "[start_threads] Join track decisions\n");
-    
+
+    fprintf(stderr, "[start_threads] Total_obj:%d\n", g_tier_manager.total_obj);
     uint64_t delta_us = (g_end.tv_sec - g_start.tv_sec) * 1000000 + (g_end.tv_nsec - g_start.tv_nsec) / 1000;
     fprintf(stderr, "Execution_time(sec):%.2lf\n", delta_us/1000000.0);
     

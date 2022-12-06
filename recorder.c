@@ -20,7 +20,13 @@
 
 //extern volatile tier_manager_t *g_tier_manager;
 extern tier_manager_t g_tier_manager;
-static struct timespec timestamp;
+//static struct timespec g_timestamp;
+
+static char g_buf[256];
+static char g_cmd[256];
+static double g_timestamp;
+static FILE *g_stream_file;
+
 
 void initialize_recorder(void)
 {
@@ -30,7 +36,8 @@ void initialize_recorder(void)
 		g_tier_manager.obj_alloc[i] = 0;
 		g_tier_manager.obj_status[i] = -1;
 	}
-    
+    g_tier_manager.total_obj = 0;
+
     for(i=0; i< MAX_OBJECTS; i++){
         g_tier_manager.obj_vector[i].start_addr = -1;
         g_tier_manager.obj_vector[i].metrics.stores_count = 0;
@@ -44,21 +51,23 @@ void initialize_recorder(void)
             g_tier_manager.obj_vector[i].metrics.tlb_miss[j] = 0;
         }
     }
+    sprintf(g_cmd, "awk '{print $1}' /proc/uptime");
+
 }
 
 int insert_object(int pid, unsigned long start_addr, unsigned long size)
 {
-    int total_obj;
+    int total_chunks;
     unsigned long long remnant_size;
     unsigned long aux;
     int i=0;
 
 #ifdef CHUNK_ENABLED
     if(size > CHUNK_SIZE){
-        total_obj = size/CHUNK_SIZE;
-        remnant_size = size - (total_obj * CHUNK_SIZE);
+        total_chunks = size/CHUNK_SIZE;
+        remnant_size = size - (total_chunks * CHUNK_SIZE);
         
-        while(i < total_obj){
+        while(i < total_chunks){
            _insert_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
            i++;
         }
@@ -79,7 +88,15 @@ int insert_object(int pid, unsigned long start_addr, unsigned long size)
 int _insert_object(int pid, unsigned long start_addr, unsigned long size, int sliced)
 //int insert_object(int pid, unsigned long start_addr, unsigned long size)
 {
-    clock_gettime(CLOCK_REALTIME, &timestamp);
+    //clock_gettime(CLOCK_REALTIME, &g_timestamp);
+    if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
+    }
+
+    fgets(g_buf, sizeof(g_buf), g_stream_file);
+    sscanf(g_buf, "%lf",& g_timestamp);
+
     static int index = 0 ; //get last index assigned
     //this loop will be in infinit loop if the number objects is bigger than MAX_OBJECTS
     while(g_tier_manager.obj_alloc[index] == 1 || g_tier_manager.obj_status[index] != -1){
@@ -99,38 +116,74 @@ int _insert_object(int pid, unsigned long start_addr, unsigned long size, int sl
     g_tier_manager.obj_vector[index].obj_index = index ;
     g_tier_manager.obj_vector[index].sliced = sliced;
     g_tier_manager.obj_alloc[index] = 1 ;
-        
-    //D fprintf(stderr,"[recorder] insert_object (%lu.%lu, %d, %p, %ld) \n",
-    D fprintf(stderr,"recorder_insert, %lu.%lu, %d, %d, %p, %ld\n", \
-              timestamp.tv_sec, \
-              timestamp.tv_nsec, \
-              pid,\
-              g_tier_manager.obj_vector[index].obj_index, \
-              g_tier_manager.obj_vector[index].start_addr, \
-              g_tier_manager.obj_vector[index].size);
-    D fflush(stderr);
+    g_tier_manager.total_obj++;
+
+    D fprintf(stderr,"[recorder] insert, %lf, %d, %d, %p, %ld\n", \
+                    g_timestamp, \
+                    pid, \
+                    g_tier_manager.obj_vector[index].obj_index, \
+                    g_tier_manager.obj_vector[index].start_addr, \
+                    g_tier_manager.obj_vector[index].size);
+    fflush(stderr);
     index ++;
 }
 
-int remove_object(int pid, unsigned long start_addr, unsigned long size)
+int remove_object(int pid, unsigned long start_addr, unsigned long size){
+    int total_chunks;
+    unsigned long long remnant_size;
+    unsigned long aux;
+    int i=0;
+
+#ifdef CHUNK_ENABLED
+    if(size > CHUNK_SIZE){
+        total_chunks = size/CHUNK_SIZE;
+        remnant_size = size - (total_chunks * CHUNK_SIZE);
+        
+        while(i < total_chunks){
+           _remove_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
+           i++;
+        }
+        if(remnant_size > 0){
+            _remove_object(pid, start_addr + (i * CHUNK_SIZE), remnant_size, 1);
+        }else{
+            _remove_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
+        }
+    }else{
+        _remove_object(pid, start_addr, size, 0);
+    }
+#else
+    _remove_object(pid, start_addr, size, 0);
+#endif
+
+}
+
+int _remove_object(int pid, unsigned long start_addr, unsigned long size, int sliced)
 {
     int i;
-    for(i = 0; i < MAX_OBJECTS; i++){
+
+    if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
+        perror("popen");
+        exit(EXIT_FAILURE);
+    }
+
+    fgets(g_buf, sizeof(g_buf), g_stream_file);
+    sscanf(g_buf, "%lf",& g_timestamp);
+
+    //for(i = 0; i < MAX_OBJECTS; i++){
+    for(i = 0; i < g_tier_manager.total_obj; i++){
     	if(g_tier_manager.obj_vector[i].start_addr == start_addr && g_tier_manager.obj_vector[i].size == size && g_tier_manager.obj_alloc[i] == 1){
-            //D fprintf(stderr,"[recorder] remove_object (%lu.%lu, %d, %p, %ld) \n",
-            D fprintf(stderr,"recorder_remove, %lu.%lu, %d, %d, %p, %ld\n", \
-                      timestamp.tv_sec, \
-                      timestamp.tv_nsec, \
-                      pid, \
-                      g_tier_manager.obj_vector[i].obj_index, \
-                      start_addr, size);
-            D fflush(stderr);
+            D fprintf(stderr,"[recorder] remove, %lf, %d, %d, %p, %ld\n", \
+                              g_timestamp, \
+                              pid, \
+                              g_tier_manager.obj_vector[i].obj_index, \
+                              start_addr, \
+                              size);
+            fflush(stderr);
             g_tier_manager.obj_alloc[i] = 0;
-            
+
             return 1;
     	}
     }
-    
     return 0;
 }
 
