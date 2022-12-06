@@ -30,12 +30,12 @@ static FILE *g_stream_file;
 
 void initialize_recorder(void)
 {
-	int i, j, w;
+    int i, j, w;
 
-	for(i = 0; i < MAX_OBJECTS; i++){
-		g_tier_manager.obj_alloc[i] = 0;
-		g_tier_manager.obj_status[i] = -1;
-	}
+    for(i = 0; i < MAX_OBJECTS; i++){
+        g_tier_manager.obj_alloc[i] = 0;
+	g_tier_manager.obj_status[i] = -1;
+    }
     g_tier_manager.total_obj = 0;
 
     for(i=0; i< MAX_OBJECTS; i++){
@@ -44,7 +44,6 @@ void initialize_recorder(void)
         g_tier_manager.obj_vector[i].sliced = 0;
         
         for(j=0 ; j< MEM_LEVELS; j++){
-            
             g_tier_manager.obj_vector[i].metrics.sum_latency_cost[j] = 0;
             g_tier_manager.obj_vector[i].metrics.loads_count[j] = 0;
             g_tier_manager.obj_vector[i].metrics.tlb_hit[j] = 0;
