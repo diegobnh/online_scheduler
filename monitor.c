@@ -580,51 +580,51 @@ void *thread_monitor(void *_args){
                     if(mem_type_oper == 1){
                         
                     	if (is_served_by_local_NA_miss(data_src)) {
-                	    	mem_level = -1;
+                	    mem_level = -1;
                 	}
                 	else if (is_served_by_local_cache1(data_src)) {
-                    		mem_level = 0;
-                        	g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[0]++;
-                            	D fprintf(stderr, "Load on L1\n");
+                    	    mem_level = 0;
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[0]++;
+                            D fprintf(stderr, "Load on L1\n");
                 	}
                 	else if (is_served_by_local_lfb(data_src)) {
-                    		mem_level = 1;
-                            	g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[1]++;
-                            	D fprintf(stderr, "Load on LFB\n");
+                    	    mem_level = 1;
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[1]++;
+                            D fprintf(stderr, "Load on LFB\n");
               		}
                 	else if (is_served_by_local_cache2(data_src)) {
-                    		mem_level = 2;
-                            	g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[2]++;
-                            	D fprintf(stderr, "Load on L2\n");
+                    	    mem_level = 2;
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[2]++;
+                            D fprintf(stderr, "Load on L2\n");
                 	}
                 	else if (is_served_by_local_cache3(data_src)) {
-                    		mem_level = 3;
-                            	g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[3]++;
-                            	D fprintf(stderr, "Load on L3\n");
+                    	    mem_level = 3;
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[3]++;
+                            D fprintf(stderr, "Load on L3\n");
                 	}
                 	else if (is_served_by_local_memory(data_src)) {
-                    		mem_level = 4;
-                            	g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
-                            	D fprintf(stderr, "Load on DRAM\n");
+                    	    mem_level = 4;
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
+                            D fprintf(stderr, "Load on DRAM\n");
                 	}
                 	//else if (is_served_by_remote_memory(data_src)) {
                         else if (is_served_by_local_pmem(data_src)) {
-                            	mem_level = 4;
-                            	g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
-                            	D fprintf(stderr, "Load on PMEM\n");
+                            mem_level = 4;
+                            g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
+                            D fprintf(stderr, "Load on PMEM\n");
                         }
                 		
                 	if(mem_level != -1){
-                		tlb_type = get_data_src_dtlb(data_src);
-                		if(tlb_type == 1){
-                        	        g_tier_manager_copy.obj_vector[vector_index].metrics.tlb_hit[mem_level]++;
-                                	g_tier_manager_copy.obj_vector[vector_index].metrics.sum_latency_cost[mem_level] += weight;
-                		}else if(tlb_type == 2){
-                                	g_tier_manager_copy.obj_vector[vector_index].metrics.tlb_miss[mem_level]++;
-                                	g_tier_manager_copy.obj_vector[vector_index].metrics.sum_latency_cost[mem_level] += weight;
-                            	}else{
-                                	fprintf(stderr, "get_data_src_dtlb() is returning -1\n");
-                            	}
+                	    tlb_type = get_data_src_dtlb(data_src);
+                	    if(tlb_type == 1){
+                                g_tier_manager_copy.obj_vector[vector_index].metrics.tlb_hit[mem_level]++;
+                                g_tier_manager_copy.obj_vector[vector_index].metrics.sum_latency_cost[mem_level] += weight;
+                	    }else if(tlb_type == 2){
+                                g_tier_manager_copy.obj_vector[vector_index].metrics.tlb_miss[mem_level]++;
+                                g_tier_manager_copy.obj_vector[vector_index].metrics.sum_latency_cost[mem_level] += weight;
+                            }else{
+                                fprintf(stderr, "get_data_src_dtlb() is returning -1\n");
+                            }
                 	}
                 		
                     }else if(mem_type_oper == 2){ // 2 is store
