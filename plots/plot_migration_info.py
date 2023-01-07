@@ -93,7 +93,8 @@ def plot_migration_info():
     print("Amount:", df_init_data.shape[0])
     print("Total Cost (ms):", round(df_init_data.migration_cost_ms.sum(),2))
     print("Top 5 expensive")
-    print(df_init_data.sort_values(by="migration_cost_ms", ascending=False).head())
+    print(df_init_data[["migration_cost_ms","size","status_pages_before","status_pages_after"]].sort_values(by="migration_cost_ms", ascending=False).head())
+
     
     print("\n\n\nPromotion")
     print("---------------------")
@@ -101,7 +102,7 @@ def plot_migration_info():
     print("Amount:", df_promotion.shape[0])
     print("Total Cost (ms):", round(df_promotion.migration_cost_ms.sum(),2))
     print("Top 5 expensive")
-    print(df_promotion.sort_values(by="migration_cost_ms", ascending=False).head())
+    print(df_promotion[["migration_cost_ms","size","status_pages_before","status_pages_after"]].sort_values(by="migration_cost_ms", ascending=False).head())
     
     #mapping_memory_samples_to_chunks(df_dram, df_promotion)
 
