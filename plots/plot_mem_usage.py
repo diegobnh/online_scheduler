@@ -34,7 +34,7 @@ def plot_memory_usage():
     #First subplot
     df[["dram_app"]].plot(linewidth=0.75, ax=axes[0])
     df[["nvm_app"]].plot(style="-.",linewidth=0.75, ax=axes[0])
-    axes[0].legend(['DRAM','NVM'], prop={'size': 10}, ncol=2, fancybox=True, framealpha=0.5, bbox_to_anchor=(0.9, 1.41))
+    axes[0].legend(['DRAM','NVM'], prop={'size': 10}, ncol=2, fancybox=True, framealpha=0.5, bbox_to_anchor=(0.68, 1.61))
     axes[0].tick_params(axis='x', rotation=45)
     #ax.set_xlabel('Timestamp(seconds)')
     axes[0].set_ylabel('Memory \n Consumption (GB)')
@@ -45,8 +45,9 @@ def plot_memory_usage():
     axes[1].set_ylabel('Number of Load \n Access')
     axes[1].set_xlabel("Timestamp")
 
-    label = "Exec.Time:" + str(exec_time)
-    axes[0].annotate(label, xy=(0.35, 1.05), xycoords='axes fraction')
+    factor = str(round(df_nvm.NVM.sum()/df_dram.DRAM.sum(),1))
+    label = "Exec.Time:" + str(exec_time) + "\n" +  "DRAM samples:" + str(df_dram.DRAM.sum()) + "\n" + "NVM   samples:" + str(df_nvm.NVM.sum()) + " (" + factor + "x)"
+    axes[0].annotate(label, xy=(0.25, 1.05), xycoords='axes fraction')
 
     filename = "mem_usage_" + app_dataset + "_" + schedule_type + ".pdf"
     plt.savefig(filename, bbox_inches="tight")
