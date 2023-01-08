@@ -14,20 +14,29 @@ def plot_memory_usage():
     #dataframe of memory consumption in DRAM and NVM
     df = pd.read_csv(files[0])
     exec_time = round(df['timestamp'].iloc[-1] - df['timestamp'].iloc[0],1)
-    df.set_index('timestamp', inplace=True)
+    start_point = df['timestamp'].iloc[0]
+
+    df["timestamp_v2"] = df['timestamp'] - start_point
+    df.drop(["timestamp"], axis=1, inplace=True)
+    df.set_index('timestamp_v2', inplace=True)
+
     df['dram_app'] = df['dram_app']/1000
     df['nvm_app'] = df['nvm_app']/1000
 
     #dataframe of samples
     df_external_access = pd.read_csv("loads.txt", names=["ts_event", "virt_addr", "mem_access"])
-    df_external_access['ts_event'] = df_external_access['ts_event'].astype(int)
+    df_external_access["timestamp_v2"] = df_external_access['ts_event'] - start_point
+    df_external_access['timestamp_v2'] = df_external_access['timestamp_v2'].astype(int)
+    df_external_access.drop(["ts_event"], axis=1, inplace=True)
+
     df_dram = df_external_access.loc[df_external_access.mem_access == "DRAM_hit"]    
     df_nvm = df_external_access.loc[df_external_access.mem_access == "NVM_hit"]
-    df_dram = df_dram.groupby(['ts_event']).size().reset_index(name='DRAM')
-    df_dram.set_index("ts_event", inplace=True)
-    df_nvm = df_nvm.groupby(['ts_event']).size().reset_index(name='NVM')
-    df_nvm.set_index("ts_event", inplace=True)
 
+    df_dram = df_dram.groupby(['timestamp_v2']).size().reset_index(name='DRAM')
+    df_dram.set_index("timestamp_v2", inplace=True)
+    df_nvm = df_nvm.groupby(['timestamp_v2']).size().reset_index(name='NVM')
+    df_nvm.set_index("timestamp_v2", inplace=True)
+    
     #Plot
     fig, axes = plt.subplots(figsize=(5,4),nrows=2,sharex=True)
     
@@ -47,7 +56,9 @@ def plot_memory_usage():
 
     factor = str(round(df_nvm.NVM.sum()/df_dram.DRAM.sum(),1))
     label = "Exec.Time:" + str(exec_time) + "\n" +  "DRAM samples:" + str(df_dram.DRAM.sum()) + "\n" + "NVM   samples:" + str(df_nvm.NVM.sum()) + " (" + factor + "x)"
-    axes[0].annotate(label, xy=(0.25, 1.05), xycoords='axes fraction')
+    axes[0].annotate(label, xy=(0.20, 1.05), xycoords='axes fraction')
+
+    axes[1].ticklabel_format(style='sci',scilimits=(0,0),axis='y')
 
     filename = "mem_usage_" + app_dataset + "_" + schedule_type + ".pdf"
     plt.savefig(filename, bbox_inches="tight")
