@@ -160,6 +160,7 @@ elif [[ $1 == "our_schedule" ]] ; then
         mv preload_migration_cost.txt loads.txt track_info* scheduler_output.txt results/our_schedule/$app_pid
 	cd results/our_schedule/$app_pid
 	python3 ../../../plots/plot_mem_usage.py our_schedule
+    python3 ../../../plots/plot_migration_info.py
     done
 else
     echo "Invalid parameter!"
