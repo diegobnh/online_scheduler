@@ -6,67 +6,28 @@ import sys
 pd.set_option('display.max_columns', None)
 pd.set_option('expand_frame_repr', False)
 
-def mapping_memory_samples_to_chunks(df_dram, df_promotion):
-    print(df_dram.head())
-    print(df_promotion.head())
-    sys.exit()
-    
-    list_mmap_index = []
-    list_mmap_call_stack_id = []
-    list_mmap_object_name = []
+def mapping_memory_samples_to_chunks(df_dram, df_promotion):    
+    number_of_access = []
+    for index, row in df_promotion.iterrows():
+        total_access = 0
+        df_dram_temp = df_dram.copy()
 
-    #Here we are creating an lists of dictionary
-    data = {k:[] for k in df_perfmem.columns}
+ 	    #filter the dram access after promotion	
+        mask = (df_dram_temp['ts_event'] >= row['timestamp'])
+        df_dram_temp = df_dram_temp.loc[mask]
 
-    total_rows_mapped=0
-    for index, row in df_perfmem.iterrows():
-       df_mmap_temp = datasets.df_mmap.copy()
+        if not df_dram_temp.empty:
+            mask = (row['start_addr_decimal'] <= df_dram_temp['virt_addr_decimal']) & (df_dram_temp['virt_addr_decimal'] <= row['end_addr_decimal'])
+            df_dram_temp = df_dram_temp.loc[mask]
 
-       mask = (df_mmap_temp['ts_event_start'] <= row['ts_event']) & (row['ts_event'] <= df_mmap_temp['ts_event_end'])
-       df_mmap_temp = df_mmap_temp.loc[mask]
+            if not df_dram_temp.empty:
+                total_access = df_dram_temp.shape[0]
 
-       if not df_mmap_temp.empty:
-           mask = (df_mmap_temp['start_addr_decimal'] <= row['virt_addr_decimal']) & (row['virt_addr_decimal'] <= df_mmap_temp['end_addr_decimal'])
-           df_mmap_temp = df_mmap_temp.loc[mask]
+        number_of_access.append(total_access)
+        
+    df_promotion["num_access_after_migration"] =  number_of_access   
 
-           if not df_mmap_temp.empty:
-               total_rows_mapped+= df_mmap_temp.shape[0]
-               mmaps_index_match = df_mmap_temp.index.values  #index on dataframe for those mmap that satisfied time and address range
-               for row_index_mmap in mmaps_index_match:
-                    #if you increase or decrease number of columns during perf-mem you must update here
-                    data['ts_event'].append(row['ts_event'])
-                    data['virt_addr'].append(row['virt_addr'])
-                    data['virt_addr_decimal'].append(row['virt_addr_decimal'])
-                    data['page_number'].append(row['page_number'])
-                    data['mem_level'].append(row['mem_level'])
-                    data['access_weight'].append(row['access_weight'])
-                    data['thread_rank'].append(row['thread_rank'])
-                    data['tlb'].append(row['tlb'])
-                    data['access_type'].append(row['access_type'])
-
-                    list_mmap_index.append(row_index_mmap)
-                    list_mmap_call_stack_id.append(datasets.df_mmap.iloc[row_index_mmap]['call_stack_hash'])
-                    list_mmap_object_name.append(datasets.df_mmap.iloc[row_index_mmap]['obj_name'])
-
-    #Here we create an dictionary of dataframes
-    df = {}
-    for col in df_perfmem.columns:
-       df[col] = pd.DataFrame(data[col], columns=[col])
-
-    #concat all dataframes
-    df_1 = pd.concat(df,join='inner', axis=1,ignore_index=True)
-    df_1.columns = df_perfmem.columns
-
-    df_mmap_index = pd.DataFrame(list_mmap_index, columns = ["mmap_index"])
-    df_mmap_callstack = pd.DataFrame(list_mmap_call_stack_id, columns = ["call_stack_hash"])
-    df_mmap_object = pd.DataFrame(list_mmap_object_name, columns = ["obj_name"])
-    df_2 = pd.concat([df_mmap_index,df_mmap_callstack,df_mmap_object],join='inner', axis=1,ignore_index=True)
-    df_2.columns=['mmap_index','call_stack_hash','obj_name']
-
-    df_perfmem_with_mmap = pd.concat([df_1,df_2], axis=1)
-
-    return df_perfmem_with_mmap
-
+               
 def plot_migration_info():
     file_path = 'migration_summary.txt'
     sys.stdout = open(file_path, "w")
@@ -110,5 +71,6 @@ def plot_migration_info():
     print(df_promotion[["migration_cost_ms","size","status_pages_before","nodemask_target_node"]].sort_values(by="migration_cost_ms", ascending=False).head(10))
     #df_promotion[["migration_cost_ms","size","status_pages_before","status_pages_after"]].sort_values(by="migration_cost_ms", ascending=False).to_csv("promotion.csv")
 
-    #mapping_memory_samples_to_chunks(df_dram, df_promotion)
+    mapping_memory_samples_to_chunks(df_dram, df_promotion)
+    df_promotion.sort_values(by="migration_cost_ms", ascending=False).to_csv("promotion.csv")
 plot_migration_info()
