@@ -81,5 +81,5 @@ def plot_migration_info():
     #df_promotion[["migration_cost_ms","size","status_pages_before","status_pages_after"]].sort_values(by="migration_cost_ms", ascending=False).to_csv("promotion.csv")
 
     mapping_memory_samples_to_chunks(df_dram, df_promotion)
-    df_promotion.sort_values(by="num_access_after_migration", ascending=False).to_csv("promotion_effective.csv")
+    df_promotion.sort_values(by="num_access_after_migration", ascending=False).to_csv("promotion_effective.csv", index=False)
 plot_migration_info()
