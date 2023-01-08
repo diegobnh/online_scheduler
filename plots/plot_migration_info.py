@@ -59,7 +59,11 @@ def plot_migration_info():
     print("Amount:", df_init_data.shape[0])
     print("Total Cost (ms):", round(df_init_data.migration_cost_ms.sum(),2))
     print("\nTop 10 expensive")
-    print(df_init_data[["migration_cost_ms","size","status_pages_before","nodemask_target_node"]].sort_values(by="migration_cost_ms", ascending=False).head(10))
+    
+    #remove index  from printing
+    blankIndex=[''] * len(df_init_data)
+    df_init_data.index=blankIndex
+    print(df_init_data.sort_values(by="migration_cost_ms", ascending=False).head(10))
     #df_init_data[["migration_cost_ms","size","status_pages_before","status_pages_after"]].sort_values(by="migration_cost_ms", ascending=False).to_csv("init_data_plac.csv")
 
     print("\n\n\nPromotion")
@@ -68,9 +72,14 @@ def plot_migration_info():
     print("Amount:", df_promotion.shape[0])
     print("Total Cost (ms):", round(df_promotion.migration_cost_ms.sum(),2))
     print("\nTop 10 expensive")
-    print(df_promotion[["migration_cost_ms","size","status_pages_before","nodemask_target_node"]].sort_values(by="migration_cost_ms", ascending=False).head(10))
+    
+    #remove index  from printing
+    blankIndex=[''] * len(df_promotion)
+    df_promotion.index=blankIndex
+
+    print(df_promotion.sort_values(by="migration_cost_ms", ascending=False).head(10))
     #df_promotion[["migration_cost_ms","size","status_pages_before","status_pages_after"]].sort_values(by="migration_cost_ms", ascending=False).to_csv("promotion.csv")
 
     mapping_memory_samples_to_chunks(df_dram, df_promotion)
-    df_promotion.sort_values(by="migration_cost_ms", ascending=False).to_csv("promotion.csv")
+    df_promotion.sort_values(by="num_access_after_migration", ascending=False).to_csv("promotion_effective.csv")
 plot_migration_info()
