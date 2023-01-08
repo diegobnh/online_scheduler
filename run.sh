@@ -2,7 +2,10 @@
 : '
 git clone https://github.com/diegobnh/online_scheduler.git; chmod +777 online_scheduler; cd online_scheduler
 sudo ./run.sh our_schedule 2> /dev/null
+for i in {1..10}; do sudo ./run.sh our_schedule 2> /dev/null; done
+
 sudo ./run.sh autonuma 2> /dev/null
+for i in {1..10}; do sudo ./run.sh autonuma 2> /dev/null; done
 '
 
 if [ $# -lt 1 ] ; then
