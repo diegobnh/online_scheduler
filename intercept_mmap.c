@@ -185,18 +185,18 @@ void *thread_intercept_mmap(void){
     int count=0;
     int app_pid=-1;
     FILE *fptr;
-    
-    while (g_running) {
-        
+  
+    while(app_pid == -1){
         fptr = fopen("pid.txt", "r");
         if(fptr != NULL )
         {
-            //fprintf(stderr, "Opened file! \n");
             fscanf(fptr, "%d", &app_pid);
             fseek(fptr, 0, SEEK_SET);
         }
-        
-        
+    }
+
+    
+    while (g_running) {
         perf_evlist__poll(evlist, -1);
         
         perf_evlist__for_each_mmap(evlist, map, false) {
