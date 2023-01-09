@@ -45,6 +45,7 @@
   #define D if(0)
 #endif
 
+#define THRESHOLD_HOTNESS_VALUE 100
 
 struct key_value{
     int key; //key will be the the index object
@@ -130,8 +131,8 @@ void update_free_dram_space(void){
     g_current_free_dram_space = g_start_free_DRAM - g_current_dram_consumption;
     
     fclose(stream_file);
-    if(count%10 == 0)
-        D fprintf(stderr, "App DRAM usage:%.4lf (GB)\n",g_current_dram_consumption);
+    if(count%5 == 0)
+        D fprintf(stderr, "[actuator] app dram usage:%.4lf (GB)\n",g_current_dram_consumption);
 }
 static int comp(const void * elem1, const void * elem2){
     struct key_value *k_v1, *k_v2;
@@ -197,18 +198,21 @@ static void sort_objects(void){
     struct key_value aux;
     
     for(i=0; i<g_tier_manager.total_obj;i++){
-    //for(i=0;i<MAX_OBJECTS;i++){
         aux.key = i;
         
-        llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
+        llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]; // /(g_tier_manager.obj_vector[i].size/GB);
+        //llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
         
         all_tlb_miss = 0;
         for(j=0; j<MEM_LEVELS;j++){
             all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
         }
-        //tlb_miss_per_size = g_tier_manager.obj_vector[i].metrics.tlb_miss[4]/(g_tier_manager.obj_vector[i].size/GB);//4 means DRAM
-        tlb_miss_per_size = all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
-        stores_per_size = g_tier_manager.obj_vector[i].metrics.stores_count/(g_tier_manager.obj_vector[i].size/GB);
+        
+        tlb_miss_per_size = all_tlb_miss; 
+        //tlb_miss_per_size = all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
+        
+        stores_per_size = g_tier_manager.obj_vector[i].metrics.stores_count; 
+        //stores_per_size = g_tier_manager.obj_vector[i].metrics.stores_count/(g_tier_manager.obj_vector[i].size/GB);
         
         //Store is the unique that we accumulate over time. All the other we update using average moving
         aux.value = llcm_per_size + (tlb_miss_per_size * 2) + (stores_per_size * 3) ;
@@ -219,9 +223,6 @@ static void sort_objects(void){
         aux.tlbm = tlb_miss_per_size;
         
         g_key_value_list[i] = aux;
-        //if(g_key_value_list[i].value > 0){
-        //    fprintf(stderr, "[sort_objects] Index:%d, Value:%.2lf\n", i, g_key_value_list[i].value);
-        //}
     }
     
     qsort (g_key_value_list, sizeof(g_key_value_list)/sizeof(*g_key_value_list), sizeof(*g_key_value_list), comp);
@@ -383,7 +384,7 @@ void policy_promotion(void){
 	//The maximum migration per instant of time is one CHUNK_SIZE	
         if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && curr_alloc_size_gb <= max_migration_gb){
         //if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && metric_value > g_hotness_threshold){
-            if (curr_alloc_size_gb < free_dram_space && metric_value > 1 && obj_index){  //!= g_current_obj_undone_mapping){
+            if (curr_alloc_size_gb < free_dram_space && metric_value > THRESHOLD_HOTNESS_VALUE && obj_index){  //!= g_current_obj_undone_mapping){
                 //clock_gettime(CLOCK_REALTIME, &timestamp);
                 if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
                     perror("popen");
@@ -392,7 +393,7 @@ void policy_promotion(void){
 
                 fgets(g_buf, sizeof(g_buf), g_stream_file);
                 sscanf(g_buf, "%lf",& g_timestamp);
-                D fprintf(stderr, "\t[actuator] Promotion, %lf, obj: %d, metric:%.1lf, llcm:%.1lf, stores:%.1lf, tlb_miss:%.1lf\n", g_timestamp, obj_index, metric_value, g_key_value_list[i].llcm, g_key_value_list[i].stores, g_key_value_list[i].tlbm);
+                D fprintf(stderr, "[actuator] promotion, %lf, %d, %p, metric:%.1lf, llcm:%.1lf, stores:%.1lf, tlb_miss:%.1lf\n", g_timestamp, obj_index, g_tier_manager.obj_vector[obj_index].start_addr, metric_value, g_key_value_list[i].llcm, g_key_value_list[i].stores, g_key_value_list[i].tlbm);
                 bind_order(g_tier_manager.obj_vector[obj_index].start_addr, g_tier_manager.obj_vector[obj_index].size, NODE_0_DRAM, obj_index, PROMOTION);
                 g_tier_manager.obj_status[obj_index] = NODE_0_DRAM;
                 
