@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import glob
 import sys
-
+import os
 
 schedule_type = str(sys.argv[1])
 
@@ -14,6 +14,7 @@ def plot_memory_usage():
     #dataframe of memory consumption in DRAM and NVM
     df = pd.read_csv(files[0])
     exec_time = round(df['timestamp'].iloc[-1] - df['timestamp'].iloc[0],1)
+    os.system("echo %s > exec_time.txt"%exec_time)
     start_point = df['timestamp'].iloc[0]
 
     df["timestamp_v2"] = df['timestamp'] - start_point
