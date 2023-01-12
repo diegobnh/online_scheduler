@@ -143,53 +143,53 @@ elif [[ $1 == "our_schedule" ]] ; then
         for ((j = 0; j < ${#ACTUATOR_INTERVAL[@]}; j++)); do
             for ((k = 0; k < ${#HOTNESS_THRESHOLD[@]}; k++)); do
 	            for ((w = 0; w < ${#SAMPLE_FREQ[@]}; w++)); do
-                    folder="monitor_"${MONITOR_INTERVAL[$i]}"_actuator_"${ACTUATOR_INTERVAL[$j]}"_hotness_"${HOTNESS_THRESHOLD[$k]}"_sampling_"${SAMPLE_FREQ[$w]}
-                    mkdir -p $folder
-		            cd $folder
-                    echo -n "Parameters:"$folder " , Iter: "
-                    for ((t = 0; t < $TOTAL_ITERATIONS; t++)); do		
-                        echo -n $t" "
-	                    clean_and_start
-                        setup_our_schedule_mapping_parameters
-                        
-                        sleep 3
-                        sudo rm -f *.txt -f min_max* *.o
-                        sudo ../../.././delete_shared_memory
+                        folder="monitor_"${MONITOR_INTERVAL[$i]}"_actuator_"${ACTUATOR_INTERVAL[$j]}"_hotness_"${HOTNESS_THRESHOLD[$k]}"_sampling_"${SAMPLE_FREQ[$w]}
+                        mkdir -p $folder
+		        cd $folder
+                        echo -n "Parameters:"$folder " , Iter: "
+                    	for ((t = 0; t < $TOTAL_ITERATIONS; t++)); do		
+			    echo -n $t" "
+			    clean_and_start
+			    setup_our_schedule_mapping_parameters
 
-                        track_info "bc" "bc_kron" &
-                        
-                        sudo env MONITOR_INTERVAL=${MONITOR_INTERVAL[$i]} ACTUATOR_INTERVAL=${ACTUATOR_INTERVAL[$j]} HOTNESS_THRESHOLD=${HOTNESS_THRESHOLD[$k]} SAMPLE_FREQ=${SAMPLE_FREQ[$w]}  ../../.././start_threads > "scheduler_output.txt" 2>&1 &
-                        start_threads_pid=$!
+			    sleep 3
+		    	    sudo rm -f *.txt -f min_max* *.o
+			    sudo ../../.././delete_shared_memory
 
-                        sleep 3  #if you dont wait, you could lose some mmaps interception
-                        cp ../../../preload.so .
-                        LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3  1> /dev/null &
-                        app_pid=$!
-                        echo $app_pid > pid.txt
+			    track_info "bc" "bc_kron" &
 
-                        wait $app_pid
-                        sudo kill -10 start_threads
-                        wait $start_threads_pid
+			    sudo env MONITOR_INTERVAL=${MONITOR_INTERVAL[$i]} ACTUATOR_INTERVAL=${ACTUATOR_INTERVAL[$j]} HOTNESS_THRESHOLD=${HOTNESS_THRESHOLD[$k]} SAMPLE_FREQ=${SAMPLE_FREQ[$w]}  ../../.././start_threads > "scheduler_output.txt" 2>&1 &
+			    start_threads_pid=$!
 
-                 	    pkill perf &> /dev/null
-                	    sleep 30
-                	    post_process_perfmem
-						rm preload.so
-						rm -f migration_*.pipe pid.txt maps_* perf.data*
-						
-                        mkdir -p $t
-                        sed -i '1 i\timestamp, obj_index, start_addr, size, nodemask_target_node,  status_pages_before, migration_cost_ms, status_pages_after, bind_type' preload_migration_cost.txt
-                        mv preload_migration_cost.txt loads.txt track_info* scheduler_output.txt $t
-	                    cd $t
-                    	python3 ../../../../plots/plot_mem_usage.py our_schedule
-                        python3 ../../../../plots/plot_migration_info.py
-                    	
-                    	kill -10 $lock_memory_pid
-						cd ..
-                    done
-                    echo " "
+			    sleep 3  #if you dont wait, you could lose some mmaps interception
+			    cp ../../../preload.so .
+			    LD_PRELOAD=$(pwd)/preload.so /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3  1> /dev/null &
+			    app_pid=$!
+			    echo $app_pid > pid.txt
+
+			    wait $app_pid
+		 	    sudo kill -10 start_threads
+			    wait $start_threads_pid
+
+			    pkill perf &> /dev/null
+			    sleep 30
+			    post_process_perfmem
+			    rm preload.so
+			    rm -f migration_*.pipe pid.txt maps_* perf.data*
+
+			    mkdir -p $t
+			    sed -i '1 i\timestamp, obj_index, start_addr, size, nodemask_target_node,  status_pages_before, migration_cost_ms, status_pages_after, bind_type' preload_migration_cost.txt
+			    mv preload_migration_cost.txt loads.txt track_info* scheduler_output.txt $t
+			    cd $t
+			    python3 ../../../../plots/plot_mem_usage.py our_schedule
+			    python3 ../../../../plots/plot_migration_info.py
+
+			    kill -10 $lock_memory_pid
+			    cd ..
+                        done
+                        echo " "
                     
-                    cd ..
+                        cd ..
                 done
             done
         done
