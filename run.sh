@@ -117,10 +117,10 @@ if [[ $1 == "autonuma" ]]; then
     mkdir -p results/autonuma/
     cd results/autonuma/
     for ((t = 0; t < $TOTAL_ITERATIONS; t++)); do		
-	    clean_and_start
+	clean_and_start
         setup_autonuma_parameters
         track_info "bc" "bc_kron" &
-	    /mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
+	/mnt/myPMEM/gapbs/./bc -f /mnt/myPMEM/gapbs/benchmark/graphs/kron.sg -n3 1> /dev/null &
         app_pid=$!
         wait $app_pid
     
@@ -131,6 +131,7 @@ if [[ $1 == "autonuma" ]]; then
         mv loads.txt track_info* $t
         cd $t
         python3 ../../../plots/plot_mem_usage.py autonuma    
+	cd ..
     done
     
 elif [[ $1 == "our_schedule" ]] ; then
