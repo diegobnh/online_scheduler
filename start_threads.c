@@ -24,8 +24,9 @@ volatile sig_atomic_t g_running = 1;
 
 float g_actuator_interval;
 float g_monitor_interval;
-float g_track_mapping_interval;
-int g_hotness_threshold = 10;
+//float g_track_mapping_interval;
+int g_hotness_threshold;
+int g_sample_freq;
 
 struct timespec g_start, g_end;
 
@@ -33,25 +34,29 @@ void close_start_threads(int signum, siginfo_t *info, void *uc){
     g_running = 0;
 }
 int read_enviroment_variables(void){
-    char* actuator_interval = getenv("ACTUATOR_INTERVAL");
     char* monitor_interval = getenv("MONITOR_INTERVAL");
-    char* track_mapping_interval = getenv("TRACK_MAPPING_INTERVAL");
-    
+    char* actuator_interval = getenv("ACTUATOR_INTERVAL");
+    //char* track_mapping_interval = getenv("TRACK_MAPPING_INTERVAL");
+    char* hotness_threshold = getenv("HOTNESS_THRESHOLD");
+    char* sample_freq = getenv("SAMPLE_FREQ");
         
-    if(!(actuator_interval || monitor_interval || track_mapping_interval)){
+    if(!(actuator_interval || monitor_interval || hotness_threshold || sample_freq)){
         fprintf(stderr, "You are missing some environment variable !!\n");
         exit(-1);
     }else{
         sscanf(actuator_interval, "%f", &g_actuator_interval);
         sscanf(monitor_interval, "%f", &g_monitor_interval);
-        sscanf(track_mapping_interval, "%f", &g_track_mapping_interval);
+        sscanf(hotness_threshold, "%d", &g_hotness_threshold);
+        sscanf(sample_freq, "%d", &g_sample_freq);
         
         fprintf(stderr,"ACTUATOR_INTERVAL(sec)=%.2lf \
                 \nMONITOR_INTERVAL(sec)=%.2lf \
-                \nTRACK_MAPPING_INTERVAL(sec)=%.2lf\n", \
+                \nHOTNESS_THRESHOLD=%d \
+                \nSAMPLE_FREQ=%d\n", \
                 g_actuator_interval, \
                 g_monitor_interval, \
-                g_track_mapping_interval);
+                g_hotness_threshold, \
+                g_sample_freq);
     }
             
 }
