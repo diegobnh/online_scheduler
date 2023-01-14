@@ -214,7 +214,7 @@ static void sort_objects(void){
         //stores = g_tier_manager.obj_vector[i].metrics.stores_count/(g_tier_manager.obj_vector[i].size/GB);
         
         //Store is the unique that we accumulate over time. All the other we update using average moving
-        aux.value = llcm + (tlb_miss * 2) + (stores * 2) ;
+        aux.value = llcm + (tlb_miss * 2); //+ (stores * 2) ;
         
         //only for tracing
         aux.llcm = llcm;
