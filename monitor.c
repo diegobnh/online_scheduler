@@ -21,9 +21,9 @@
 #include <pthread.h>
 #include "hashmap.h"
 #include "recorder.h"
-#define MMAP_DATA_SIZE 1024
-#define ALPHA 0.33
-#define MONITOR_INTERVAL 0.1
+
+#define MMAP_DATA_SIZE  1024
+#define ALPHA           0.33
 
 int address_compare(const void *a, const void *b, void *udata) ;
 bool addr_iter(const void *item, void *udata);
@@ -37,6 +37,7 @@ uint64_t address_hash(const void *item, uint64_t seed0, uint64_t seed1);
 #endif
 
 extern float g_monitor_interval;
+extern int g_sample_freq;
 extern tier_manager_t g_tier_manager;
 extern volatile sig_atomic_t g_running;
 tier_manager_t g_tier_manager_copy;
@@ -80,12 +81,14 @@ void update_metrics(void){
                 g_tier_manager.obj_vector[i].metrics.sum_latency_cost[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA);
             
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.loads_count[j];
-                old_value = g_tier_manager.obj_vector[i].metrics.loads_count[j];
-                g_tier_manager.obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                //old_value = g_tier_manager.obj_vector[i].metrics.loads_count[j];
+                //g_tier_manager.obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                g_tier_manager.obj_vector[i].metrics.loads_count[j] += curr_value;
                 
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j];
-                old_value = g_tier_manager.obj_vector[i].metrics.tlb_hit[j];
-                g_tier_manager.obj_vector[i].metrics.tlb_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                //old_value = g_tier_manager.obj_vector[i].metrics.tlb_hit[j];
+                //g_tier_manager.obj_vector[i].metrics.tlb_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                g_tier_manager.obj_vector[i].metrics.tlb_hit[j] += curr_value; 
                 
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j];
                 //old_value = g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
@@ -107,8 +110,8 @@ void clear_metrics(void){
     for(i=0; i< MAX_OBJECTS; i++){
         for(j=0 ; j< MEM_LEVELS; j++){
             g_tier_manager_copy.obj_vector[i].metrics.sum_latency_cost[j] = 0;
-            g_tier_manager_copy.obj_vector[i].metrics.loads_count[j] = 0;
-            g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j] = 0;
+            //g_tier_manager_copy.obj_vector[i].metrics.loads_count[j] = 0;
+            //g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j] = 0;
             //g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j] = 0;
         }
         //g_tier_manager_copy.obj_vector[i].metrics.stores_count = 0;
@@ -463,9 +466,8 @@ void *thread_monitor(void *_args){
         .exclude_user = 0,
         .exclude_hv = 1,
         .freq = 1,
-        .sample_freq = 100,
-        //.sample_period = 1000,
-        //.sample_type =
+        .sample_freq = g_sample_freq,
+        //.sample_period = SAMPLE_PERIOD,
         .sample_type = PERF_SAMPLE_IDENTIFIER | PERF_SAMPLE_ADDR | PERF_SAMPLE_WEIGHT | PERF_SAMPLE_DATA_SRC,
     };
     struct perf_event_attr store_attr = {
@@ -478,8 +480,8 @@ void *thread_monitor(void *_args){
         .exclude_user = 0,
         .exclude_hv = 1,
         .freq = 1,
-        .sample_freq = 100,
-        //.sample_period = 1000,
+        .sample_freq = g_sample_freq,
+        //.sample_period = SAMPLE_PERIOD,
         .sample_type = PERF_SAMPLE_IDENTIFIER | PERF_SAMPLE_ADDR | PERF_SAMPLE_WEIGHT | PERF_SAMPLE_DATA_SRC,
     };
 
