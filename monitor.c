@@ -110,11 +110,11 @@ void clear_metrics(void){
     for(i=0; i< MAX_OBJECTS; i++){
         for(j=0 ; j< MEM_LEVELS; j++){
             g_tier_manager_copy.obj_vector[i].metrics.sum_latency_cost[j] = 0;
-            //g_tier_manager_copy.obj_vector[i].metrics.loads_count[j] = 0;
-            //g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j] = 0;
-            //g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j] = 0;
+            g_tier_manager_copy.obj_vector[i].metrics.loads_count[j] = 0;
+            g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j] = 0;
+            g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j] = 0;
         }
-        //g_tier_manager_copy.obj_vector[i].metrics.stores_count = 0;
+        g_tier_manager_copy.obj_vector[i].metrics.stores_count = 0;
     }
 }
 int get_vector_index(long long chave){
