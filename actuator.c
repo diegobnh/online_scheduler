@@ -183,7 +183,7 @@ static double get_hotness_metric(int obj_index){
     for(i=0; i<MEM_LEVELS;i++){
         all_latency += g_tier_manager.obj_vector[obj_index].metrics.sum_latency_cost[i];
     }
-    return all_latency/(g_tier_manager.obj_vector[i].size/GB);
+    return all_latency/(g_tier_manager.obj_vector[i].size/GB);	
 #endif
     
 }
@@ -191,35 +191,35 @@ static double get_hotness_metric(int obj_index){
 static void sort_objects(void){
     int i, j;
     double all_tlb_miss;
-    double llcm_per_size;
-    double tlb_miss_per_size;
-    double stores_per_size;
+    double llcm;
+    double tlb_mis;
+    double stores;
     struct key_value aux;
     
     for(i=0; i<g_tier_manager.total_obj;i++){
         aux.key = i;
         
-        llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]; // /(g_tier_manager.obj_vector[i].size/GB);
-        //llcm_per_size = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
+        llcm = g_tier_manager.obj_vector[i].metrics.loads_count[4]; // /(g_tier_manager.obj_vector[i].size/GB);
+        //llcm = g_tier_manager.obj_vector[i].metrics.loads_count[4]/(g_tier_manager.obj_vector[i].size/GB);
         
         all_tlb_miss = 0;
         for(j=0; j<MEM_LEVELS;j++){
             all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
         }
         
-        tlb_miss_per_size = all_tlb_miss; 
-        //tlb_miss_per_size = all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
+        tlb_miss = all_tlb_miss; 
+        //tlb_miss = all_tlb_miss/(g_tier_manager.obj_vector[i].size/GB);
         
-        stores_per_size = g_tier_manager.obj_vector[i].metrics.stores_count; 
-        //stores_per_size = g_tier_manager.obj_vector[i].metrics.stores_count/(g_tier_manager.obj_vector[i].size/GB);
+        stores = g_tier_manager.obj_vector[i].metrics.stores_count; 
+        //stores = g_tier_manager.obj_vector[i].metrics.stores_count/(g_tier_manager.obj_vector[i].size/GB);
         
         //Store is the unique that we accumulate over time. All the other we update using average moving
-        aux.value = llcm_per_size + (tlb_miss_per_size * 2) + (stores_per_size * 3) ;
+        aux.value = llcm + (tlb_miss * 2) + (stores * 2) ;
         
         //only for tracing
-        aux.llcm = llcm_per_size;
-        aux.stores = stores_per_size;
-        aux.tlbm = tlb_miss_per_size;
+        aux.llcm = llcm;
+        aux.stores = stores;
+        aux.tlbm = tlb_miss;
         
         g_key_value_list[i] = aux;
     }
