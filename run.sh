@@ -135,9 +135,9 @@ if [[ $1 == "autonuma" ]]; then
     done
     
 elif [[ $1 == "our_schedule" ]] ; then
+    echo " "
     echo "Running: Our schedule"
     echo "---------------------"
-    echo " "
     mkdir -p results/our_schedule/
     cd results/our_schedule/ 
     for ((i = 0; i < ${#MONITOR_INTERVAL[@]}; i++)); do
