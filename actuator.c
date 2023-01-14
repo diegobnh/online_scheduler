@@ -45,7 +45,6 @@
   #define D if(0)
 #endif
 
-#define THRESHOLD_HOTNESS_VALUE 100
 
 struct key_value{
     int key; //key will be the the index object
@@ -384,7 +383,7 @@ void policy_promotion(void){
 	//The maximum migration per instant of time is one CHUNK_SIZE	
         if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && curr_alloc_size_gb <= max_migration_gb){
         //if(g_tier_manager.obj_alloc[obj_index] == 1 && g_tier_manager.obj_status[obj_index] == NODE_0_PMEM && metric_value > g_hotness_threshold){
-            if (curr_alloc_size_gb < free_dram_space && metric_value > THRESHOLD_HOTNESS_VALUE && obj_index){  //!= g_current_obj_undone_mapping){
+             if (curr_alloc_size_gb < free_dram_space && metric_value > g_hotness_threshold && obj_index){  //!= g_current_obj_undone_mapping){
                 //clock_gettime(CLOCK_REALTIME, &timestamp);
                 if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
                     perror("popen");
