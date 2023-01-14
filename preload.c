@@ -28,7 +28,7 @@
 #include "recorder.h"
 #define STORAGE_ID "MY_SHARED_MEMORY"
 
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
   #define D if(1)
 #else
@@ -279,10 +279,10 @@ void *thread_manager_mbind(void * _args){
            }
            //Get page state before migration
            query_status_memory_pages(getpid(), buf.start_addr, buf.size, status_memory_pages_before);
-           fprintf(g_fp, "[%.2f,",status_memory_pages_before[0]);
+           fprintf(g_fp, "[%.2f:",status_memory_pages_before[0]);
            for(i=1; i<g_num_nodes_available; i++)
            {
-		fprintf(g_fp, "%.2f,",status_memory_pages_before[i]);
+		fprintf(g_fp, "%.2f:",status_memory_pages_before[i]);
            }
            fprintf(g_fp, "%.2f],",status_memory_pages_before[i]);
 
@@ -307,10 +307,10 @@ void *thread_manager_mbind(void * _args){
 
            //Get page state after migration
            query_status_memory_pages(getpid(), buf.start_addr, buf.size, status_memory_pages_after);
-           fprintf(g_fp, "[%.2f,",status_memory_pages_after[0]);
+           fprintf(g_fp, "[%.2f:",status_memory_pages_after[0]);
            for(i=1; i<g_num_nodes_available; i++)
            {
-                fprintf(g_fp, "%.2f,",status_memory_pages_after[i]);
+                fprintf(g_fp, "%.2f:",status_memory_pages_after[i]);
            }
            fprintf(g_fp, "%.2f], ",status_memory_pages_after[i]);
            fprintf(g_fp, "%d\n",buf.type);
