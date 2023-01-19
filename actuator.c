@@ -192,7 +192,7 @@ static void sort_objects(void){
     int i, j;
     double all_tlb_miss;
     double llcm;
-    double tlb_mis;
+    double tlb_miss;
     double stores;
     struct key_value aux;
     
