@@ -28,13 +28,6 @@
 #include "recorder.h"
 #define STORAGE_ID "MY_SHARED_MEMORY"
 
-#define DEBUG
-#ifdef DEBUG
-  #define D if(1)
-#else
-  #define D if(0)
-#endif
-
 pthread_t thread_mbind;
 static struct timespec g_start, g_end;
 FILE *g_fp;
@@ -43,25 +36,38 @@ int g_pipe_write_fd;
 static int g_running = 1;
 static int g_num_nodes_available;
 extern int errno;
-static char g_buf[256];
-static char g_cmd[256];
-static double g_timestamp;
-static FILE *g_stream_file;
 
-/*
-typedef struct data_bind
-{
-    unsigned long start_addr;
-    unsigned long size;
-    unsigned long nodemask_target_node;
-    int obj_index;
-} data_bind_t;
-*/
+
 static void __attribute__ ((constructor)) init_lib(void);
 //static void __attribute__((destructor)) exit_lib(void);
 
 void *thread_manager_mbind(void * _args);
 
+int static guard(int ret, char *err)
+{
+    if (ret == -1)
+    {
+        perror(err);
+        return -1;
+    }
+    return ret;
+}
+double static get_my_timestamp(){
+    char buf[256];
+    char cmd[256];
+    double timestamp;
+    FILE *stream_file;
+
+    sprintf(cmd, "awk '{print $1}' /proc/uptime");
+
+    if (NULL == (stream_file = popen(cmd, "r"))) { perror("popen"); exit(EXIT_FAILURE);
+    }
+
+    fgets(buf, sizeof(buf), stream_file);
+    sscanf(buf, "%lf", &timestamp);
+
+    return timestamp;
+}
 void set_number_of_nodes_availables(void)
 {
     if ((numa_available() < 0)) {
@@ -78,7 +84,18 @@ void set_number_of_nodes_availables(void)
     }
     
     g_num_nodes_available = num_nodes;
-    
+}
+
+void static preload_open_pipes(void)
+{
+    char FIFO_PATH_MIGRATION[50] ;
+    char FIFO_PATH_MIGRATION_ERROR[50] ;
+
+    sprintf(FIFO_PATH_MIGRATION, "migration.pipe");
+    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error.pipe", getpid());
+
+    g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION, O_RDONLY), "[preload] Could not open pipe MIGRATION for reading");
+    g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_WRONLY), "[preload] Could not open pipe MIGRATION_ERROR for writing");
 }
 
 /*
@@ -91,13 +108,12 @@ void init_lib(void)
    int fd=shm_open(STORAGE_ID, O_RDWR | O_CREAT | O_EXCL, 0660);
    if(fd != -1)
    {
-       D fprintf(stderr, "[preload] creating thread_mbind\n");
+       preload_open_pipes();
        pthread_create(&thread_mbind, NULL, thread_manager_mbind, NULL);
-   }else{
-       D fprintf(stderr, "[preload] PID: %d trying to create thread mbind. Has shared memory been removed?\n", getpid());
    }
-
-   sprintf(g_cmd, "awk '{print $1}' /proc/uptime");
+   //else{
+       //D fprintf(stderr, "[preload] PID: %d trying to create thread mbind. Has shared memory been removed?\n", getpid());
+   //}
 }
 
 
@@ -111,7 +127,7 @@ void init_lib(void)
  new_nodes.  Pages not located in any node in old_nodes will not be migrated.
  
  */
-int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int size, float *status_memory_pages)
+static int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int size, float *status_memory_pages)
 {
     unsigned node = 0;
     // size must be page-aligned
@@ -145,7 +161,7 @@ int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int
     }
 
     if (numa_move_pages(pid, page_count, pages_addr, NULL, status, MPOL_MF_MOVE) == -1) {
-        fprintf(stderr, "[preload - numa_move_pages] error code: %d\n", errno);
+        fprintf(stderr, "[preload - numa_move_pages() syscall] error code: %d, %p\n", errno, addr);
         perror("error description:");
     }
 
@@ -162,18 +178,9 @@ int query_status_memory_pages(int pid, unsigned long int addr, unsigned long int
     }
     return 0;
 }
-int guard(int ret, char *err)
-{
-    if (ret == -1)
-    {
-        perror(err);
-        return -1;
-    }
-    return ret;
-}
+
 void execute_mbind(data_bind_t data)
 {
-    static int count = 0;
     static struct timespec timestamp;
     char cmd[100];
 
@@ -182,13 +189,14 @@ void execute_mbind(data_bind_t data)
               //MPOL_BIND, &data.nodemask_target_node,  //avoiding to invoke the OOM killer
               MPOL_PREFERRED, &data.nodemask_target_node,
               64,
-              MPOL_MF_MOVE) == -1)
+              //MPOL_MF_MOVE) == -1)
+              data.flag) == -1)
     {
         write(g_pipe_write_fd, &data, sizeof(data_bind_t));
 
         if(data.type != INITIAL_DATAPLACEMENT){
             sprintf(cmd, "echo %lf, %d, %p, %ld, %lu, %d, %d >> bind_error.txt", \
-                    g_timestamp, \
+                    get_my_timestamp(), \
                     data.obj_index, \
                     data.start_addr, \
                     data.size, \
@@ -196,31 +204,9 @@ void execute_mbind(data_bind_t data)
                     errno, \
                     data.type);
             system(cmd);
-
-            char cmd2[30];
-            //sprintf(cmd2, "cat /proc/%d/numa_maps | grep bind > maps_%d.%d", getpid(), count, getpid());
-            //sprintf(cmd2, "cat /proc/%d/maps > maps_%d.txt", getpid(), data.type);
-            system(cmd2);
-            count++;
         }
     }
 }
-
-
-void open_pipes(void)
-{
-    char FIFO_PATH_MIGRATION[50] ;
-    char FIFO_PATH_MIGRATION_ERROR[50] ;
-
-    sprintf(FIFO_PATH_MIGRATION, "migration_%d.pipe", getpid());
-    sprintf(FIFO_PATH_MIGRATION_ERROR, "migration_error_%d.pipe", getpid());
-
-    guard(mkfifo(FIFO_PATH_MIGRATION, 0777), "Could not create pipe");
-    g_pipe_read_fd = guard(open(FIFO_PATH_MIGRATION, O_RDONLY), "[preload] Could not open pipe MIGRATION for reading");
-    guard(mkfifo(FIFO_PATH_MIGRATION_ERROR, 0777), "Could not create pipe");
-    g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION_ERROR, O_WRONLY), "[preload] Could not open pipe MIGRATION_ERROR for writing");
-}
-
 
 void *thread_manager_mbind(void * _args){
     int i;
@@ -246,7 +232,7 @@ void *thread_manager_mbind(void * _args){
         perror(filename);
     }
 
-    open_pipes();
+    //open_pipes();
 
     while(g_running){
         data_bind_t buf;
@@ -254,21 +240,13 @@ void *thread_manager_mbind(void * _args){
         ssize_t num_read = guard(read(g_pipe_read_fd, &buf, sizeof(data_bind_t)), "Could not read from pipe");
         if (num_read == 0)
         {
-           D fprintf(stderr, "[preload] Piper to read is empty! \n");
+           fprintf(stderr, "[preload] Piper to read is empty! \n");
         }
         else
         {
-
-           if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
-               perror("popen");
-               exit(EXIT_FAILURE);
-           }
-
-           fgets(g_buf, sizeof(g_buf), g_stream_file);
-           sscanf(g_buf, "%lf",& g_timestamp);
-
+#ifdef DEBUG
            fprintf(g_fp, "%lf, %d, %p, %ld, %d, ", \
-                   g_timestamp , \
+                   get_my_timestamp() , \
                    buf.obj_index, \
                    buf.start_addr, \
                    buf.size, \
@@ -282,20 +260,16 @@ void *thread_manager_mbind(void * _args){
            fprintf(g_fp, "[%.2f:",status_memory_pages_before[0]);
            for(i=1; i<g_num_nodes_available; i++)
            {
-		fprintf(g_fp, "%.2f:",status_memory_pages_before[i]);
+               fprintf(g_fp, "%.2f:",status_memory_pages_before[i]);
            }
            fprintf(g_fp, "%.2f],",status_memory_pages_before[i]);
 
            clock_gettime(CLOCK_REALTIME, &g_start);
+#endif
+           //fprintf(g_fp, "[preload] %lf, %d, %p, %ld\n", get_my_timestamp() , buf.obj_index, buf.start_addr, buf.size);
            execute_mbind(buf);
+#ifdef DEBUG
            clock_gettime(CLOCK_REALTIME, &g_end);
-
-           if(buf.size == 1000001536){
-               char cmd2[30];
-               sprintf(cmd2, "cat /proc/%d/maps > maps_%d.txt", getpid(), buf.type);
-               system(cmd2);
-           }
-
 
            uint64_t delta_us = (g_end.tv_sec - g_start.tv_sec) * 1000000 + (g_end.tv_nsec - g_start.tv_nsec) / 1000;
 
@@ -310,10 +284,11 @@ void *thread_manager_mbind(void * _args){
            fprintf(g_fp, "[%.2f:",status_memory_pages_after[0]);
            for(i=1; i<g_num_nodes_available; i++)
            {
-                fprintf(g_fp, "%.2f:",status_memory_pages_after[i]);
+               fprintf(g_fp, "%.2f:",status_memory_pages_after[i]);
            }
            fprintf(g_fp, "%.2f], ",status_memory_pages_after[i]);
            fprintf(g_fp, "%d\n",buf.type);
+#endif
         }
     }
 }

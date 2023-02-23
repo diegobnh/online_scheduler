@@ -42,7 +42,7 @@ hook(long syscall_number,
         
 		*result = syscall_no_intercept(syscall_number, arg0, arg1, arg2, arg3, arg4, arg5);
 		fprintf(stderr, "munmap\n");
-        //remove_object((int)getpid(), arg0, arg1);
+        //deallocate_object((int)getpid(), arg0, arg1);
         
 		return 0;
 	}else {

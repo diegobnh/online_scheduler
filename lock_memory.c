@@ -5,6 +5,7 @@
 #include<sys/mman.h>  //this is to mlock
 #include<signal.h>
 #include<inttypes.h>
+#include<math.h>
 #define GB 1048576000UL //1000 x 1024 x 1024
 
 
@@ -34,8 +35,11 @@ int main(int argc, char *argv[])
     sa.sa_sigaction = stop_lock_memory;
     sa.sa_flags = SIGUSR1;
 
+    float real_value;
     int size_in_gb;
-    sscanf(argv[1], "%d", &size_in_gb);
+
+    sscanf(argv[1], "%f", &real_value);
+    size_in_gb = (int) ceil(real_value);
 
     uint64_t alloc_size = GB * size_in_gb;
 

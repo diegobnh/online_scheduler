@@ -5,28 +5,71 @@
 #include <pthread.h>
 #include <inttypes.h>
 #include <stdint.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "recorder.h"
+
 
 #define mfence()   asm volatile("mfence" ::: "memory")
 
-//#define DEBUG
-#ifdef DEBUG
-  #define D if(1)
-#else
-  #define D if(0)
-#endif
-
 #define CHUNK_ENABLED
 
-//extern volatile tier_manager_t *g_tier_manager;
+#ifndef INIT_DATAPLACEMENT
+#error "INIT_DATAPLACEMENT is not defined."
+#endif
+
+#if !(INIT_DATAPLACEMENT >= 1 && INIT_DATAPLACEMENT <= 4)
+#error "INIT_DATAPLACEMENT value invalid."
+#endif
+
+static int g_pipe_write_fd;
 extern tier_manager_t g_tier_manager;
-//static struct timespec g_timestamp;
+extern double g_start_free_DRAM;
+extern int g_app_pid;
 
-static char g_buf[256];
-static char g_cmd[256];
-static double g_timestamp;
-static FILE *g_stream_file;
+int static guard(int ret, char *err){
+    if (ret == -1)
+    {
+        perror(err);
+        return -1;
+    }
+    return ret;
+}
+double static get_my_timestamp(void){
+    char buf[256];
+    char cmd[256];
+    double timestamp;
+    FILE *stream_file;
 
+    sprintf(cmd, "awk '{print $1}' /proc/uptime");
+
+    if (NULL == (stream_file = popen(cmd, "r"))) { perror("popen"); exit(EXIT_FAILURE);
+    }
+
+    fgets(buf, sizeof(buf), stream_file);
+    sscanf(buf, "%lf", &timestamp);
+
+    return timestamp;
+}
+void recorder_open_pipes(void){
+    char FIFO_PATH_MIGRATION[50];
+    char FIFO_PATH_MIGRATION_ERROR[50];
+    
+    sprintf(FIFO_PATH_MIGRATION, "migration.pipe");
+    g_pipe_write_fd = guard(open(FIFO_PATH_MIGRATION, O_WRONLY), "[recorder] Could not open pipe MIGRATION for writing");
+}
+void static bind_order(unsigned long start_addr, unsigned long size ,int target_node, int obj_index, int type){
+    data_bind_t data;
+    
+    data.obj_index = obj_index;
+    data.start_addr = start_addr;
+    data.size = size;
+    data.nodemask_target_node = 1<<target_node;
+    data.type = type;
+    data.flag = 1<<0;
+    write(g_pipe_write_fd, &data, sizeof(data_bind_t));
+}
 
 void initialize_recorder(void)
 {
@@ -34,14 +77,15 @@ void initialize_recorder(void)
 
     for(i = 0; i < MAX_OBJECTS; i++){
         g_tier_manager.obj_alloc[i] = 0;
-	g_tier_manager.obj_status[i] = -1;
     }
+    g_tier_manager.total_dram_mapped_gb = 0;
     g_tier_manager.total_obj = 0;
 
     for(i=0; i< MAX_OBJECTS; i++){
         g_tier_manager.obj_vector[i].start_addr = -1;
         g_tier_manager.obj_vector[i].metrics.stores_count = 0;
         g_tier_manager.obj_vector[i].sliced = 0;
+        g_tier_manager.obj_vector[i].last_decision = -1;
         
         for(j=0 ; j< MEM_LEVELS; j++){
             g_tier_manager.obj_vector[i].metrics.sum_latency_cost[j] = 0;
@@ -50,8 +94,6 @@ void initialize_recorder(void)
             g_tier_manager.obj_vector[i].metrics.tlb_miss[j] = 0;
         }
     }
-    sprintf(g_cmd, "awk '{print $1}' /proc/uptime");
-
 }
 
 int insert_object(int pid, unsigned long start_addr, unsigned long size)
@@ -60,7 +102,7 @@ int insert_object(int pid, unsigned long start_addr, unsigned long size)
     unsigned long long remnant_size;
     unsigned long aux;
     int i=0;
-
+    
 #ifdef CHUNK_ENABLED
     if(size > CHUNK_SIZE){
         total_chunks = size/CHUNK_SIZE;
@@ -85,20 +127,11 @@ int insert_object(int pid, unsigned long start_addr, unsigned long size)
 }
 
 int _insert_object(int pid, unsigned long start_addr, unsigned long size, int sliced)
-//int insert_object(int pid, unsigned long start_addr, unsigned long size)
 {
     //clock_gettime(CLOCK_REALTIME, &g_timestamp);
-    if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
-        perror("popen");
-        exit(EXIT_FAILURE);
-    }
-
-    fgets(g_buf, sizeof(g_buf), g_stream_file);
-    sscanf(g_buf, "%lf",& g_timestamp);
-
     static int index = 0 ; //get last index assigned
     //this loop will be in infinit loop if the number objects is bigger than MAX_OBJECTS
-    while(g_tier_manager.obj_alloc[index] == 1 || g_tier_manager.obj_status[index] != -1){
+    while(g_tier_manager.obj_alloc[index] == 1){
     	index ++;
     	//index = index % MAX_OBJECTS;
         if(index == MAX_OBJECTS){
@@ -115,19 +148,22 @@ int _insert_object(int pid, unsigned long start_addr, unsigned long size, int sl
     g_tier_manager.obj_vector[index].obj_index = index ;
     g_tier_manager.obj_vector[index].sliced = sliced;
     g_tier_manager.obj_alloc[index] = 1 ;
+    g_tier_manager.obj_vector[index].birth_date = get_my_timestamp();
     g_tier_manager.total_obj++;
-
-    D fprintf(stderr,"[recorder] insert, %lf, %d, %d, %p, %ld\n", \
-                    g_timestamp, \
-                    pid, \
-                    g_tier_manager.obj_vector[index].obj_index, \
-                    g_tier_manager.obj_vector[index].start_addr, \
-                    g_tier_manager.obj_vector[index].size);
+    
+    fprintf(stderr,"[recorder] mmap, %lf, %d, %p, %ld\n", \
+                      get_my_timestamp(), \
+                      g_tier_manager.obj_vector[index].obj_index, \
+                      start_addr, \
+                      size);
+    
+    bind_order(start_addr, size, NODE_0_DRAM, index, INITIAL_DATAPLACEMENT);
+    
     fflush(stderr);
     index ++;
 }
 
-int remove_object(int pid, unsigned long start_addr, unsigned long size){
+int deallocate_object(int pid, unsigned long start_addr, unsigned long size){
     int total_chunks;
     unsigned long long remnant_size;
     unsigned long aux;
@@ -139,44 +175,37 @@ int remove_object(int pid, unsigned long start_addr, unsigned long size){
         remnant_size = size - (total_chunks * CHUNK_SIZE);
         
         while(i < total_chunks){
-           _remove_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
+           _deallocate_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
            i++;
         }
         if(remnant_size > 0){
-            _remove_object(pid, start_addr + (i * CHUNK_SIZE), remnant_size, 1);
+            _deallocate_object(pid, start_addr + (i * CHUNK_SIZE), remnant_size, 1);
         }else{
-            _remove_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
+            _deallocate_object(pid, start_addr + (i * CHUNK_SIZE), CHUNK_SIZE, 1);
         }
     }else{
-        _remove_object(pid, start_addr, size, 0);
+        _deallocate_object(pid, start_addr, size, 0);
     }
 #else
-    _remove_object(pid, start_addr, size, 0);
+    _deallocate_object(pid, start_addr, size, 0);
 #endif
 
 }
 
-int _remove_object(int pid, unsigned long start_addr, unsigned long size, int sliced)
+int _deallocate_object(int pid, unsigned long start_addr, unsigned long size, int sliced)
 {
     int i;
-
-    if (NULL == (g_stream_file = popen(g_cmd, "r"))) {
-        perror("popen");
-        exit(EXIT_FAILURE);
-    }
-
-    fgets(g_buf, sizeof(g_buf), g_stream_file);
-    sscanf(g_buf, "%lf",& g_timestamp);
 
     //for(i = 0; i < MAX_OBJECTS; i++){
     for(i = 0; i < g_tier_manager.total_obj; i++){
     	if(g_tier_manager.obj_vector[i].start_addr == start_addr && g_tier_manager.obj_vector[i].size == size && g_tier_manager.obj_alloc[i] == 1){
-            D fprintf(stderr,"[recorder] remove, %lf, %d, %d, %p, %ld\n", \
-                              g_timestamp, \
-                              pid, \
+#ifdef DEBUG
+            fprintf(stderr,"[recorder] munmap, %lf, %d, %p, %ld\n", \
+                              get_my_timestamp(), \
                               g_tier_manager.obj_vector[i].obj_index, \
                               start_addr, \
                               size);
+#endif
             fflush(stderr);
             g_tier_manager.obj_alloc[i] = 0;
 

@@ -18,15 +18,9 @@
 #include "recorder.h"
 #define rmb()   asm volatile("lfence" ::: "memory")
 
-//#define DEBUG
-#ifdef DEBUG
-  #define D if(1)
-#else
-  #define D if(0)
-#endif
-
 extern tier_manager_t g_tier_manager;
-extern volatile sig_atomic_t g_running;
+extern volatile sig_atomic_t g_running_intercept;
+extern int g_app_pid;
 
 struct __attribute__((__packed__)) sample {
     uint32_t pid, tid;
@@ -99,6 +93,25 @@ static int libperf_print(enum libperf_print_level level, const char *fmt, va_lis
 {
     return vfprintf(stderr, fmt, ap);
 }
+
+double static get_my_timestamp(void)
+{
+    char buf[256];
+    char cmd[256];
+    double timestamp;
+    FILE *stream_file;
+
+    sprintf(cmd, "awk '{print $1}' /proc/uptime");
+
+    if (NULL == (stream_file = popen(cmd, "r"))) { perror("popen"); exit(EXIT_FAILURE);
+    }
+
+    fgets(buf, sizeof(buf), stream_file);
+    sscanf(buf, "%lf", &timestamp);
+
+    return timestamp;
+}
+
 void *thread_intercept_mmap(void){
 
     struct perf_evlist *evlist;
@@ -183,20 +196,14 @@ void *thread_intercept_mmap(void){
     
     perf_evlist__enable(evlist);
     int count=0;
-    int app_pid=-1;
-    FILE *fptr;
-  
-    while(app_pid == -1){
-        fptr = fopen("pid.txt", "r");
-        if(fptr != NULL )
-        {
-            fscanf(fptr, "%d", &app_pid);
-            fseek(fptr, 0, SEEK_SET);
-        }
-    }
-
     
-    while (g_running) {
+    recorder_open_pipes();
+  
+    while(g_app_pid == -1){
+        sleep(0.01);//10 millisecond
+    }
+    
+    while (g_running_intercept) {
         perf_evlist__poll(evlist, -1);
         
         perf_evlist__for_each_mmap(evlist, map, false) {
@@ -227,20 +234,24 @@ void *thread_intercept_mmap(void){
                     // was it annon?
                     if (mmap_enter_args->addr == 0) {
                         
-                        if(sample->pid == app_pid && mmap_enter_args->flags != 0x4022)
+                        if(sample->pid == g_app_pid && mmap_enter_args->flags != 0x4022 && mmap_enter_args->len > 1000000)//1 MB
                         {
-                            D fprintf(stderr, "[intercept] sys_enter_mmap(pid=%d,tid=%d), addr: 0x%lx, len: %ld, prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
-                                   sample->pid, sample->tid, mmap_enter_args->addr, mmap_enter_args->len, mmap_enter_args->prot,\
+#ifdef DEBUG
+                            // fprintf(stderr, "[intercept] mmap %lf, addr: 0x%lx, len: %ld, prot: 0x%lx, flags: 0x%lx, fd: 0x%lx, off: 0x%lx\n",\
+                                   get_my_timestamp(), mmap_enter_args->addr, mmap_enter_args->len, mmap_enter_args->prot,\
                                    mmap_enter_args->flags, mmap_enter_args->fd, mmap_enter_args->off);
+#endif
                             insert_object(sample->pid, args->ret, mmap_enter_args->len);
                         }
                     }
                 } else if (sys_type == sys_enter_munmap_id) {
                     struct syscall_munmap_enter_args *args = (struct syscall_munmap_enter_args *) sample->data;
                     
-                    if(sample->pid == app_pid){
-                        D fprintf(stderr, "[intercept] sys_enter_munmap(pid=%d,tid=%d), addr: 0x%lx, len: %ld\n",sample->pid, sample->tid, args->addr, args->len);
-                        remove_object(sample->pid, args->addr, args->len);
+                    if(sample->pid == g_app_pid && mmap_enter_args->len > 1000000){
+#ifdef DEBUG
+                        // fprintf(stderr, "[intercept] munmap %lf, addr: 0x%lx, len: %ld\n",get_my_timestamp(), args->addr, args->len);
+#endif
+                        deallocate_object(sample->pid, args->addr, args->len);
                     }
                 }
                 
@@ -249,7 +260,7 @@ void *thread_intercept_mmap(void){
             perf_mmap__read_done(map);
             
         }
-    }    
+    }
 
 out_evlist:
     perf_evlist__delete(evlist);

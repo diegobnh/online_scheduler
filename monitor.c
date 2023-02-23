@@ -29,21 +29,34 @@ int address_compare(const void *a, const void *b, void *udata) ;
 bool addr_iter(const void *item, void *udata);
 uint64_t address_hash(const void *item, uint64_t seed0, uint64_t seed1);
 
-//#define DEBUG
-#ifdef DEBUG
-  #define D if(1)
-#else
-  #define D if(0)
-#endif
-
 extern float g_monitor_interval;
 extern int g_sample_freq;
 extern tier_manager_t g_tier_manager;
-extern volatile sig_atomic_t g_running;
+extern volatile sig_atomic_t g_running_monitor;
+extern int g_app_pid;
+extern pthread_t actuator;
+extern float g_hotness_threshold;
+
 tier_manager_t g_tier_manager_copy;
 
 struct hashmap *g_hashmap;
 
+double static get_my_timestamp(void){
+    char buf[256];
+    char cmd[256];
+    double timestamp;
+    FILE *stream_file;
+
+    sprintf(cmd, "awk '{print $1}' /proc/uptime");
+
+    if (NULL == (stream_file = popen(cmd, "r"))) { perror("popen"); exit(EXIT_FAILURE);
+    }
+
+    fgets(buf, sizeof(buf), stream_file);
+    sscanf(buf, "%lf", &timestamp);
+
+    return timestamp;
+}
 int address_compare(const void *a, const void *b, void *udata) {
     const unsigned long *ua = a;
     const unsigned long *ub = b;
@@ -72,9 +85,13 @@ void update_metrics(void){
     struct timespec start, end;
     double old_value;
     double curr_value;
+    double all_tlb_miss;
+    double llcm;
+    int flag = 0;
     
-    for(i=0; i< MAX_OBJECTS; i++){
+    for(i=0; i< g_tier_manager.total_obj; i++){
         if(g_tier_manager.obj_alloc[i] == 1){
+            all_tlb_miss = 0;
             for(j=0; j< MEM_LEVELS; j++){
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.sum_latency_cost[j];
                 old_value = g_tier_manager.obj_vector[i].metrics.sum_latency_cost[j];
@@ -82,24 +99,40 @@ void update_metrics(void){
             
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.loads_count[j];
                 //old_value = g_tier_manager.obj_vector[i].metrics.loads_count[j];
-                //g_tier_manager.obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                g_tier_manager.obj_vector[i].metrics.loads_count[j] += curr_value;
+                g_tier_manager.obj_vector[i].metrics.loads_count[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                //g_tier_manager.obj_vector[i].metrics.loads_count[j] += curr_value;
                 
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.tlb_hit[j];
                 //old_value = g_tier_manager.obj_vector[i].metrics.tlb_hit[j];
-                //g_tier_manager.obj_vector[i].metrics.tlb_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                g_tier_manager.obj_vector[i].metrics.tlb_hit[j] += curr_value; 
+                g_tier_manager.obj_vector[i].metrics.tlb_hit[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                //g_tier_manager.obj_vector[i].metrics.tlb_hit[j] += curr_value;
                 
                 curr_value = g_tier_manager_copy.obj_vector[i].metrics.tlb_miss[j];
                 //old_value = g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
-                //g_tier_manager.obj_vector[i].metrics.tlb_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
-                g_tier_manager.obj_vector[i].metrics.tlb_miss[j] += curr_value;
+                g_tier_manager.obj_vector[i].metrics.tlb_miss[j] = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
+                //g_tier_manager.obj_vector[i].metrics.tlb_miss[j] += curr_value;
+                all_tlb_miss += g_tier_manager.obj_vector[i].metrics.tlb_miss[j];
                 
             }
             curr_value = g_tier_manager_copy.obj_vector[i].metrics.stores_count;
             //old_value = g_tier_manager.obj_vector[i].metrics.stores_count;
             //g_tier_manager.obj_vector[i].metrics.stores_count = (curr_value * (1-ALPHA)) + (old_value * ALPHA) ;
             g_tier_manager.obj_vector[i].metrics.stores_count += curr_value;
+            
+            llcm = g_tier_manager.obj_vector[i].metrics.loads_count[4];//means dram access
+            
+            /*
+#ifdef DEBUG
+            if(llcm > g_hotness_threshold && all_tlb_miss > g_hotness_threshold){
+                flag = 1;
+                fprintf(stderr,"[monitor] %.2lf, %.2lf, %d, %.2lf, %p, %.2lf, %.2lf\n", \
+                          get_my_timestamp(), get_my_timestamp() - g_tier_manager.obj_vector[i].birth_date,\
+                          i, g_tier_manager.obj_vector[i].size/GB, \
+                          g_tier_manager.obj_vector[i].start_addr, \
+                          llcm, all_tlb_miss);
+            }
+#endif
+            */
         }
     }
 }
@@ -121,9 +154,6 @@ int get_vector_index(long long chave){
     int i;
     
     for(i = 0; i < MAX_OBJECTS; i++){
-        //D fprintf(stderr, "[get_vector_index] obj:%d, start_addr:%p, end:%p, key:%p\n",\
-                i, g_tier_manager.obj_vector[i].start_addr,g_tier_manager.obj_vector[i].end_addr,\
-                chave);
         if(chave >= g_tier_manager.obj_vector[i].start_addr && chave <= g_tier_manager.obj_vector[i].end_addr){
             if(g_tier_manager.obj_alloc[i] == 1){
                 return i;
@@ -531,7 +561,7 @@ void *thread_monitor(void *_args){
         goto out_evlist;
     }
 
-    while(g_running) {
+    while(g_running_monitor) {
         perf_evlist__enable(evlist);
         sleep(g_monitor_interval);
         
@@ -587,33 +617,33 @@ void *thread_monitor(void *_args){
                 	else if (is_served_by_local_cache1(data_src)) {
                     	    mem_level = 0;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[0]++;
-                            D fprintf(stderr, "Load on L1\n");
+                            // fprintf(stderr, "Load on L1\n");
                 	}
                 	else if (is_served_by_local_lfb(data_src)) {
                     	    mem_level = 1;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[1]++;
-                            D fprintf(stderr, "Load on LFB\n");
+                            // fprintf(stderr, "Load on LFB\n");
               		}
                 	else if (is_served_by_local_cache2(data_src)) {
                     	    mem_level = 2;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[2]++;
-                            D fprintf(stderr, "Load on L2\n");
+                            // fprintf(stderr, "Load on L2\n");
                 	}
                 	else if (is_served_by_local_cache3(data_src)) {
                     	    mem_level = 3;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[3]++;
-                            D fprintf(stderr, "Load on L3\n");
+                            // fprintf(stderr, "Load on L3\n");
                 	}
                 	else if (is_served_by_local_memory(data_src)) {
                     	    mem_level = 4;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
-                            D fprintf(stderr, "Load on DRAM\n");
+                            // fprintf(stderr, "Load on DRAM\n");
                 	}
                 	//else if (is_served_by_remote_memory(data_src)) {
                         else if (is_served_by_local_pmem(data_src)) {
                             mem_level = 4;
                             g_tier_manager_copy.obj_vector[vector_index].metrics.loads_count[4]++;
-                            D fprintf(stderr, "Load on PMEM\n");
+                            // fprintf(stderr, "Load on PMEM\n");
                         }
                 		
                 	if(mem_level != -1){

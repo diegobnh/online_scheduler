@@ -8,11 +8,29 @@
 
 #define MAX_OBJECTS 2000
 #define CHUNK_SIZE 1000001536UL  //1GB
-#define MEM_LEVELS 5
+//#define CHUNK_SIZE 500002816UL //500MB
+#define MEM_LEVELS 5 //l1, lfb, l2, l3, dram
 
 //#define GB 1.0e9
 #define GB 1000000000.0
 #define MAXIMUM_APPS 1
+
+#define NODE_0_DRAM 0
+#define NODE_0_PMEM 2
+#define NODE_1_DRAM 1
+#define NODE_1_PMEM 3
+
+#define ROUND_ROBIN 1
+#define RANDOM 2
+#define FIRST_DRAM 3
+#define BASED_ON_SIZE 4
+
+
+#define DEBUG
+
+/* Flags for mbind FROM mempolicy.h*/
+//#define MPOL_MF_STRICT    (1<<0)    /* Verify existing pages in the mapping */
+//#define MPOL_MF_MOVE     (1<<1)    /* Move pages owned by this process to conform*/
 
 typedef enum bind_type {
     INITIAL_DATAPLACEMENT = 1,
@@ -27,6 +45,7 @@ typedef struct data_bind
     unsigned long nodemask_target_node;
     int obj_index;
     bind_type_t type;
+    int flag;
 } data_bind_t;
 
 
@@ -44,9 +63,12 @@ typedef struct object{
     unsigned long end_addr;
     unsigned long size;
     unsigned long pages;
+    double birth_date;//could be when the object/chunk strart or when moved to another type of memory
+    float page_status[4];//4 means 3 nodes + 1
     int sliced;//If 1, means this is a chunk. If 0, means the size is less than chunk size
     int obj_index; //This value represent the index of the vector where the allocations was saved
     int pid;
+    int last_decision;
     metric_t metrics;
 }object_t;
 
@@ -59,9 +81,9 @@ typedef struct object{
 typedef struct tier_manager{
     object_t obj_vector[MAX_OBJECTS];
     int obj_alloc[MAX_OBJECTS]; //-1 could means not bind yet or already binded. Depends on the value on obj_status. 0 means desalocated.
-    int obj_status[MAX_OBJECTS]; //-1 means unmapped by our software control, 0 means DRAM, 2 means PMEM, 
     int pids_to_manager[MAXIMUM_APPS];
     int total_obj;
+    float total_dram_mapped_gb;
     //pthread_mutex_t global_mutex; //mutex for account_shared_library_instances variable
     //pthread_mutexattr_t global_attr_mutex; //mutex for account_shared_library_instances variable
 }tier_manager_t;
@@ -69,8 +91,9 @@ typedef struct tier_manager{
 
 int insert_object(int, unsigned long, unsigned long);
 int _insert_object(int, unsigned long, unsigned long, int);
-int remove_object(int, unsigned long, unsigned long);
-int _remove_object(int, unsigned long, unsigned long, int);
+int deallocate_object(int, unsigned long, unsigned long);
+int _deallocate_object(int, unsigned long, unsigned long, int);
 void initialize_recorder();
-
+void recorder_open_pipes();
+int initial_dataplacement_policy(unsigned long , unsigned long , int , int );
 #endif
